@@ -12,7 +12,7 @@
 ---									---
 ---------------------------------------------------------------------------
 ---------------------------------------------------------------------------
-*/
+ */
 package sorrisodecrianca;
 
 import lib.Login;
@@ -28,7 +28,7 @@ public class frmLogin extends javax.swing.JFrame {
     public frmLogin() {
         initComponents();
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
-        this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2); 
+        this.setLocation(dim.width / 2 - this.getSize().width / 2, dim.height / 2 - this.getSize().height / 2);
     }
 
     /**
@@ -125,17 +125,15 @@ public class frmLogin extends javax.swing.JFrame {
 
     private void btnEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEntrarActionPerformed
         Login login = new Login(txtUsuario.getText(), new String(txtSenha.getPassword()));
-        if(login.getUserPriv().equals("comum") || login.getUserPriv().equals("admin"))
-        {
+
+        if (login.getUserPriv() != null && (login.getUserPriv().equals("comum") || login.getUserPriv().equals("admin"))) {
             frmMenu menu = new frmMenu();
             this.setVisible(false);
             menu.setVisible(true);
+        } else {
+            JOptionPane.showMessageDialog(null, "Usuário ou senha inválidos", "Falha ao se conectar!", JOptionPane.ERROR_MESSAGE);
         }
-        else
-        {
-            JOptionPane.showMessageDialog(null,"Usuário ou senha inválidos","Falha ao se conectar!", JOptionPane.ERROR_MESSAGE);
-        }
-        
+
     }//GEN-LAST:event_btnEntrarActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
