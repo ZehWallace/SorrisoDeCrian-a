@@ -1,0 +1,83 @@
+/*-------------------------------------------------------------------------
+---------------------------------------------------------------------------
+---	Universidade Federal de São Carlos - Campus Sorocaba 		---
+---	Bacharelado em Ciência da Computação				---
+---	Sorriso de Criança						---
+---									---
+---		Bruno Pereira						---
+---		Celso Araujo Filho					---
+---		Cristiano Silva						---
+---		Pedro Brito Junior					---
+---		Yasmin Beatriz Alves da Silva 				---
+---									---
+---------------------------------------------------------------------------
+---------------------------------------------------------------------------
+*/
+package lib;
+
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import models.ModelVoluntario;
+
+public class DAOVoluntario extends DbAccess<ModelVoluntario>{
+    
+    public DAOVoluntario()
+    {
+        super();
+    }
+    
+    /**
+    * Executa uma query no banco e retorna um Objeto tipo ModelVoluntario
+    * @param id id id do voluntario a ser pesquisada
+    * @return ModelVoluntario 
+    * @throws SQLException
+    * @throws Exception
+    */
+    public ModelVoluntario getVoluntario(int id) throws SQLException, Exception
+    {
+           String comando = "select * from Voluntario where id = ?;";
+           ArrayList<ModelVoluntario> retorno = Listar(comando,id);
+           
+           if(retorno.size() > 0)
+               return retorno.get(0);
+           return null;
+    }
+    
+    /**
+    * Executa uma query no banco e retorna uma array de objetos tipo ModelVoluntario
+    * @param nome nome nome do voluntario a ser pesquisada
+    * @return ModelVoluntario 
+    * @throws SQLException
+    * @throws Exception
+    */
+    public ArrayList<ModelVoluntario> getPesquisaVoluntario(String nome) throws SQLException, Exception
+    {
+           String comando = "select * from Voluntario where nome like ? limit 15 offset 0";
+           ArrayList<ModelVoluntario> retorno = Listar(comando,"%"+nome+"%");
+           
+           if(retorno.size() > 0)
+               return retorno;
+           return null;
+    }
+
+    @Override
+    public ModelVoluntario ConverterResultSet(ResultSet resultSetAtual) throws SQLException {
+        ModelVoluntario voluntario = new ModelVoluntario();
+        
+        voluntario.setId(resultSetAtual.getInt("id"));
+        voluntario.setNome(resultSetAtual.getString("nome"));
+        voluntario.setData_nascimento(resultSetAtual.getDate("data_nascimento"));
+        voluntario.setRg(resultSetAtual.getString("rg"));
+        voluntario.setCpf(resultSetAtual.getString("cpf"));
+        voluntario.setSexo(resultSetAtual.getString("sexo"));
+        voluntario.setEndereco(resultSetAtual.getString("endereco"));
+        voluntario.setOcupacao(resultSetAtual.getString("ocupacao"));
+        voluntario.setTel_contato(resultSetAtual.getString("tel_contato"));
+        voluntario.setEmail(resultSetAtual.getString("email"));
+        voluntario.setObservacao(resultSetAtual.getString("observacao"));
+
+        
+        return voluntario;
+    }   
+}
