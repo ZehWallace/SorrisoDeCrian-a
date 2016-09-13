@@ -33,7 +33,7 @@ public abstract class DbAccess<T> {
         this.connectionString = "jdbc:h2:./database;CIPHER=AES";
         this.usuario = obfuscate(489832);
         this.senha = obfuscate(213412) + " " + obfuscate(981231);
-//        System.out.println(usuario);
+//        System.out.printl₢n(usuario);
 //        System.out.println(senha);
     }
 
