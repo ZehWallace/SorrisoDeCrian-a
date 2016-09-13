@@ -31,8 +31,10 @@ public abstract class DbAccess<T> {
 
     public DbAccess() {
         this.connectionString = "jdbc:h2:./database;CIPHER=AES";
-        this.usuario = "sistemasorrisodecrianca";
-        this.senha = obfuscate(213412) + " syssdc";
+        this.usuario = obfuscate(489832);
+        this.senha = obfuscate(213412) + " " + obfuscate(981231);
+//        System.out.println(usuario);
+//        System.out.println(senha);
     }
 
     public DbAccess(String connectionString, String usuario, String senha) {
@@ -42,10 +44,7 @@ public abstract class DbAccess<T> {
     }
 
     private void Conectar() throws SQLException {
-        String pass = obfuscate(213412);
-        System.out.println(pass);
         if (this.conexao == null || this.conexao.isClosed()) {
-//            this.conexao = DriverManager.getConnection(this.connectionString, this.usuario, this.senha);;
             JdbcDataSource ds = new JdbcDataSource();
             ds.setURL(this.connectionString);
             ds.setUser(this.usuario);
