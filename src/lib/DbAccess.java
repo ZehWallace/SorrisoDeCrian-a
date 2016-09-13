@@ -32,7 +32,7 @@ public abstract class DbAccess<T> {
     public DbAccess() {
         this.connectionString = "jdbc:h2:./database;CIPHER=AES";
         this.usuario = "sistemasorrisodecrianca";
-        this.senha = "password syssdc";
+        this.senha = obfuscate(213412) + " syssdc";
     }
 
     public DbAccess(String connectionString, String usuario, String senha) {
@@ -42,6 +42,8 @@ public abstract class DbAccess<T> {
     }
 
     private void Conectar() throws SQLException {
+        String pass = obfuscate(213412);
+        System.out.println(pass);
         if (this.conexao == null || this.conexao.isClosed()) {
 //            this.conexao = DriverManager.getConnection(this.connectionString, this.usuario, this.senha);;
             JdbcDataSource ds = new JdbcDataSource();
@@ -171,9 +173,9 @@ public abstract class DbAccess<T> {
             PreparedStatement comando = PrepararComando(query, parametros);
 
             ResultSet resultado = comando.executeQuery();
-            
+
             if (resultado.next()) {
-                retorno = resultado.getString(1) ;
+                retorno = resultado.getString(1);
             }
             comando.close();
         } finally {
@@ -183,6 +185,15 @@ public abstract class DbAccess<T> {
         }
 
         return retorno;
+    }
+
+    public static String obfuscate(int n) {
+        StringBuilder result = new StringBuilder();
+        for (int i = n; i <= n+5; i++) {
+            String reverse = Integer.toString(Integer.reverse(i << 1), 36);
+            result.append(reverse);
+        }
+        return result.toString();
     }
 
     /**
