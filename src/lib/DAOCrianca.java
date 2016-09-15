@@ -30,7 +30,7 @@ public class DAOCrianca extends DbAccess<ModelCrianca>{
     
     /**
     * Executa uma query no banco e retorna um Objeto tipo ModelCrianca
-    * @param id id id da crianca a ser pesquisada
+    * @param id id da crianca a ser pesquisada
     * @return ModelCrianca 
     * @throws SQLException
     * @throws Exception
@@ -47,7 +47,7 @@ public class DAOCrianca extends DbAccess<ModelCrianca>{
     
     /**
     * Executa uma query no banco e retorna uma array de objetos tipo ModelCrianca
-    * @param String nome nome da crianca a ser pesquisada
+    * @param nome nome da crianca a ser pesquisada
     * @return ArrayList<ModelCrianca> 
     * @throws SQLException
     * @throws Exception
@@ -63,8 +63,7 @@ public class DAOCrianca extends DbAccess<ModelCrianca>{
     }
     
     /**
-    * Executa uma query no banco e retorna uma array de objetos tipo ModelCrianca
-    * @param String nome nome da crianca a ser pesquisada
+    * Executa uma query no banco e retorna uma array de objetos tipo ModelCrianca com status Ativo
     * @return ArrayList<ModelCrianca> 
     * @throws SQLException
     * @throws Exception

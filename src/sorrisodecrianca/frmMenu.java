@@ -55,7 +55,7 @@ public class frmMenu extends javax.swing.JFrame {
         {
             id = listaCriancasAtivas.get(i).getId();
             listaPresenca = new ArrayList<ModelPresenca>();
-            listaPresenca = dao_presenca.getPesquisaCriancaPresenca(id);
+            //listaPresenca = dao_presenca.getPesquisaCriancaPresenca(id);
             
             String[] dados = new String[]{
                 listaCriancasAtivas.get(i).getNome()
