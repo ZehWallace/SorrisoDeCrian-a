@@ -64,8 +64,10 @@ public abstract class DbAccess<T> {
     private PreparedStatement PrepararComando(String query, Object[] parametros) throws SQLException, Exception {
         PreparedStatement statement = this.conexao.prepareStatement(query);
 
+        
         if (parametros != null) {
             for (int i = 0; i < parametros.length; i++) {
+                //System.out.println("Parametro " + i +  ": " + parametros[i]);
                 if (parametros[i] instanceof Integer) {
                     statement.setInt(i + 1, (Integer) parametros[i]);
                 } else if (parametros[i] instanceof Double) {

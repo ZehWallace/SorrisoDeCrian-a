@@ -68,7 +68,7 @@ public class frmCrianca extends javax.swing.JFrame {
         jText_Observacoes = new javax.swing.JTextArea();
         jLabel10 = new javax.swing.JLabel();
         jComboBox_SituacaoCrianca = new javax.swing.JComboBox();
-        jButton1 = new javax.swing.JButton();
+        jBtn_CadastrarCrianca = new javax.swing.JButton();
         jText_DataNascimento = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -139,16 +139,16 @@ public class frmCrianca extends javax.swing.JFrame {
 
         jComboBox_SituacaoCrianca.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ativo", "Inativo" }));
 
-        jButton1.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
-        jButton1.setText("Cadastrar");
-        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+        jBtn_CadastrarCrianca.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
+        jBtn_CadastrarCrianca.setText("Cadastrar");
+        jBtn_CadastrarCrianca.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton1MouseClicked(evt);
+                jBtn_CadastrarCriancaMouseClicked(evt);
             }
         });
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jBtn_CadastrarCrianca.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jBtn_CadastrarCriancaActionPerformed(evt);
             }
         });
 
@@ -195,7 +195,7 @@ public class frmCrianca extends javax.swing.JFrame {
                 .addContainerGap(42, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel_InfoCriancaLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jBtn_CadastrarCrianca, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(310, 310, 310))
         );
         jPanel_InfoCriancaLayout.setVerticalGroup(
@@ -232,7 +232,7 @@ public class frmCrianca extends javax.swing.JFrame {
                     .addComponent(jLabel9)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 52, Short.MAX_VALUE)
+                .addComponent(jBtn_CadastrarCrianca, javax.swing.GroupLayout.DEFAULT_SIZE, 52, Short.MAX_VALUE)
                 .addGap(12, 12, 12))
         );
 
@@ -266,11 +266,11 @@ public class frmCrianca extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jText_EnderecoActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jBtn_CadastrarCriancaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtn_CadastrarCriancaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_jBtn_CadastrarCriancaActionPerformed
 
-    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+    private void jBtn_CadastrarCriancaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtn_CadastrarCriancaMouseClicked
         // TODO add your handling code here:
         
         /* Testes de consistencia */
@@ -353,6 +353,7 @@ public class frmCrianca extends javax.swing.JFrame {
             try
             {
                 daoCrianca.insereCrianca(modelCrianca);
+                JOptionPane.showMessageDialog(jPanel_InfoCrianca, "Criança inserida no sistema com sucesso!", "Cadastro de Crianças", JOptionPane.OK_OPTION);
             }
             catch(SQLException sql_e)
             {
@@ -363,18 +364,16 @@ public class frmCrianca extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(jPanel_InfoCrianca, ex.getMessage(), "Exception", JOptionPane.OK_OPTION);
             }
 
-            JOptionPane.showMessageDialog(jPanel_InfoCrianca, "Criança inserida no sistema com sucesso!", "Cadastro de Crianças", JOptionPane.OK_OPTION);
+            
         }
-        
-        
-    }//GEN-LAST:event_jButton1MouseClicked
+    }//GEN-LAST:event_jBtn_CadastrarCriancaMouseClicked
 
     /**
      * @param args the command line arguments
      */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jBtn_CadastrarCrianca;
     private javax.swing.JComboBox jComboBox_Sexo;
     private javax.swing.JComboBox jComboBox_SituacaoCrianca;
     private javax.swing.JLabel jLabel1;
