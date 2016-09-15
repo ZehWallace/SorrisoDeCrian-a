@@ -15,14 +15,18 @@
 */
 package sorrisodecrianca;
 
+import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableCellRenderer;
+import javax.swing.table.TableColumnModel;
 import lib.DAOCrianca;
 import lib.DAOPresenca;
 import models.ModelCrianca;
@@ -51,16 +55,135 @@ public class frmMenu extends javax.swing.JFrame {
         tb_model.setColumnIdentifiers(colunas);
         int id;
         
+        String[] dados = new String[]{};
+        
         for(int i =0; i < listaCriancasAtivas.size(); i++)
         {
             id = listaCriancasAtivas.get(i).getId();
             listaPresenca = new ArrayList<ModelPresenca>();
-            //listaPresenca = dao_presenca.getPesquisaCriancaPresenca(id);
             
-            String[] dados = new String[]{
-                listaCriancasAtivas.get(i).getNome()
-                //listaPresenca.get(0);
-            };
+            switch(data_atual.getDayOfWeek().name())
+            {
+                case "MONDAY":
+                    break;
+                case "TUESDAY":
+                    
+                        try
+                        {
+                            listaPresenca = dao_presenca.getPesquisaCriancaPresenca(id, 1);
+                            dados = new String[]
+                            {
+                                listaCriancasAtivas.get(i).getNome(),
+                                listaPresenca.get(0).getStatus(),
+                            };
+                        }
+                        catch (Exception e)
+                        {
+                            JOptionPane.showMessageDialog(null, "Não foi possível carregar todas presenças porque o registro está incompleto!", "Aviso!", JOptionPane.WARNING_MESSAGE);
+                        }
+                    
+                    break;
+                case "WENESDAY":
+                    
+                        try
+                        {
+                            listaPresenca = dao_presenca.getPesquisaCriancaPresenca(id, 2);
+                            dados = new String[]
+                            {
+                                listaCriancasAtivas.get(i).getNome(),
+                                listaPresenca.get(0).getStatus(),
+                                listaPresenca.get(1).getStatus(),
+                            };
+                        }
+                        catch (Exception e)
+                        {
+                            JOptionPane.showMessageDialog(null, "Não foi possível carregar todas presenças porque o registro está incompleto!", "Aviso!", JOptionPane.WARNING_MESSAGE);
+                        }
+                    
+                    break;
+                case "THURSDAY":
+                    
+                        try
+                        {
+                            listaPresenca = dao_presenca.getPesquisaCriancaPresenca(id, 3);
+                            dados = new String[]
+                            {
+                                listaCriancasAtivas.get(i).getNome(),
+                                listaPresenca.get(0).getStatus(),
+                                listaPresenca.get(1).getStatus(),
+                                listaPresenca.get(2).getStatus(),
+                            };
+                        }
+                        catch (Exception e)
+                        {
+                            JOptionPane.showMessageDialog(null, "Não foi possível carregar todas presenças porque o registro está incompleto!", "Aviso!", JOptionPane.WARNING_MESSAGE);
+                        }
+                    
+                    break;
+                case "FRIDAY":
+                    
+                        try
+                        {
+                            listaPresenca = dao_presenca.getPesquisaCriancaPresenca(id, 4);
+                            dados = new String[]
+                            {
+                                listaCriancasAtivas.get(i).getNome(),
+                                listaPresenca.get(0).getStatus(),
+                                listaPresenca.get(1).getStatus(),
+                                listaPresenca.get(2).getStatus(),
+                                listaPresenca.get(3).getStatus(),
+                            };
+                        }
+                        catch (Exception e)
+                        {
+                            JOptionPane.showMessageDialog(null, "Não foi possível carregar todas presenças porque o registro está incompleto!", "Aviso!", JOptionPane.WARNING_MESSAGE);
+                        }
+                    
+                    break;
+                case "SATURDAY":
+                    
+                        try
+                        {
+                            listaPresenca = dao_presenca.getPesquisaCriancaPresenca(id, 5);
+                            dados = new String[]
+                            {
+                                listaCriancasAtivas.get(i).getNome(),
+                                listaPresenca.get(0).getStatus(),
+                                listaPresenca.get(1).getStatus(),
+                                listaPresenca.get(2).getStatus(),
+                                listaPresenca.get(3).getStatus(),
+                                listaPresenca.get(4).getStatus(),
+                            };
+                        }
+                        catch (Exception e)
+                        {
+                            JOptionPane.showMessageDialog(null, "Não foi possível carregar todas presenças porque o registro está incompleto!", "Aviso!", JOptionPane.WARNING_MESSAGE);
+                        }
+                    
+                    break;
+                case "SUNDAY":
+                    
+                        try
+                        {
+                            listaPresenca = dao_presenca.getPesquisaCriancaPresenca(id, 6);
+                            dados = new String[]
+                            {
+                                listaCriancasAtivas.get(i).getNome(),
+                                listaPresenca.get(0).getStatus(),
+                                listaPresenca.get(1).getStatus(),
+                                listaPresenca.get(2).getStatus(),
+                                listaPresenca.get(3).getStatus(),
+                                listaPresenca.get(4).getStatus(),
+                                listaPresenca.get(5).getStatus(),
+                            };
+                        }
+                        catch (Exception e)
+                        {
+                            JOptionPane.showMessageDialog(null, "Não foi possível carregar todas presenças porque o registro está incompleto!", "Aviso!", JOptionPane.WARNING_MESSAGE);
+                        }
+                    
+                    break;
+            }
             tb_model.addRow(dados);
         }
         
@@ -69,7 +192,26 @@ public class frmMenu extends javax.swing.JFrame {
         tbPresenca = new JTable();
         tbPresenca.setModel(tb_model);
         scrollpanelPresenca.setViewportView(tbPresenca);
+        this.resizeColumnWidth(tbPresenca);
         
+    }
+    
+    /**
+    * Ajusta as dimensões das colunas da tabela recebida
+    * @param table tabela a ser redimensionada
+    */
+    public void resizeColumnWidth(JTable table)
+    {
+        final TableColumnModel columnModel = table.getColumnModel();
+        for (int column = 0; column < table.getColumnCount(); column++) {
+            int width = 50; // Min width
+            for (int row = 0; row < table.getRowCount(); row++) {
+                TableCellRenderer renderer = table.getCellRenderer(row, column);
+                Component comp = table.prepareRenderer(renderer, row, column);
+                width = Math.max(comp.getPreferredSize().width +1 , width);
+            }
+            columnModel.getColumn(column).setPreferredWidth(width);
+        }
     }
 
     /**
