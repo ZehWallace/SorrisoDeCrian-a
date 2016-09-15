@@ -17,18 +17,59 @@ package sorrisodecrianca;
 
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+import lib.DAOCrianca;
+import lib.DAOPresenca;
+import models.ModelCrianca;
+import models.ModelPresenca;
 
 public class frmMenu extends javax.swing.JFrame {
 
     /**
      * Creates new form frmMenu
      */
-    public frmMenu() {
+    public frmMenu() throws Exception {
         initComponents();
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
+        
+        LocalDate data_atual = LocalDate.now();
+        
+        String[] colunas = new String[]{"Nome ","Segunda ","Terça ", "Quarta ", "Quinta ", "Sexta ", "Sábado ", "Domingo "};
+        ArrayList<ModelPresenca> listaPresenca = new ArrayList<ModelPresenca>();
+        ArrayList<ModelCrianca> listaCriancasAtivas = new ArrayList<ModelCrianca>();
+        DAOPresenca dao_presenca = new DAOPresenca();
+        DAOCrianca dao_crianca = new DAOCrianca();
+        listaCriancasAtivas = dao_crianca.getCriancasAtivas();
+        
+        DefaultTableModel tb_model = new DefaultTableModel();
+        tb_model.setColumnIdentifiers(colunas);
+        int id;
+        
+        for(int i =0; i < listaCriancasAtivas.size(); i++)
+        {
+            id = listaCriancasAtivas.get(i).getId();
+            listaPresenca = new ArrayList<ModelPresenca>();
+            listaPresenca = dao_presenca.getPesquisaCriancaPresenca(id);
+            
+            String[] dados = new String[]{
+                listaCriancasAtivas.get(i).getNome()
+                //listaPresenca.get(0);
+            };
+            tb_model.addRow(dados);
+        }
+        
+        
+        
+        tbPresenca = new JTable();
+        tbPresenca.setModel(tb_model);
+        scrollpanelPresenca.setViewportView(tbPresenca);
+        
     }
 
     /**
@@ -42,6 +83,8 @@ public class frmMenu extends javax.swing.JFrame {
 
         btnCadCri = new javax.swing.JButton();
         btnCadVol = new javax.swing.JButton();
+        scrollpanelPresenca = new javax.swing.JScrollPane();
+        tbPresenca = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -59,25 +102,43 @@ public class frmMenu extends javax.swing.JFrame {
             }
         });
 
+        tbPresenca.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        scrollpanelPresenca.setViewportView(tbPresenca);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(127, 127, 127)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(47, 47, 47)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(btnCadCri, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnCadVol))
-                .addContainerGap(126, Short.MAX_VALUE))
+                .addGap(90, 90, 90)
+                .addComponent(scrollpanelPresenca, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(18, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(68, 68, 68)
+                .addGap(50, 50, 50)
                 .addComponent(btnCadCri)
-                .addGap(66, 66, 66)
+                .addGap(38, 38, 38)
                 .addComponent(btnCadVol)
-                .addContainerGap(120, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 25, Short.MAX_VALUE)
+                .addComponent(scrollpanelPresenca, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
@@ -102,5 +163,7 @@ public class frmMenu extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCadCri;
     private javax.swing.JButton btnCadVol;
+    private javax.swing.JScrollPane scrollpanelPresenca;
+    private javax.swing.JTable tbPresenca;
     // End of variables declaration//GEN-END:variables
 }

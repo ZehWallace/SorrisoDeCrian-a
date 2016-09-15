@@ -61,6 +61,7 @@ public class DAOPresenca extends DbAccess<ModelPresenca>{
         
         presenca.setCrianca(resultSetAtual.getInt("crianca"));
         presenca.setData_presenca(resultSetAtual.getDate("data_presenca"));
+        presenca.setStatus(resultSetAtual.getString("status"));
         
         return presenca;
     }   

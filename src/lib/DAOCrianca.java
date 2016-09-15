@@ -61,6 +61,23 @@ public class DAOCrianca extends DbAccess<ModelCrianca>{
                return retorno;
            return null;
     }
+    
+    /**
+    * Executa uma query no banco e retorna uma array de objetos tipo ModelCrianca
+    * @param String nome nome da crianca a ser pesquisada
+    * @return ArrayList<ModelCrianca> 
+    * @throws SQLException
+    * @throws Exception
+    */
+    public ArrayList<ModelCrianca> getCriancasAtivas() throws SQLException, Exception
+    {
+           String comando = "select * from Crianca where status = 'Ativo'";
+           ArrayList<ModelCrianca> retorno = Listar(comando);
+           
+           if(retorno.size() > 0)
+               return retorno;
+           return null;
+    }
 
     @Override
     public ModelCrianca ConverterResultSet(ResultSet resultSetAtual) throws SQLException {
