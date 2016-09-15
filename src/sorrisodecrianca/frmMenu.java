@@ -385,10 +385,22 @@ public class frmMenu extends javax.swing.JFrame {
                         {
                             for(int i = 0; i < tbPresenca.getRowCount(); i++)
                             {
+                                String presenca = tbPresenca.getModel().getValueAt(i, 2).toString().toUpperCase();
+                                if(!presenca.equals("F") && !presenca.equals("P"))
+                                {
+                                    JOptionPane.showMessageDialog(null, "Preencha todos os campos com P ou F!", "Aviso!", JOptionPane.WARNING_MESSAGE);
+                                    btnSalvarAlteracoes.setEnabled(false);
+                                    return;
+                                }
+                            }
+                            
+                            for(int i = 0; i < tbPresenca.getRowCount(); i++)
+                            {
                                 String id = tbPresenca.getModel().getValueAt(i, 0).toString();
-                                String presenca = tbPresenca.getModel().getValueAt(i, 2).toString();
+                                String presenca = tbPresenca.getModel().getValueAt(i, 2).toString().toUpperCase();
                                 dao_presenca.insertPresencaCrianca(id, data_atual.toString(), presenca);
                             }
+                            JOptionPane.showMessageDialog(null, "As presenças foram salvas com sucesso!", "Aviso!", JOptionPane.INFORMATION_MESSAGE);
                         }
                         catch (Exception e)
                         {
@@ -402,10 +414,23 @@ public class frmMenu extends javax.swing.JFrame {
                         {
                             for(int i = 0; i < tbPresenca.getRowCount(); i++)
                             {
+                                String presenca = tbPresenca.getModel().getValueAt(i, 3).toString().toUpperCase();
+                                if(!presenca.equals("F") && !presenca.equals("P"))
+                                {
+                                    JOptionPane.showMessageDialog(null, "Preencha todos os campos com P ou F!", "Aviso!", JOptionPane.WARNING_MESSAGE);
+                                    btnSalvarAlteracoes.setEnabled(false);
+                                    return;
+                                }
+                            }
+                            
+                            for(int i = 0; i < tbPresenca.getRowCount(); i++)
+                            {
                                 String id = tbPresenca.getModel().getValueAt(i, 0).toString();
-                                String presenca = tbPresenca.getModel().getValueAt(i, 3).toString();
+                                String presenca = tbPresenca.getModel().getValueAt(i, 3).toString().toUpperCase();
                                 dao_presenca.insertPresencaCrianca(id, data_atual.toString(), presenca);
                             }
+                            
+                            JOptionPane.showMessageDialog(null, "As presenças foram salvas com sucesso!", "Aviso!", JOptionPane.INFORMATION_MESSAGE);                    
                         }
                         catch (Exception e)
                         {
@@ -419,10 +444,22 @@ public class frmMenu extends javax.swing.JFrame {
                         {
                             for(int i = 0; i < tbPresenca.getRowCount(); i++)
                             {
+                                String presenca = tbPresenca.getModel().getValueAt(i, 4).toString().toUpperCase();
+                                if(!presenca.equals("F") && !presenca.equals("P"))
+                                {
+                                    JOptionPane.showMessageDialog(null, "Preencha todos os campos com P ou F!", "Aviso!", JOptionPane.WARNING_MESSAGE);
+                                    btnSalvarAlteracoes.setEnabled(false);
+                                    return;
+                                }
+                            }
+                            
+                            for(int i = 0; i < tbPresenca.getRowCount(); i++)
+                            {
                                 String id = tbPresenca.getModel().getValueAt(i, 0).toString();
-                                String presenca = tbPresenca.getModel().getValueAt(i, 4).toString();
+                                String presenca = tbPresenca.getModel().getValueAt(i, 4).toString().toUpperCase();
                                 dao_presenca.insertPresencaCrianca(id, data_atual.toString(), presenca);
                             }
+                            JOptionPane.showMessageDialog(null, "As presenças foram salvas com sucesso!", "Aviso!", JOptionPane.INFORMATION_MESSAGE);
                         }
                         catch (Exception e)
                         {
@@ -431,20 +468,32 @@ public class frmMenu extends javax.swing.JFrame {
                     
                     break;
                 case "THURSDAY":
-                    
+                             
                         try
                         {
                             for(int i = 0; i < tbPresenca.getRowCount(); i++)
                             {
+                                String presenca = tbPresenca.getModel().getValueAt(i, 5).toString().toUpperCase();
+                                if(!presenca.equals("F") && !presenca.equals("P"))
+                                {
+                                    JOptionPane.showMessageDialog(null, "Preencha todos os campos com P ou F!", "Aviso!", JOptionPane.WARNING_MESSAGE);
+                                    btnSalvarAlteracoes.setEnabled(false);
+                                    return;
+                                }
+                            }
+                            
+                            for(int i = 0; i < tbPresenca.getRowCount(); i++)
+                            {
                                 String id = tbPresenca.getModel().getValueAt(i, 0).toString();
-                                String presenca = tbPresenca.getModel().getValueAt(i, 5).toString();
+                                String presenca = tbPresenca.getModel().getValueAt(i, 5).toString().toUpperCase();
                                 dao_presenca.insertPresencaCrianca(id, data_atual.toString(), presenca);
                                 
                             }
+                            JOptionPane.showMessageDialog(null, "As presenças foram salvas com sucesso!", "Aviso!", JOptionPane.INFORMATION_MESSAGE);
                         }
                         catch (Exception e)
                         {
-                            JOptionPane.showMessageDialog(null, " Houve um problema ao inserir as novas presenças, verifique se todos os campos estão preenchidos!", "Aviso!", JOptionPane.WARNING_MESSAGE);
+                            JOptionPane.showMessageDialog(null, e+" Houve um problema ao inserir as novas presenças, verifique se todos os campos estão preenchidos!", "Aviso!", JOptionPane.WARNING_MESSAGE);
                         }
                     
                     break;
@@ -454,10 +503,22 @@ public class frmMenu extends javax.swing.JFrame {
                         {
                             for(int i = 0; i < tbPresenca.getRowCount(); i++)
                             {
+                                String presenca = tbPresenca.getModel().getValueAt(i, 6).toString().toUpperCase();
+                                if(!presenca.equals("F") && !presenca.equals("P"))
+                                {
+                                    JOptionPane.showMessageDialog(null, "Preencha todos os campos com P ou F!", "Aviso!", JOptionPane.WARNING_MESSAGE);
+                                    btnSalvarAlteracoes.setEnabled(false);
+                                    return;
+                                }
+                            }
+                            
+                            for(int i = 0; i < tbPresenca.getRowCount(); i++)
+                            {
                                 String id = tbPresenca.getModel().getValueAt(i, 0).toString();
-                                String presenca = tbPresenca.getModel().getValueAt(i, 6).toString();
+                                String presenca = tbPresenca.getModel().getValueAt(i, 6).toString().toUpperCase();
                                 dao_presenca.insertPresencaCrianca(id, data_atual.toString(), presenca);
                             }
+                            JOptionPane.showMessageDialog(null, "As presenças foram salvas com sucesso!", "Aviso!", JOptionPane.INFORMATION_MESSAGE);
                         }
                         catch (Exception e)
                         {
@@ -471,10 +532,22 @@ public class frmMenu extends javax.swing.JFrame {
                         {
                             for(int i = 0; i < tbPresenca.getRowCount(); i++)
                             {
+                                String presenca = tbPresenca.getModel().getValueAt(i, 7).toString().toUpperCase();
+                                if(!presenca.equals("F") && !presenca.equals("P"))
+                                {
+                                    JOptionPane.showMessageDialog(null, "Preencha todos os campos com P ou F!", "Aviso!", JOptionPane.WARNING_MESSAGE);
+                                    btnSalvarAlteracoes.setEnabled(false);
+                                    return;
+                                }
+                            }
+                            
+                            for(int i = 0; i < tbPresenca.getRowCount(); i++)
+                            {
                                 String id = tbPresenca.getModel().getValueAt(i, 0).toString();
-                                String presenca = tbPresenca.getModel().getValueAt(i, 7).toString();
+                                String presenca = tbPresenca.getModel().getValueAt(i, 7).toString().toUpperCase();
                                 dao_presenca.insertPresencaCrianca(id, data_atual.toString(), presenca);
                             }
+                            JOptionPane.showMessageDialog(null, "As presenças foram salvas com sucesso!", "Aviso!", JOptionPane.INFORMATION_MESSAGE);
                         }
                         catch (Exception e)
                         {
@@ -488,10 +561,22 @@ public class frmMenu extends javax.swing.JFrame {
                         {
                             for(int i = 0; i < tbPresenca.getRowCount(); i++)
                             {
+                                String presenca = tbPresenca.getModel().getValueAt(i, 8).toString().toUpperCase();
+                                if(!presenca.equals("F") && !presenca.equals("P"))
+                                {
+                                    JOptionPane.showMessageDialog(null, "Preencha todos os campos com P ou F!", "Aviso!", JOptionPane.WARNING_MESSAGE);
+                                    btnSalvarAlteracoes.setEnabled(false);
+                                    return;
+                                }
+                            }
+                            
+                            for(int i = 0; i < tbPresenca.getRowCount(); i++)
+                            {
                                 String id = tbPresenca.getModel().getValueAt(i, 0).toString();
-                                String presenca = tbPresenca.getModel().getValueAt(i, 8).toString();
+                                String presenca = tbPresenca.getModel().getValueAt(i, 8).toString().toUpperCase();
                                 dao_presenca.insertPresencaCrianca(id, data_atual.toString(), presenca);
                             }
+                            JOptionPane.showMessageDialog(null, "As presenças foram salvas com sucesso!", "Aviso!", JOptionPane.INFORMATION_MESSAGE);
                         }
                         catch (Exception e)
                         {
