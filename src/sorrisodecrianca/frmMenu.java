@@ -24,6 +24,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import javax.swing.event.CellEditorListener;
+import javax.swing.event.ChangeEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumnModel;
@@ -44,7 +46,7 @@ public class frmMenu extends javax.swing.JFrame {
         
         LocalDate data_atual = LocalDate.now();
         
-        String[] colunas = new String[]{"Nome ","Segunda ","Terça ", "Quarta ", "Quinta ", "Sexta ", "Sábado ", "Domingo "};
+        String[] colunas = new String[]{"ID","Nome ","Segunda ","Terça ", "Quarta ", "Quinta ", "Sexta ", "Sábado ", "Domingo "};
         ArrayList<ModelPresenca> listaPresenca = new ArrayList<ModelPresenca>();
         ArrayList<ModelCrianca> listaCriancasAtivas = new ArrayList<ModelCrianca>();
         DAOPresenca dao_presenca = new DAOPresenca();
@@ -73,6 +75,7 @@ public class frmMenu extends javax.swing.JFrame {
                             listaPresenca = dao_presenca.getPesquisaCriancaPresenca(id, 1);
                             dados = new String[]
                             {
+                                listaCriancasAtivas.get(i).getId()+"",
                                 listaCriancasAtivas.get(i).getNome(),
                                 listaPresenca.get(0).getStatus(),
                             };
@@ -90,6 +93,7 @@ public class frmMenu extends javax.swing.JFrame {
                             listaPresenca = dao_presenca.getPesquisaCriancaPresenca(id, 2);
                             dados = new String[]
                             {
+                                listaCriancasAtivas.get(i).getId()+"",
                                 listaCriancasAtivas.get(i).getNome(),
                                 listaPresenca.get(0).getStatus(),
                                 listaPresenca.get(1).getStatus(),
@@ -108,6 +112,7 @@ public class frmMenu extends javax.swing.JFrame {
                             listaPresenca = dao_presenca.getPesquisaCriancaPresenca(id, 3);
                             dados = new String[]
                             {
+                                listaCriancasAtivas.get(i).getId()+"",
                                 listaCriancasAtivas.get(i).getNome(),
                                 listaPresenca.get(0).getStatus(),
                                 listaPresenca.get(1).getStatus(),
@@ -127,6 +132,7 @@ public class frmMenu extends javax.swing.JFrame {
                             listaPresenca = dao_presenca.getPesquisaCriancaPresenca(id, 4);
                             dados = new String[]
                             {
+                                listaCriancasAtivas.get(i).getId()+"",
                                 listaCriancasAtivas.get(i).getNome(),
                                 listaPresenca.get(0).getStatus(),
                                 listaPresenca.get(1).getStatus(),
@@ -147,6 +153,7 @@ public class frmMenu extends javax.swing.JFrame {
                             listaPresenca = dao_presenca.getPesquisaCriancaPresenca(id, 5);
                             dados = new String[]
                             {
+                                listaCriancasAtivas.get(i).getId()+"",
                                 listaCriancasAtivas.get(i).getNome(),
                                 listaPresenca.get(0).getStatus(),
                                 listaPresenca.get(1).getStatus(),
@@ -168,6 +175,7 @@ public class frmMenu extends javax.swing.JFrame {
                             listaPresenca = dao_presenca.getPesquisaCriancaPresenca(id, 6);
                             dados = new String[]
                             {
+                                listaCriancasAtivas.get(i).getId()+"",
                                 listaCriancasAtivas.get(i).getNome(),
                                 listaPresenca.get(0).getStatus(),
                                 listaPresenca.get(1).getStatus(),
@@ -187,13 +195,13 @@ public class frmMenu extends javax.swing.JFrame {
             tb_model.addRow(dados);
         }
         
-        
-        
         tbPresenca = new JTable();
         tbPresenca.setModel(tb_model);
         scrollpanelPresenca.setViewportView(tbPresenca);
         this.resizeColumnWidth(tbPresenca);
+        tbPresenca.getDefaultEditor(String.class).addCellEditorListener(ChangeNotification);
         
+        btnSalvarAlteracoes.setEnabled(false);
     }
     
     /**
@@ -227,6 +235,7 @@ public class frmMenu extends javax.swing.JFrame {
         btnCadVol = new javax.swing.JButton();
         scrollpanelPresenca = new javax.swing.JScrollPane();
         tbPresenca = new javax.swing.JTable();
+        btnSalvarAlteracoes = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -257,6 +266,13 @@ public class frmMenu extends javax.swing.JFrame {
         ));
         scrollpanelPresenca.setViewportView(tbPresenca);
 
+        btnSalvarAlteracoes.setText("Salvar Alterações");
+        btnSalvarAlteracoes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalvarAlteracoesActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -266,21 +282,27 @@ public class frmMenu extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(btnCadCri, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnCadVol))
-                .addGap(90, 90, 90)
+                .addGap(87, 87, 87)
                 .addComponent(scrollpanelPresenca, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnSalvarAlteracoes, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(19, 19, 19))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(50, 50, 50)
-                .addComponent(btnCadCri)
-                .addGap(38, 38, 38)
-                .addComponent(btnCadVol)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 25, Short.MAX_VALUE)
-                .addComponent(scrollpanelPresenca, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(scrollpanelPresenca, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnCadCri)
+                        .addGap(38, 38, 38)
+                        .addComponent(btnCadVol)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnSalvarAlteracoes)
+                .addContainerGap(36, Short.MAX_VALUE))
         );
 
         pack();
@@ -301,10 +323,152 @@ public class frmMenu extends javax.swing.JFrame {
         fv.setVisible(true);
     }//GEN-LAST:event_btnCadVolActionPerformed
 
+    CellEditorListener ChangeNotification = new CellEditorListener() {
+        public void editingCanceled(ChangeEvent e) {
+            
+        }
+
+        public void editingStopped(ChangeEvent e) {
+            btnSalvarAlteracoes.setEnabled(true);
+        }
+    };
+    
+    private void btnSalvarAlteracoesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarAlteracoesActionPerformed
+        // TODO add your handling code here:
+        LocalDate data_atual = LocalDate.now();
+        DAOPresenca dao_presenca = new DAOPresenca();
+        
+            switch(data_atual.getDayOfWeek().name())
+            {
+                case "MONDAY":
+                        try
+                        {
+                            for(int i = 0; i < tbPresenca.getRowCount(); i++)
+                            {
+                                String id = tbPresenca.getModel().getValueAt(i, 0).toString();
+                                String presenca = tbPresenca.getModel().getValueAt(i, 2).toString();
+                                dao_presenca.insertPresencaCrianca(id, data_atual.toString(), presenca);
+                            }
+                        }
+                        catch (Exception e)
+                        {
+                            JOptionPane.showMessageDialog(null, "Houve um problema ao inserir as novas presenças, verifique se todos os campos estão preenchidos!", "Aviso!", JOptionPane.WARNING_MESSAGE);
+                        }
+                        
+                    break;
+                case "TUESDAY":
+                    
+                        try
+                        {
+                            for(int i = 0; i < tbPresenca.getRowCount(); i++)
+                            {
+                                String id = tbPresenca.getModel().getValueAt(i, 0).toString();
+                                String presenca = tbPresenca.getModel().getValueAt(i, 3).toString();
+                                dao_presenca.insertPresencaCrianca(id, data_atual.toString(), presenca);
+                            }
+                        }
+                        catch (Exception e)
+                        {
+                            JOptionPane.showMessageDialog(null, "Houve um problema ao inserir as novas presenças, verifique se todos os campos estão preenchidos!", "Aviso!", JOptionPane.WARNING_MESSAGE);
+                        }
+                    
+                    break;
+                case "WENESDAY":
+                    
+                        try
+                        {
+                            for(int i = 0; i < tbPresenca.getRowCount(); i++)
+                            {
+                                String id = tbPresenca.getModel().getValueAt(i, 0).toString();
+                                String presenca = tbPresenca.getModel().getValueAt(i, 4).toString();
+                                dao_presenca.insertPresencaCrianca(id, data_atual.toString(), presenca);
+                            }
+                        }
+                        catch (Exception e)
+                        {
+                            JOptionPane.showMessageDialog(null, "Houve um problema ao inserir as novas presenças, verifique se todos os campos estão preenchidos!", "Aviso!", JOptionPane.WARNING_MESSAGE);
+                        }
+                    
+                    break;
+                case "THURSDAY":
+                    
+                        try
+                        {
+                            for(int i = 0; i < tbPresenca.getRowCount(); i++)
+                            {
+                                String id = tbPresenca.getModel().getValueAt(i, 0).toString();
+                                String presenca = tbPresenca.getModel().getValueAt(i, 5).toString();
+                                dao_presenca.insertPresencaCrianca(id, data_atual.toString(), presenca);
+                            }
+                        }
+                        catch (Exception e)
+                        {
+                            JOptionPane.showMessageDialog(null, e+" Houve um problema ao inserir as novas presenças, verifique se todos os campos estão preenchidos!", "Aviso!", JOptionPane.WARNING_MESSAGE);
+                        }
+                    
+                    break;
+                case "FRIDAY":
+                    
+                        try
+                        {
+                            for(int i = 0; i < tbPresenca.getRowCount(); i++)
+                            {
+                                String id = tbPresenca.getModel().getValueAt(i, 0).toString();
+                                String presenca = tbPresenca.getModel().getValueAt(i, 6).toString();
+                                dao_presenca.insertPresencaCrianca(id, data_atual.toString(), presenca);
+                            }
+                        }
+                        catch (Exception e)
+                        {
+                            JOptionPane.showMessageDialog(null, "Houve um problema ao inserir as novas presenças, verifique se todos os campos estão preenchidos!", "Aviso!", JOptionPane.WARNING_MESSAGE);
+                        }
+                    
+                    break;
+                case "SATURDAY":
+                    
+                        try
+                        {
+                            for(int i = 0; i < tbPresenca.getRowCount(); i++)
+                            {
+                                String id = tbPresenca.getModel().getValueAt(i, 0).toString();
+                                String presenca = tbPresenca.getModel().getValueAt(i, 7).toString();
+                                dao_presenca.insertPresencaCrianca(id, data_atual.toString(), presenca);
+                            }
+                        }
+                        catch (Exception e)
+                        {
+                            JOptionPane.showMessageDialog(null, "Houve um problema ao inserir as novas presenças, verifique se todos os campos estão preenchidos!", "Aviso!", JOptionPane.WARNING_MESSAGE);
+                        }
+                    
+                    break;
+                case "SUNDAY":
+                    
+                        try
+                        {
+                            for(int i = 0; i < tbPresenca.getRowCount(); i++)
+                            {
+                                String id = tbPresenca.getModel().getValueAt(i, 0).toString();
+                                String presenca = tbPresenca.getModel().getValueAt(i, 8).toString();
+                                dao_presenca.insertPresencaCrianca(id, data_atual.toString(), presenca);
+                            }
+                        }
+                        catch (Exception e)
+                        {
+                            JOptionPane.showMessageDialog(null, "Houve um problema ao inserir as novas presenças, verifique se todos os campos estão preenchidos!", "Aviso!", JOptionPane.WARNING_MESSAGE);
+                        }
+                    
+                    break;
+            }
+            this.setEnabled(false);
+        
+        
+    }//GEN-LAST:event_btnSalvarAlteracoesActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCadCri;
     private javax.swing.JButton btnCadVol;
+    private javax.swing.JButton btnSalvarAlteracoes;
     private javax.swing.JScrollPane scrollpanelPresenca;
     private javax.swing.JTable tbPresenca;
     // End of variables declaration//GEN-END:variables

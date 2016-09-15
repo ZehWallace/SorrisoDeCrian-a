@@ -118,6 +118,33 @@ public abstract class DbAccess<T> {
     }
 
     /**
+     * Executa um query de inserção no banco
+     *
+     * @param query query a ser executada no banco com os parametros como ?
+     * @param parametros array de objetos com os parametros na mesma ordem da
+     * query
+     * @throws SQLException Excessoes do sql
+     * @throws Exception Excessoes internas
+     */
+    public void Inserir(String query, Object... parametros) throws SQLException, Exception {
+
+        Boolean conectado = false;
+        try {
+            Conectar();
+            conectado = true;
+            PreparedStatement comando = PrepararComando(query, parametros);
+
+            comando.executeUpdate();
+
+            comando.close();
+        } finally {
+            if (conectado) {
+                Desconectar();
+            }
+        }
+    }
+    
+    /**
      * Executa um query no banco e retorno um array de resultado
      *
      * @param query query a ser executada no banco com os parametros como ?
