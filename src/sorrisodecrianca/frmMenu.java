@@ -53,7 +53,32 @@ public class frmMenu extends javax.swing.JFrame {
         DAOCrianca dao_crianca = new DAOCrianca();
         listaCriancasAtivas = dao_crianca.getCriancasAtivas();
         
-        DefaultTableModel tb_model = new DefaultTableModel();
+        DefaultTableModel tb_model = new DefaultTableModel()
+        {
+                @Override
+                public boolean isCellEditable(int row, int col) {
+                    switch(data_atual.getDayOfWeek().name())
+                    {
+                        case "MONDAY":
+                            return col == 2;
+                        case "TUESDAY":
+                            return col == 3;
+                        case "WENESDAY":
+                            return col == 4;
+                        case "THURSDAY":
+                            return col == 5;
+                        case "FRIDAY":
+                            return col == 6;
+                        case "SATURDAY":
+                            return col == 7;
+                        case "SUNDAY":
+                            return col == 8;
+                    }
+                    return false;
+                }
+        };
+        
+        
         tb_model.setColumnIdentifiers(colunas);
         int id;
         
@@ -72,7 +97,7 @@ public class frmMenu extends javax.swing.JFrame {
                     
                         try
                         {
-                            listaPresenca = dao_presenca.getPesquisaCriancaPresenca(id, 1);
+                            listaPresenca = dao_presenca.getPesquisaCriancaPresenca(id, 2);
                             dados = new String[]
                             {
                                 listaCriancasAtivas.get(i).getId()+"",
@@ -194,6 +219,7 @@ public class frmMenu extends javax.swing.JFrame {
             }
             tb_model.addRow(dados);
         }
+        tb_model.isCellEditable(0, 5);
         
         tbPresenca = new JTable();
         tbPresenca.setModel(tb_model);
@@ -201,7 +227,13 @@ public class frmMenu extends javax.swing.JFrame {
         this.resizeColumnWidth(tbPresenca);
         tbPresenca.getDefaultEditor(String.class).addCellEditorListener(ChangeNotification);
         
+        
         btnSalvarAlteracoes.setEnabled(false);
+    }
+    
+    public boolean isCellEditable()
+    {
+        return false;
     }
     
     /**
@@ -323,7 +355,7 @@ public class frmMenu extends javax.swing.JFrame {
         fv.setVisible(true);
     }//GEN-LAST:event_btnCadVolActionPerformed
 
-    CellEditorListener ChangeNotification = new CellEditorListener() {
+    private CellEditorListener ChangeNotification = new CellEditorListener() {
         public void editingCanceled(ChangeEvent e) {
             
         }
@@ -399,11 +431,12 @@ public class frmMenu extends javax.swing.JFrame {
                                 String id = tbPresenca.getModel().getValueAt(i, 0).toString();
                                 String presenca = tbPresenca.getModel().getValueAt(i, 5).toString();
                                 dao_presenca.insertPresencaCrianca(id, data_atual.toString(), presenca);
+                                
                             }
                         }
                         catch (Exception e)
                         {
-                            JOptionPane.showMessageDialog(null, e+" Houve um problema ao inserir as novas presenças, verifique se todos os campos estão preenchidos!", "Aviso!", JOptionPane.WARNING_MESSAGE);
+                            JOptionPane.showMessageDialog(null, " Houve um problema ao inserir as novas presenças, verifique se todos os campos estão preenchidos!", "Aviso!", JOptionPane.WARNING_MESSAGE);
                         }
                     
                     break;
