@@ -180,28 +180,6 @@ public abstract class DbAccess<T> {
 
         return retorno;
     }
-    
-    public int Inserir (String query, Object... parametros) throws SQLException, Exception {
-    
-        Boolean conectado = false;
-        int flag = 0;
-        
-        try
-        {
-            Conectar();
-            conectado = true;
-            PreparedStatement comando = PrepararComando(query, parametros);
-            comando.executeUpdate();
-            flag = 1;
-        }
-        finally
-        {
-            if(conectado)
-                Desconectar();
-        }
-        
-        return flag;
-    }
 
     /**
      * Executa um query no banco e retorno um objeto

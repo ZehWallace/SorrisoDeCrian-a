@@ -54,14 +54,14 @@ public class DAOCrianca extends DbAccess<ModelCrianca>{
         String comando = "INSERT INTO Crianca (nome, data_nascimento, rg, sexo, status, endereco, nome_responsavel, tel_contato, observacao) "
                 + "VALUES (?,?,?,?,?,?,?,?,?)";
         
-        int flagInseriu = Inserir(comando, crianca.getNome(), crianca.getData_nascimento(), crianca.getRg(),
+        Inserir(comando, crianca.getNome(), crianca.getData_nascimento(), crianca.getRg(),
                 crianca.getSexo(), crianca.getStatus(), crianca.getEndereco(), crianca.getNome_responsavel(), 
                 crianca.getTel_contato(), crianca.getObservacao());
         
-        if(flagInseriu == 1)
-            System.out.println("Inserido com sucesso.");
-        else
-            System.out.println("Não foi possível fazer a inserção.");
+//        if(flagInseriu == 1)
+//            System.out.println("Inserido com sucesso.");
+//        else
+//            System.out.println("Não foi possível fazer a inserção.");
     }
     
     /**

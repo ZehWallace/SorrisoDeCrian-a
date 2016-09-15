@@ -57,14 +57,14 @@ public class DAOVoluntario extends DbAccess<ModelVoluntario>{
         String comando = "INSERT INTO Voluntario (nome, data_nascimento, rg, cpf, sexo, ocupacao, endereco, tel_contato, email, observacao) "
                 + "VALUES (?,?,?,?,?,?,?,?,?,?)";
         
-        int flagInseriu = Inserir(comando, voluntario.getNome(), voluntario.getData_nascimento(), voluntario.getRg(),
+        Inserir(comando, voluntario.getNome(), voluntario.getData_nascimento(), voluntario.getRg(),
                 voluntario.getCpf(), voluntario.getSexo(), voluntario.getOcupacao(), voluntario.getEndereco(), 
                 voluntario.getTel_contato(), voluntario.getEmail(), voluntario.getObservacao());
         
-        if(flagInseriu == 1)
-            System.out.println("Inserido com sucesso.");
-        else
-            System.out.println("Não foi possível fazer a inserção.");
+//        if(flagInseriu == 1)
+//            System.out.println("Inserido com sucesso.");
+//        else
+//            System.out.println("Não foi possível fazer a inserção.");
     }
     
     /**
