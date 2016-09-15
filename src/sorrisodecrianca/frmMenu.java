@@ -268,6 +268,7 @@ public class frmMenu extends javax.swing.JFrame {
         scrollpanelPresenca = new javax.swing.JScrollPane();
         tbPresenca = new javax.swing.JTable();
         btnSalvarAlteracoes = new javax.swing.JButton();
+        btnConsultaCriancas = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -287,10 +288,7 @@ public class frmMenu extends javax.swing.JFrame {
 
         tbPresenca.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
                 "Title 1", "Title 2", "Title 3", "Title 4"
@@ -305,22 +303,30 @@ public class frmMenu extends javax.swing.JFrame {
             }
         });
 
+        btnConsultaCriancas.setText("Consulta de Crianças");
+        btnConsultaCriancas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConsultaCriancasActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(47, 47, 47)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnCadCri, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnCadVol))
-                .addGap(87, 87, 87)
-                .addComponent(scrollpanelPresenca, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnSalvarAlteracoes, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(19, 19, 19))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(47, 47, 47)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnCadVol, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnCadCri, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnConsultaCriancas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(87, 87, 87)
+                .addComponent(scrollpanelPresenca, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -331,7 +337,9 @@ public class frmMenu extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnCadCri)
                         .addGap(38, 38, 38)
-                        .addComponent(btnCadVol)))
+                        .addComponent(btnCadVol)
+                        .addGap(61, 61, 61)
+                        .addComponent(btnConsultaCriancas)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnSalvarAlteracoes)
                 .addContainerGap(36, Short.MAX_VALUE))
@@ -497,10 +505,17 @@ public class frmMenu extends javax.swing.JFrame {
         
     }//GEN-LAST:event_btnSalvarAlteracoesActionPerformed
 
+    private void btnConsultaCriancasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultaCriancasActionPerformed
+        // TODO add your handling code here:
+        frmConsultaCrianca consultaCrianca = new frmConsultaCrianca();
+        consultaCrianca.setVisible(true);
+    }//GEN-LAST:event_btnConsultaCriancasActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCadCri;
     private javax.swing.JButton btnCadVol;
+    private javax.swing.JButton btnConsultaCriancas;
     private javax.swing.JButton btnSalvarAlteracoes;
     private javax.swing.JScrollPane scrollpanelPresenca;
     private javax.swing.JTable tbPresenca;

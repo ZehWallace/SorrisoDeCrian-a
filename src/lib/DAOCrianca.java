@@ -91,6 +91,16 @@ public class DAOCrianca extends DbAccess<ModelCrianca>{
                return retorno;
            return null;
     }
+    
+    public ArrayList<ModelCrianca> getTodasCrianças() throws SQLException, Exception
+    {
+        String comando = "select * from Crianca";
+           ArrayList<ModelCrianca> retorno = Listar(comando);
+           
+           if(retorno.size() > 0)
+               return retorno;
+           return null;
+    }
 
     @Override
     public ModelCrianca ConverterResultSet(ResultSet resultSetAtual) throws SQLException {
