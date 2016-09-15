@@ -46,6 +46,25 @@ public class DAOCrianca extends DbAccess<ModelCrianca>{
     }
     
     /**
+     * Executa um comando INSERT no banco e retorna 1 caso o comando tenha tido sucesso
+     * 
+     */
+    public void insereCrianca (ModelCrianca crianca) throws SQLException, Exception
+    {
+        String comando = "INSERT INTO Crianca (nome, data_nascimento, rg, sexo, status, endereco, nome_responsavel, tel_contato, observacao) "
+                + "VALUES (?,?,?,?,?,?,?,?,?)";
+        
+        int flagInseriu = Inserir(comando, crianca.getNome(), crianca.getData_nascimento(), crianca.getRg(),
+                crianca.getSexo(), crianca.getStatus(), crianca.getEndereco(), crianca.getNome_responsavel(), 
+                crianca.getTel_contato(), crianca.getObservacao());
+        
+        if(flagInseriu == 1)
+            System.out.println("Inserido com sucesso.");
+        else
+            System.out.println("Não foi possível fazer a inserção.");
+    }
+    
+    /**
     * Executa uma query no banco e retorna uma array de objetos tipo ModelCrianca
     * @param String nome nome da crianca a ser pesquisada
     * @return ArrayList<ModelCrianca> 
