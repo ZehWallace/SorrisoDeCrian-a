@@ -22,6 +22,7 @@ public class ModelPresenca
 {
     private int crianca;
     private Date data_presenca;
+    private String status; 
 
     public int getCrianca() {
         return crianca;
@@ -37,5 +38,13 @@ public class ModelPresenca
 
     public void setData_presenca(Date data_presenca) {
         this.data_presenca = data_presenca;
+    }
+    
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 }

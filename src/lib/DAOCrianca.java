@@ -30,7 +30,7 @@ public class DAOCrianca extends DbAccess<ModelCrianca>{
     
     /**
     * Executa uma query no banco e retorna um Objeto tipo ModelCrianca
-    * @param id id id da crianca a ser pesquisada
+    * @param id id da crianca a ser pesquisada
     * @return ModelCrianca 
     * @throws SQLException
     * @throws Exception
@@ -66,7 +66,7 @@ public class DAOCrianca extends DbAccess<ModelCrianca>{
     
     /**
     * Executa uma query no banco e retorna uma array de objetos tipo ModelCrianca
-    * @param String nome nome da crianca a ser pesquisada
+    * @param nome nome da crianca a ser pesquisada
     * @return ArrayList<ModelCrianca> 
     * @throws SQLException
     * @throws Exception
@@ -75,6 +75,22 @@ public class DAOCrianca extends DbAccess<ModelCrianca>{
     {
            String comando = "select * from Crianca where nome like ? limit 15 offset 0";
            ArrayList<ModelCrianca> retorno = Listar(comando,"%"+nome+"%");
+           
+           if(retorno.size() > 0)
+               return retorno;
+           return null;
+    }
+    
+    /**
+    * Executa uma query no banco e retorna uma array de objetos tipo ModelCrianca com status Ativo
+    * @return ArrayList<ModelCrianca> 
+    * @throws SQLException
+    * @throws Exception
+    */
+    public ArrayList<ModelCrianca> getCriancasAtivas() throws SQLException, Exception
+    {
+           String comando = "select * from Crianca where status = 'Ativo'";
+           ArrayList<ModelCrianca> retorno = Listar(comando);
            
            if(retorno.size() > 0)
                return retorno;

@@ -18,6 +18,8 @@ package sorrisodecrianca;
 import lib.Login;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 public class frmLogin extends javax.swing.JFrame {
@@ -128,9 +130,15 @@ public class frmLogin extends javax.swing.JFrame {
         Login login = new Login(txtUsuario.getText(), new String(txtSenha.getPassword()));
 
         if (login.getUserPriv() != null && (login.getUserPriv().equals("comum") || login.getUserPriv().equals("admin"))) {
-            frmMenu menu = new frmMenu();
-            this.setVisible(false);
-            menu.setVisible(true);
+            frmMenu menu;
+            try {
+                menu = new frmMenu();
+                this.setVisible(false);
+                menu.setVisible(true);
+            } catch (Exception ex) {
+                Logger.getLogger(frmLogin.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
         } else {
             JOptionPane.showMessageDialog(null, "Usuário ou senha inválidos", "Falha ao se conectar!", JOptionPane.ERROR_MESSAGE);
         }
