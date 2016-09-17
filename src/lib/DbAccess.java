@@ -214,6 +214,40 @@ public abstract class DbAccess<T> {
 
         return retorno;
     }
+    
+    /**
+     * Executa um query no banco e retorna a contagem
+     *
+     * @param query query a ser executada no banco com os parametros como ?
+     * @param parametros array de objetos com os parametros na mesma ordem da
+     * query
+     * @return int contagem
+     * @throws SQLException Excessoes do sql
+     * @throws Exception Excessoes internas
+     */
+    public int RetornaContagem(String query, Object... parametros) throws SQLException, Exception {
+        int retorno = -1;
+
+        Boolean conectado = false;
+        try {
+            Conectar();
+            conectado = true;
+            PreparedStatement comando = PrepararComando(query, parametros);
+
+            ResultSet resultado = comando.executeQuery();
+
+            if (resultado.next()) {
+                retorno = resultado.getInt(1);
+            }
+            comando.close();
+        } finally {
+            if (conectado) {
+                Desconectar();
+            }
+        }
+
+        return retorno;
+    }
 
     public static String obfuscate(int n) {
         StringBuilder result = new StringBuilder();

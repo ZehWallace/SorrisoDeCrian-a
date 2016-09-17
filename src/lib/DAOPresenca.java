@@ -69,6 +69,20 @@ public class DAOPresenca extends DbAccess<ModelPresenca>{
            String comando = "select * from Presenca where data_presenca = ?";
            return Listar(comando, data);
     }
+    
+    /**
+    * Executa uma query no banco e retorna um Objeto tipo ModelCrianca
+    * @param data data a contar presencas
+    * @return int retorna contagem de presenças no dia
+    * @throws SQLException
+    * @throws Exception
+    */
+    public int contPresencaData(Date data) throws SQLException, Exception
+    {
+           System.out.println(data);
+           String comando = "select count(*) from Presenca where data_presenca = ?";
+           return RetornaContagem(comando, data);
+    }
 
     @Override
     public ModelPresenca ConverterResultSet(ResultSet resultSetAtual) throws SQLException {

@@ -18,6 +18,7 @@ package sorrisodecrianca;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.sql.Date;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -52,6 +53,13 @@ public class frmMenu extends javax.swing.JFrame {
         DAOPresenca dao_presenca = new DAOPresenca();
         DAOCrianca dao_crianca = new DAOCrianca();
         listaCriancasAtivas = dao_crianca.getCriancasAtivas();
+        boolean presencaUpdate  = false; // flag para verificar se as presenças do dia jah foram digitadas
+        
+        if(dao_presenca.contPresencaData(Date.valueOf(data_atual)) > 0)
+        {
+            presencaUpdate = true;
+        }
+        
         
         DefaultTableModel tb_model = new DefaultTableModel()
         {
@@ -92,12 +100,32 @@ public class frmMenu extends javax.swing.JFrame {
             switch(data_atual.getDayOfWeek().name())
             {
                 case "MONDAY":
+                        try
+                        {
+                            if(presencaUpdate)
+                            {
+                                listaPresenca = dao_presenca.getPesquisaCriancaPresenca(id, 0);
+                                dados = new String[]
+                                {
+                                    listaCriancasAtivas.get(i).getId()+"",
+                                    listaCriancasAtivas.get(i).getNome(),
+                                    listaPresenca.get(0).getStatus(),
+                                };
+                            }
+                        }
+                        catch (Exception e)
+                        {
+                            JOptionPane.showMessageDialog(null, "Não foi possível carregar todas presenças porque o registro está incompleto!", "Aviso!", JOptionPane.WARNING_MESSAGE);
+                            i = listaCriancasAtivas.size();
+                        }    
+                    
+                    
                     break;
                 case "TUESDAY":
                     
                         try
                         {
-                            listaPresenca = dao_presenca.getPesquisaCriancaPresenca(id, 2);
+                            listaPresenca = dao_presenca.getPesquisaCriancaPresenca(id, 1);
                             dados = new String[]
                             {
                                 listaCriancasAtivas.get(i).getId()+"",
@@ -230,7 +258,7 @@ public class frmMenu extends javax.swing.JFrame {
         tbPresenca = new JTable();
         tbPresenca.setModel(tb_model);
         scrollpanelPresenca.setViewportView(tbPresenca);
-        this.resizeColumnWidth(tbPresenca);
+        resizeColumnWidth(tbPresenca);
         tbPresenca.getDefaultEditor(String.class).addCellEditorListener(ChangeNotification);
         
         
