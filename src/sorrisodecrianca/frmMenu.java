@@ -108,6 +108,7 @@ public class frmMenu extends javax.swing.JFrame {
                         catch (Exception e)
                         {
                             JOptionPane.showMessageDialog(null, "Não foi possível carregar todas presenças porque o registro está incompleto!", "Aviso!", JOptionPane.WARNING_MESSAGE);
+                            i = listaCriancasAtivas.size();
                         }
                     
                     break;
@@ -127,6 +128,7 @@ public class frmMenu extends javax.swing.JFrame {
                         catch (Exception e)
                         {
                             JOptionPane.showMessageDialog(null, "Não foi possível carregar todas presenças porque o registro está incompleto!", "Aviso!", JOptionPane.WARNING_MESSAGE);
+                            i = listaCriancasAtivas.size();
                         }
                     
                     break;
@@ -147,6 +149,7 @@ public class frmMenu extends javax.swing.JFrame {
                         catch (Exception e)
                         {
                             JOptionPane.showMessageDialog(null, "Não foi possível carregar todas presenças porque o registro está incompleto!", "Aviso!", JOptionPane.WARNING_MESSAGE);
+                            i = listaCriancasAtivas.size();
                         }
                     
                     break;
@@ -168,6 +171,7 @@ public class frmMenu extends javax.swing.JFrame {
                         catch (Exception e)
                         {
                             JOptionPane.showMessageDialog(null, "Não foi possível carregar todas presenças porque o registro está incompleto!", "Aviso!", JOptionPane.WARNING_MESSAGE);
+                            i = listaCriancasAtivas.size();
                         }
                     
                     break;
@@ -190,6 +194,7 @@ public class frmMenu extends javax.swing.JFrame {
                         catch (Exception e)
                         {
                             JOptionPane.showMessageDialog(null, "Não foi possível carregar todas presenças porque o registro está incompleto!", "Aviso!", JOptionPane.WARNING_MESSAGE);
+                            i = listaCriancasAtivas.size();
                         }
                     
                     break;
@@ -213,6 +218,7 @@ public class frmMenu extends javax.swing.JFrame {
                         catch (Exception e)
                         {
                             JOptionPane.showMessageDialog(null, "Não foi possível carregar todas presenças porque o registro está incompleto!", "Aviso!", JOptionPane.WARNING_MESSAGE);
+                            i = listaCriancasAtivas.size();
                         }
                     
                     break;
