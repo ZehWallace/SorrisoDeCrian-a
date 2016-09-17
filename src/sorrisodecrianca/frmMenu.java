@@ -104,7 +104,7 @@ public class frmMenu extends javax.swing.JFrame {
                         {
                             if(presencaUpdate)
                             {
-                                listaPresenca = dao_presenca.getPesquisaCriancaPresenca(id, 0);
+                                listaPresenca = dao_presenca.getPesquisaCriancaPresenca(id, 1);
                                 dados = new String[]
                                 {
                                     listaCriancasAtivas.get(i).getId()+"",
@@ -125,13 +125,27 @@ public class frmMenu extends javax.swing.JFrame {
                     
                         try
                         {
-                            listaPresenca = dao_presenca.getPesquisaCriancaPresenca(id, 1);
-                            dados = new String[]
+                            if(presencaUpdate)
                             {
-                                listaCriancasAtivas.get(i).getId()+"",
-                                listaCriancasAtivas.get(i).getNome(),
-                                listaPresenca.get(0).getStatus(),
-                            };
+                                listaPresenca = dao_presenca.getPesquisaCriancaPresenca(id, 2);
+                                dados = new String[]
+                                {
+                                    listaCriancasAtivas.get(i).getId()+"",
+                                    listaCriancasAtivas.get(i).getNome(),
+                                    listaPresenca.get(0).getStatus(),
+                                    listaPresenca.get(1).getStatus(),
+                                };
+                            }
+                            else
+                            {
+                                listaPresenca = dao_presenca.getPesquisaCriancaPresenca(id, 1);
+                                dados = new String[]
+                                {
+                                    listaCriancasAtivas.get(i).getId()+"",
+                                    listaCriancasAtivas.get(i).getNome(),
+                                    listaPresenca.get(0).getStatus(),
+                                };
+                            }
                         }
                         catch (Exception e)
                         {
@@ -144,14 +158,29 @@ public class frmMenu extends javax.swing.JFrame {
                     
                         try
                         {
-                            listaPresenca = dao_presenca.getPesquisaCriancaPresenca(id, 2);
-                            dados = new String[]
+                            if(presencaUpdate)
                             {
-                                listaCriancasAtivas.get(i).getId()+"",
-                                listaCriancasAtivas.get(i).getNome(),
-                                listaPresenca.get(0).getStatus(),
-                                listaPresenca.get(1).getStatus(),
-                            };
+                                listaPresenca = dao_presenca.getPesquisaCriancaPresenca(id, 3);
+                                dados = new String[]
+                                {
+                                    listaCriancasAtivas.get(i).getId()+"",
+                                    listaCriancasAtivas.get(i).getNome(),
+                                    listaPresenca.get(0).getStatus(),
+                                    listaPresenca.get(1).getStatus(),
+                                    listaPresenca.get(2).getStatus(),
+                                };
+                            }
+                            else
+                            {
+                                listaPresenca = dao_presenca.getPesquisaCriancaPresenca(id, 2);
+                                dados = new String[]
+                                {
+                                    listaCriancasAtivas.get(i).getId()+"",
+                                    listaCriancasAtivas.get(i).getNome(),
+                                    listaPresenca.get(0).getStatus(),
+                                    listaPresenca.get(1).getStatus(),
+                                };
+                            }
                         }
                         catch (Exception e)
                         {
@@ -164,15 +193,31 @@ public class frmMenu extends javax.swing.JFrame {
                     
                         try
                         {
-                            listaPresenca = dao_presenca.getPesquisaCriancaPresenca(id, 3);
-                            dados = new String[]
+                            if(presencaUpdate)
                             {
-                                listaCriancasAtivas.get(i).getId()+"",
-                                listaCriancasAtivas.get(i).getNome(),
-                                listaPresenca.get(0).getStatus(),
-                                listaPresenca.get(1).getStatus(),
-                                listaPresenca.get(2).getStatus(),
-                            };
+                                listaPresenca = dao_presenca.getPesquisaCriancaPresenca(id, 4);
+                                dados = new String[]
+                                {
+                                    listaCriancasAtivas.get(i).getId()+"",
+                                    listaCriancasAtivas.get(i).getNome(),
+                                    listaPresenca.get(0).getStatus(),
+                                    listaPresenca.get(1).getStatus(),
+                                    listaPresenca.get(2).getStatus(),
+                                    listaPresenca.get(3).getStatus(),
+                                };
+                            }
+                            else
+                            {
+                                listaPresenca = dao_presenca.getPesquisaCriancaPresenca(id, 3);
+                                dados = new String[]
+                                {
+                                    listaCriancasAtivas.get(i).getId()+"",
+                                    listaCriancasAtivas.get(i).getNome(),
+                                    listaPresenca.get(0).getStatus(),
+                                    listaPresenca.get(1).getStatus(),
+                                    listaPresenca.get(2).getStatus(),
+                                };
+                            }
                         }
                         catch (Exception e)
                         {
@@ -185,16 +230,33 @@ public class frmMenu extends javax.swing.JFrame {
                     
                         try
                         {
-                            listaPresenca = dao_presenca.getPesquisaCriancaPresenca(id, 4);
-                            dados = new String[]
+                            if(presencaUpdate)
                             {
-                                listaCriancasAtivas.get(i).getId()+"",
-                                listaCriancasAtivas.get(i).getNome(),
-                                listaPresenca.get(0).getStatus(),
-                                listaPresenca.get(1).getStatus(),
-                                listaPresenca.get(2).getStatus(),
-                                listaPresenca.get(3).getStatus(),
-                            };
+                                listaPresenca = dao_presenca.getPesquisaCriancaPresenca(id, 5);
+                                dados = new String[]
+                                {
+                                    listaCriancasAtivas.get(i).getId()+"",
+                                    listaCriancasAtivas.get(i).getNome(),
+                                    listaPresenca.get(0).getStatus(),
+                                    listaPresenca.get(1).getStatus(),
+                                    listaPresenca.get(2).getStatus(),
+                                    listaPresenca.get(3).getStatus(),
+                                    listaPresenca.get(4).getStatus(),
+                                };
+                            }
+                            else
+                            {
+                                listaPresenca = dao_presenca.getPesquisaCriancaPresenca(id, 4);
+                                dados = new String[]
+                                {
+                                    listaCriancasAtivas.get(i).getId()+"",
+                                    listaCriancasAtivas.get(i).getNome(),
+                                    listaPresenca.get(0).getStatus(),
+                                    listaPresenca.get(1).getStatus(),
+                                    listaPresenca.get(2).getStatus(),
+                                    listaPresenca.get(3).getStatus(),
+                                };
+                            }
                         }
                         catch (Exception e)
                         {
@@ -207,21 +269,39 @@ public class frmMenu extends javax.swing.JFrame {
                     
                         try
                         {
-                            listaPresenca = dao_presenca.getPesquisaCriancaPresenca(id, 5);
-                            dados = new String[]
+                            if(presencaUpdate)
                             {
-                                listaCriancasAtivas.get(i).getId()+"",
-                                listaCriancasAtivas.get(i).getNome(),
-                                listaPresenca.get(0).getStatus(),
-                                listaPresenca.get(1).getStatus(),
-                                listaPresenca.get(2).getStatus(),
-                                listaPresenca.get(3).getStatus(),
-                                listaPresenca.get(4).getStatus(),
-                            };
+                                listaPresenca = dao_presenca.getPesquisaCriancaPresenca(id, 6);
+                                dados = new String[]
+                                {
+                                    listaCriancasAtivas.get(i).getId()+"",
+                                    listaCriancasAtivas.get(i).getNome(),
+                                    listaPresenca.get(0).getStatus(),
+                                    listaPresenca.get(1).getStatus(),
+                                    listaPresenca.get(2).getStatus(),
+                                    listaPresenca.get(3).getStatus(),
+                                    listaPresenca.get(4).getStatus(),
+                                    listaPresenca.get(5).getStatus(),
+                                };
+                            }
+                            else
+                            {
+                                listaPresenca = dao_presenca.getPesquisaCriancaPresenca(id, 5);
+                                dados = new String[]
+                                {
+                                    listaCriancasAtivas.get(i).getId()+"",
+                                    listaCriancasAtivas.get(i).getNome(),
+                                    listaPresenca.get(0).getStatus(),
+                                    listaPresenca.get(1).getStatus(),
+                                    listaPresenca.get(2).getStatus(),
+                                    listaPresenca.get(3).getStatus(),
+                                    listaPresenca.get(4).getStatus(),
+                                };
+                            }
                         }
                         catch (Exception e)
                         {
-                            JOptionPane.showMessageDialog(null, "Não foi possível carregar todas presenças porque o registro está incompleto!", "Aviso!", JOptionPane.WARNING_MESSAGE);
+                            JOptionPane.showMessageDialog(null,"Não foi possível carregar todas presenças porque o registro está incompleto!", "Aviso!", JOptionPane.WARNING_MESSAGE);
                             i = listaCriancasAtivas.size();
                         }
                     
@@ -230,18 +310,37 @@ public class frmMenu extends javax.swing.JFrame {
                     
                         try
                         {
-                            listaPresenca = dao_presenca.getPesquisaCriancaPresenca(id, 6);
-                            dados = new String[]
+                            if(presencaUpdate)
                             {
-                                listaCriancasAtivas.get(i).getId()+"",
-                                listaCriancasAtivas.get(i).getNome(),
-                                listaPresenca.get(0).getStatus(),
-                                listaPresenca.get(1).getStatus(),
-                                listaPresenca.get(2).getStatus(),
-                                listaPresenca.get(3).getStatus(),
-                                listaPresenca.get(4).getStatus(),
-                                listaPresenca.get(5).getStatus(),
-                            };
+                                listaPresenca = dao_presenca.getPesquisaCriancaPresenca(id, 7);
+                                dados = new String[]
+                                {
+                                    listaCriancasAtivas.get(i).getId()+"",
+                                    listaCriancasAtivas.get(i).getNome(),
+                                    listaPresenca.get(0).getStatus(),
+                                    listaPresenca.get(1).getStatus(),
+                                    listaPresenca.get(2).getStatus(),
+                                    listaPresenca.get(3).getStatus(),
+                                    listaPresenca.get(4).getStatus(),
+                                    listaPresenca.get(5).getStatus(),
+                                    listaPresenca.get(6).getStatus(),
+                                };
+                            }
+                            else
+                            {
+                                listaPresenca = dao_presenca.getPesquisaCriancaPresenca(id, 6);
+                                dados = new String[]
+                                {
+                                    listaCriancasAtivas.get(i).getId()+"",
+                                    listaCriancasAtivas.get(i).getNome(),
+                                    listaPresenca.get(0).getStatus(),
+                                    listaPresenca.get(1).getStatus(),
+                                    listaPresenca.get(2).getStatus(),
+                                    listaPresenca.get(3).getStatus(),
+                                    listaPresenca.get(4).getStatus(),
+                                    listaPresenca.get(5).getStatus(),
+                                };
+                            }
                         }
                         catch (Exception e)
                         {
