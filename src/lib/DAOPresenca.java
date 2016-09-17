@@ -58,6 +58,20 @@ public class DAOPresenca extends DbAccess<ModelPresenca>{
     }
     
     /**
+    * Executa uma query no banco que atualiza uma presença
+    * @param id id da crianca relacionada a presenca
+    * @param data data da presença
+    * @param status status da presença
+    * @throws SQLException
+    * @throws Exception
+    */
+    public void updatePresencaCrianca(String id, String data, String status) throws SQLException, Exception
+    {
+           String comando = "update Presenca values set status = ? where crianca = ? and data_presenca = ?";
+           Inserir(comando, status,id, data);
+    }
+    
+    /**
     * Executa uma query no banco e retorna um Objeto tipo ModelCrianca
     * @param data data da presenca a ser pesquisada
     * @return ArrayList<ModelPresenca> retorna array com crianças presentes no dia

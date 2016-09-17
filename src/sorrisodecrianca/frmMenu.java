@@ -25,8 +25,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
-import javax.swing.event.CellEditorListener;
-import javax.swing.event.ChangeEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumnModel;
@@ -358,10 +356,6 @@ public class frmMenu extends javax.swing.JFrame {
         tbPresenca.setModel(tb_model);
         scrollpanelPresenca.setViewportView(tbPresenca);
         resizeColumnWidth(tbPresenca);
-        tbPresenca.getDefaultEditor(String.class).addCellEditorListener(ChangeNotification);
-        
-        
-        btnSalvarAlteracoes.setEnabled(false);
     }
     
     public boolean isCellEditable()
@@ -495,21 +489,27 @@ public class frmMenu extends javax.swing.JFrame {
         frmVoluntario fv = new frmVoluntario();
         fv.setVisible(true);
     }//GEN-LAST:event_btnCadVolActionPerformed
-
-    private CellEditorListener ChangeNotification = new CellEditorListener() {
-        public void editingCanceled(ChangeEvent e) {
-            
-        }
-
-        public void editingStopped(ChangeEvent e) {
-            btnSalvarAlteracoes.setEnabled(true);
-        }
-    };
     
     private void btnSalvarAlteracoesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarAlteracoesActionPerformed
         // TODO add your handling code here:
         LocalDate data_atual = LocalDate.now();
         DAOPresenca dao_presenca = new DAOPresenca();
+        
+        if(tbPresenca.isEditing())
+        {
+            JOptionPane.showMessageDialog(null, "Termine de editar a planilha apertando (clique na ultima célula editada e aperte ENTER)", "Aviso!", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
+        boolean presencaUpdate  = false; // flag para verificar se as presenças do dia jah foram digitadas
+        try {
+            if(dao_presenca.contPresencaData(Date.valueOf(data_atual)) > 0)
+            {
+                presencaUpdate = true;
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(frmMenu.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
             switch(data_atual.getDayOfWeek().name())
             {
@@ -531,7 +531,15 @@ public class frmMenu extends javax.swing.JFrame {
                             {
                                 String id = tbPresenca.getModel().getValueAt(i, 0).toString();
                                 String presenca = tbPresenca.getModel().getValueAt(i, 2).toString().toUpperCase();
-                                dao_presenca.insertPresencaCrianca(id, data_atual.toString(), presenca);
+                                
+                                if(presencaUpdate)
+                                {
+                                    dao_presenca.updatePresencaCrianca(id, data_atual.toString(), presenca);
+                                }
+                                else
+                                {
+                                    dao_presenca.insertPresencaCrianca(id, data_atual.toString(), presenca);
+                                }
                             }
                             JOptionPane.showMessageDialog(null, "As presenças foram salvas com sucesso!", "Aviso!", JOptionPane.INFORMATION_MESSAGE);
                         }
@@ -560,7 +568,15 @@ public class frmMenu extends javax.swing.JFrame {
                             {
                                 String id = tbPresenca.getModel().getValueAt(i, 0).toString();
                                 String presenca = tbPresenca.getModel().getValueAt(i, 3).toString().toUpperCase();
-                                dao_presenca.insertPresencaCrianca(id, data_atual.toString(), presenca);
+                                
+                                if(presencaUpdate)
+                                {
+                                    dao_presenca.updatePresencaCrianca(id, data_atual.toString(), presenca);
+                                }
+                                else
+                                {
+                                    dao_presenca.insertPresencaCrianca(id, data_atual.toString(), presenca);
+                                }
                             }
                             
                             JOptionPane.showMessageDialog(null, "As presenças foram salvas com sucesso!", "Aviso!", JOptionPane.INFORMATION_MESSAGE);                    
@@ -590,7 +606,15 @@ public class frmMenu extends javax.swing.JFrame {
                             {
                                 String id = tbPresenca.getModel().getValueAt(i, 0).toString();
                                 String presenca = tbPresenca.getModel().getValueAt(i, 4).toString().toUpperCase();
-                                dao_presenca.insertPresencaCrianca(id, data_atual.toString(), presenca);
+                                
+                                if(presencaUpdate)
+                                {
+                                    dao_presenca.updatePresencaCrianca(id, data_atual.toString(), presenca);
+                                }
+                                else
+                                {
+                                    dao_presenca.insertPresencaCrianca(id, data_atual.toString(), presenca);
+                                }
                             }
                             JOptionPane.showMessageDialog(null, "As presenças foram salvas com sucesso!", "Aviso!", JOptionPane.INFORMATION_MESSAGE);
                         }
@@ -619,8 +643,15 @@ public class frmMenu extends javax.swing.JFrame {
                             {
                                 String id = tbPresenca.getModel().getValueAt(i, 0).toString();
                                 String presenca = tbPresenca.getModel().getValueAt(i, 5).toString().toUpperCase();
-                                dao_presenca.insertPresencaCrianca(id, data_atual.toString(), presenca);
                                 
+                                if(presencaUpdate)
+                                {
+                                    dao_presenca.updatePresencaCrianca(id, data_atual.toString(), presenca);
+                                }
+                                else
+                                {
+                                    dao_presenca.insertPresencaCrianca(id, data_atual.toString(), presenca);
+                                }
                             }
                             JOptionPane.showMessageDialog(null, "As presenças foram salvas com sucesso!", "Aviso!", JOptionPane.INFORMATION_MESSAGE);
                         }
@@ -649,7 +680,15 @@ public class frmMenu extends javax.swing.JFrame {
                             {
                                 String id = tbPresenca.getModel().getValueAt(i, 0).toString();
                                 String presenca = tbPresenca.getModel().getValueAt(i, 6).toString().toUpperCase();
-                                dao_presenca.insertPresencaCrianca(id, data_atual.toString(), presenca);
+                                
+                                if(presencaUpdate)
+                                {
+                                    dao_presenca.updatePresencaCrianca(id, data_atual.toString(), presenca);
+                                }
+                                else
+                                {
+                                    dao_presenca.insertPresencaCrianca(id, data_atual.toString(), presenca);
+                                }
                             }
                             JOptionPane.showMessageDialog(null, "As presenças foram salvas com sucesso!", "Aviso!", JOptionPane.INFORMATION_MESSAGE);
                         }
@@ -678,7 +717,15 @@ public class frmMenu extends javax.swing.JFrame {
                             {
                                 String id = tbPresenca.getModel().getValueAt(i, 0).toString();
                                 String presenca = tbPresenca.getModel().getValueAt(i, 7).toString().toUpperCase();
-                                dao_presenca.insertPresencaCrianca(id, data_atual.toString(), presenca);
+                                
+                                if(presencaUpdate)
+                                {
+                                    dao_presenca.updatePresencaCrianca(id, data_atual.toString(), presenca);
+                                }
+                                else
+                                {
+                                    dao_presenca.insertPresencaCrianca(id, data_atual.toString(), presenca);
+                                }
                             }
                             JOptionPane.showMessageDialog(null, "As presenças foram salvas com sucesso!", "Aviso!", JOptionPane.INFORMATION_MESSAGE);
                         }
@@ -718,9 +765,6 @@ public class frmMenu extends javax.swing.JFrame {
                     
                     break;
             }
-            this.setEnabled(false);
-        
-        
     }//GEN-LAST:event_btnSalvarAlteracoesActionPerformed
 
     private void btnConsultaCriancasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultaCriancasActionPerformed
