@@ -395,7 +395,7 @@ public class frmMenu extends javax.swing.JFrame {
         scrollpanelPresenca = new javax.swing.JScrollPane();
         tbPresenca = new javax.swing.JTable();
         btnSalvarAlteracoes = new javax.swing.JButton();
-        btnConsultaCriancas = new javax.swing.JButton();
+        btnConsultas = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -430,10 +430,10 @@ public class frmMenu extends javax.swing.JFrame {
             }
         });
 
-        btnConsultaCriancas.setText("Consulta de Crianças");
-        btnConsultaCriancas.addActionListener(new java.awt.event.ActionListener() {
+        btnConsultas.setText("Consultas");
+        btnConsultas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnConsultaCriancasActionPerformed(evt);
+                btnConsultasActionPerformed(evt);
             }
         });
 
@@ -450,7 +450,7 @@ public class frmMenu extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnCadVol, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnCadCri, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnConsultaCriancas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnConsultas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(87, 87, 87)
                 .addComponent(scrollpanelPresenca, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -466,7 +466,7 @@ public class frmMenu extends javax.swing.JFrame {
                         .addGap(38, 38, 38)
                         .addComponent(btnCadVol)
                         .addGap(61, 61, 61)
-                        .addComponent(btnConsultaCriancas)))
+                        .addComponent(btnConsultas)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnSalvarAlteracoes)
                 .addContainerGap(36, Short.MAX_VALUE))
@@ -767,17 +767,17 @@ public class frmMenu extends javax.swing.JFrame {
             }
     }//GEN-LAST:event_btnSalvarAlteracoesActionPerformed
 
-    private void btnConsultaCriancasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultaCriancasActionPerformed
+    private void btnConsultasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultasActionPerformed
         // TODO add your handling code here:
-        frmConsultaCrianca consultaCrianca = new frmConsultaCrianca();
+        Consulta consultaCrianca = new Consulta();
         consultaCrianca.setVisible(true);
-    }//GEN-LAST:event_btnConsultaCriancasActionPerformed
+    }//GEN-LAST:event_btnConsultasActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCadCri;
     private javax.swing.JButton btnCadVol;
-    private javax.swing.JButton btnConsultaCriancas;
+    private javax.swing.JButton btnConsultas;
     private javax.swing.JButton btnSalvarAlteracoes;
     private javax.swing.JScrollPane scrollpanelPresenca;
     private javax.swing.JTable tbPresenca;

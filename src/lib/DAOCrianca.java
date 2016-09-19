@@ -46,6 +46,22 @@ public class DAOCrianca extends DbAccess<ModelCrianca>{
     }
     
     /**
+    * Executa uma query no banco e retorna um Objeto tipo ModelCrianca
+    * @param id id da crianca a ser pesquisada
+    * @return ModelCrianca 
+    * @throws SQLException
+    * @throws Exception
+    */
+    public ArrayList<ModelCrianca> getCriancaByName(String nome) throws SQLException, Exception
+    {
+           String comando = "select * from Crianca where nome like ?";
+           System.out.println("Parametro: " + nome);
+           ArrayList<ModelCrianca> retorno = Listar(comando, "%" + nome + "%");
+           
+           return retorno;
+    }
+    
+    /**
      * Executa um comando INSERT no banco e retorna 1 caso o comando tenha tido sucesso
      * 
      */

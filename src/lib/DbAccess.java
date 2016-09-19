@@ -63,7 +63,6 @@ public abstract class DbAccess<T> {
      */
     private PreparedStatement PrepararComando(String query, Object[] parametros) throws SQLException, Exception {
         PreparedStatement statement = this.conexao.prepareStatement(query);
-
         
         if (parametros != null) {
             for (int i = 0; i < parametros.length; i++) {

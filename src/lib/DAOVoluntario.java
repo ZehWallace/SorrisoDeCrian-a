@@ -28,6 +28,23 @@ public class DAOVoluntario extends DbAccess<ModelVoluntario>{
     }
     
     /**
+    * Executa uma query no banco e retorna um ArrayList do tipo ModelVoluntario
+    * @param 
+    * @return ArrayList<ModelVoluntario>
+    * @throws SQLException
+    * @throws Exception
+    */
+    public ArrayList<ModelVoluntario> getTodosVoluntarios() throws SQLException, Exception
+    {
+        String comando = "select * from Voluntario";
+           ArrayList<ModelVoluntario> retorno = Listar(comando);
+           
+           if(retorno.size() > 0)
+               return retorno;
+           return null;
+    }
+    
+    /**
     * Executa uma query no banco e retorna um Objeto tipo ModelVoluntario
     * @param id id id do voluntario a ser pesquisada
     * @return ModelVoluntario 
@@ -42,6 +59,21 @@ public class DAOVoluntario extends DbAccess<ModelVoluntario>{
            if(retorno.size() > 0)
                return retorno.get(0);
            return null;
+    }
+    
+    /**
+    * Executa uma query no banco e retorna um ArrayList do Objeto tipo ModelVoluntario
+    * @param nome do voluntario a ser pesquisado
+    * @return ModelVoluntario
+    * @throws SQLException
+    * @throws Exception
+    */
+    public ArrayList<ModelVoluntario> getVoluntarioByName(String nome) throws SQLException, Exception
+    {
+           String comando = "select * from Voluntario where nome like '%?%';";
+           ArrayList<ModelVoluntario> retorno = Listar(comando, nome);
+           
+           return retorno;
     }
     
     /**
