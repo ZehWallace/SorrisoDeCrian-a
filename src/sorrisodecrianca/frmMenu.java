@@ -30,6 +30,7 @@ import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumnModel;
 import lib.DAOCrianca;
 import lib.DAOPresenca;
+import lib.DAOVoluntario;
 import models.ModelCrianca;
 import models.ModelPresenca;
 
@@ -396,7 +397,8 @@ public class frmMenu extends javax.swing.JFrame {
         tbPresenca = new javax.swing.JTable();
         btnSalvarAlteracoes = new javax.swing.JButton();
         btnConsultas = new javax.swing.JButton();
-        btnRelatorio = new javax.swing.JButton();
+        btnRelCriancas = new javax.swing.JButton();
+        btnRelVoluntarios = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -438,10 +440,17 @@ public class frmMenu extends javax.swing.JFrame {
             }
         });
 
-        btnRelatorio.setText("Relatório");
-        btnRelatorio.addActionListener(new java.awt.event.ActionListener() {
+        btnRelCriancas.setText("Relatório de Crianças");
+        btnRelCriancas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRelatorioActionPerformed(evt);
+                btnRelCriancasActionPerformed(evt);
+            }
+        });
+
+        btnRelVoluntarios.setText("Relatório de Voluntários");
+        btnRelVoluntarios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRelVoluntariosActionPerformed(evt);
             }
         });
 
@@ -454,17 +463,14 @@ public class frmMenu extends javax.swing.JFrame {
                 .addComponent(btnSalvarAlteracoes, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(19, 19, 19))
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(47, 47, 47)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btnCadVol, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnCadCri, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnConsultas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(84, 84, 84)
-                        .addComponent(btnRelatorio)))
-                .addGap(87, 87, 87)
+                .addGap(47, 47, 47)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnCadVol, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnCadCri, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnConsultas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnRelCriancas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnRelVoluntarios, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(107, 107, 107)
                 .addComponent(scrollpanelPresenca, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -480,8 +486,10 @@ public class frmMenu extends javax.swing.JFrame {
                         .addComponent(btnCadVol)
                         .addGap(61, 61, 61)
                         .addComponent(btnConsultas)
-                        .addGap(63, 63, 63)
-                        .addComponent(btnRelatorio)))
+                        .addGap(69, 69, 69)
+                        .addComponent(btnRelCriancas)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnRelVoluntarios)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnSalvarAlteracoes)
                 .addContainerGap(36, Short.MAX_VALUE))
@@ -788,17 +796,23 @@ public class frmMenu extends javax.swing.JFrame {
         consultaCrianca.setVisible(true);
     }//GEN-LAST:event_btnConsultasActionPerformed
 
-    private void btnRelatorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRelatorioActionPerformed
+    private void btnRelCriancasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRelCriancasActionPerformed
         DAOCrianca report = new DAOCrianca();
-        report.createReport();
-    }//GEN-LAST:event_btnRelatorioActionPerformed
+        report.reportCriancas();
+    }//GEN-LAST:event_btnRelCriancasActionPerformed
+
+    private void btnRelVoluntariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRelVoluntariosActionPerformed
+        DAOVoluntario report = new DAOVoluntario();
+        report.reportVoluntarios();
+    }//GEN-LAST:event_btnRelVoluntariosActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCadCri;
     private javax.swing.JButton btnCadVol;
     private javax.swing.JButton btnConsultas;
-    private javax.swing.JButton btnRelatorio;
+    private javax.swing.JButton btnRelCriancas;
+    private javax.swing.JButton btnRelVoluntarios;
     private javax.swing.JButton btnSalvarAlteracoes;
     private javax.swing.JScrollPane scrollpanelPresenca;
     private javax.swing.JTable tbPresenca;

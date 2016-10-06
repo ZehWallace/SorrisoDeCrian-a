@@ -74,7 +74,7 @@ public abstract class DbAccess<T> {
      */
     private PreparedStatement PrepararComando(String query, Object[] parametros) throws SQLException, Exception {
         PreparedStatement statement = this.conexao.prepareStatement(query);
-        
+
         if (parametros != null) {
             for (int i = 0; i < parametros.length; i++) {
                 //System.out.println("Parametro " + i +  ": " + parametros[i]);
@@ -155,7 +155,7 @@ public abstract class DbAccess<T> {
             }
         }
     }
-    
+
     /**
      * Executa um query no banco e retorno um array de resultado
      *
@@ -224,7 +224,7 @@ public abstract class DbAccess<T> {
 
         return retorno;
     }
-    
+
     /**
      * Executa um query no banco e retorna a contagem
      *
@@ -261,15 +261,15 @@ public abstract class DbAccess<T> {
 
     public static String obfuscate(int n) {
         StringBuilder result = new StringBuilder();
-        for (int i = n; i <= n+5; i++) {
+        for (int i = n; i <= n + 5; i++) {
             String reverse = Integer.toString(Integer.reverse(i << 1), 36);
             result.append(reverse);
         }
         return result.toString();
     }
-    
-    public void createReport(){
-        String report = "report1.jrxml";
+
+    public void reportPresencas() {
+        String report = "src/Presencas.jrxml";
         Boolean conectado = false;
         try {
             //BasicConfigurator.configure();
@@ -280,7 +280,7 @@ public abstract class DbAccess<T> {
             JasperViewer.viewReport(jasp_print);
         } catch (JRException | SQLException ex) {
             Logger.getLogger(frmMenu.class.getName()).log(Level.SEVERE, null, ex);
-        }finally {
+        } finally {
             if (conectado) {
                 try {
                     Desconectar();
@@ -290,7 +290,52 @@ public abstract class DbAccess<T> {
             }
         }
     }
-    
+
+    public void reportVoluntarios() {
+        String report = "src/Voluntarios.jrxml";
+        Boolean conectado = false;
+        try {
+            //BasicConfigurator.configure();
+            Conectar();
+            conectado = true;
+            JasperReport jasp_rep = JasperCompileManager.compileReport(report);
+            JasperPrint jasp_print = JasperFillManager.fillReport(jasp_rep, null, conexao);
+            JasperViewer.viewReport(jasp_print);
+        } catch (JRException | SQLException ex) {
+            Logger.getLogger(frmMenu.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            if (conectado) {
+                try {
+                    Desconectar();
+                } catch (SQLException ex) {
+                    Logger.getLogger(DbAccess.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+    }
+
+    public void reportCriancas() {
+        String report = "src/Criancas.jrxml";
+        Boolean conectado = false;
+        try {
+            //BasicConfigurator.configure();
+            Conectar();
+            conectado = true;
+            JasperReport jasp_rep = JasperCompileManager.compileReport(report);
+            JasperPrint jasp_print = JasperFillManager.fillReport(jasp_rep, null, conexao);
+            JasperViewer.viewReport(jasp_print);
+        } catch (JRException | SQLException ex) {
+            Logger.getLogger(frmMenu.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            if (conectado) {
+                try {
+                    Desconectar();
+                } catch (SQLException ex) {
+                    Logger.getLogger(DbAccess.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+    }
 
     /**
      * Converte a posição atual do resultset para objeto da modelo
