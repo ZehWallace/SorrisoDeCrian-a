@@ -44,6 +44,27 @@ public class DAOPresenca extends DbAccess<ModelPresenca>{
     }
     
     /**
+    * Executa uma query no banco e retorna um Objeto tipo ModelCrianca
+    * @param id id da crianca a ser pesquisada a presensa
+    * @param data data da presença a ser pesquisada
+    * @return ModelPresenca retorna informacoes de presença de uma crianca em uma data
+    * @throws SQLException
+    * @throws Exception
+    */
+    public ModelPresenca getPesquisaCriancaPresencaData(int id, String data) throws SQLException, Exception
+    {
+           String comando = "select * from Presenca where crianca = ? and data_presenca = ?";
+           ArrayList<ModelPresenca> result = Listar(comando, id, data);
+           
+           if(result.size() > 0)
+           {
+                return result.get(0);
+           }
+           
+           return null;
+    }
+    
+    /**
     * Executa uma query no banco que insere uma presença
     * @param id id da crianca relacionada a presenca
     * @param data data da presença

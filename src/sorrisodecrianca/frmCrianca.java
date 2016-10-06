@@ -355,6 +355,7 @@ public class frmCrianca extends javax.swing.JFrame {
                 daoCrianca.insereCrianca(modelCrianca);
                 
                 JOptionPane.showMessageDialog(jPanel_InfoCrianca, "Criança inserida no sistema com sucesso!", "Cadastro de Crianças", JOptionPane.INFORMATION_MESSAGE );
+                this.setVisible(false);
             }
             catch(SQLException sql_e)
             {

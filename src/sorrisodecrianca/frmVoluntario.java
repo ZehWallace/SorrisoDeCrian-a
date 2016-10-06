@@ -331,6 +331,7 @@ public class frmVoluntario extends javax.swing.JFrame {
             {
                 daoVoluntario.insereVoluntario(modelVoluntario);
                 JOptionPane.showMessageDialog(jPanel_InfoVoluntario, "Voluntário inserido no sistema com sucesso!", "Cadastro de Voluntários", JOptionPane.INFORMATION_MESSAGE);
+                this.setVisible(false);
             }
             catch(SQLException sql_e)
             {
