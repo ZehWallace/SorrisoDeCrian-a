@@ -17,7 +17,18 @@ package lib;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Locale;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.view.JasperViewer;
+import org.apache.log4j.BasicConfigurator;
 import org.h2.jdbcx.JdbcDataSource;
+import sorrisodecrianca.frmMenu;
 
 public abstract class DbAccess<T> {
 
@@ -256,6 +267,30 @@ public abstract class DbAccess<T> {
         }
         return result.toString();
     }
+    
+    public void createReport(){
+        String report = "report1.jrxml";
+        Boolean conectado = false;
+        try {
+            //BasicConfigurator.configure();
+            Conectar();
+            conectado = true;
+            JasperReport jasp_rep = JasperCompileManager.compileReport(report);
+            JasperPrint jasp_print = JasperFillManager.fillReport(jasp_rep, null, conexao);
+            JasperViewer.viewReport(jasp_print);
+        } catch (JRException | SQLException ex) {
+            Logger.getLogger(frmMenu.class.getName()).log(Level.SEVERE, null, ex);
+        }finally {
+            if (conectado) {
+                try {
+                    Desconectar();
+                } catch (SQLException ex) {
+                    Logger.getLogger(DbAccess.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+    }
+    
 
     /**
      * Converte a posição atual do resultset para objeto da modelo
