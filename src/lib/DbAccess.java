@@ -276,7 +276,7 @@ public abstract class DbAccess<T> {
             conectado = true;
             JasperReport jasp_rep = JasperCompileManager.compileReport(filename);
             JasperPrint jasp_print = JasperFillManager.fillReport(jasp_rep, null, conexao);
-            JasperViewer.viewReport(jasp_print);
+            JasperViewer.viewReport(jasp_print, false);
         } catch (JRException | SQLException ex) {
             Logger.getLogger(frmMenu.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
