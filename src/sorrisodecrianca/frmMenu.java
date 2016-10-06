@@ -798,12 +798,12 @@ public class frmMenu extends javax.swing.JFrame {
 
     private void btnRelCriancasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRelCriancasActionPerformed
         DAOCrianca report = new DAOCrianca();
-        report.reportCriancas();
+        report.report();
     }//GEN-LAST:event_btnRelCriancasActionPerformed
 
     private void btnRelVoluntariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRelVoluntariosActionPerformed
         DAOVoluntario report = new DAOVoluntario();
-        report.reportVoluntarios();
+        report.report();
     }//GEN-LAST:event_btnRelVoluntariosActionPerformed
 
 

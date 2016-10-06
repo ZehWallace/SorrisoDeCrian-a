@@ -131,4 +131,8 @@ public class DAOVoluntario extends DbAccess<ModelVoluntario>{
         
         return voluntario;
     }   
+    
+    public void report(){
+        super.report("src/Voluntarios.jrxml");
+    }
 }

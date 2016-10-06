@@ -107,4 +107,8 @@ public class DAOPresenca extends DbAccess<ModelPresenca>{
         
         return presenca;
     }   
+    
+    public void report(){
+        super.report("src/Presencas.jrxml");
+    }
 }

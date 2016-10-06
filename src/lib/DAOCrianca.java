@@ -135,4 +135,8 @@ public class DAOCrianca extends DbAccess<ModelCrianca>{
         
         return crianca;
     }   
+    
+    public void report(){
+        super.report("src/Criancas.jrxml");
+    }
 }

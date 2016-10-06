@@ -268,60 +268,13 @@ public abstract class DbAccess<T> {
         return result.toString();
     }
 
-    public void reportPresencas() {
-        String report = "src/Presencas.jrxml";
+    public void report(String filename) {
         Boolean conectado = false;
         try {
             //BasicConfigurator.configure();
             Conectar();
             conectado = true;
-            JasperReport jasp_rep = JasperCompileManager.compileReport(report);
-            JasperPrint jasp_print = JasperFillManager.fillReport(jasp_rep, null, conexao);
-            JasperViewer.viewReport(jasp_print);
-        } catch (JRException | SQLException ex) {
-            Logger.getLogger(frmMenu.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
-            if (conectado) {
-                try {
-                    Desconectar();
-                } catch (SQLException ex) {
-                    Logger.getLogger(DbAccess.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-        }
-    }
-
-    public void reportVoluntarios() {
-        String report = "src/Voluntarios.jrxml";
-        Boolean conectado = false;
-        try {
-            //BasicConfigurator.configure();
-            Conectar();
-            conectado = true;
-            JasperReport jasp_rep = JasperCompileManager.compileReport(report);
-            JasperPrint jasp_print = JasperFillManager.fillReport(jasp_rep, null, conexao);
-            JasperViewer.viewReport(jasp_print);
-        } catch (JRException | SQLException ex) {
-            Logger.getLogger(frmMenu.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
-            if (conectado) {
-                try {
-                    Desconectar();
-                } catch (SQLException ex) {
-                    Logger.getLogger(DbAccess.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-        }
-    }
-
-    public void reportCriancas() {
-        String report = "src/Criancas.jrxml";
-        Boolean conectado = false;
-        try {
-            //BasicConfigurator.configure();
-            Conectar();
-            conectado = true;
-            JasperReport jasp_rep = JasperCompileManager.compileReport(report);
+            JasperReport jasp_rep = JasperCompileManager.compileReport(filename);
             JasperPrint jasp_print = JasperFillManager.fillReport(jasp_rep, null, conexao);
             JasperViewer.viewReport(jasp_print);
         } catch (JRException | SQLException ex) {
