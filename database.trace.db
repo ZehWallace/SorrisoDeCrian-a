@@ -1,0 +1,202 @@
+2016-10-06 01:12:43 database: flush
+org.h2.message.DbException: General error: "java.lang.IllegalStateException: The file is locked: nio:C:/Users/Bruno/Documents/NetBeansProjects/SorrisoDeCrianca/database.mv.db [1.4.192/7]" [50000-192]
+	at org.h2.message.DbException.get(DbException.java:168)
+	at org.h2.message.DbException.convert(DbException.java:295)
+	at org.h2.mvstore.db.MVTableEngine$1.uncaughtException(MVTableEngine.java:94)
+	at org.h2.mvstore.MVStore.panic(MVStore.java:375)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:358)
+	at org.h2.mvstore.MVStore$Builder.open(MVStore.java:2893)
+	at org.h2.mvstore.db.MVTableEngine$Store.open(MVTableEngine.java:154)
+	at org.h2.mvstore.db.MVTableEngine.init(MVTableEngine.java:99)
+	at org.h2.engine.Database.getPageStore(Database.java:2463)
+	at org.h2.engine.Database.open(Database.java:692)
+	at org.h2.engine.Database.openDatabase(Database.java:270)
+	at org.h2.engine.Database.<init>(Database.java:264)
+	at org.h2.engine.Engine.openSession(Engine.java:64)
+	at org.h2.engine.Engine.openSession(Engine.java:176)
+	at org.h2.engine.Engine.createSessionAndValidate(Engine.java:154)
+	at org.h2.engine.Engine.createSession(Engine.java:137)
+	at org.h2.engine.Engine.createSession(Engine.java:27)
+	at org.h2.engine.SessionRemote.connectEmbeddedOrServer(SessionRemote.java:349)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:118)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:102)
+	at org.h2.Driver.connect(Driver.java:72)
+	at workbench.db.DbDriver.connect(DbDriver.java:513)
+	at workbench.db.ConnectionMgr.connect(ConnectionMgr.java:244)
+	at workbench.db.ConnectionMgr.getConnection(ConnectionMgr.java:172)
+	at workbench.gui.components.ConnectionSelector.doConnect(ConnectionSelector.java:227)
+	at workbench.gui.components.ConnectionSelector$1.run(ConnectionSelector.java:131)
+Caused by: org.h2.jdbc.JdbcSQLException: General error: "java.lang.IllegalStateException: The file is locked: nio:C:/Users/Bruno/Documents/NetBeansProjects/SorrisoDeCrianca/database.mv.db [1.4.192/7]" [50000-192]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	... 26 more
+Caused by: java.lang.IllegalStateException: The file is locked: nio:C:/Users/Bruno/Documents/NetBeansProjects/SorrisoDeCrianca/database.mv.db [1.4.192/7]
+	at org.h2.mvstore.DataUtils.newIllegalStateException(DataUtils.java:773)
+	at org.h2.mvstore.FileStore.open(FileStore.java:172)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:344)
+	... 21 more
+2016-10-06 01:14:56 database: flush
+org.h2.message.DbException: General error: "java.lang.IllegalStateException: The file is locked: nio:C:/Users/Bruno/Documents/NetBeansProjects/SorrisoDeCrianca/database.mv.db [1.4.192/7]" [50000-192]
+	at org.h2.message.DbException.get(DbException.java:168)
+	at org.h2.message.DbException.convert(DbException.java:295)
+	at org.h2.mvstore.db.MVTableEngine$1.uncaughtException(MVTableEngine.java:94)
+	at org.h2.mvstore.MVStore.panic(MVStore.java:375)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:358)
+	at org.h2.mvstore.MVStore$Builder.open(MVStore.java:2893)
+	at org.h2.mvstore.db.MVTableEngine$Store.open(MVTableEngine.java:154)
+	at org.h2.mvstore.db.MVTableEngine.init(MVTableEngine.java:99)
+	at org.h2.engine.Database.getPageStore(Database.java:2463)
+	at org.h2.engine.Database.open(Database.java:692)
+	at org.h2.engine.Database.openDatabase(Database.java:270)
+	at org.h2.engine.Database.<init>(Database.java:264)
+	at org.h2.engine.Engine.openSession(Engine.java:64)
+	at org.h2.engine.Engine.openSession(Engine.java:176)
+	at org.h2.engine.Engine.createSessionAndValidate(Engine.java:154)
+	at org.h2.engine.Engine.createSession(Engine.java:137)
+	at org.h2.engine.Engine.createSession(Engine.java:27)
+	at org.h2.engine.SessionRemote.connectEmbeddedOrServer(SessionRemote.java:349)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:118)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:102)
+	at org.h2.Driver.connect(Driver.java:72)
+	at org.netbeans.modules.db.explorer.DbDriverManager.getConnection(DbDriverManager.java:131)
+	at org.netbeans.modules.db.explorer.DatabaseConnection.doConnect(DatabaseConnection.java:911)
+	at org.netbeans.modules.db.explorer.DatabaseConnection.access$200(DatabaseConnection.java:103)
+	at org.netbeans.modules.db.explorer.DatabaseConnection$3.run(DatabaseConnection.java:976)
+	at org.openide.util.RequestProcessor$Task.run(RequestProcessor.java:1443)
+	at org.netbeans.modules.openide.util.GlobalLookup.execute(GlobalLookup.java:68)
+	at org.openide.util.lookup.Lookups.executeWith(Lookups.java:303)
+	at org.openide.util.RequestProcessor$Processor.run(RequestProcessor.java:2058)
+Caused by: org.h2.jdbc.JdbcSQLException: General error: "java.lang.IllegalStateException: The file is locked: nio:C:/Users/Bruno/Documents/NetBeansProjects/SorrisoDeCrianca/database.mv.db [1.4.192/7]" [50000-192]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	... 29 more
+Caused by: java.lang.IllegalStateException: The file is locked: nio:C:/Users/Bruno/Documents/NetBeansProjects/SorrisoDeCrianca/database.mv.db [1.4.192/7]
+	at org.h2.mvstore.DataUtils.newIllegalStateException(DataUtils.java:773)
+	at org.h2.mvstore.FileStore.open(FileStore.java:172)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:344)
+	... 24 more
+2016-10-06 01:15:52 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "SELECT
+     PRESENCA.""DATA_PRESENCA"" AS PRESENCA_DATA_PRESENCA,
+     CRIANCA.""NOME"" AS CRIANCA_NOME,
+     CRIANCA.""RG"" AS CRIANCA_RG,
+FROM
+     ""PUBLIC"".""CRIANCA"" CRIANCA INNER JOIN ""PUBLIC"".""PRESENCA"" PRESENCA ON CRIANCA.""ID"" = PRESENCA.""CRIANCA""[*]"; expected "(, ., [, ::, *, /, %, +, -, ||, ~, !~, NOT, LIKE, REGEXP, IS, IN, BETWEEN, AND, OR, RIGHT, LEFT, FULL, INNER, JOIN, CROSS, NATURAL, ,, SELECT"; SQL statement:
+SELECT
+     PRESENCA."DATA_PRESENCA" AS PRESENCA_DATA_PRESENCA,
+     CRIANCA."NOME" AS CRIANCA_NOME,
+     CRIANCA."RG" AS CRIANCA_RG,
+FROM
+     "PUBLIC"."CRIANCA" CRIANCA INNER JOIN "PUBLIC"."PRESENCA" PRESENCA ON CRIANCA."ID" = PRESENCA."CRIANCA" [42001-192]
+2016-10-06 01:18:20 database: flush
+org.h2.message.DbException: General error: "java.lang.IllegalStateException: The file is locked: nio:C:/Users/Bruno/Documents/NetBeansProjects/SorrisoDeCrianca/database.mv.db [1.4.192/7]" [50000-192]
+	at org.h2.message.DbException.get(DbException.java:168)
+	at org.h2.message.DbException.convert(DbException.java:295)
+	at org.h2.mvstore.db.MVTableEngine$1.uncaughtException(MVTableEngine.java:94)
+	at org.h2.mvstore.MVStore.panic(MVStore.java:375)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:358)
+	at org.h2.mvstore.MVStore$Builder.open(MVStore.java:2893)
+	at org.h2.mvstore.db.MVTableEngine$Store.open(MVTableEngine.java:154)
+	at org.h2.mvstore.db.MVTableEngine.init(MVTableEngine.java:99)
+	at org.h2.engine.Database.getPageStore(Database.java:2463)
+	at org.h2.engine.Database.open(Database.java:692)
+	at org.h2.engine.Database.openDatabase(Database.java:270)
+	at org.h2.engine.Database.<init>(Database.java:264)
+	at org.h2.engine.Engine.openSession(Engine.java:64)
+	at org.h2.engine.Engine.openSession(Engine.java:176)
+	at org.h2.engine.Engine.createSessionAndValidate(Engine.java:154)
+	at org.h2.engine.Engine.createSession(Engine.java:137)
+	at org.h2.engine.Engine.createSession(Engine.java:27)
+	at org.h2.engine.SessionRemote.connectEmbeddedOrServer(SessionRemote.java:349)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:118)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:102)
+	at org.h2.Driver.connect(Driver.java:72)
+	at org.netbeans.modules.db.explorer.DbDriverManager.getConnection(DbDriverManager.java:131)
+	at org.netbeans.modules.db.explorer.DatabaseConnection.doConnect(DatabaseConnection.java:911)
+	at org.netbeans.modules.db.explorer.DatabaseConnection.access$200(DatabaseConnection.java:103)
+	at org.netbeans.modules.db.explorer.DatabaseConnection$3.run(DatabaseConnection.java:976)
+	at org.openide.util.RequestProcessor$Task.run(RequestProcessor.java:1443)
+	at org.netbeans.modules.openide.util.GlobalLookup.execute(GlobalLookup.java:68)
+	at org.openide.util.lookup.Lookups.executeWith(Lookups.java:303)
+	at org.openide.util.RequestProcessor$Processor.run(RequestProcessor.java:2058)
+Caused by: org.h2.jdbc.JdbcSQLException: General error: "java.lang.IllegalStateException: The file is locked: nio:C:/Users/Bruno/Documents/NetBeansProjects/SorrisoDeCrianca/database.mv.db [1.4.192/7]" [50000-192]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	... 29 more
+Caused by: java.lang.IllegalStateException: The file is locked: nio:C:/Users/Bruno/Documents/NetBeansProjects/SorrisoDeCrianca/database.mv.db [1.4.192/7]
+	at org.h2.mvstore.DataUtils.newIllegalStateException(DataUtils.java:773)
+	at org.h2.mvstore.FileStore.open(FileStore.java:172)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:344)
+	... 24 more
+2016-10-06 01:18:22 database: flush
+org.h2.message.DbException: General error: "java.lang.IllegalStateException: The file is locked: nio:C:/Users/Bruno/Documents/NetBeansProjects/SorrisoDeCrianca/database.mv.db [1.4.192/7]" [50000-192]
+	at org.h2.message.DbException.get(DbException.java:168)
+	at org.h2.message.DbException.convert(DbException.java:295)
+	at org.h2.mvstore.db.MVTableEngine$1.uncaughtException(MVTableEngine.java:94)
+	at org.h2.mvstore.MVStore.panic(MVStore.java:375)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:358)
+	at org.h2.mvstore.MVStore$Builder.open(MVStore.java:2893)
+	at org.h2.mvstore.db.MVTableEngine$Store.open(MVTableEngine.java:154)
+	at org.h2.mvstore.db.MVTableEngine.init(MVTableEngine.java:99)
+	at org.h2.engine.Database.getPageStore(Database.java:2463)
+	at org.h2.engine.Database.open(Database.java:692)
+	at org.h2.engine.Database.openDatabase(Database.java:270)
+	at org.h2.engine.Database.<init>(Database.java:264)
+	at org.h2.engine.Engine.openSession(Engine.java:64)
+	at org.h2.engine.Engine.openSession(Engine.java:176)
+	at org.h2.engine.Engine.createSessionAndValidate(Engine.java:154)
+	at org.h2.engine.Engine.createSession(Engine.java:137)
+	at org.h2.engine.Engine.createSession(Engine.java:27)
+	at org.h2.engine.SessionRemote.connectEmbeddedOrServer(SessionRemote.java:349)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:118)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:102)
+	at org.h2.Driver.connect(Driver.java:72)
+	at org.netbeans.modules.db.explorer.DbDriverManager.getConnection(DbDriverManager.java:131)
+	at org.netbeans.modules.db.explorer.DatabaseConnection.doConnect(DatabaseConnection.java:911)
+	at org.netbeans.modules.db.explorer.DatabaseConnection.access$200(DatabaseConnection.java:103)
+	at org.netbeans.modules.db.explorer.DatabaseConnection$3.run(DatabaseConnection.java:976)
+	at org.openide.util.RequestProcessor$Task.run(RequestProcessor.java:1443)
+	at org.netbeans.modules.openide.util.GlobalLookup.execute(GlobalLookup.java:68)
+	at org.openide.util.lookup.Lookups.executeWith(Lookups.java:303)
+	at org.openide.util.RequestProcessor$Processor.run(RequestProcessor.java:2058)
+Caused by: org.h2.jdbc.JdbcSQLException: General error: "java.lang.IllegalStateException: The file is locked: nio:C:/Users/Bruno/Documents/NetBeansProjects/SorrisoDeCrianca/database.mv.db [1.4.192/7]" [50000-192]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	... 29 more
+Caused by: java.lang.IllegalStateException: The file is locked: nio:C:/Users/Bruno/Documents/NetBeansProjects/SorrisoDeCrianca/database.mv.db [1.4.192/7]
+	at org.h2.mvstore.DataUtils.newIllegalStateException(DataUtils.java:773)
+	at org.h2.mvstore.FileStore.open(FileStore.java:172)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:344)
+	... 24 more
+2016-10-06 01:20:57 database: flush
+org.h2.message.DbException: General error: "java.lang.IllegalStateException: The file is locked: nio:C:/Users/Bruno/Documents/NetBeansProjects/SorrisoDeCrianca/database.mv.db [1.4.192/7]" [50000-192]
+	at org.h2.message.DbException.get(DbException.java:168)
+	at org.h2.message.DbException.convert(DbException.java:295)
+	at org.h2.mvstore.db.MVTableEngine$1.uncaughtException(MVTableEngine.java:94)
+	at org.h2.mvstore.MVStore.panic(MVStore.java:375)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:358)
+	at org.h2.mvstore.MVStore$Builder.open(MVStore.java:2893)
+	at org.h2.mvstore.db.MVTableEngine$Store.open(MVTableEngine.java:154)
+	at org.h2.mvstore.db.MVTableEngine.init(MVTableEngine.java:99)
+	at org.h2.engine.Database.getPageStore(Database.java:2463)
+	at org.h2.engine.Database.open(Database.java:692)
+	at org.h2.engine.Database.openDatabase(Database.java:270)
+	at org.h2.engine.Database.<init>(Database.java:264)
+	at org.h2.engine.Engine.openSession(Engine.java:64)
+	at org.h2.engine.Engine.openSession(Engine.java:176)
+	at org.h2.engine.Engine.createSessionAndValidate(Engine.java:154)
+	at org.h2.engine.Engine.createSession(Engine.java:137)
+	at org.h2.engine.Engine.createSession(Engine.java:27)
+	at org.h2.engine.SessionRemote.connectEmbeddedOrServer(SessionRemote.java:349)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:118)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:102)
+	at org.h2.Driver.connect(Driver.java:72)
+	at workbench.db.DbDriver.connect(DbDriver.java:513)
+	at workbench.db.ConnectionMgr.connect(ConnectionMgr.java:244)
+	at workbench.db.ConnectionMgr.getConnection(ConnectionMgr.java:172)
+	at workbench.gui.components.ConnectionSelector.doConnect(ConnectionSelector.java:227)
+	at workbench.gui.components.ConnectionSelector$1.run(ConnectionSelector.java:131)
+Caused by: org.h2.jdbc.JdbcSQLException: General error: "java.lang.IllegalStateException: The file is locked: nio:C:/Users/Bruno/Documents/NetBeansProjects/SorrisoDeCrianca/database.mv.db [1.4.192/7]" [50000-192]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	... 26 more
+Caused by: java.lang.IllegalStateException: The file is locked: nio:C:/Users/Bruno/Documents/NetBeansProjects/SorrisoDeCrianca/database.mv.db [1.4.192/7]
+	at org.h2.mvstore.DataUtils.newIllegalStateException(DataUtils.java:773)
+	at org.h2.mvstore.FileStore.open(FileStore.java:172)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:344)
+	... 21 more
