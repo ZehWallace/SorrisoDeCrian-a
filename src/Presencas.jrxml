@@ -80,7 +80,7 @@ FROM
 			</staticText>
 			<image>
 				<reportElement x="8" y="6" width="141" height="123" uuid="b143631e-ceca-4e85-bd5d-bd0b9a6cf5c6"/>
-				<imageExpression><![CDATA["C:\\Users\\Bruno\\Documents\\NetBeansProjects\\SorrisoDeCrianca\\src\\img\\logo.jpg"]]></imageExpression>
+				<imageExpression><![CDATA["img\\logo.jpg"]]></imageExpression>
 			</image>
 		</band>
 	</title>

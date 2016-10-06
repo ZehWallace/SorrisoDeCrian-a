@@ -42,7 +42,7 @@ FROM
 			</staticText>
 			<image>
 				<reportElement x="1" y="0" width="151" height="136" uuid="b5d3649d-16c6-49f2-a0d6-54431f4d0512"/>
-				<imageExpression><![CDATA["C:\\Users\\Bruno\\Documents\\NetBeansProjects\\SorrisoDeCrianca\\src\\img\\logo.jpg"]]></imageExpression>
+				<imageExpression><![CDATA["img\\logo.jpg"]]></imageExpression>
 			</image>
 		</band>
 	</title>
