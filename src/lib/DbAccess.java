@@ -17,7 +17,9 @@ package lib;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Locale;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import net.sf.jasperreports.engine.JRException;
@@ -209,7 +211,6 @@ public abstract class DbAccess<T> {
             Conectar();
             conectado = true;
             PreparedStatement comando = PrepararComando(query, parametros);
-
             ResultSet resultado = comando.executeQuery();
 
             if (resultado.next()) {
@@ -268,14 +269,15 @@ public abstract class DbAccess<T> {
         return result.toString();
     }
 
-    public void report(String filename) {
+    public void report(String filename, Map args) {
         Boolean conectado = false;
         try {
             //BasicConfigurator.configure();
             Conectar();
             conectado = true;
+            
             JasperReport jasp_rep = JasperCompileManager.compileReport(filename);
-            JasperPrint jasp_print = JasperFillManager.fillReport(jasp_rep, null, conexao);
+            JasperPrint jasp_print = JasperFillManager.fillReport(jasp_rep, args, conexao);
             JasperViewer.viewReport(jasp_print, false);
         } catch (JRException | SQLException ex) {
             Logger.getLogger(frmMenu.class.getName()).log(Level.SEVERE, null, ex);

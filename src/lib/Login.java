@@ -50,7 +50,6 @@ public class Login extends DbAccess<Object>{
         try 
         {
             Object retorno = RetornaUnicoValor(comando, info.getUsuario(),info.getSenha());
-            
             if(retorno != null)
             {
                 info.setPriv(retorno.toString());
