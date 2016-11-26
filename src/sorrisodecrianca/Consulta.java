@@ -152,7 +152,7 @@ public final class Consulta extends javax.swing.JFrame {
         
         try
         {
-            resultado = daoC.getCriancaByName(nome);
+            resultado = daoC.getPesquisaCrianca(nome);
         }
         catch(SQLException sql_e)
         {

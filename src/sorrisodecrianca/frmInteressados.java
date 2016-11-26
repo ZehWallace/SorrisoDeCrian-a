@@ -206,13 +206,13 @@ public class frmInteressados extends javax.swing.JFrame {
         // TODO add your handling code here:
         
         if(txtNome.getText().isEmpty())
-            JOptionPane.showMessageDialog(JPanelInfoInteressados, "Digite o nome da criança", "Erro", JOptionPane.ERROR);
+            JOptionPane.showMessageDialog(JPanelInfoInteressados, "Digite o nome da criança", "Erro", JOptionPane.ERROR_MESSAGE);
         else
         if(txtNomeResponsavel.getText().isEmpty())
-            JOptionPane.showMessageDialog(JPanelInfoInteressados, "Digite o nome do responsável", "Erro", JOptionPane.ERROR);
+            JOptionPane.showMessageDialog(JPanelInfoInteressados, "Digite o nome do responsável", "Erro", JOptionPane.ERROR_MESSAGE);
         else
         if(txtTelefone.getText().isEmpty())
-            JOptionPane.showMessageDialog(JPanelInfoInteressados, "Digite o telefone", "Erro", JOptionPane.ERROR);
+            JOptionPane.showMessageDialog(JPanelInfoInteressados, "Digite o telefone", "Erro", JOptionPane.ERROR_MESSAGE);
         else
         {
             ModelInteressado modelInteressado = new ModelInteressado();
@@ -258,7 +258,7 @@ public class frmInteressados extends javax.swing.JFrame {
             }
             else
             {
-                JOptionPane.showMessageDialog(JPanelInfoInteressados, "Digite a data de nascimento", "Erro", JOptionPane.ERROR);
+                JOptionPane.showMessageDialog(JPanelInfoInteressados, "Digite a data de nascimento", "Erro", JOptionPane.ERROR_MESSAGE);
             }
 
             modelInteressado.setNomeCrianca(txtNome.getText());
