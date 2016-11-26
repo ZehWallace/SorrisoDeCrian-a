@@ -12,7 +12,7 @@
 ---									---
 ---------------------------------------------------------------------------
 ---------------------------------------------------------------------------
-*/
+ */
 package sorrisodecrianca;
 
 import java.awt.Component;
@@ -46,63 +46,58 @@ public class frmMenu extends javax.swing.JFrame {
     private static ArrayList<ModelPresenca> listaPresenca;
     private static ArrayList<ModelCrianca> listaCriancasAtivas;
     private static boolean presencaUpdate;
-    
+
     public frmMenu() throws Exception {
         initComponents();
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
-        this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
-        
+        this.setLocation(dim.width / 2 - this.getSize().width / 2, dim.height / 2 - this.getSize().height / 2);
+
         data_atual = LocalDate.now();
-        
+
         Date date = Date.valueOf(data_atual);
         DateTime data_calculator = new DateTime(date);
         DateTime date_temp;
         java.text.SimpleDateFormat data_format = new java.text.SimpleDateFormat("yyyy-MM-dd");
-        
-        String[] colunas = new String[]{"ID","Nome ","Segunda ","Terça ", "Quarta ", "Quinta ", "Sexta ", "Sábado ", "Domingo "};
+
+        String[] colunas = new String[]{"ID", "Nome ", "Segunda ", "Terça ", "Quarta ", "Quinta ", "Sexta ", "Sábado ", "Domingo "};
         listaPresenca = new ArrayList<ModelPresenca>();
         listaCriancasAtivas = new ArrayList<ModelCrianca>();
-        
+
         dao_presenca = new DAOPresenca();
         dao_crianca = new DAOCrianca();
         listaCriancasAtivas = dao_crianca.getCriancasAtivas();
-        presencaUpdate  = false; // flag para verificar se as presenças do dia jah foram digitadas
-        
-        if(dao_presenca.contPresencaData(Date.valueOf(data_atual)) > 0)
-        {
+        presencaUpdate = false; // flag para verificar se as presenças do dia jah foram digitadas
+
+        if (dao_presenca.contPresencaData(Date.valueOf(data_atual)) > 0) {
             presencaUpdate = true;
         }
-        
-        
-        tb_model = new DefaultTableModel()
-        {
-                @Override
-                public boolean isCellEditable(int row, int col) {
-                    switch(data_atual.getDayOfWeek().name())
-                    {
-                        case "MONDAY":
-                            return col == 2;
-                        case "TUESDAY":
-                            return col == 3;
-                        case "WENESDAY":
-                            return col == 4;
-                        case "THURSDAY":
-                            return col == 5;
-                        case "FRIDAY":
-                            return col == 6;
-                        case "SATURDAY":
-                            return col == 7;
-                        case "SUNDAY":
-                            return col == 8;
-                    }
-                    return false;
+
+        tb_model = new DefaultTableModel() {
+            @Override
+            public boolean isCellEditable(int row, int col) {
+                switch (data_atual.getDayOfWeek().name()) {
+                    case "MONDAY":
+                        return col == 2;
+                    case "TUESDAY":
+                        return col == 3;
+                    case "WENESDAY":
+                        return col == 4;
+                    case "THURSDAY":
+                        return col == 5;
+                    case "FRIDAY":
+                        return col == 6;
+                    case "SATURDAY":
+                        return col == 7;
+                    case "SUNDAY":
+                        return col == 8;
                 }
+                return false;
+            }
         };
-        
-        
+
         tb_model.setColumnIdentifiers(colunas);
         int id;
-        
+
         String[] dados = new String[]{};
         
         if(listaCriancasAtivas != null)
@@ -523,37 +518,36 @@ public class frmMenu extends javax.swing.JFrame {
         }
         
         tb_model.isCellEditable(0, 5);
-        
+
         tbPresenca = new JTable();
         tbPresenca.setModel(tb_model);
         scrollpanelPresenca.setViewportView(tbPresenca);
         resizeColumnWidth(tbPresenca);
     }
-    
-    public boolean isCellEditable()
-    {
+
+    public boolean isCellEditable() {
         return false;
     }
-    
+
     /**
-    * Ajusta as dimensões das colunas da tabela recebida
-    * @param table tabela a ser redimensionada
-    */
-    public void resizeColumnWidth(JTable table)
-    {
+     * Ajusta as dimensões das colunas da tabela recebida
+     *
+     * @param table tabela a ser redimensionada
+     */
+    public void resizeColumnWidth(JTable table) {
         DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
-        centerRenderer.setHorizontalAlignment( SwingConstants.CENTER );
-        
+        centerRenderer.setHorizontalAlignment(SwingConstants.CENTER);
+
         final TableColumnModel columnModel = table.getColumnModel();
         for (int column = 0; column < table.getColumnCount(); column++) {
             int width = 50; // Min width
             for (int row = 0; row < table.getRowCount(); row++) {
                 TableCellRenderer renderer = table.getCellRenderer(row, column);
                 Component comp = table.prepareRenderer(renderer, row, column);
-                width = Math.max(comp.getPreferredSize().width +1 , width);
+                width = Math.max(comp.getPreferredSize().width + 1, width);
             }
             columnModel.getColumn(column).setPreferredWidth(width);
-            if(column != 1)//coluna de nomes
+            if (column != 1)//coluna de nomes
             {
                 columnModel.getColumn(column).setCellRenderer(centerRenderer);
             }
@@ -575,9 +569,6 @@ public class frmMenu extends javax.swing.JFrame {
         tbPresenca = new javax.swing.JTable();
         btnSalvarAlteracoes = new javax.swing.JButton();
         btnConsultas = new javax.swing.JButton();
-        btnRelCriancas = new javax.swing.JButton();
-        btnRelVoluntarios = new javax.swing.JButton();
-        btnRelPresencas = new javax.swing.JButton();
         btnAtualizar = new javax.swing.JButton();
         btnCadInter = new javax.swing.JButton();
 
@@ -621,31 +612,17 @@ public class frmMenu extends javax.swing.JFrame {
             }
         });
 
-        btnRelCriancas.setText("Relatório de Crianças");
-        btnRelCriancas.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRelCriancasActionPerformed(evt);
-            }
-        });
-
-        btnRelVoluntarios.setText("Relatório de Voluntários");
-        btnRelVoluntarios.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRelVoluntariosActionPerformed(evt);
-            }
-        });
-
-        btnRelPresencas.setText("Relatório de Presenças");
-        btnRelPresencas.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRelPresencasActionPerformed(evt);
-            }
-        });
-
         btnAtualizar.setText("Atualizar");
         btnAtualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAtualizarActionPerformed(evt);
+            }
+        });
+
+        btnGerarRelatorio.setText("Geração de relatórios");
+        btnGerarRelatorio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGerarRelatorioActionPerformed(evt);
             }
         });
 
@@ -691,7 +668,8 @@ public class frmMenu extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnAtualizar)
-                            .addComponent(btnSalvarAlteracoes)))
+                            .addComponent(btnSalvarAlteracoes))
+                        .addGap(40, 40, 40))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnCadCri)
                         .addGap(38, 38, 38)
@@ -700,13 +678,9 @@ public class frmMenu extends javax.swing.JFrame {
                         .addComponent(btnCadInter)
                         .addGap(20, 20, 20)
                         .addComponent(btnConsultas)
-                        .addGap(69, 69, 69)
-                        .addComponent(btnRelCriancas)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnRelVoluntarios)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnRelPresencas)))
-                .addGap(40, 40, 40))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnGerarRelatorio)
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
 
         pack();
@@ -726,292 +700,228 @@ public class frmMenu extends javax.swing.JFrame {
         frmVoluntario fv = new frmVoluntario();
         fv.setVisible(true);
     }//GEN-LAST:event_btnCadVolActionPerformed
-    
+
     private void btnSalvarAlteracoesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarAlteracoesActionPerformed
         // TODO add your handling code here:
         LocalDate data_atual = LocalDate.now();
         DAOPresenca dao_presenca = new DAOPresenca();
-        
-        if(tbPresenca.isEditing())
-        {
+
+        if (tbPresenca.isEditing()) {
             JOptionPane.showMessageDialog(null, "Termine de editar a planilha (clique na ultima célula editada e aperte ENTER)", "Aviso!", JOptionPane.WARNING_MESSAGE);
             return;
         }
-        
-        presencaUpdate  = false; // flag para verificar se as presenças do dia jah foram digitadas
+
+        presencaUpdate = false; // flag para verificar se as presenças do dia jah foram digitadas
         try {
-            if(dao_presenca.contPresencaData(Date.valueOf(data_atual)) > 0)
-            {
+            if (dao_presenca.contPresencaData(Date.valueOf(data_atual)) > 0) {
                 presencaUpdate = true;
             }
         } catch (Exception ex) {
             Logger.getLogger(frmMenu.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-            switch(data_atual.getDayOfWeek().name())
-            {
-                case "MONDAY":
-                        try
-                        {
-                            for(int i = 0; i < tbPresenca.getRowCount(); i++)
-                            {
-                                String presenca = tbPresenca.getModel().getValueAt(i, 2).toString().toUpperCase();
-                                if(!presenca.equals("F") && !presenca.equals("P"))
-                                {
-                                    JOptionPane.showMessageDialog(null, "Preencha todos os campos com P ou F!", "Aviso!", JOptionPane.WARNING_MESSAGE);
-                                    btnSalvarAlteracoes.setEnabled(false);
-                                    return;
-                                }
-                            }
-                            
-                            for(int i = 0; i < tbPresenca.getRowCount(); i++)
-                            {
-                                String id = tbPresenca.getModel().getValueAt(i, 0).toString();
-                                String presenca = tbPresenca.getModel().getValueAt(i, 2).toString().toUpperCase();
-                                
-                                if(presencaUpdate)
-                                {
-                                    dao_presenca.updatePresencaCrianca(id, data_atual.toString(), presenca);
-                                }
-                                else
-                                {
-                                    dao_presenca.insertPresencaCrianca(id, data_atual.toString(), presenca);
-                                }
-                            }
-                            JOptionPane.showMessageDialog(null, "As presenças foram salvas com sucesso!", "Aviso!", JOptionPane.INFORMATION_MESSAGE);
+
+        switch (data_atual.getDayOfWeek().name()) {
+            case "MONDAY":
+                try {
+                    for (int i = 0; i < tbPresenca.getRowCount(); i++) {
+                        String presenca = tbPresenca.getModel().getValueAt(i, 2).toString().toUpperCase();
+                        if (!presenca.equals("F") && !presenca.equals("P")) {
+                            JOptionPane.showMessageDialog(null, "Preencha todos os campos com P ou F!", "Aviso!", JOptionPane.WARNING_MESSAGE);
+                            btnSalvarAlteracoes.setEnabled(false);
+                            return;
                         }
-                        catch (Exception e)
-                        {
-                            JOptionPane.showMessageDialog(null, "Houve um problema ao inserir as novas presenças, verifique se todos os campos estão preenchidos!", "Aviso!", JOptionPane.WARNING_MESSAGE);
+                    }
+
+                    for (int i = 0; i < tbPresenca.getRowCount(); i++) {
+                        String id = tbPresenca.getModel().getValueAt(i, 0).toString();
+                        String presenca = tbPresenca.getModel().getValueAt(i, 2).toString().toUpperCase();
+
+                        if (presencaUpdate) {
+                            dao_presenca.updatePresencaCrianca(id, data_atual.toString(), presenca);
+                        } else {
+                            dao_presenca.insertPresencaCrianca(id, data_atual.toString(), presenca);
                         }
-                        
-                    break;
-                case "TUESDAY":
-                    
-                        try
-                        {
-                            for(int i = 0; i < tbPresenca.getRowCount(); i++)
-                            {
-                                String presenca = tbPresenca.getModel().getValueAt(i, 3).toString().toUpperCase();
-                                if(!presenca.equals("F") && !presenca.equals("P"))
-                                {
-                                    JOptionPane.showMessageDialog(null, "Preencha todos os campos com P ou F!", "Aviso!", JOptionPane.WARNING_MESSAGE);
-                                    btnSalvarAlteracoes.setEnabled(false);
-                                    return;
-                                }
-                            }
-                            
-                            for(int i = 0; i < tbPresenca.getRowCount(); i++)
-                            {
-                                String id = tbPresenca.getModel().getValueAt(i, 0).toString();
-                                String presenca = tbPresenca.getModel().getValueAt(i, 3).toString().toUpperCase();
-                                
-                                if(presencaUpdate)
-                                {
-                                    dao_presenca.updatePresencaCrianca(id, data_atual.toString(), presenca);
-                                }
-                                else
-                                {
-                                    dao_presenca.insertPresencaCrianca(id, data_atual.toString(), presenca);
-                                }
-                            }
-                            
-                            JOptionPane.showMessageDialog(null, "As presenças foram salvas com sucesso!", "Aviso!", JOptionPane.INFORMATION_MESSAGE);                    
+                    }
+                    JOptionPane.showMessageDialog(null, "As presenças foram salvas com sucesso!", "Aviso!", JOptionPane.INFORMATION_MESSAGE);
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(null, "Houve um problema ao inserir as novas presenças, verifique se todos os campos estão preenchidos!", "Aviso!", JOptionPane.WARNING_MESSAGE);
+                }
+
+                break;
+            case "TUESDAY":
+
+                try {
+                    for (int i = 0; i < tbPresenca.getRowCount(); i++) {
+                        String presenca = tbPresenca.getModel().getValueAt(i, 3).toString().toUpperCase();
+                        if (!presenca.equals("F") && !presenca.equals("P")) {
+                            JOptionPane.showMessageDialog(null, "Preencha todos os campos com P ou F!", "Aviso!", JOptionPane.WARNING_MESSAGE);
+                            btnSalvarAlteracoes.setEnabled(false);
+                            return;
                         }
-                        catch (Exception e)
-                        {
-                            JOptionPane.showMessageDialog(null, "Houve um problema ao inserir as novas presenças, verifique se todos os campos estão preenchidos!", "Aviso!", JOptionPane.WARNING_MESSAGE);
+                    }
+
+                    for (int i = 0; i < tbPresenca.getRowCount(); i++) {
+                        String id = tbPresenca.getModel().getValueAt(i, 0).toString();
+                        String presenca = tbPresenca.getModel().getValueAt(i, 3).toString().toUpperCase();
+
+                        if (presencaUpdate) {
+                            dao_presenca.updatePresencaCrianca(id, data_atual.toString(), presenca);
+                        } else {
+                            dao_presenca.insertPresencaCrianca(id, data_atual.toString(), presenca);
                         }
-                    
-                    break;
-                case "WENESDAY":
-                    
-                        try
-                        {
-                            for(int i = 0; i < tbPresenca.getRowCount(); i++)
-                            {
-                                String presenca = tbPresenca.getModel().getValueAt(i, 4).toString().toUpperCase();
-                                if(!presenca.equals("F") && !presenca.equals("P"))
-                                {
-                                    JOptionPane.showMessageDialog(null, "Preencha todos os campos com P ou F!", "Aviso!", JOptionPane.WARNING_MESSAGE);
-                                    btnSalvarAlteracoes.setEnabled(false);
-                                    return;
-                                }
-                            }
-                            
-                            for(int i = 0; i < tbPresenca.getRowCount(); i++)
-                            {
-                                String id = tbPresenca.getModel().getValueAt(i, 0).toString();
-                                String presenca = tbPresenca.getModel().getValueAt(i, 4).toString().toUpperCase();
-                                
-                                if(presencaUpdate)
-                                {
-                                    dao_presenca.updatePresencaCrianca(id, data_atual.toString(), presenca);
-                                }
-                                else
-                                {
-                                    dao_presenca.insertPresencaCrianca(id, data_atual.toString(), presenca);
-                                }
-                            }
-                            JOptionPane.showMessageDialog(null, "As presenças foram salvas com sucesso!", "Aviso!", JOptionPane.INFORMATION_MESSAGE);
+                    }
+
+                    JOptionPane.showMessageDialog(null, "As presenças foram salvas com sucesso!", "Aviso!", JOptionPane.INFORMATION_MESSAGE);
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(null, "Houve um problema ao inserir as novas presenças, verifique se todos os campos estão preenchidos!", "Aviso!", JOptionPane.WARNING_MESSAGE);
+                }
+
+                break;
+            case "WENESDAY":
+
+                try {
+                    for (int i = 0; i < tbPresenca.getRowCount(); i++) {
+                        String presenca = tbPresenca.getModel().getValueAt(i, 4).toString().toUpperCase();
+                        if (!presenca.equals("F") && !presenca.equals("P")) {
+                            JOptionPane.showMessageDialog(null, "Preencha todos os campos com P ou F!", "Aviso!", JOptionPane.WARNING_MESSAGE);
+                            btnSalvarAlteracoes.setEnabled(false);
+                            return;
                         }
-                        catch (Exception e)
-                        {
-                            JOptionPane.showMessageDialog(null, "Houve um problema ao inserir as novas presenças, verifique se todos os campos estão preenchidos!", "Aviso!", JOptionPane.WARNING_MESSAGE);
+                    }
+
+                    for (int i = 0; i < tbPresenca.getRowCount(); i++) {
+                        String id = tbPresenca.getModel().getValueAt(i, 0).toString();
+                        String presenca = tbPresenca.getModel().getValueAt(i, 4).toString().toUpperCase();
+
+                        if (presencaUpdate) {
+                            dao_presenca.updatePresencaCrianca(id, data_atual.toString(), presenca);
+                        } else {
+                            dao_presenca.insertPresencaCrianca(id, data_atual.toString(), presenca);
                         }
-                    
-                    break;
-                case "THURSDAY":
-                             
-                        try
-                        {
-                            for(int i = 0; i < tbPresenca.getRowCount(); i++)
-                            {
-                                String presenca = tbPresenca.getModel().getValueAt(i, 5).toString().toUpperCase();
-                                if(!presenca.equals("F") && !presenca.equals("P"))
-                                {
-                                    JOptionPane.showMessageDialog(null, "Preencha todos os campos com P ou F!", "Aviso!", JOptionPane.WARNING_MESSAGE);
-                                    btnSalvarAlteracoes.setEnabled(false);
-                                    return;
-                                }
-                            }
-                            
-                            for(int i = 0; i < tbPresenca.getRowCount(); i++)
-                            {
-                                String id = tbPresenca.getModel().getValueAt(i, 0).toString();
-                                String presenca = tbPresenca.getModel().getValueAt(i, 5).toString().toUpperCase();
-                                
-                                if(presencaUpdate)
-                                {
-                                    dao_presenca.updatePresencaCrianca(id, data_atual.toString(), presenca);
-                                }
-                                else
-                                {
-                                    dao_presenca.insertPresencaCrianca(id, data_atual.toString(), presenca);
-                                }
-                            }
-                            JOptionPane.showMessageDialog(null, "As presenças foram salvas com sucesso!", "Aviso!", JOptionPane.INFORMATION_MESSAGE);
+                    }
+                    JOptionPane.showMessageDialog(null, "As presenças foram salvas com sucesso!", "Aviso!", JOptionPane.INFORMATION_MESSAGE);
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(null, "Houve um problema ao inserir as novas presenças, verifique se todos os campos estão preenchidos!", "Aviso!", JOptionPane.WARNING_MESSAGE);
+                }
+
+                break;
+            case "THURSDAY":
+
+                try {
+                    for (int i = 0; i < tbPresenca.getRowCount(); i++) {
+                        String presenca = tbPresenca.getModel().getValueAt(i, 5).toString().toUpperCase();
+                        if (!presenca.equals("F") && !presenca.equals("P")) {
+                            JOptionPane.showMessageDialog(null, "Preencha todos os campos com P ou F!", "Aviso!", JOptionPane.WARNING_MESSAGE);
+                            btnSalvarAlteracoes.setEnabled(false);
+                            return;
                         }
-                        catch (Exception e)
-                        {
-                            JOptionPane.showMessageDialog(null, " Houve um problema ao inserir as novas presenças, verifique se todos os campos estão preenchidos!", "Aviso!", JOptionPane.WARNING_MESSAGE);
+                    }
+
+                    for (int i = 0; i < tbPresenca.getRowCount(); i++) {
+                        String id = tbPresenca.getModel().getValueAt(i, 0).toString();
+                        String presenca = tbPresenca.getModel().getValueAt(i, 5).toString().toUpperCase();
+
+                        if (presencaUpdate) {
+                            dao_presenca.updatePresencaCrianca(id, data_atual.toString(), presenca);
+                        } else {
+                            dao_presenca.insertPresencaCrianca(id, data_atual.toString(), presenca);
                         }
-                    
-                    break;
-                case "FRIDAY":
-                    
-                        try
-                        {
-                            for(int i = 0; i < tbPresenca.getRowCount(); i++)
-                            {
-                                String presenca = tbPresenca.getModel().getValueAt(i, 6).toString().toUpperCase();
-                                if(!presenca.equals("F") && !presenca.equals("P"))
-                                {
-                                    JOptionPane.showMessageDialog(null, "Preencha todos os campos com P ou F!", "Aviso!", JOptionPane.WARNING_MESSAGE);
-                                    btnSalvarAlteracoes.setEnabled(false);
-                                    return;
-                                }
-                            }
-                            
-                            for(int i = 0; i < tbPresenca.getRowCount(); i++)
-                            {
-                                String id = tbPresenca.getModel().getValueAt(i, 0).toString();
-                                String presenca = tbPresenca.getModel().getValueAt(i, 6).toString().toUpperCase();
-                                
-                                if(presencaUpdate)
-                                {
-                                    dao_presenca.updatePresencaCrianca(id, data_atual.toString(), presenca);
-                                }
-                                else
-                                {
-                                    dao_presenca.insertPresencaCrianca(id, data_atual.toString(), presenca);
-                                }
-                            }
-                            JOptionPane.showMessageDialog(null, "As presenças foram salvas com sucesso!", "Aviso!", JOptionPane.INFORMATION_MESSAGE);
+                    }
+                    JOptionPane.showMessageDialog(null, "As presenças foram salvas com sucesso!", "Aviso!", JOptionPane.INFORMATION_MESSAGE);
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(null, " Houve um problema ao inserir as novas presenças, verifique se todos os campos estão preenchidos!", "Aviso!", JOptionPane.WARNING_MESSAGE);
+                }
+
+                break;
+            case "FRIDAY":
+
+                try {
+                    for (int i = 0; i < tbPresenca.getRowCount(); i++) {
+                        String presenca = tbPresenca.getModel().getValueAt(i, 6).toString().toUpperCase();
+                        if (!presenca.equals("F") && !presenca.equals("P")) {
+                            JOptionPane.showMessageDialog(null, "Preencha todos os campos com P ou F!", "Aviso!", JOptionPane.WARNING_MESSAGE);
+                            btnSalvarAlteracoes.setEnabled(false);
+                            return;
                         }
-                        catch (Exception e)
-                        {
-                            JOptionPane.showMessageDialog(null, "Houve um problema ao inserir as novas presenças, verifique se todos os campos estão preenchidos!", "Aviso!", JOptionPane.WARNING_MESSAGE);
+                    }
+
+                    for (int i = 0; i < tbPresenca.getRowCount(); i++) {
+                        String id = tbPresenca.getModel().getValueAt(i, 0).toString();
+                        String presenca = tbPresenca.getModel().getValueAt(i, 6).toString().toUpperCase();
+
+                        if (presencaUpdate) {
+                            dao_presenca.updatePresencaCrianca(id, data_atual.toString(), presenca);
+                        } else {
+                            dao_presenca.insertPresencaCrianca(id, data_atual.toString(), presenca);
                         }
-                    
-                    break;
-                case "SATURDAY":
-                    
-                        try
-                        {
-                            for(int i = 0; i < tbPresenca.getRowCount(); i++)
-                            {
-                                String presenca = tbPresenca.getModel().getValueAt(i, 7).toString().toUpperCase();
-                                if(!presenca.equals("F") && !presenca.equals("P"))
-                                {
-                                    JOptionPane.showMessageDialog(null, "Preencha todos os campos com P ou F!", "Aviso!", JOptionPane.WARNING_MESSAGE);
-                                    btnSalvarAlteracoes.setEnabled(false);
-                                    return;
-                                }
-                            }
-                            
-                            for(int i = 0; i < tbPresenca.getRowCount(); i++)
-                            {
-                                String id = tbPresenca.getModel().getValueAt(i, 0).toString();
-                                String presenca = tbPresenca.getModel().getValueAt(i, 7).toString().toUpperCase();
-                                
-                                if(presencaUpdate)
-                                {
-                                    dao_presenca.updatePresencaCrianca(id, data_atual.toString(), presenca);
-                                }
-                                else
-                                {
-                                    dao_presenca.insertPresencaCrianca(id, data_atual.toString(), presenca);
-                                }
-                            }
-                            JOptionPane.showMessageDialog(null, "As presenças foram salvas com sucesso!", "Aviso!", JOptionPane.INFORMATION_MESSAGE);
+                    }
+                    JOptionPane.showMessageDialog(null, "As presenças foram salvas com sucesso!", "Aviso!", JOptionPane.INFORMATION_MESSAGE);
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(null, "Houve um problema ao inserir as novas presenças, verifique se todos os campos estão preenchidos!", "Aviso!", JOptionPane.WARNING_MESSAGE);
+                }
+
+                break;
+            case "SATURDAY":
+
+                try {
+                    for (int i = 0; i < tbPresenca.getRowCount(); i++) {
+                        String presenca = tbPresenca.getModel().getValueAt(i, 7).toString().toUpperCase();
+                        if (!presenca.equals("F") && !presenca.equals("P")) {
+                            JOptionPane.showMessageDialog(null, "Preencha todos os campos com P ou F!", "Aviso!", JOptionPane.WARNING_MESSAGE);
+                            btnSalvarAlteracoes.setEnabled(false);
+                            return;
                         }
-                        catch (Exception e)
-                        {
-                            JOptionPane.showMessageDialog(null, "Houve um problema ao inserir as novas presenças, verifique se todos os campos estão preenchidos!", "Aviso!", JOptionPane.WARNING_MESSAGE);
+                    }
+
+                    for (int i = 0; i < tbPresenca.getRowCount(); i++) {
+                        String id = tbPresenca.getModel().getValueAt(i, 0).toString();
+                        String presenca = tbPresenca.getModel().getValueAt(i, 7).toString().toUpperCase();
+
+                        if (presencaUpdate) {
+                            dao_presenca.updatePresencaCrianca(id, data_atual.toString(), presenca);
+                        } else {
+                            dao_presenca.insertPresencaCrianca(id, data_atual.toString(), presenca);
                         }
-                    
-                    break;
-                case "SUNDAY":
-                    
-                        try
-                        {
-                            for(int i = 0; i < tbPresenca.getRowCount(); i++)
-                            {
-                                String presenca = tbPresenca.getModel().getValueAt(i, 8).toString().toUpperCase();
-                                if(!presenca.equals("F") && !presenca.equals("P"))
-                                {
-                                    JOptionPane.showMessageDialog(null, "Preencha todos os campos com P ou F!", "Aviso!", JOptionPane.WARNING_MESSAGE);
-                                    btnSalvarAlteracoes.setEnabled(false);
-                                    return;
-                                }
-                            }
-                            
-                            for(int i = 0; i < tbPresenca.getRowCount(); i++)
-                            {
-                                String id = tbPresenca.getModel().getValueAt(i, 0).toString();
-                                String presenca = tbPresenca.getModel().getValueAt(i, 8).toString().toUpperCase();
-                                dao_presenca.insertPresencaCrianca(id, data_atual.toString(), presenca);
-                            }
-                            JOptionPane.showMessageDialog(null, "As presenças foram salvas com sucesso!", "Aviso!", JOptionPane.INFORMATION_MESSAGE);
+                    }
+                    JOptionPane.showMessageDialog(null, "As presenças foram salvas com sucesso!", "Aviso!", JOptionPane.INFORMATION_MESSAGE);
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(null, "Houve um problema ao inserir as novas presenças, verifique se todos os campos estão preenchidos!", "Aviso!", JOptionPane.WARNING_MESSAGE);
+                }
+
+                break;
+            case "SUNDAY":
+
+                try {
+                    for (int i = 0; i < tbPresenca.getRowCount(); i++) {
+                        String presenca = tbPresenca.getModel().getValueAt(i, 8).toString().toUpperCase();
+                        if (!presenca.equals("F") && !presenca.equals("P")) {
+                            JOptionPane.showMessageDialog(null, "Preencha todos os campos com P ou F!", "Aviso!", JOptionPane.WARNING_MESSAGE);
+                            btnSalvarAlteracoes.setEnabled(false);
+                            return;
                         }
-                        catch (Exception e)
-                        {
-                            JOptionPane.showMessageDialog(null, "Houve um problema ao inserir as novas presenças, verifique se todos os campos estão preenchidos!", "Aviso!", JOptionPane.WARNING_MESSAGE);
-                        }
-                    
-                    break;
-            }
-            
-            try {
-            if(dao_presenca.contPresencaData(Date.valueOf(data_atual)) > 0)
-            {
+                    }
+
+                    for (int i = 0; i < tbPresenca.getRowCount(); i++) {
+                        String id = tbPresenca.getModel().getValueAt(i, 0).toString();
+                        String presenca = tbPresenca.getModel().getValueAt(i, 8).toString().toUpperCase();
+                        dao_presenca.insertPresencaCrianca(id, data_atual.toString(), presenca);
+                    }
+                    JOptionPane.showMessageDialog(null, "As presenças foram salvas com sucesso!", "Aviso!", JOptionPane.INFORMATION_MESSAGE);
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(null, "Houve um problema ao inserir as novas presenças, verifique se todos os campos estão preenchidos!", "Aviso!", JOptionPane.WARNING_MESSAGE);
+                }
+
+                break;
+        }
+
+        try {
+            if (dao_presenca.contPresencaData(Date.valueOf(data_atual)) > 0) {
                 presencaUpdate = true;
             }
-            } catch (Exception ex) {
-                Logger.getLogger(frmMenu.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            
+        } catch (Exception ex) {
+            Logger.getLogger(frmMenu.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
     }//GEN-LAST:event_btnSalvarAlteracoesActionPerformed
 
     private void btnConsultasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultasActionPerformed
@@ -1020,489 +930,384 @@ public class frmMenu extends javax.swing.JFrame {
         consultaCrianca.setVisible(true);
     }//GEN-LAST:event_btnConsultasActionPerformed
 
-    private void btnRelCriancasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRelCriancasActionPerformed
-        DAOCrianca report = new DAOCrianca();
-        report.report();
-    }//GEN-LAST:event_btnRelCriancasActionPerformed
-
-    private void btnRelVoluntariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRelVoluntariosActionPerformed
-        DAOVoluntario report = new DAOVoluntario();
-        report.report();
-    }//GEN-LAST:event_btnRelVoluntariosActionPerformed
-
-    private void btnRelPresencasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRelPresencasActionPerformed
-        DAOPresenca report = new DAOPresenca();
-        report.report();
-    }//GEN-LAST:event_btnRelPresencasActionPerformed
-
     private void btnAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtualizarActionPerformed
-        
+
         String[] dados = new String[]{};
-        String[] colunas = new String[]{"ID","Nome ","Segunda ","Terça ", "Quarta ", "Quinta ", "Sexta ", "Sábado ", "Domingo "};
+        String[] colunas = new String[]{"ID", "Nome ", "Segunda ", "Terça ", "Quarta ", "Quinta ", "Sexta ", "Sábado ", "Domingo "};
         int id;
-        
+
         Date date = Date.valueOf(data_atual);
         DateTime data_calculator = new DateTime(date);
         DateTime date_temp;
         java.text.SimpleDateFormat data_format = new java.text.SimpleDateFormat("yyyy-MM-dd");
-        
-        try 
-        {
+
+        try {
             listaCriancasAtivas = dao_crianca.getCriancasAtivas();
-        } 
-        catch (Exception ex) 
-        {
+        } catch (Exception ex) {
             Logger.getLogger(frmMenu.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        tb_model = new DefaultTableModel()
-        {
-                @Override
-                public boolean isCellEditable(int row, int col) {
-                    switch(data_atual.getDayOfWeek().name())
-                    {
-                        case "MONDAY":
-                            return col == 2;
-                        case "TUESDAY":
-                            return col == 3;
-                        case "WENESDAY":
-                            return col == 4;
-                        case "THURSDAY":
-                            return col == 5;
-                        case "FRIDAY":
-                            return col == 6;
-                        case "SATURDAY":
-                            return col == 7;
-                        case "SUNDAY":
-                            return col == 8;
-                    }
-                    return false;
+
+        tb_model = new DefaultTableModel() {
+            @Override
+            public boolean isCellEditable(int row, int col) {
+                switch (data_atual.getDayOfWeek().name()) {
+                    case "MONDAY":
+                        return col == 2;
+                    case "TUESDAY":
+                        return col == 3;
+                    case "WENESDAY":
+                        return col == 4;
+                    case "THURSDAY":
+                        return col == 5;
+                    case "FRIDAY":
+                        return col == 6;
+                    case "SATURDAY":
+                        return col == 7;
+                    case "SUNDAY":
+                        return col == 8;
                 }
+                return false;
+            }
         };
-        
+
         tb_model.setColumnIdentifiers(colunas);
-        
-        for(int i =0; i < listaCriancasAtivas.size(); i++)
-        {
+
+        for (int i = 0; i < listaCriancasAtivas.size(); i++) {
             id = listaCriancasAtivas.get(i).getId();
             listaPresenca = new ArrayList<ModelPresenca>();
             ModelPresenca presenca_temp;
-            
-            switch(data_atual.getDayOfWeek().name())
-            {
+
+            switch (data_atual.getDayOfWeek().name()) {
                 case "MONDAY":
-                        try
-                        {
-                            if(presencaUpdate)
-                            {
-                                for(int j = 0; j >= 0; j--)
-                                {
-                                    date_temp = data_calculator.minusDays(j);
-                                    presenca_temp = dao_presenca.getPesquisaCriancaPresencaData(id, data_format.format(date_temp.toDate()));
-                                    if(presenca_temp == null)
-                                    {
-                                        presenca_temp = new ModelPresenca();
-                                        presenca_temp.setStatus("-");
-                                    }
-                                    listaPresenca.add(presenca_temp); 
+                    try {
+                        if (presencaUpdate) {
+                            for (int j = 0; j >= 0; j--) {
+                                date_temp = data_calculator.minusDays(j);
+                                presenca_temp = dao_presenca.getPesquisaCriancaPresencaData(id, data_format.format(date_temp.toDate()));
+                                if (presenca_temp == null) {
+                                    presenca_temp = new ModelPresenca();
+                                    presenca_temp.setStatus("-");
                                 }
-                                
-                                dados = new String[]
-                                {
-                                    listaCriancasAtivas.get(i).getId()+"",
-                                    listaCriancasAtivas.get(i).getNome(),
-                                    listaPresenca.get(0).getStatus(),
-                                };
+                                listaPresenca.add(presenca_temp);
                             }
+
+                            dados = new String[]{
+                                listaCriancasAtivas.get(i).getId() + "",
+                                listaCriancasAtivas.get(i).getNome(),
+                                listaPresenca.get(0).getStatus(),};
                         }
-                        catch (Exception e)
-                        {
-                            JOptionPane.showMessageDialog(null, "Não foi possível carregar todas presenças porque o registro está incompleto!", "Aviso!", JOptionPane.WARNING_MESSAGE);
-                            i = listaCriancasAtivas.size();
-                        }    
-                    
-                    
+                    } catch (Exception e) {
+                        JOptionPane.showMessageDialog(null, "Não foi possível carregar todas presenças porque o registro está incompleto!", "Aviso!", JOptionPane.WARNING_MESSAGE);
+                        i = listaCriancasAtivas.size();
+                    }
+
                     break;
                 case "TUESDAY":
-                    
-                        try
-                        {
-                            if(presencaUpdate)
-                            {
-                                
-                                for(int j = 1; j >= 0; j--)
-                                {
-                                    date_temp = data_calculator.minusDays(j);
-                                    presenca_temp = dao_presenca.getPesquisaCriancaPresencaData(id, data_format.format(date_temp.toDate()));
-                                    if(presenca_temp == null)
-                                    {
-                                        presenca_temp = new ModelPresenca();
-                                        presenca_temp.setStatus("-");
-                                    }
-                                    listaPresenca.add(presenca_temp); 
+
+                    try {
+                        if (presencaUpdate) {
+
+                            for (int j = 1; j >= 0; j--) {
+                                date_temp = data_calculator.minusDays(j);
+                                presenca_temp = dao_presenca.getPesquisaCriancaPresencaData(id, data_format.format(date_temp.toDate()));
+                                if (presenca_temp == null) {
+                                    presenca_temp = new ModelPresenca();
+                                    presenca_temp.setStatus("-");
                                 }
-                                
-                                dados = new String[]
-                                {
-                                    listaCriancasAtivas.get(i).getId()+"",
-                                    listaCriancasAtivas.get(i).getNome(),
-                                    listaPresenca.get(0).getStatus(),
-                                    listaPresenca.get(1).getStatus(),
-                                };
+                                listaPresenca.add(presenca_temp);
                             }
-                            else
-                            {
-                               
-                                for(int j = 1; j > 0; j--)
-                                {
-                                    date_temp = data_calculator.minusDays(j);
-                                    presenca_temp = dao_presenca.getPesquisaCriancaPresencaData(id, data_format.format(date_temp.toDate()));
-                                    if(presenca_temp == null)
-                                    {
-                                        presenca_temp = new ModelPresenca();
-                                        presenca_temp.setStatus("-");
-                                    }
-                                    listaPresenca.add(presenca_temp); 
+
+                            dados = new String[]{
+                                listaCriancasAtivas.get(i).getId() + "",
+                                listaCriancasAtivas.get(i).getNome(),
+                                listaPresenca.get(0).getStatus(),
+                                listaPresenca.get(1).getStatus(),};
+                        } else {
+
+                            for (int j = 1; j > 0; j--) {
+                                date_temp = data_calculator.minusDays(j);
+                                presenca_temp = dao_presenca.getPesquisaCriancaPresencaData(id, data_format.format(date_temp.toDate()));
+                                if (presenca_temp == null) {
+                                    presenca_temp = new ModelPresenca();
+                                    presenca_temp.setStatus("-");
                                 }
-                                
-                                dados = new String[]
-                                {
-                                    listaCriancasAtivas.get(i).getId()+"",
-                                    listaCriancasAtivas.get(i).getNome(),
-                                    listaPresenca.get(0).getStatus(),
-                                };
+                                listaPresenca.add(presenca_temp);
                             }
+
+                            dados = new String[]{
+                                listaCriancasAtivas.get(i).getId() + "",
+                                listaCriancasAtivas.get(i).getNome(),
+                                listaPresenca.get(0).getStatus(),};
                         }
-                        catch (Exception e)
-                        {
-                            JOptionPane.showMessageDialog(null, "Não foi possível carregar todas presenças porque o registro está incompleto!", "Aviso!", JOptionPane.WARNING_MESSAGE);
-                            i = listaCriancasAtivas.size();
-                        }
-                    
+                    } catch (Exception e) {
+                        JOptionPane.showMessageDialog(null, "Não foi possível carregar todas presenças porque o registro está incompleto!", "Aviso!", JOptionPane.WARNING_MESSAGE);
+                        i = listaCriancasAtivas.size();
+                    }
+
                     break;
                 case "WENESDAY":
-                    
-                        try
-                        {
-                            if(presencaUpdate)
-                            {
-                                
-                                for(int j = 2; j >= 0; j--)
-                                {
-                                    date_temp = data_calculator.minusDays(j);
-                                    presenca_temp = dao_presenca.getPesquisaCriancaPresencaData(id, data_format.format(date_temp.toDate()));
-                                    if(presenca_temp == null)
-                                    {
-                                        presenca_temp = new ModelPresenca();
-                                        presenca_temp.setStatus("-");
-                                    }
-                                    listaPresenca.add(presenca_temp); 
+
+                    try {
+                        if (presencaUpdate) {
+
+                            for (int j = 2; j >= 0; j--) {
+                                date_temp = data_calculator.minusDays(j);
+                                presenca_temp = dao_presenca.getPesquisaCriancaPresencaData(id, data_format.format(date_temp.toDate()));
+                                if (presenca_temp == null) {
+                                    presenca_temp = new ModelPresenca();
+                                    presenca_temp.setStatus("-");
                                 }
-                                
-                                dados = new String[]
-                                {
-                                    listaCriancasAtivas.get(i).getId()+"",
-                                    listaCriancasAtivas.get(i).getNome(),
-                                    listaPresenca.get(0).getStatus(),
-                                    listaPresenca.get(1).getStatus(),
-                                    listaPresenca.get(2).getStatus(),
-                                };
+                                listaPresenca.add(presenca_temp);
                             }
-                            else
-                            {
-                                
-                                for(int j = 2; j > 0; j--)
-                                {
-                                    date_temp = data_calculator.minusDays(j);
-                                    presenca_temp = dao_presenca.getPesquisaCriancaPresencaData(id, data_format.format(date_temp.toDate()));
-                                    if(presenca_temp == null)
-                                    {
-                                        presenca_temp = new ModelPresenca();
-                                        presenca_temp.setStatus("-");
-                                    }
-                                    listaPresenca.add(presenca_temp); 
+
+                            dados = new String[]{
+                                listaCriancasAtivas.get(i).getId() + "",
+                                listaCriancasAtivas.get(i).getNome(),
+                                listaPresenca.get(0).getStatus(),
+                                listaPresenca.get(1).getStatus(),
+                                listaPresenca.get(2).getStatus(),};
+                        } else {
+
+                            for (int j = 2; j > 0; j--) {
+                                date_temp = data_calculator.minusDays(j);
+                                presenca_temp = dao_presenca.getPesquisaCriancaPresencaData(id, data_format.format(date_temp.toDate()));
+                                if (presenca_temp == null) {
+                                    presenca_temp = new ModelPresenca();
+                                    presenca_temp.setStatus("-");
                                 }
-                                
-                                dados = new String[]
-                                {
-                                    listaCriancasAtivas.get(i).getId()+"",
-                                    listaCriancasAtivas.get(i).getNome(),
-                                    listaPresenca.get(0).getStatus(),
-                                    listaPresenca.get(1).getStatus(),
-                                };
+                                listaPresenca.add(presenca_temp);
                             }
+
+                            dados = new String[]{
+                                listaCriancasAtivas.get(i).getId() + "",
+                                listaCriancasAtivas.get(i).getNome(),
+                                listaPresenca.get(0).getStatus(),
+                                listaPresenca.get(1).getStatus(),};
                         }
-                        catch (Exception e)
-                        {
-                            JOptionPane.showMessageDialog(null, "Não foi possível carregar todas presenças porque o registro está incompleto!", "Aviso!", JOptionPane.WARNING_MESSAGE);
-                            i = listaCriancasAtivas.size();
-                        }
-                    
+                    } catch (Exception e) {
+                        JOptionPane.showMessageDialog(null, "Não foi possível carregar todas presenças porque o registro está incompleto!", "Aviso!", JOptionPane.WARNING_MESSAGE);
+                        i = listaCriancasAtivas.size();
+                    }
+
                     break;
                 case "THURSDAY":
-                    
-                        try
-                        {
-                            if(presencaUpdate)
-                            {
-                                for(int j = 3; j >= 0; j--)
-                                {
-                                    date_temp = data_calculator.minusDays(j);
-                                    presenca_temp = dao_presenca.getPesquisaCriancaPresencaData(id, data_format.format(date_temp.toDate()));
-                                    if(presenca_temp == null)
-                                    {
-                                        presenca_temp = new ModelPresenca();
-                                        presenca_temp.setStatus("-");
-                                    }
-                                    listaPresenca.add(presenca_temp); 
+
+                    try {
+                        if (presencaUpdate) {
+                            for (int j = 3; j >= 0; j--) {
+                                date_temp = data_calculator.minusDays(j);
+                                presenca_temp = dao_presenca.getPesquisaCriancaPresencaData(id, data_format.format(date_temp.toDate()));
+                                if (presenca_temp == null) {
+                                    presenca_temp = new ModelPresenca();
+                                    presenca_temp.setStatus("-");
                                 }
-                                
-                                dados = new String[]
-                                {
-                                    listaCriancasAtivas.get(i).getId()+"",
-                                    listaCriancasAtivas.get(i).getNome(),
-                                    listaPresenca.get(0).getStatus(),
-                                    listaPresenca.get(1).getStatus(),
-                                    listaPresenca.get(2).getStatus(),
-                                    listaPresenca.get(3).getStatus(),
-                                };
+                                listaPresenca.add(presenca_temp);
                             }
-                            else
-                            {
-                                
-                                for(int j = 3; j > 0; j--)
-                                {
-                                    date_temp = data_calculator.minusDays(j);
-                                    presenca_temp = dao_presenca.getPesquisaCriancaPresencaData(id, data_format.format(date_temp.toDate()));
-                                    if(presenca_temp == null)
-                                    {
-                                        presenca_temp = new ModelPresenca();
-                                        presenca_temp.setStatus("-");
-                                    }
-                                    listaPresenca.add(presenca_temp);                                    
+
+                            dados = new String[]{
+                                listaCriancasAtivas.get(i).getId() + "",
+                                listaCriancasAtivas.get(i).getNome(),
+                                listaPresenca.get(0).getStatus(),
+                                listaPresenca.get(1).getStatus(),
+                                listaPresenca.get(2).getStatus(),
+                                listaPresenca.get(3).getStatus(),};
+                        } else {
+
+                            for (int j = 3; j > 0; j--) {
+                                date_temp = data_calculator.minusDays(j);
+                                presenca_temp = dao_presenca.getPesquisaCriancaPresencaData(id, data_format.format(date_temp.toDate()));
+                                if (presenca_temp == null) {
+                                    presenca_temp = new ModelPresenca();
+                                    presenca_temp.setStatus("-");
                                 }
-                                
-                                dados = new String[]
-                                {
-                                    listaCriancasAtivas.get(i).getId()+"",
-                                    listaCriancasAtivas.get(i).getNome(),
-                                    listaPresenca.get(0).getStatus(),
-                                    listaPresenca.get(1).getStatus(),
-                                    listaPresenca.get(2).getStatus(),
-                                };
+                                listaPresenca.add(presenca_temp);
                             }
+
+                            dados = new String[]{
+                                listaCriancasAtivas.get(i).getId() + "",
+                                listaCriancasAtivas.get(i).getNome(),
+                                listaPresenca.get(0).getStatus(),
+                                listaPresenca.get(1).getStatus(),
+                                listaPresenca.get(2).getStatus(),};
                         }
-                        catch (Exception e)
-                        {
-                            JOptionPane.showMessageDialog(null, " Não foi possível carregar todas presenças porque o registro está incompleto!", "Aviso!", JOptionPane.WARNING_MESSAGE);
-                            i = listaCriancasAtivas.size();
-                        }                   
-                        
+                    } catch (Exception e) {
+                        JOptionPane.showMessageDialog(null, " Não foi possível carregar todas presenças porque o registro está incompleto!", "Aviso!", JOptionPane.WARNING_MESSAGE);
+                        i = listaCriancasAtivas.size();
+                    }
+
                     break;
                 case "FRIDAY":
-                    
-                        try
-                        {
-                            if(presencaUpdate)
-                            {
-                                for(int j = 4; j >= 0; j--)
-                                {
-                                    date_temp = data_calculator.minusDays(j);
-                                    presenca_temp = dao_presenca.getPesquisaCriancaPresencaData(id, data_format.format(date_temp.toDate()));
-                                    if(presenca_temp == null)
-                                    {
-                                        presenca_temp = new ModelPresenca();
-                                        presenca_temp.setStatus("-");
-                                    }
-                                    listaPresenca.add(presenca_temp); 
+
+                    try {
+                        if (presencaUpdate) {
+                            for (int j = 4; j >= 0; j--) {
+                                date_temp = data_calculator.minusDays(j);
+                                presenca_temp = dao_presenca.getPesquisaCriancaPresencaData(id, data_format.format(date_temp.toDate()));
+                                if (presenca_temp == null) {
+                                    presenca_temp = new ModelPresenca();
+                                    presenca_temp.setStatus("-");
                                 }
-                                
-                                dados = new String[]
-                                {
-                                    listaCriancasAtivas.get(i).getId()+"",
-                                    listaCriancasAtivas.get(i).getNome(),
-                                    listaPresenca.get(0).getStatus(),
-                                    listaPresenca.get(1).getStatus(),
-                                    listaPresenca.get(2).getStatus(),
-                                    listaPresenca.get(3).getStatus(),
-                                    listaPresenca.get(4).getStatus(),
-                                };
+                                listaPresenca.add(presenca_temp);
                             }
-                            else
-                            {
-                                
-                                for(int j = 4; j > 0; j--)
-                                {
-                                    date_temp = data_calculator.minusDays(j);
-                                    presenca_temp = dao_presenca.getPesquisaCriancaPresencaData(id, data_format.format(date_temp.toDate()));
-                                    if(presenca_temp == null)
-                                    {
-                                        presenca_temp = new ModelPresenca();
-                                        presenca_temp.setStatus("-");
-                                    }
-                                    listaPresenca.add(presenca_temp); 
+
+                            dados = new String[]{
+                                listaCriancasAtivas.get(i).getId() + "",
+                                listaCriancasAtivas.get(i).getNome(),
+                                listaPresenca.get(0).getStatus(),
+                                listaPresenca.get(1).getStatus(),
+                                listaPresenca.get(2).getStatus(),
+                                listaPresenca.get(3).getStatus(),
+                                listaPresenca.get(4).getStatus(),};
+                        } else {
+
+                            for (int j = 4; j > 0; j--) {
+                                date_temp = data_calculator.minusDays(j);
+                                presenca_temp = dao_presenca.getPesquisaCriancaPresencaData(id, data_format.format(date_temp.toDate()));
+                                if (presenca_temp == null) {
+                                    presenca_temp = new ModelPresenca();
+                                    presenca_temp.setStatus("-");
                                 }
-                                
-                                dados = new String[]
-                                {
-                                    listaCriancasAtivas.get(i).getId()+"",
-                                    listaCriancasAtivas.get(i).getNome(),
-                                    listaPresenca.get(0).getStatus(),
-                                    listaPresenca.get(1).getStatus(),
-                                    listaPresenca.get(2).getStatus(),
-                                    listaPresenca.get(3).getStatus(),
-                                };
+                                listaPresenca.add(presenca_temp);
                             }
+
+                            dados = new String[]{
+                                listaCriancasAtivas.get(i).getId() + "",
+                                listaCriancasAtivas.get(i).getNome(),
+                                listaPresenca.get(0).getStatus(),
+                                listaPresenca.get(1).getStatus(),
+                                listaPresenca.get(2).getStatus(),
+                                listaPresenca.get(3).getStatus(),};
                         }
-                        catch (Exception e)
-                        {
-                            JOptionPane.showMessageDialog(null, "Não foi possível carregar todas presenças porque o registro está incompleto!", "Aviso!", JOptionPane.WARNING_MESSAGE);
-                            i = listaCriancasAtivas.size();
-                        }
-                        
+                    } catch (Exception e) {
+                        JOptionPane.showMessageDialog(null, "Não foi possível carregar todas presenças porque o registro está incompleto!", "Aviso!", JOptionPane.WARNING_MESSAGE);
+                        i = listaCriancasAtivas.size();
+                    }
+
                     break;
                 case "SATURDAY":
-                    
-                        try
-                        {
-                            if(presencaUpdate)
-                            {
-                                for(int j = 5; j >= 0; j--)
-                                {
-                                    date_temp = data_calculator.minusDays(j);
-                                    presenca_temp = dao_presenca.getPesquisaCriancaPresencaData(id, data_format.format(date_temp.toDate()));
-                                    if(presenca_temp == null)
-                                    {
-                                        presenca_temp = new ModelPresenca();
-                                        presenca_temp.setStatus("-");
-                                    }
-                                    listaPresenca.add(presenca_temp); 
+
+                    try {
+                        if (presencaUpdate) {
+                            for (int j = 5; j >= 0; j--) {
+                                date_temp = data_calculator.minusDays(j);
+                                presenca_temp = dao_presenca.getPesquisaCriancaPresencaData(id, data_format.format(date_temp.toDate()));
+                                if (presenca_temp == null) {
+                                    presenca_temp = new ModelPresenca();
+                                    presenca_temp.setStatus("-");
                                 }
-                                
-                                dados = new String[]
-                                {
-                                    listaCriancasAtivas.get(i).getId()+"",
-                                    listaCriancasAtivas.get(i).getNome(),
-                                    listaPresenca.get(0).getStatus(),
-                                    listaPresenca.get(1).getStatus(),
-                                    listaPresenca.get(2).getStatus(),
-                                    listaPresenca.get(3).getStatus(),
-                                    listaPresenca.get(4).getStatus(),
-                                    listaPresenca.get(5).getStatus(),
-                                };
+                                listaPresenca.add(presenca_temp);
                             }
-                            else
-                            {
-                                
-                                for(int j = 5; j > 0 ; j--)
-                                {
-                                    date_temp = data_calculator.minusDays(j);
-                                    presenca_temp = dao_presenca.getPesquisaCriancaPresencaData(id, data_format.format(date_temp.toDate()));
-                                    if(presenca_temp == null)
-                                    {
-                                        presenca_temp = new ModelPresenca();
-                                        presenca_temp.setStatus("-");
-                                    }
-                                    listaPresenca.add(presenca_temp); 
+
+                            dados = new String[]{
+                                listaCriancasAtivas.get(i).getId() + "",
+                                listaCriancasAtivas.get(i).getNome(),
+                                listaPresenca.get(0).getStatus(),
+                                listaPresenca.get(1).getStatus(),
+                                listaPresenca.get(2).getStatus(),
+                                listaPresenca.get(3).getStatus(),
+                                listaPresenca.get(4).getStatus(),
+                                listaPresenca.get(5).getStatus(),};
+                        } else {
+
+                            for (int j = 5; j > 0; j--) {
+                                date_temp = data_calculator.minusDays(j);
+                                presenca_temp = dao_presenca.getPesquisaCriancaPresencaData(id, data_format.format(date_temp.toDate()));
+                                if (presenca_temp == null) {
+                                    presenca_temp = new ModelPresenca();
+                                    presenca_temp.setStatus("-");
                                 }
-                                
-                                dados = new String[]
-                                {
-                                    listaCriancasAtivas.get(i).getId()+"",
-                                    listaCriancasAtivas.get(i).getNome(),
-                                    listaPresenca.get(0).getStatus(),
-                                    listaPresenca.get(1).getStatus(),
-                                    listaPresenca.get(2).getStatus(),
-                                    listaPresenca.get(3).getStatus(),
-                                    listaPresenca.get(4).getStatus(),
-                                };
+                                listaPresenca.add(presenca_temp);
                             }
+
+                            dados = new String[]{
+                                listaCriancasAtivas.get(i).getId() + "",
+                                listaCriancasAtivas.get(i).getNome(),
+                                listaPresenca.get(0).getStatus(),
+                                listaPresenca.get(1).getStatus(),
+                                listaPresenca.get(2).getStatus(),
+                                listaPresenca.get(3).getStatus(),
+                                listaPresenca.get(4).getStatus(),};
                         }
-                        catch (Exception e)
-                        {
-                            JOptionPane.showMessageDialog(null,"Não foi possível carregar todas presenças porque o registro está incompleto!", "Aviso!", JOptionPane.WARNING_MESSAGE);
-                            i = listaCriancasAtivas.size();
-                        }
-                    
+                    } catch (Exception e) {
+                        JOptionPane.showMessageDialog(null, "Não foi possível carregar todas presenças porque o registro está incompleto!", "Aviso!", JOptionPane.WARNING_MESSAGE);
+                        i = listaCriancasAtivas.size();
+                    }
+
                     break;
                 case "SUNDAY":
-                    
-                        try
-                        {
-                            if(presencaUpdate)
-                            {
-                                
-                                for(int j = 6; j >= 0; j--)
-                                {
-                                    date_temp = data_calculator.minusDays(j);
-                                    presenca_temp = dao_presenca.getPesquisaCriancaPresencaData(id, data_format.format(date_temp.toDate()));
-                                    if(presenca_temp == null)
-                                    {
-                                        presenca_temp = new ModelPresenca();
-                                        presenca_temp.setStatus("-");
-                                    }
-                                    listaPresenca.add(presenca_temp); 
+
+                    try {
+                        if (presencaUpdate) {
+
+                            for (int j = 6; j >= 0; j--) {
+                                date_temp = data_calculator.minusDays(j);
+                                presenca_temp = dao_presenca.getPesquisaCriancaPresencaData(id, data_format.format(date_temp.toDate()));
+                                if (presenca_temp == null) {
+                                    presenca_temp = new ModelPresenca();
+                                    presenca_temp.setStatus("-");
                                 }
-                                
-                                dados = new String[]
-                                {
-                                    listaCriancasAtivas.get(i).getId()+"",
-                                    listaCriancasAtivas.get(i).getNome(),
-                                    listaPresenca.get(0).getStatus(),
-                                    listaPresenca.get(1).getStatus(),
-                                    listaPresenca.get(2).getStatus(),
-                                    listaPresenca.get(3).getStatus(),
-                                    listaPresenca.get(4).getStatus(),
-                                    listaPresenca.get(5).getStatus(),
-                                    listaPresenca.get(6).getStatus(),
-                                };
+                                listaPresenca.add(presenca_temp);
                             }
-                            else
-                            {
-                                
-                                for(int j = 6; j > 0; j--)
-                                {
-                                    date_temp = data_calculator.minusDays(j);
-                                    presenca_temp = dao_presenca.getPesquisaCriancaPresencaData(id, data_format.format(date_temp.toDate()));
-                                    if(presenca_temp == null)
-                                    {
-                                        presenca_temp = new ModelPresenca();
-                                        presenca_temp.setStatus("-");
-                                    }
-                                    listaPresenca.add(presenca_temp); 
+
+                            dados = new String[]{
+                                listaCriancasAtivas.get(i).getId() + "",
+                                listaCriancasAtivas.get(i).getNome(),
+                                listaPresenca.get(0).getStatus(),
+                                listaPresenca.get(1).getStatus(),
+                                listaPresenca.get(2).getStatus(),
+                                listaPresenca.get(3).getStatus(),
+                                listaPresenca.get(4).getStatus(),
+                                listaPresenca.get(5).getStatus(),
+                                listaPresenca.get(6).getStatus(),};
+                        } else {
+
+                            for (int j = 6; j > 0; j--) {
+                                date_temp = data_calculator.minusDays(j);
+                                presenca_temp = dao_presenca.getPesquisaCriancaPresencaData(id, data_format.format(date_temp.toDate()));
+                                if (presenca_temp == null) {
+                                    presenca_temp = new ModelPresenca();
+                                    presenca_temp.setStatus("-");
                                 }
-                                
-                                dados = new String[]
-                                {
-                                    listaCriancasAtivas.get(i).getId()+"",
-                                    listaCriancasAtivas.get(i).getNome(),
-                                    listaPresenca.get(0).getStatus(),
-                                    listaPresenca.get(1).getStatus(),
-                                    listaPresenca.get(2).getStatus(),
-                                    listaPresenca.get(3).getStatus(),
-                                    listaPresenca.get(4).getStatus(),
-                                    listaPresenca.get(5).getStatus(),
-                                };
+                                listaPresenca.add(presenca_temp);
                             }
+
+                            dados = new String[]{
+                                listaCriancasAtivas.get(i).getId() + "",
+                                listaCriancasAtivas.get(i).getNome(),
+                                listaPresenca.get(0).getStatus(),
+                                listaPresenca.get(1).getStatus(),
+                                listaPresenca.get(2).getStatus(),
+                                listaPresenca.get(3).getStatus(),
+                                listaPresenca.get(4).getStatus(),
+                                listaPresenca.get(5).getStatus(),};
                         }
-                        catch (Exception e)
-                        {
-                            JOptionPane.showMessageDialog(null, "Não foi possível carregar todas presenças porque o registro está incompleto!", "Aviso!", JOptionPane.WARNING_MESSAGE);
-                            i = listaCriancasAtivas.size();
-                        }
-                    
+                    } catch (Exception e) {
+                        JOptionPane.showMessageDialog(null, "Não foi possível carregar todas presenças porque o registro está incompleto!", "Aviso!", JOptionPane.WARNING_MESSAGE);
+                        i = listaCriancasAtivas.size();
+                    }
+
                     break;
             }
             tb_model.addRow(dados);
         }
         tb_model.isCellEditable(0, 5);
-        
+
         tbPresenca = new JTable();
         tbPresenca.setModel(tb_model);
         scrollpanelPresenca.setViewportView(tbPresenca);
         resizeColumnWidth(tbPresenca);
-        
+
     }//GEN-LAST:event_btnAtualizarActionPerformed
+
+    private void btnGerarRelatorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGerarRelatorioActionPerformed
+        frmRelatorio fr = null;
+        try {
+            fr = new frmRelatorio();
+        }catch(Exception ex){
+            Logger.getLogger(frmMenu.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        fr.setVisible(true);
+    }//GEN-LAST:event_btnGerarRelatorioActionPerformed
 
     private void btnCadInterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadInterActionPerformed
         // TODO add your handling code here:
@@ -1517,9 +1322,7 @@ public class frmMenu extends javax.swing.JFrame {
     private javax.swing.JButton btnCadInter;
     private javax.swing.JButton btnCadVol;
     private javax.swing.JButton btnConsultas;
-    private javax.swing.JButton btnRelCriancas;
-    private javax.swing.JButton btnRelPresencas;
-    private javax.swing.JButton btnRelVoluntarios;
+    private javax.swing.JButton btnGerarRelatorio;
     private javax.swing.JButton btnSalvarAlteracoes;
     private javax.swing.JScrollPane scrollpanelPresenca;
     private javax.swing.JTable tbPresenca;

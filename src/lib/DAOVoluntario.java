@@ -18,6 +18,8 @@ package lib;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import models.ModelVoluntario;
 
 public class DAOVoluntario extends DbAccess<ModelVoluntario>{
@@ -135,7 +137,8 @@ public class DAOVoluntario extends DbAccess<ModelVoluntario>{
         return voluntario;
     }   
     
-    public void report(){
-        super.report("src/Voluntarios.jrxml");
+    public void report(String arg){
+        Map map = new HashMap();
+        super.report("src/Voluntarios.jrxml", map);
     }
 }

@@ -19,6 +19,8 @@ import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import models.ModelPresenca;
 
 
@@ -129,7 +131,8 @@ public class DAOPresenca extends DbAccess<ModelPresenca>{
         return presenca;
     }   
     
-    public void report(){
-        super.report("src/Presencas.jrxml");
+    public void report(String arg){
+        Map map = new HashMap();
+        super.report("src/Presencas.jrxml", map);
     }
 }

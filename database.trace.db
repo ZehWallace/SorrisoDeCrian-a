@@ -271,481 +271,1540 @@ insert into presenca values(3, '2016-10-03', 'F')
 insert into presenca values(1, '2016-10-02', 'P')
 insert into presenca values(2, '2016-10-02', 'P')
 insert into presenca values(3, '2016-10-02', 'P') [42000-192]
-2016-11-25 23:11:13 jdbc[3]: exception
-org.h2.jdbc.JdbcSQLException: Column "OBSERVACAOLUZ_ELETRICA" not found; SQL statement:
-INSERT INTO Crianca (nome, data_nascimento, rg, sexo, status, endereco, nome_responsavel, tel_contato, observacaoluz_eletrica, agua_encanada, esgoto,convenio_medico, centro_saude, sarampo, rubeola, bronco_pneumonia, catapora, coqueluche, hepatite, meningite, convulsao, problemas_respiratorios, alergia, ja_foi_internada, diarreia_frequente, diabetes, insulina, outras_doencas, medicamentos_alergicos, pode_sair_sozinha) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?) [42122-192]
+2016-11-25 14:44:53 database: flush
+org.h2.message.DbException: General error: "java.lang.IllegalStateException: The file is locked: nio:C:/Users/Bruno/Documents/NetBeansProjects/SorrisoDeCrianca/database.mv.db [1.4.192/7]" [50000-192]
+	at org.h2.message.DbException.get(DbException.java:168)
+	at org.h2.message.DbException.convert(DbException.java:295)
+	at org.h2.mvstore.db.MVTableEngine$1.uncaughtException(MVTableEngine.java:94)
+	at org.h2.mvstore.MVStore.panic(MVStore.java:375)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:358)
+	at org.h2.mvstore.MVStore$Builder.open(MVStore.java:2893)
+	at org.h2.mvstore.db.MVTableEngine$Store.open(MVTableEngine.java:154)
+	at org.h2.mvstore.db.MVTableEngine.init(MVTableEngine.java:99)
+	at org.h2.engine.Database.getPageStore(Database.java:2463)
+	at org.h2.engine.Database.open(Database.java:692)
+	at org.h2.engine.Database.openDatabase(Database.java:270)
+	at org.h2.engine.Database.<init>(Database.java:264)
+	at org.h2.engine.Engine.openSession(Engine.java:64)
+	at org.h2.engine.Engine.openSession(Engine.java:176)
+	at org.h2.engine.Engine.createSessionAndValidate(Engine.java:154)
+	at org.h2.engine.Engine.createSession(Engine.java:137)
+	at org.h2.engine.Engine.createSession(Engine.java:27)
+	at org.h2.engine.SessionRemote.connectEmbeddedOrServer(SessionRemote.java:349)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:118)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:102)
+	at org.h2.Driver.connect(Driver.java:72)
+	at org.h2.jdbcx.JdbcDataSource.getJdbcConnection(JdbcDataSource.java:190)
+	at org.h2.jdbcx.JdbcDataSource.getConnection(JdbcDataSource.java:161)
+	at lib.DbAccess.Conectar(DbAccess.java:63)
+	at lib.DbAccess.RetornaUnicoValor(DbAccess.java:209)
+	at lib.Login.auth(Login.java:52)
+	at lib.Login.<init>(Login.java:34)
+	at sorrisodecrianca.frmLogin.btnEntrarActionPerformed(frmLogin.java:130)
+	at sorrisodecrianca.frmLogin.access$000(frmLogin.java:25)
+	at sorrisodecrianca.frmLogin$1.actionPerformed(frmLogin.java:63)
+	at javax.swing.AbstractButton.fireActionPerformed(AbstractButton.java:2022)
+	at javax.swing.AbstractButton$Handler.actionPerformed(AbstractButton.java:2348)
+	at javax.swing.DefaultButtonModel.fireActionPerformed(DefaultButtonModel.java:402)
+	at javax.swing.DefaultButtonModel.setPressed(DefaultButtonModel.java:259)
+	at javax.swing.AbstractButton.doClick(AbstractButton.java:376)
+	at javax.swing.plaf.basic.BasicRootPaneUI$Actions.actionPerformed(BasicRootPaneUI.java:208)
+	at javax.swing.SwingUtilities.notifyAction(SwingUtilities.java:1663)
+	at javax.swing.JComponent.processKeyBinding(JComponent.java:2882)
+	at javax.swing.KeyboardManager.fireBinding(KeyboardManager.java:307)
+	at javax.swing.KeyboardManager.fireKeyboardAction(KeyboardManager.java:250)
+	at javax.swing.JComponent.processKeyBindingsForAllComponents(JComponent.java:2974)
+	at javax.swing.JComponent.processKeyBindings(JComponent.java:2966)
+	at javax.swing.JComponent.processKeyEvent(JComponent.java:2845)
+	at java.awt.Component.processEvent(Component.java:6312)
+	at java.awt.Container.processEvent(Container.java:2236)
+	at java.awt.Component.dispatchEventImpl(Component.java:4891)
+	at java.awt.Container.dispatchEventImpl(Container.java:2294)
+	at java.awt.Component.dispatchEvent(Component.java:4713)
+	at java.awt.KeyboardFocusManager.redispatchEvent(KeyboardFocusManager.java:1954)
+	at java.awt.DefaultKeyboardFocusManager.dispatchKeyEvent(DefaultKeyboardFocusManager.java:806)
+	at java.awt.DefaultKeyboardFocusManager.preDispatchKeyEvent(DefaultKeyboardFocusManager.java:1074)
+	at java.awt.DefaultKeyboardFocusManager.typeAheadAssertions(DefaultKeyboardFocusManager.java:945)
+	at java.awt.DefaultKeyboardFocusManager.dispatchEvent(DefaultKeyboardFocusManager.java:771)
+	at java.awt.Component.dispatchEventImpl(Component.java:4762)
+	at java.awt.Container.dispatchEventImpl(Container.java:2294)
+	at java.awt.Window.dispatchEventImpl(Window.java:2750)
+	at java.awt.Component.dispatchEvent(Component.java:4713)
+	at java.awt.EventQueue.dispatchEventImpl(EventQueue.java:758)
+	at java.awt.EventQueue.access$500(EventQueue.java:97)
+	at java.awt.EventQueue$3.run(EventQueue.java:709)
+	at java.awt.EventQueue$3.run(EventQueue.java:703)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:76)
+	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:86)
+	at java.awt.EventQueue$4.run(EventQueue.java:731)
+	at java.awt.EventQueue$4.run(EventQueue.java:729)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:76)
+	at java.awt.EventQueue.dispatchEvent(EventQueue.java:728)
+	at java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:201)
+	at java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:116)
+	at java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:105)
+	at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)
+	at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:93)
+	at java.awt.EventDispatchThread.run(EventDispatchThread.java:82)
+Caused by: org.h2.jdbc.JdbcSQLException: General error: "java.lang.IllegalStateException: The file is locked: nio:C:/Users/Bruno/Documents/NetBeansProjects/SorrisoDeCrianca/database.mv.db [1.4.192/7]" [50000-192]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	... 75 more
+Caused by: java.lang.IllegalStateException: The file is locked: nio:C:/Users/Bruno/Documents/NetBeansProjects/SorrisoDeCrianca/database.mv.db [1.4.192/7]
+	at org.h2.mvstore.DataUtils.newIllegalStateException(DataUtils.java:773)
+	at org.h2.mvstore.FileStore.open(FileStore.java:172)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:344)
+	... 70 more
+2016-11-25 14:45:33 database: flush
+org.h2.message.DbException: General error: "java.lang.IllegalStateException: The file is locked: nio:C:/Users/Bruno/Documents/NetBeansProjects/SorrisoDeCrianca/database.mv.db [1.4.192/7]" [50000-192]
+	at org.h2.message.DbException.get(DbException.java:168)
+	at org.h2.message.DbException.convert(DbException.java:295)
+	at org.h2.mvstore.db.MVTableEngine$1.uncaughtException(MVTableEngine.java:94)
+	at org.h2.mvstore.MVStore.panic(MVStore.java:375)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:358)
+	at org.h2.mvstore.MVStore$Builder.open(MVStore.java:2893)
+	at org.h2.mvstore.db.MVTableEngine$Store.open(MVTableEngine.java:154)
+	at org.h2.mvstore.db.MVTableEngine.init(MVTableEngine.java:99)
+	at org.h2.engine.Database.getPageStore(Database.java:2463)
+	at org.h2.engine.Database.open(Database.java:692)
+	at org.h2.engine.Database.openDatabase(Database.java:270)
+	at org.h2.engine.Database.<init>(Database.java:264)
+	at org.h2.engine.Engine.openSession(Engine.java:64)
+	at org.h2.engine.Engine.openSession(Engine.java:176)
+	at org.h2.engine.Engine.createSessionAndValidate(Engine.java:154)
+	at org.h2.engine.Engine.createSession(Engine.java:137)
+	at org.h2.engine.Engine.createSession(Engine.java:27)
+	at org.h2.engine.SessionRemote.connectEmbeddedOrServer(SessionRemote.java:349)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:118)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:102)
+	at org.h2.Driver.connect(Driver.java:72)
+	at workbench.db.DbDriver.connect(DbDriver.java:513)
+	at workbench.db.ConnectionMgr.connect(ConnectionMgr.java:244)
+	at workbench.db.ConnectionMgr.getConnection(ConnectionMgr.java:172)
+	at workbench.gui.components.ConnectionSelector.doConnect(ConnectionSelector.java:227)
+	at workbench.gui.components.ConnectionSelector$1.run(ConnectionSelector.java:131)
+Caused by: org.h2.jdbc.JdbcSQLException: General error: "java.lang.IllegalStateException: The file is locked: nio:C:/Users/Bruno/Documents/NetBeansProjects/SorrisoDeCrianca/database.mv.db [1.4.192/7]" [50000-192]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	... 26 more
+Caused by: java.lang.IllegalStateException: The file is locked: nio:C:/Users/Bruno/Documents/NetBeansProjects/SorrisoDeCrianca/database.mv.db [1.4.192/7]
+	at org.h2.mvstore.DataUtils.newIllegalStateException(DataUtils.java:773)
+	at org.h2.mvstore.FileStore.open(FileStore.java:172)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:344)
+	... 21 more
+2016-11-25 14:45:48 database: flush
+org.h2.message.DbException: General error: "java.lang.IllegalStateException: The file is locked: nio:C:/Users/Bruno/Documents/NetBeansProjects/SorrisoDeCrianca/database.mv.db [1.4.192/7]" [50000-192]
+	at org.h2.message.DbException.get(DbException.java:168)
+	at org.h2.message.DbException.convert(DbException.java:295)
+	at org.h2.mvstore.db.MVTableEngine$1.uncaughtException(MVTableEngine.java:94)
+	at org.h2.mvstore.MVStore.panic(MVStore.java:375)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:358)
+	at org.h2.mvstore.MVStore$Builder.open(MVStore.java:2893)
+	at org.h2.mvstore.db.MVTableEngine$Store.open(MVTableEngine.java:154)
+	at org.h2.mvstore.db.MVTableEngine.init(MVTableEngine.java:99)
+	at org.h2.engine.Database.getPageStore(Database.java:2463)
+	at org.h2.engine.Database.open(Database.java:692)
+	at org.h2.engine.Database.openDatabase(Database.java:270)
+	at org.h2.engine.Database.<init>(Database.java:264)
+	at org.h2.engine.Engine.openSession(Engine.java:64)
+	at org.h2.engine.Engine.openSession(Engine.java:176)
+	at org.h2.engine.Engine.createSessionAndValidate(Engine.java:154)
+	at org.h2.engine.Engine.createSession(Engine.java:137)
+	at org.h2.engine.Engine.createSession(Engine.java:27)
+	at org.h2.engine.SessionRemote.connectEmbeddedOrServer(SessionRemote.java:349)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:118)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:102)
+	at org.h2.Driver.connect(Driver.java:72)
+	at workbench.db.DbDriver.connect(DbDriver.java:513)
+	at workbench.db.ConnectionMgr.connect(ConnectionMgr.java:244)
+	at workbench.db.ConnectionMgr.getConnection(ConnectionMgr.java:172)
+	at workbench.gui.components.ConnectionSelector.doConnect(ConnectionSelector.java:227)
+	at workbench.gui.components.ConnectionSelector$1.run(ConnectionSelector.java:131)
+Caused by: org.h2.jdbc.JdbcSQLException: General error: "java.lang.IllegalStateException: The file is locked: nio:C:/Users/Bruno/Documents/NetBeansProjects/SorrisoDeCrianca/database.mv.db [1.4.192/7]" [50000-192]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	... 26 more
+Caused by: java.lang.IllegalStateException: The file is locked: nio:C:/Users/Bruno/Documents/NetBeansProjects/SorrisoDeCrianca/database.mv.db [1.4.192/7]
+	at org.h2.mvstore.DataUtils.newIllegalStateException(DataUtils.java:773)
+	at org.h2.mvstore.FileStore.open(FileStore.java:172)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:344)
+	... 21 more
+2016-11-25 14:46:06 database: flush
+org.h2.message.DbException: General error: "java.lang.IllegalStateException: The file is locked: nio:C:/Users/Bruno/Documents/NetBeansProjects/SorrisoDeCrianca/database.mv.db [1.4.192/7]" [50000-192]
+	at org.h2.message.DbException.get(DbException.java:168)
+	at org.h2.message.DbException.convert(DbException.java:295)
+	at org.h2.mvstore.db.MVTableEngine$1.uncaughtException(MVTableEngine.java:94)
+	at org.h2.mvstore.MVStore.panic(MVStore.java:375)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:358)
+	at org.h2.mvstore.MVStore$Builder.open(MVStore.java:2893)
+	at org.h2.mvstore.db.MVTableEngine$Store.open(MVTableEngine.java:154)
+	at org.h2.mvstore.db.MVTableEngine.init(MVTableEngine.java:99)
+	at org.h2.engine.Database.getPageStore(Database.java:2463)
+	at org.h2.engine.Database.open(Database.java:692)
+	at org.h2.engine.Database.openDatabase(Database.java:270)
+	at org.h2.engine.Database.<init>(Database.java:264)
+	at org.h2.engine.Engine.openSession(Engine.java:64)
+	at org.h2.engine.Engine.openSession(Engine.java:176)
+	at org.h2.engine.Engine.createSessionAndValidate(Engine.java:154)
+	at org.h2.engine.Engine.createSession(Engine.java:137)
+	at org.h2.engine.Engine.createSession(Engine.java:27)
+	at org.h2.engine.SessionRemote.connectEmbeddedOrServer(SessionRemote.java:349)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:118)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:102)
+	at org.h2.Driver.connect(Driver.java:72)
+	at workbench.db.DbDriver.connect(DbDriver.java:513)
+	at workbench.db.ConnectionMgr.connect(ConnectionMgr.java:244)
+	at workbench.db.ConnectionMgr.getConnection(ConnectionMgr.java:172)
+	at workbench.gui.components.ConnectionSelector.doConnect(ConnectionSelector.java:227)
+	at workbench.gui.components.ConnectionSelector$1.run(ConnectionSelector.java:131)
+Caused by: org.h2.jdbc.JdbcSQLException: General error: "java.lang.IllegalStateException: The file is locked: nio:C:/Users/Bruno/Documents/NetBeansProjects/SorrisoDeCrianca/database.mv.db [1.4.192/7]" [50000-192]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	... 26 more
+Caused by: java.lang.IllegalStateException: The file is locked: nio:C:/Users/Bruno/Documents/NetBeansProjects/SorrisoDeCrianca/database.mv.db [1.4.192/7]
+	at org.h2.mvstore.DataUtils.newIllegalStateException(DataUtils.java:773)
+	at org.h2.mvstore.FileStore.open(FileStore.java:172)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:344)
+	... 21 more
+2016-11-25 14:48:11 database: flush
+org.h2.message.DbException: General error: "java.lang.IllegalStateException: The file is locked: nio:C:/Users/Bruno/Documents/NetBeansProjects/SorrisoDeCrianca/database.mv.db [1.4.192/7]" [50000-192]
+	at org.h2.message.DbException.get(DbException.java:168)
+	at org.h2.message.DbException.convert(DbException.java:295)
+	at org.h2.mvstore.db.MVTableEngine$1.uncaughtException(MVTableEngine.java:94)
+	at org.h2.mvstore.MVStore.panic(MVStore.java:375)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:358)
+	at org.h2.mvstore.MVStore$Builder.open(MVStore.java:2893)
+	at org.h2.mvstore.db.MVTableEngine$Store.open(MVTableEngine.java:154)
+	at org.h2.mvstore.db.MVTableEngine.init(MVTableEngine.java:99)
+	at org.h2.engine.Database.getPageStore(Database.java:2463)
+	at org.h2.engine.Database.open(Database.java:692)
+	at org.h2.engine.Database.openDatabase(Database.java:270)
+	at org.h2.engine.Database.<init>(Database.java:264)
+	at org.h2.engine.Engine.openSession(Engine.java:64)
+	at org.h2.engine.Engine.openSession(Engine.java:176)
+	at org.h2.engine.Engine.createSessionAndValidate(Engine.java:154)
+	at org.h2.engine.Engine.createSession(Engine.java:137)
+	at org.h2.engine.Engine.createSession(Engine.java:27)
+	at org.h2.engine.SessionRemote.connectEmbeddedOrServer(SessionRemote.java:349)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:118)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:102)
+	at org.h2.Driver.connect(Driver.java:72)
+	at org.h2.jdbcx.JdbcDataSource.getJdbcConnection(JdbcDataSource.java:190)
+	at org.h2.jdbcx.JdbcDataSource.getConnection(JdbcDataSource.java:161)
+	at lib.DbAccess.Conectar(DbAccess.java:63)
+	at lib.DbAccess.RetornaUnicoValor(DbAccess.java:209)
+	at lib.Login.auth(Login.java:52)
+	at lib.Login.<init>(Login.java:34)
+	at sorrisodecrianca.frmLogin.btnEntrarActionPerformed(frmLogin.java:130)
+	at sorrisodecrianca.frmLogin.access$000(frmLogin.java:25)
+	at sorrisodecrianca.frmLogin$1.actionPerformed(frmLogin.java:63)
+	at javax.swing.AbstractButton.fireActionPerformed(AbstractButton.java:2022)
+	at javax.swing.AbstractButton$Handler.actionPerformed(AbstractButton.java:2348)
+	at javax.swing.DefaultButtonModel.fireActionPerformed(DefaultButtonModel.java:402)
+	at javax.swing.DefaultButtonModel.setPressed(DefaultButtonModel.java:259)
+	at javax.swing.AbstractButton.doClick(AbstractButton.java:376)
+	at javax.swing.plaf.basic.BasicRootPaneUI$Actions.actionPerformed(BasicRootPaneUI.java:208)
+	at javax.swing.SwingUtilities.notifyAction(SwingUtilities.java:1663)
+	at javax.swing.JComponent.processKeyBinding(JComponent.java:2882)
+	at javax.swing.KeyboardManager.fireBinding(KeyboardManager.java:307)
+	at javax.swing.KeyboardManager.fireKeyboardAction(KeyboardManager.java:250)
+	at javax.swing.JComponent.processKeyBindingsForAllComponents(JComponent.java:2974)
+	at javax.swing.JComponent.processKeyBindings(JComponent.java:2966)
+	at javax.swing.JComponent.processKeyEvent(JComponent.java:2845)
+	at java.awt.Component.processEvent(Component.java:6312)
+	at java.awt.Container.processEvent(Container.java:2236)
+	at java.awt.Component.dispatchEventImpl(Component.java:4891)
+	at java.awt.Container.dispatchEventImpl(Container.java:2294)
+	at java.awt.Component.dispatchEvent(Component.java:4713)
+	at java.awt.KeyboardFocusManager.redispatchEvent(KeyboardFocusManager.java:1954)
+	at java.awt.DefaultKeyboardFocusManager.dispatchKeyEvent(DefaultKeyboardFocusManager.java:806)
+	at java.awt.DefaultKeyboardFocusManager.preDispatchKeyEvent(DefaultKeyboardFocusManager.java:1074)
+	at java.awt.DefaultKeyboardFocusManager.typeAheadAssertions(DefaultKeyboardFocusManager.java:945)
+	at java.awt.DefaultKeyboardFocusManager.dispatchEvent(DefaultKeyboardFocusManager.java:771)
+	at java.awt.Component.dispatchEventImpl(Component.java:4762)
+	at java.awt.Container.dispatchEventImpl(Container.java:2294)
+	at java.awt.Window.dispatchEventImpl(Window.java:2750)
+	at java.awt.Component.dispatchEvent(Component.java:4713)
+	at java.awt.EventQueue.dispatchEventImpl(EventQueue.java:758)
+	at java.awt.EventQueue.access$500(EventQueue.java:97)
+	at java.awt.EventQueue$3.run(EventQueue.java:709)
+	at java.awt.EventQueue$3.run(EventQueue.java:703)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:76)
+	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:86)
+	at java.awt.EventQueue$4.run(EventQueue.java:731)
+	at java.awt.EventQueue$4.run(EventQueue.java:729)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:76)
+	at java.awt.EventQueue.dispatchEvent(EventQueue.java:728)
+	at java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:201)
+	at java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:116)
+	at java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:105)
+	at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)
+	at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:93)
+	at java.awt.EventDispatchThread.run(EventDispatchThread.java:82)
+Caused by: org.h2.jdbc.JdbcSQLException: General error: "java.lang.IllegalStateException: The file is locked: nio:C:/Users/Bruno/Documents/NetBeansProjects/SorrisoDeCrianca/database.mv.db [1.4.192/7]" [50000-192]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	... 75 more
+Caused by: java.lang.IllegalStateException: The file is locked: nio:C:/Users/Bruno/Documents/NetBeansProjects/SorrisoDeCrianca/database.mv.db [1.4.192/7]
+	at org.h2.mvstore.DataUtils.newIllegalStateException(DataUtils.java:773)
+	at org.h2.mvstore.FileStore.open(FileStore.java:172)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:344)
+	... 70 more
+2016-11-25 14:48:13 database: flush
+org.h2.message.DbException: General error: "java.lang.IllegalStateException: The file is locked: nio:C:/Users/Bruno/Documents/NetBeansProjects/SorrisoDeCrianca/database.mv.db [1.4.192/7]" [50000-192]
+	at org.h2.message.DbException.get(DbException.java:168)
+	at org.h2.message.DbException.convert(DbException.java:295)
+	at org.h2.mvstore.db.MVTableEngine$1.uncaughtException(MVTableEngine.java:94)
+	at org.h2.mvstore.MVStore.panic(MVStore.java:375)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:358)
+	at org.h2.mvstore.MVStore$Builder.open(MVStore.java:2893)
+	at org.h2.mvstore.db.MVTableEngine$Store.open(MVTableEngine.java:154)
+	at org.h2.mvstore.db.MVTableEngine.init(MVTableEngine.java:99)
+	at org.h2.engine.Database.getPageStore(Database.java:2463)
+	at org.h2.engine.Database.open(Database.java:692)
+	at org.h2.engine.Database.openDatabase(Database.java:270)
+	at org.h2.engine.Database.<init>(Database.java:264)
+	at org.h2.engine.Engine.openSession(Engine.java:64)
+	at org.h2.engine.Engine.openSession(Engine.java:176)
+	at org.h2.engine.Engine.createSessionAndValidate(Engine.java:154)
+	at org.h2.engine.Engine.createSession(Engine.java:137)
+	at org.h2.engine.Engine.createSession(Engine.java:27)
+	at org.h2.engine.SessionRemote.connectEmbeddedOrServer(SessionRemote.java:349)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:118)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:102)
+	at org.h2.Driver.connect(Driver.java:72)
+	at org.h2.jdbcx.JdbcDataSource.getJdbcConnection(JdbcDataSource.java:190)
+	at org.h2.jdbcx.JdbcDataSource.getConnection(JdbcDataSource.java:161)
+	at lib.DbAccess.Conectar(DbAccess.java:63)
+	at lib.DbAccess.RetornaUnicoValor(DbAccess.java:209)
+	at lib.Login.auth(Login.java:52)
+	at lib.Login.<init>(Login.java:34)
+	at sorrisodecrianca.frmLogin.btnEntrarActionPerformed(frmLogin.java:130)
+	at sorrisodecrianca.frmLogin.access$000(frmLogin.java:25)
+	at sorrisodecrianca.frmLogin$1.actionPerformed(frmLogin.java:63)
+	at javax.swing.AbstractButton.fireActionPerformed(AbstractButton.java:2022)
+	at javax.swing.AbstractButton$Handler.actionPerformed(AbstractButton.java:2348)
+	at javax.swing.DefaultButtonModel.fireActionPerformed(DefaultButtonModel.java:402)
+	at javax.swing.DefaultButtonModel.setPressed(DefaultButtonModel.java:259)
+	at javax.swing.plaf.basic.BasicButtonListener.mouseReleased(BasicButtonListener.java:252)
+	at java.awt.Component.processMouseEvent(Component.java:6535)
+	at javax.swing.JComponent.processMouseEvent(JComponent.java:3324)
+	at java.awt.Component.processEvent(Component.java:6300)
+	at java.awt.Container.processEvent(Container.java:2236)
+	at java.awt.Component.dispatchEventImpl(Component.java:4891)
+	at java.awt.Container.dispatchEventImpl(Container.java:2294)
+	at java.awt.Component.dispatchEvent(Component.java:4713)
+	at java.awt.LightweightDispatcher.retargetMouseEvent(Container.java:4888)
+	at java.awt.LightweightDispatcher.processMouseEvent(Container.java:4525)
+	at java.awt.LightweightDispatcher.dispatchEvent(Container.java:4466)
+	at java.awt.Container.dispatchEventImpl(Container.java:2280)
+	at java.awt.Window.dispatchEventImpl(Window.java:2750)
+	at java.awt.Component.dispatchEvent(Component.java:4713)
+	at java.awt.EventQueue.dispatchEventImpl(EventQueue.java:758)
+	at java.awt.EventQueue.access$500(EventQueue.java:97)
+	at java.awt.EventQueue$3.run(EventQueue.java:709)
+	at java.awt.EventQueue$3.run(EventQueue.java:703)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:76)
+	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:86)
+	at java.awt.EventQueue$4.run(EventQueue.java:731)
+	at java.awt.EventQueue$4.run(EventQueue.java:729)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:76)
+	at java.awt.EventQueue.dispatchEvent(EventQueue.java:728)
+	at java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:201)
+	at java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:116)
+	at java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:105)
+	at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)
+	at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:93)
+	at java.awt.EventDispatchThread.run(EventDispatchThread.java:82)
+Caused by: org.h2.jdbc.JdbcSQLException: General error: "java.lang.IllegalStateException: The file is locked: nio:C:/Users/Bruno/Documents/NetBeansProjects/SorrisoDeCrianca/database.mv.db [1.4.192/7]" [50000-192]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	... 66 more
+Caused by: java.lang.IllegalStateException: The file is locked: nio:C:/Users/Bruno/Documents/NetBeansProjects/SorrisoDeCrianca/database.mv.db [1.4.192/7]
+	at org.h2.mvstore.DataUtils.newIllegalStateException(DataUtils.java:773)
+	at org.h2.mvstore.FileStore.open(FileStore.java:172)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:344)
+	... 61 more
+2016-11-25 14:48:17 database: flush
+org.h2.message.DbException: General error: "java.lang.IllegalStateException: The file is locked: nio:C:/Users/Bruno/Documents/NetBeansProjects/SorrisoDeCrianca/database.mv.db [1.4.192/7]" [50000-192]
+	at org.h2.message.DbException.get(DbException.java:168)
+	at org.h2.message.DbException.convert(DbException.java:295)
+	at org.h2.mvstore.db.MVTableEngine$1.uncaughtException(MVTableEngine.java:94)
+	at org.h2.mvstore.MVStore.panic(MVStore.java:375)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:358)
+	at org.h2.mvstore.MVStore$Builder.open(MVStore.java:2893)
+	at org.h2.mvstore.db.MVTableEngine$Store.open(MVTableEngine.java:154)
+	at org.h2.mvstore.db.MVTableEngine.init(MVTableEngine.java:99)
+	at org.h2.engine.Database.getPageStore(Database.java:2463)
+	at org.h2.engine.Database.open(Database.java:692)
+	at org.h2.engine.Database.openDatabase(Database.java:270)
+	at org.h2.engine.Database.<init>(Database.java:264)
+	at org.h2.engine.Engine.openSession(Engine.java:64)
+	at org.h2.engine.Engine.openSession(Engine.java:176)
+	at org.h2.engine.Engine.createSessionAndValidate(Engine.java:154)
+	at org.h2.engine.Engine.createSession(Engine.java:137)
+	at org.h2.engine.Engine.createSession(Engine.java:27)
+	at org.h2.engine.SessionRemote.connectEmbeddedOrServer(SessionRemote.java:349)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:118)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:102)
+	at org.h2.Driver.connect(Driver.java:72)
+	at org.h2.jdbcx.JdbcDataSource.getJdbcConnection(JdbcDataSource.java:190)
+	at org.h2.jdbcx.JdbcDataSource.getConnection(JdbcDataSource.java:161)
+	at lib.DbAccess.Conectar(DbAccess.java:63)
+	at lib.DbAccess.RetornaUnicoValor(DbAccess.java:209)
+	at lib.Login.auth(Login.java:52)
+	at lib.Login.<init>(Login.java:34)
+	at sorrisodecrianca.frmLogin.btnEntrarActionPerformed(frmLogin.java:130)
+	at sorrisodecrianca.frmLogin.access$000(frmLogin.java:25)
+	at sorrisodecrianca.frmLogin$1.actionPerformed(frmLogin.java:63)
+	at javax.swing.AbstractButton.fireActionPerformed(AbstractButton.java:2022)
+	at javax.swing.AbstractButton$Handler.actionPerformed(AbstractButton.java:2348)
+	at javax.swing.DefaultButtonModel.fireActionPerformed(DefaultButtonModel.java:402)
+	at javax.swing.DefaultButtonModel.setPressed(DefaultButtonModel.java:259)
+	at javax.swing.plaf.basic.BasicButtonListener.mouseReleased(BasicButtonListener.java:252)
+	at java.awt.Component.processMouseEvent(Component.java:6535)
+	at javax.swing.JComponent.processMouseEvent(JComponent.java:3324)
+	at java.awt.Component.processEvent(Component.java:6300)
+	at java.awt.Container.processEvent(Container.java:2236)
+	at java.awt.Component.dispatchEventImpl(Component.java:4891)
+	at java.awt.Container.dispatchEventImpl(Container.java:2294)
+	at java.awt.Component.dispatchEvent(Component.java:4713)
+	at java.awt.LightweightDispatcher.retargetMouseEvent(Container.java:4888)
+	at java.awt.LightweightDispatcher.processMouseEvent(Container.java:4525)
+	at java.awt.LightweightDispatcher.dispatchEvent(Container.java:4466)
+	at java.awt.Container.dispatchEventImpl(Container.java:2280)
+	at java.awt.Window.dispatchEventImpl(Window.java:2750)
+	at java.awt.Component.dispatchEvent(Component.java:4713)
+	at java.awt.EventQueue.dispatchEventImpl(EventQueue.java:758)
+	at java.awt.EventQueue.access$500(EventQueue.java:97)
+	at java.awt.EventQueue$3.run(EventQueue.java:709)
+	at java.awt.EventQueue$3.run(EventQueue.java:703)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:76)
+	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:86)
+	at java.awt.EventQueue$4.run(EventQueue.java:731)
+	at java.awt.EventQueue$4.run(EventQueue.java:729)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:76)
+	at java.awt.EventQueue.dispatchEvent(EventQueue.java:728)
+	at java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:201)
+	at java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:116)
+	at java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:105)
+	at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)
+	at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:93)
+	at java.awt.EventDispatchThread.run(EventDispatchThread.java:82)
+Caused by: org.h2.jdbc.JdbcSQLException: General error: "java.lang.IllegalStateException: The file is locked: nio:C:/Users/Bruno/Documents/NetBeansProjects/SorrisoDeCrianca/database.mv.db [1.4.192/7]" [50000-192]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	... 66 more
+Caused by: java.lang.IllegalStateException: The file is locked: nio:C:/Users/Bruno/Documents/NetBeansProjects/SorrisoDeCrianca/database.mv.db [1.4.192/7]
+	at org.h2.mvstore.DataUtils.newIllegalStateException(DataUtils.java:773)
+	at org.h2.mvstore.FileStore.open(FileStore.java:172)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:344)
+	... 61 more
+2016-11-25 14:48:26 database: flush
+org.h2.message.DbException: General error: "java.lang.IllegalStateException: The file is locked: nio:C:/Users/Bruno/Documents/NetBeansProjects/SorrisoDeCrianca/database.mv.db [1.4.192/7]" [50000-192]
+	at org.h2.message.DbException.get(DbException.java:168)
+	at org.h2.message.DbException.convert(DbException.java:295)
+	at org.h2.mvstore.db.MVTableEngine$1.uncaughtException(MVTableEngine.java:94)
+	at org.h2.mvstore.MVStore.panic(MVStore.java:375)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:358)
+	at org.h2.mvstore.MVStore$Builder.open(MVStore.java:2893)
+	at org.h2.mvstore.db.MVTableEngine$Store.open(MVTableEngine.java:154)
+	at org.h2.mvstore.db.MVTableEngine.init(MVTableEngine.java:99)
+	at org.h2.engine.Database.getPageStore(Database.java:2463)
+	at org.h2.engine.Database.open(Database.java:692)
+	at org.h2.engine.Database.openDatabase(Database.java:270)
+	at org.h2.engine.Database.<init>(Database.java:264)
+	at org.h2.engine.Engine.openSession(Engine.java:64)
+	at org.h2.engine.Engine.openSession(Engine.java:176)
+	at org.h2.engine.Engine.createSessionAndValidate(Engine.java:154)
+	at org.h2.engine.Engine.createSession(Engine.java:137)
+	at org.h2.engine.Engine.createSession(Engine.java:27)
+	at org.h2.engine.SessionRemote.connectEmbeddedOrServer(SessionRemote.java:349)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:118)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:102)
+	at org.h2.Driver.connect(Driver.java:72)
+	at org.h2.jdbcx.JdbcDataSource.getJdbcConnection(JdbcDataSource.java:190)
+	at org.h2.jdbcx.JdbcDataSource.getConnection(JdbcDataSource.java:161)
+	at lib.DbAccess.Conectar(DbAccess.java:63)
+	at lib.DbAccess.RetornaUnicoValor(DbAccess.java:209)
+	at lib.Login.auth(Login.java:52)
+	at lib.Login.<init>(Login.java:34)
+	at sorrisodecrianca.frmLogin.btnEntrarActionPerformed(frmLogin.java:130)
+	at sorrisodecrianca.frmLogin.access$000(frmLogin.java:25)
+	at sorrisodecrianca.frmLogin$1.actionPerformed(frmLogin.java:63)
+	at javax.swing.AbstractButton.fireActionPerformed(AbstractButton.java:2022)
+	at javax.swing.AbstractButton$Handler.actionPerformed(AbstractButton.java:2348)
+	at javax.swing.DefaultButtonModel.fireActionPerformed(DefaultButtonModel.java:402)
+	at javax.swing.DefaultButtonModel.setPressed(DefaultButtonModel.java:259)
+	at javax.swing.AbstractButton.doClick(AbstractButton.java:376)
+	at javax.swing.plaf.basic.BasicRootPaneUI$Actions.actionPerformed(BasicRootPaneUI.java:208)
+	at javax.swing.SwingUtilities.notifyAction(SwingUtilities.java:1663)
+	at javax.swing.JComponent.processKeyBinding(JComponent.java:2882)
+	at javax.swing.KeyboardManager.fireBinding(KeyboardManager.java:307)
+	at javax.swing.KeyboardManager.fireKeyboardAction(KeyboardManager.java:250)
+	at javax.swing.JComponent.processKeyBindingsForAllComponents(JComponent.java:2974)
+	at javax.swing.JComponent.processKeyBindings(JComponent.java:2966)
+	at javax.swing.JComponent.processKeyEvent(JComponent.java:2845)
+	at java.awt.Component.processEvent(Component.java:6312)
+	at java.awt.Container.processEvent(Container.java:2236)
+	at java.awt.Component.dispatchEventImpl(Component.java:4891)
+	at java.awt.Container.dispatchEventImpl(Container.java:2294)
+	at java.awt.Component.dispatchEvent(Component.java:4713)
+	at java.awt.KeyboardFocusManager.redispatchEvent(KeyboardFocusManager.java:1954)
+	at java.awt.DefaultKeyboardFocusManager.dispatchKeyEvent(DefaultKeyboardFocusManager.java:806)
+	at java.awt.DefaultKeyboardFocusManager.preDispatchKeyEvent(DefaultKeyboardFocusManager.java:1074)
+	at java.awt.DefaultKeyboardFocusManager.typeAheadAssertions(DefaultKeyboardFocusManager.java:945)
+	at java.awt.DefaultKeyboardFocusManager.dispatchEvent(DefaultKeyboardFocusManager.java:771)
+	at java.awt.Component.dispatchEventImpl(Component.java:4762)
+	at java.awt.Container.dispatchEventImpl(Container.java:2294)
+	at java.awt.Window.dispatchEventImpl(Window.java:2750)
+	at java.awt.Component.dispatchEvent(Component.java:4713)
+	at java.awt.EventQueue.dispatchEventImpl(EventQueue.java:758)
+	at java.awt.EventQueue.access$500(EventQueue.java:97)
+	at java.awt.EventQueue$3.run(EventQueue.java:709)
+	at java.awt.EventQueue$3.run(EventQueue.java:703)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:76)
+	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:86)
+	at java.awt.EventQueue$4.run(EventQueue.java:731)
+	at java.awt.EventQueue$4.run(EventQueue.java:729)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:76)
+	at java.awt.EventQueue.dispatchEvent(EventQueue.java:728)
+	at java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:201)
+	at java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:116)
+	at java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:105)
+	at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)
+	at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:93)
+	at java.awt.EventDispatchThread.run(EventDispatchThread.java:82)
+Caused by: org.h2.jdbc.JdbcSQLException: General error: "java.lang.IllegalStateException: The file is locked: nio:C:/Users/Bruno/Documents/NetBeansProjects/SorrisoDeCrianca/database.mv.db [1.4.192/7]" [50000-192]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	... 75 more
+Caused by: java.lang.IllegalStateException: The file is locked: nio:C:/Users/Bruno/Documents/NetBeansProjects/SorrisoDeCrianca/database.mv.db [1.4.192/7]
+	at org.h2.mvstore.DataUtils.newIllegalStateException(DataUtils.java:773)
+	at org.h2.mvstore.FileStore.open(FileStore.java:172)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:344)
+	... 70 more
+2016-11-25 14:51:57 database: flush
+org.h2.message.DbException: General error: "java.lang.IllegalStateException: The file is locked: nio:C:/Users/Bruno/Documents/NetBeansProjects/SorrisoDeCrianca/database.mv.db [1.4.192/7]" [50000-192]
+	at org.h2.message.DbException.get(DbException.java:168)
+	at org.h2.message.DbException.convert(DbException.java:295)
+	at org.h2.mvstore.db.MVTableEngine$1.uncaughtException(MVTableEngine.java:94)
+	at org.h2.mvstore.MVStore.panic(MVStore.java:375)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:358)
+	at org.h2.mvstore.MVStore$Builder.open(MVStore.java:2893)
+	at org.h2.mvstore.db.MVTableEngine$Store.open(MVTableEngine.java:154)
+	at org.h2.mvstore.db.MVTableEngine.init(MVTableEngine.java:99)
+	at org.h2.engine.Database.getPageStore(Database.java:2463)
+	at org.h2.engine.Database.open(Database.java:692)
+	at org.h2.engine.Database.openDatabase(Database.java:270)
+	at org.h2.engine.Database.<init>(Database.java:264)
+	at org.h2.engine.Engine.openSession(Engine.java:64)
+	at org.h2.engine.Engine.openSession(Engine.java:176)
+	at org.h2.engine.Engine.createSessionAndValidate(Engine.java:154)
+	at org.h2.engine.Engine.createSession(Engine.java:137)
+	at org.h2.engine.Engine.createSession(Engine.java:27)
+	at org.h2.engine.SessionRemote.connectEmbeddedOrServer(SessionRemote.java:349)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:118)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:102)
+	at org.h2.Driver.connect(Driver.java:72)
+	at org.h2.jdbcx.JdbcDataSource.getJdbcConnection(JdbcDataSource.java:190)
+	at org.h2.jdbcx.JdbcDataSource.getConnection(JdbcDataSource.java:161)
+	at lib.DbAccess.Conectar(DbAccess.java:63)
+	at lib.DbAccess.RetornaUnicoValor(DbAccess.java:209)
+	at lib.Login.auth(Login.java:52)
+	at lib.Login.<init>(Login.java:34)
+	at sorrisodecrianca.frmLogin.btnEntrarActionPerformed(frmLogin.java:130)
+	at sorrisodecrianca.frmLogin.access$000(frmLogin.java:25)
+	at sorrisodecrianca.frmLogin$1.actionPerformed(frmLogin.java:63)
+	at javax.swing.AbstractButton.fireActionPerformed(AbstractButton.java:2022)
+	at javax.swing.AbstractButton$Handler.actionPerformed(AbstractButton.java:2348)
+	at javax.swing.DefaultButtonModel.fireActionPerformed(DefaultButtonModel.java:402)
+	at javax.swing.DefaultButtonModel.setPressed(DefaultButtonModel.java:259)
+	at javax.swing.AbstractButton.doClick(AbstractButton.java:376)
+	at javax.swing.plaf.basic.BasicRootPaneUI$Actions.actionPerformed(BasicRootPaneUI.java:208)
+	at javax.swing.SwingUtilities.notifyAction(SwingUtilities.java:1663)
+	at javax.swing.JComponent.processKeyBinding(JComponent.java:2882)
+	at javax.swing.KeyboardManager.fireBinding(KeyboardManager.java:307)
+	at javax.swing.KeyboardManager.fireKeyboardAction(KeyboardManager.java:250)
+	at javax.swing.JComponent.processKeyBindingsForAllComponents(JComponent.java:2974)
+	at javax.swing.JComponent.processKeyBindings(JComponent.java:2966)
+	at javax.swing.JComponent.processKeyEvent(JComponent.java:2845)
+	at java.awt.Component.processEvent(Component.java:6312)
+	at java.awt.Container.processEvent(Container.java:2236)
+	at java.awt.Component.dispatchEventImpl(Component.java:4891)
+	at java.awt.Container.dispatchEventImpl(Container.java:2294)
+	at java.awt.Component.dispatchEvent(Component.java:4713)
+	at java.awt.KeyboardFocusManager.redispatchEvent(KeyboardFocusManager.java:1954)
+	at java.awt.DefaultKeyboardFocusManager.dispatchKeyEvent(DefaultKeyboardFocusManager.java:806)
+	at java.awt.DefaultKeyboardFocusManager.preDispatchKeyEvent(DefaultKeyboardFocusManager.java:1074)
+	at java.awt.DefaultKeyboardFocusManager.typeAheadAssertions(DefaultKeyboardFocusManager.java:945)
+	at java.awt.DefaultKeyboardFocusManager.dispatchEvent(DefaultKeyboardFocusManager.java:771)
+	at java.awt.Component.dispatchEventImpl(Component.java:4762)
+	at java.awt.Container.dispatchEventImpl(Container.java:2294)
+	at java.awt.Window.dispatchEventImpl(Window.java:2750)
+	at java.awt.Component.dispatchEvent(Component.java:4713)
+	at java.awt.EventQueue.dispatchEventImpl(EventQueue.java:758)
+	at java.awt.EventQueue.access$500(EventQueue.java:97)
+	at java.awt.EventQueue$3.run(EventQueue.java:709)
+	at java.awt.EventQueue$3.run(EventQueue.java:703)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:76)
+	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:86)
+	at java.awt.EventQueue$4.run(EventQueue.java:731)
+	at java.awt.EventQueue$4.run(EventQueue.java:729)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:76)
+	at java.awt.EventQueue.dispatchEvent(EventQueue.java:728)
+	at java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:201)
+	at java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:116)
+	at java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:105)
+	at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)
+	at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:93)
+	at java.awt.EventDispatchThread.run(EventDispatchThread.java:82)
+Caused by: org.h2.jdbc.JdbcSQLException: General error: "java.lang.IllegalStateException: The file is locked: nio:C:/Users/Bruno/Documents/NetBeansProjects/SorrisoDeCrianca/database.mv.db [1.4.192/7]" [50000-192]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	... 75 more
+Caused by: java.lang.IllegalStateException: The file is locked: nio:C:/Users/Bruno/Documents/NetBeansProjects/SorrisoDeCrianca/database.mv.db [1.4.192/7]
+	at org.h2.mvstore.DataUtils.newIllegalStateException(DataUtils.java:773)
+	at org.h2.mvstore.FileStore.open(FileStore.java:172)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:344)
+	... 70 more
+2016-11-25 14:53:05 database: flush
+org.h2.message.DbException: General error: "java.lang.IllegalStateException: The file is locked: nio:C:/Users/Bruno/Documents/NetBeansProjects/SorrisoDeCrianca/database.mv.db [1.4.192/7]" [50000-192]
+	at org.h2.message.DbException.get(DbException.java:168)
+	at org.h2.message.DbException.convert(DbException.java:295)
+	at org.h2.mvstore.db.MVTableEngine$1.uncaughtException(MVTableEngine.java:94)
+	at org.h2.mvstore.MVStore.panic(MVStore.java:375)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:358)
+	at org.h2.mvstore.MVStore$Builder.open(MVStore.java:2893)
+	at org.h2.mvstore.db.MVTableEngine$Store.open(MVTableEngine.java:154)
+	at org.h2.mvstore.db.MVTableEngine.init(MVTableEngine.java:99)
+	at org.h2.engine.Database.getPageStore(Database.java:2463)
+	at org.h2.engine.Database.open(Database.java:692)
+	at org.h2.engine.Database.openDatabase(Database.java:270)
+	at org.h2.engine.Database.<init>(Database.java:264)
+	at org.h2.engine.Engine.openSession(Engine.java:64)
+	at org.h2.engine.Engine.openSession(Engine.java:176)
+	at org.h2.engine.Engine.createSessionAndValidate(Engine.java:154)
+	at org.h2.engine.Engine.createSession(Engine.java:137)
+	at org.h2.engine.Engine.createSession(Engine.java:27)
+	at org.h2.engine.SessionRemote.connectEmbeddedOrServer(SessionRemote.java:349)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:118)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:102)
+	at org.h2.Driver.connect(Driver.java:72)
+	at org.h2.jdbcx.JdbcDataSource.getJdbcConnection(JdbcDataSource.java:190)
+	at org.h2.jdbcx.JdbcDataSource.getConnection(JdbcDataSource.java:161)
+	at lib.DbAccess.Conectar(DbAccess.java:63)
+	at lib.DbAccess.RetornaUnicoValor(DbAccess.java:209)
+	at lib.Login.auth(Login.java:52)
+	at lib.Login.<init>(Login.java:34)
+	at sorrisodecrianca.frmLogin.btnEntrarActionPerformed(frmLogin.java:130)
+	at sorrisodecrianca.frmLogin.access$000(frmLogin.java:25)
+	at sorrisodecrianca.frmLogin$1.actionPerformed(frmLogin.java:63)
+	at javax.swing.AbstractButton.fireActionPerformed(AbstractButton.java:2022)
+	at javax.swing.AbstractButton$Handler.actionPerformed(AbstractButton.java:2348)
+	at javax.swing.DefaultButtonModel.fireActionPerformed(DefaultButtonModel.java:402)
+	at javax.swing.DefaultButtonModel.setPressed(DefaultButtonModel.java:259)
+	at javax.swing.AbstractButton.doClick(AbstractButton.java:376)
+	at javax.swing.plaf.basic.BasicRootPaneUI$Actions.actionPerformed(BasicRootPaneUI.java:208)
+	at javax.swing.SwingUtilities.notifyAction(SwingUtilities.java:1663)
+	at javax.swing.JComponent.processKeyBinding(JComponent.java:2882)
+	at javax.swing.KeyboardManager.fireBinding(KeyboardManager.java:307)
+	at javax.swing.KeyboardManager.fireKeyboardAction(KeyboardManager.java:250)
+	at javax.swing.JComponent.processKeyBindingsForAllComponents(JComponent.java:2974)
+	at javax.swing.JComponent.processKeyBindings(JComponent.java:2966)
+	at javax.swing.JComponent.processKeyEvent(JComponent.java:2845)
+	at java.awt.Component.processEvent(Component.java:6312)
+	at java.awt.Container.processEvent(Container.java:2236)
+	at java.awt.Component.dispatchEventImpl(Component.java:4891)
+	at java.awt.Container.dispatchEventImpl(Container.java:2294)
+	at java.awt.Component.dispatchEvent(Component.java:4713)
+	at java.awt.KeyboardFocusManager.redispatchEvent(KeyboardFocusManager.java:1954)
+	at java.awt.DefaultKeyboardFocusManager.dispatchKeyEvent(DefaultKeyboardFocusManager.java:806)
+	at java.awt.DefaultKeyboardFocusManager.preDispatchKeyEvent(DefaultKeyboardFocusManager.java:1074)
+	at java.awt.DefaultKeyboardFocusManager.typeAheadAssertions(DefaultKeyboardFocusManager.java:945)
+	at java.awt.DefaultKeyboardFocusManager.dispatchEvent(DefaultKeyboardFocusManager.java:771)
+	at java.awt.Component.dispatchEventImpl(Component.java:4762)
+	at java.awt.Container.dispatchEventImpl(Container.java:2294)
+	at java.awt.Window.dispatchEventImpl(Window.java:2750)
+	at java.awt.Component.dispatchEvent(Component.java:4713)
+	at java.awt.EventQueue.dispatchEventImpl(EventQueue.java:758)
+	at java.awt.EventQueue.access$500(EventQueue.java:97)
+	at java.awt.EventQueue$3.run(EventQueue.java:709)
+	at java.awt.EventQueue$3.run(EventQueue.java:703)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:76)
+	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:86)
+	at java.awt.EventQueue$4.run(EventQueue.java:731)
+	at java.awt.EventQueue$4.run(EventQueue.java:729)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:76)
+	at java.awt.EventQueue.dispatchEvent(EventQueue.java:728)
+	at java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:201)
+	at java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:116)
+	at java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:105)
+	at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)
+	at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:93)
+	at java.awt.EventDispatchThread.run(EventDispatchThread.java:82)
+Caused by: org.h2.jdbc.JdbcSQLException: General error: "java.lang.IllegalStateException: The file is locked: nio:C:/Users/Bruno/Documents/NetBeansProjects/SorrisoDeCrianca/database.mv.db [1.4.192/7]" [50000-192]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	... 75 more
+Caused by: java.lang.IllegalStateException: The file is locked: nio:C:/Users/Bruno/Documents/NetBeansProjects/SorrisoDeCrianca/database.mv.db [1.4.192/7]
+	at org.h2.mvstore.DataUtils.newIllegalStateException(DataUtils.java:773)
+	at org.h2.mvstore.FileStore.open(FileStore.java:172)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:344)
+	... 70 more
+2016-11-25 14:53:48 database: flush
+org.h2.message.DbException: General error: "java.lang.IllegalStateException: The file is locked: nio:C:/Users/Bruno/Documents/NetBeansProjects/SorrisoDeCrianca/database.mv.db [1.4.192/7]" [50000-192]
+	at org.h2.message.DbException.get(DbException.java:168)
+	at org.h2.message.DbException.convert(DbException.java:295)
+	at org.h2.mvstore.db.MVTableEngine$1.uncaughtException(MVTableEngine.java:94)
+	at org.h2.mvstore.MVStore.panic(MVStore.java:375)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:358)
+	at org.h2.mvstore.MVStore$Builder.open(MVStore.java:2893)
+	at org.h2.mvstore.db.MVTableEngine$Store.open(MVTableEngine.java:154)
+	at org.h2.mvstore.db.MVTableEngine.init(MVTableEngine.java:99)
+	at org.h2.engine.Database.getPageStore(Database.java:2463)
+	at org.h2.engine.Database.open(Database.java:692)
+	at org.h2.engine.Database.openDatabase(Database.java:270)
+	at org.h2.engine.Database.<init>(Database.java:264)
+	at org.h2.engine.Engine.openSession(Engine.java:64)
+	at org.h2.engine.Engine.openSession(Engine.java:176)
+	at org.h2.engine.Engine.createSessionAndValidate(Engine.java:154)
+	at org.h2.engine.Engine.createSession(Engine.java:137)
+	at org.h2.engine.Engine.createSession(Engine.java:27)
+	at org.h2.engine.SessionRemote.connectEmbeddedOrServer(SessionRemote.java:349)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:118)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:102)
+	at org.h2.Driver.connect(Driver.java:72)
+	at org.h2.jdbcx.JdbcDataSource.getJdbcConnection(JdbcDataSource.java:190)
+	at org.h2.jdbcx.JdbcDataSource.getConnection(JdbcDataSource.java:161)
+	at lib.DbAccess.Conectar(DbAccess.java:63)
+	at lib.DbAccess.RetornaUnicoValor(DbAccess.java:210)
+	at lib.Login.auth(Login.java:52)
+	at lib.Login.<init>(Login.java:34)
+	at sorrisodecrianca.frmLogin.btnEntrarActionPerformed(frmLogin.java:130)
+	at sorrisodecrianca.frmLogin.access$000(frmLogin.java:25)
+	at sorrisodecrianca.frmLogin$1.actionPerformed(frmLogin.java:63)
+	at javax.swing.AbstractButton.fireActionPerformed(AbstractButton.java:2022)
+	at javax.swing.AbstractButton$Handler.actionPerformed(AbstractButton.java:2348)
+	at javax.swing.DefaultButtonModel.fireActionPerformed(DefaultButtonModel.java:402)
+	at javax.swing.DefaultButtonModel.setPressed(DefaultButtonModel.java:259)
+	at javax.swing.plaf.basic.BasicButtonListener.mouseReleased(BasicButtonListener.java:252)
+	at java.awt.Component.processMouseEvent(Component.java:6535)
+	at javax.swing.JComponent.processMouseEvent(JComponent.java:3324)
+	at java.awt.Component.processEvent(Component.java:6300)
+	at java.awt.Container.processEvent(Container.java:2236)
+	at java.awt.Component.dispatchEventImpl(Component.java:4891)
+	at java.awt.Container.dispatchEventImpl(Container.java:2294)
+	at java.awt.Component.dispatchEvent(Component.java:4713)
+	at java.awt.LightweightDispatcher.retargetMouseEvent(Container.java:4888)
+	at java.awt.LightweightDispatcher.processMouseEvent(Container.java:4525)
+	at java.awt.LightweightDispatcher.dispatchEvent(Container.java:4466)
+	at java.awt.Container.dispatchEventImpl(Container.java:2280)
+	at java.awt.Window.dispatchEventImpl(Window.java:2750)
+	at java.awt.Component.dispatchEvent(Component.java:4713)
+	at java.awt.EventQueue.dispatchEventImpl(EventQueue.java:758)
+	at java.awt.EventQueue.access$500(EventQueue.java:97)
+	at java.awt.EventQueue$3.run(EventQueue.java:709)
+	at java.awt.EventQueue$3.run(EventQueue.java:703)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:76)
+	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:86)
+	at java.awt.EventQueue$4.run(EventQueue.java:731)
+	at java.awt.EventQueue$4.run(EventQueue.java:729)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:76)
+	at java.awt.EventQueue.dispatchEvent(EventQueue.java:728)
+	at java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:201)
+	at java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:116)
+	at java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:105)
+	at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)
+	at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:93)
+	at java.awt.EventDispatchThread.run(EventDispatchThread.java:82)
+Caused by: org.h2.jdbc.JdbcSQLException: General error: "java.lang.IllegalStateException: The file is locked: nio:C:/Users/Bruno/Documents/NetBeansProjects/SorrisoDeCrianca/database.mv.db [1.4.192/7]" [50000-192]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	... 66 more
+Caused by: java.lang.IllegalStateException: The file is locked: nio:C:/Users/Bruno/Documents/NetBeansProjects/SorrisoDeCrianca/database.mv.db [1.4.192/7]
+	at org.h2.mvstore.DataUtils.newIllegalStateException(DataUtils.java:773)
+	at org.h2.mvstore.FileStore.open(FileStore.java:172)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:344)
+	... 61 more
+2016-11-25 14:55:48 database: flush
+org.h2.message.DbException: General error: "java.lang.IllegalStateException: The file is locked: nio:C:/Users/Bruno/Documents/NetBeansProjects/SorrisoDeCrianca/database.mv.db [1.4.192/7]" [50000-192]
+	at org.h2.message.DbException.get(DbException.java:168)
+	at org.h2.message.DbException.convert(DbException.java:295)
+	at org.h2.mvstore.db.MVTableEngine$1.uncaughtException(MVTableEngine.java:94)
+	at org.h2.mvstore.MVStore.panic(MVStore.java:375)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:358)
+	at org.h2.mvstore.MVStore$Builder.open(MVStore.java:2893)
+	at org.h2.mvstore.db.MVTableEngine$Store.open(MVTableEngine.java:154)
+	at org.h2.mvstore.db.MVTableEngine.init(MVTableEngine.java:99)
+	at org.h2.engine.Database.getPageStore(Database.java:2463)
+	at org.h2.engine.Database.open(Database.java:692)
+	at org.h2.engine.Database.openDatabase(Database.java:270)
+	at org.h2.engine.Database.<init>(Database.java:264)
+	at org.h2.engine.Engine.openSession(Engine.java:64)
+	at org.h2.engine.Engine.openSession(Engine.java:176)
+	at org.h2.engine.Engine.createSessionAndValidate(Engine.java:154)
+	at org.h2.engine.Engine.createSession(Engine.java:137)
+	at org.h2.engine.Engine.createSession(Engine.java:27)
+	at org.h2.engine.SessionRemote.connectEmbeddedOrServer(SessionRemote.java:349)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:118)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:102)
+	at org.h2.Driver.connect(Driver.java:72)
+	at org.h2.jdbcx.JdbcDataSource.getJdbcConnection(JdbcDataSource.java:190)
+	at org.h2.jdbcx.JdbcDataSource.getConnection(JdbcDataSource.java:161)
+	at lib.DbAccess.Conectar(DbAccess.java:63)
+	at lib.DbAccess.RetornaUnicoValor(DbAccess.java:209)
+	at lib.Login.auth(Login.java:52)
+	at lib.Login.<init>(Login.java:34)
+	at sorrisodecrianca.frmLogin.btnEntrarActionPerformed(frmLogin.java:130)
+	at sorrisodecrianca.frmLogin.access$000(frmLogin.java:25)
+	at sorrisodecrianca.frmLogin$1.actionPerformed(frmLogin.java:63)
+	at javax.swing.AbstractButton.fireActionPerformed(AbstractButton.java:2022)
+	at javax.swing.AbstractButton$Handler.actionPerformed(AbstractButton.java:2348)
+	at javax.swing.DefaultButtonModel.fireActionPerformed(DefaultButtonModel.java:402)
+	at javax.swing.DefaultButtonModel.setPressed(DefaultButtonModel.java:259)
+	at javax.swing.plaf.basic.BasicButtonListener.mouseReleased(BasicButtonListener.java:252)
+	at java.awt.Component.processMouseEvent(Component.java:6535)
+	at javax.swing.JComponent.processMouseEvent(JComponent.java:3324)
+	at java.awt.Component.processEvent(Component.java:6300)
+	at java.awt.Container.processEvent(Container.java:2236)
+	at java.awt.Component.dispatchEventImpl(Component.java:4891)
+	at java.awt.Container.dispatchEventImpl(Container.java:2294)
+	at java.awt.Component.dispatchEvent(Component.java:4713)
+	at java.awt.LightweightDispatcher.retargetMouseEvent(Container.java:4888)
+	at java.awt.LightweightDispatcher.processMouseEvent(Container.java:4525)
+	at java.awt.LightweightDispatcher.dispatchEvent(Container.java:4466)
+	at java.awt.Container.dispatchEventImpl(Container.java:2280)
+	at java.awt.Window.dispatchEventImpl(Window.java:2750)
+	at java.awt.Component.dispatchEvent(Component.java:4713)
+	at java.awt.EventQueue.dispatchEventImpl(EventQueue.java:758)
+	at java.awt.EventQueue.access$500(EventQueue.java:97)
+	at java.awt.EventQueue$3.run(EventQueue.java:709)
+	at java.awt.EventQueue$3.run(EventQueue.java:703)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:76)
+	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:86)
+	at java.awt.EventQueue$4.run(EventQueue.java:731)
+	at java.awt.EventQueue$4.run(EventQueue.java:729)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:76)
+	at java.awt.EventQueue.dispatchEvent(EventQueue.java:728)
+	at java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:201)
+	at java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:116)
+	at java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:105)
+	at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)
+	at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:93)
+	at java.awt.EventDispatchThread.run(EventDispatchThread.java:82)
+Caused by: org.h2.jdbc.JdbcSQLException: General error: "java.lang.IllegalStateException: The file is locked: nio:C:/Users/Bruno/Documents/NetBeansProjects/SorrisoDeCrianca/database.mv.db [1.4.192/7]" [50000-192]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	... 66 more
+Caused by: java.lang.IllegalStateException: The file is locked: nio:C:/Users/Bruno/Documents/NetBeansProjects/SorrisoDeCrianca/database.mv.db [1.4.192/7]
+	at org.h2.mvstore.DataUtils.newIllegalStateException(DataUtils.java:773)
+	at org.h2.mvstore.FileStore.open(FileStore.java:172)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:344)
+	... 61 more
+2016-11-25 15:01:50 database: flush
+org.h2.message.DbException: General error: "java.lang.IllegalStateException: The file is locked: nio:C:/Users/Bruno/Documents/NetBeansProjects/SorrisoDeCrianca/database.mv.db [1.4.192/7]" [50000-192]
+	at org.h2.message.DbException.get(DbException.java:168)
+	at org.h2.message.DbException.convert(DbException.java:295)
+	at org.h2.mvstore.db.MVTableEngine$1.uncaughtException(MVTableEngine.java:94)
+	at org.h2.mvstore.MVStore.panic(MVStore.java:375)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:358)
+	at org.h2.mvstore.MVStore$Builder.open(MVStore.java:2893)
+	at org.h2.mvstore.db.MVTableEngine$Store.open(MVTableEngine.java:154)
+	at org.h2.mvstore.db.MVTableEngine.init(MVTableEngine.java:99)
+	at org.h2.engine.Database.getPageStore(Database.java:2463)
+	at org.h2.engine.Database.open(Database.java:692)
+	at org.h2.engine.Database.openDatabase(Database.java:270)
+	at org.h2.engine.Database.<init>(Database.java:264)
+	at org.h2.engine.Engine.openSession(Engine.java:64)
+	at org.h2.engine.Engine.openSession(Engine.java:176)
+	at org.h2.engine.Engine.createSessionAndValidate(Engine.java:154)
+	at org.h2.engine.Engine.createSession(Engine.java:137)
+	at org.h2.engine.Engine.createSession(Engine.java:27)
+	at org.h2.engine.SessionRemote.connectEmbeddedOrServer(SessionRemote.java:349)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:118)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:102)
+	at org.h2.Driver.connect(Driver.java:72)
+	at org.h2.jdbcx.JdbcDataSource.getJdbcConnection(JdbcDataSource.java:190)
+	at org.h2.jdbcx.JdbcDataSource.getConnection(JdbcDataSource.java:161)
+	at lib.DbAccess.Conectar(DbAccess.java:63)
+	at lib.DbAccess.RetornaUnicoValor(DbAccess.java:209)
+	at lib.Login.auth(Login.java:52)
+	at lib.Login.<init>(Login.java:34)
+	at sorrisodecrianca.frmLogin.btnEntrarActionPerformed(frmLogin.java:130)
+	at sorrisodecrianca.frmLogin.access$000(frmLogin.java:25)
+	at sorrisodecrianca.frmLogin$1.actionPerformed(frmLogin.java:63)
+	at javax.swing.AbstractButton.fireActionPerformed(AbstractButton.java:2022)
+	at javax.swing.AbstractButton$Handler.actionPerformed(AbstractButton.java:2348)
+	at javax.swing.DefaultButtonModel.fireActionPerformed(DefaultButtonModel.java:402)
+	at javax.swing.DefaultButtonModel.setPressed(DefaultButtonModel.java:259)
+	at javax.swing.AbstractButton.doClick(AbstractButton.java:376)
+	at javax.swing.plaf.basic.BasicRootPaneUI$Actions.actionPerformed(BasicRootPaneUI.java:208)
+	at javax.swing.SwingUtilities.notifyAction(SwingUtilities.java:1663)
+	at javax.swing.JComponent.processKeyBinding(JComponent.java:2882)
+	at javax.swing.KeyboardManager.fireBinding(KeyboardManager.java:307)
+	at javax.swing.KeyboardManager.fireKeyboardAction(KeyboardManager.java:250)
+	at javax.swing.JComponent.processKeyBindingsForAllComponents(JComponent.java:2974)
+	at javax.swing.JComponent.processKeyBindings(JComponent.java:2966)
+	at javax.swing.JComponent.processKeyEvent(JComponent.java:2845)
+	at java.awt.Component.processEvent(Component.java:6312)
+	at java.awt.Container.processEvent(Container.java:2236)
+	at java.awt.Component.dispatchEventImpl(Component.java:4891)
+	at java.awt.Container.dispatchEventImpl(Container.java:2294)
+	at java.awt.Component.dispatchEvent(Component.java:4713)
+	at java.awt.KeyboardFocusManager.redispatchEvent(KeyboardFocusManager.java:1954)
+	at java.awt.DefaultKeyboardFocusManager.dispatchKeyEvent(DefaultKeyboardFocusManager.java:806)
+	at java.awt.DefaultKeyboardFocusManager.preDispatchKeyEvent(DefaultKeyboardFocusManager.java:1074)
+	at java.awt.DefaultKeyboardFocusManager.typeAheadAssertions(DefaultKeyboardFocusManager.java:945)
+	at java.awt.DefaultKeyboardFocusManager.dispatchEvent(DefaultKeyboardFocusManager.java:771)
+	at java.awt.Component.dispatchEventImpl(Component.java:4762)
+	at java.awt.Container.dispatchEventImpl(Container.java:2294)
+	at java.awt.Window.dispatchEventImpl(Window.java:2750)
+	at java.awt.Component.dispatchEvent(Component.java:4713)
+	at java.awt.EventQueue.dispatchEventImpl(EventQueue.java:758)
+	at java.awt.EventQueue.access$500(EventQueue.java:97)
+	at java.awt.EventQueue$3.run(EventQueue.java:709)
+	at java.awt.EventQueue$3.run(EventQueue.java:703)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:76)
+	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:86)
+	at java.awt.EventQueue$4.run(EventQueue.java:731)
+	at java.awt.EventQueue$4.run(EventQueue.java:729)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:76)
+	at java.awt.EventQueue.dispatchEvent(EventQueue.java:728)
+	at java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:201)
+	at java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:116)
+	at java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:105)
+	at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)
+	at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:93)
+	at java.awt.EventDispatchThread.run(EventDispatchThread.java:82)
+Caused by: org.h2.jdbc.JdbcSQLException: General error: "java.lang.IllegalStateException: The file is locked: nio:C:/Users/Bruno/Documents/NetBeansProjects/SorrisoDeCrianca/database.mv.db [1.4.192/7]" [50000-192]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	... 75 more
+Caused by: java.lang.IllegalStateException: The file is locked: nio:C:/Users/Bruno/Documents/NetBeansProjects/SorrisoDeCrianca/database.mv.db [1.4.192/7]
+	at org.h2.mvstore.DataUtils.newIllegalStateException(DataUtils.java:773)
+	at org.h2.mvstore.FileStore.open(FileStore.java:172)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:344)
+	... 70 more
+2016-11-25 15:07:00 jdbc[6]: exception
+org.h2.jdbc.JdbcSQLException: Column "ID_VALUE" not found; SQL statement:
+INSERT INTO CRIANCA
+(
+  ID,
+  NOME,
+  DATA_NASCIMENTO,
+  RG,
+  SEXO,
+  STATUS,
+  ENDERECO,
+  NOME_RESPONSAVEL,
+  TEL_CONTATO,
+  OBSERVACAO,
+  LUZ_ELETRICA,
+  AGUA_ENCANADA,
+  ESGOTO,
+  CONVENIO_MEDICO,
+  CENTRO_SAUDE,
+  SARAMPO,
+  RUBEOLA,
+  BRONCO_PNEUMONIA,
+  CATAPORA,
+  CONQUELUCHE,
+  HEPATITE,
+  MENINGITE,
+  CONVULSAO,
+  PROBLEMAS_RESPIRATORIOS,
+  ALERGIA,
+  JA_FOI_INTERNADA,
+  DIARREIA_FREQUENTE,
+  DIABETES,
+  USA_INSULINA,
+  OUTRAS_DOENCAS,
+  MEDICAMENTOS_ALERGICOS,
+  PODE_SAIR_SOZINHA
+)
+VALUES
+(
+  ID_value,
+  'NOME_value',
+  DATA_NASCIMENTO_value,
+  'RG_value',
+  'SEXO_value',
+  'Ativo',
+  'ENDERECO_value',
+  'NOME_RESPONSAVEL_value',
+  'TEL_CONTATO_value',
+  'OBSERVACAO_value',
+  'LUZ_ELETRICA_value',
+  'AGUA_ENCANADA_value',
+  'ESGOTO_value',
+  'CONVENIO_MEDICO_value',
+  'CENTRO_SAUDE_value',
+  'SARAMPO_value',
+  'RUBEOLA_value',
+  'BRONCO_PNEUMONIA_value',
+  'CATAPORA_value',
+  'CONQUELUCHE_value',
+  'HEPATITE_value',
+  'MENINGITE_value',
+  'CONVULSAO_value',
+  'PROBLEMAS_RESPIRATORIOS_value',
+  'ALERGIA_value',
+  'JA_FOI_INTERNADA_value',
+  'DIARREIA_FREQUENTE_value',
+  'DIABETES_value',
+  'USA_INSULINA_value',
+  'OUTRAS_DOENCAS_value',
+  'MEDICAMENTOS_ALERGICOS_value',
+  'PODE_SAIR_SOZINHA_value'
+) [42122-192]
 	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
 	at org.h2.message.DbException.get(DbException.java:179)
 	at org.h2.message.DbException.get(DbException.java:155)
-	at org.h2.table.Table.getColumn(Table.java:682)
-	at org.h2.command.Parser.parseColumn(Parser.java:878)
-	at org.h2.command.Parser.parseColumnList(Parser.java:862)
-	at org.h2.command.Parser.parseInsert(Parser.java:1062)
-	at org.h2.command.Parser.parsePrepared(Parser.java:413)
-	at org.h2.command.Parser.parse(Parser.java:317)
-	at org.h2.command.Parser.parse(Parser.java:289)
-	at org.h2.command.Parser.prepareCommand(Parser.java:254)
+	at org.h2.expression.ExpressionColumn.optimize(ExpressionColumn.java:147)
+	at org.h2.command.dml.Insert.prepare(Insert.java:270)
+	at org.h2.command.Parser.prepareCommand(Parser.java:259)
+	at org.h2.engine.Session.prepareLocal(Session.java:560)
+	at org.h2.engine.Session.prepareCommand(Session.java:501)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1202)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:170)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:158)
+	at workbench.sql.commands.UpdatingCommand.execute(UpdatingCommand.java:138)
+	at workbench.sql.StatementRunner.runStatement(StatementRunner.java:565)
+	at workbench.gui.sql.SqlPanel.displayResult(SqlPanel.java:3370)
+	at workbench.gui.sql.SqlPanel.runStatement(SqlPanel.java:2131)
+	at workbench.gui.sql.SqlPanel$4.run(SqlPanel.java:2069)
+2016-11-25 15:09:30 jdbc[6]: exception
+org.h2.jdbc.JdbcSQLException: Column "ID_VALUE" not found; SQL statement:
+INSERT INTO CRIANCA
+(
+  ID,
+  NOME,
+  DATA_NASCIMENTO,
+  RG,
+  SEXO,
+  STATUS,
+  ENDERECO,
+  NOME_RESPONSAVEL,
+  TEL_CONTATO,
+  OBSERVACAO,
+  LUZ_ELETRICA,
+  AGUA_ENCANADA,
+  ESGOTO,
+  CONVENIO_MEDICO,
+  CENTRO_SAUDE,
+  SARAMPO,
+  RUBEOLA,
+  BRONCO_PNEUMONIA,
+  CATAPORA,
+  CONQUELUCHE,
+  HEPATITE,
+  MENINGITE,
+  CONVULSAO,
+  PROBLEMAS_RESPIRATORIOS,
+  ALERGIA,
+  JA_FOI_INTERNADA,
+  DIARREIA_FREQUENTE,
+  DIABETES,
+  USA_INSULINA,
+  OUTRAS_DOENCAS,
+  MEDICAMENTOS_ALERGICOS,
+  PODE_SAIR_SOZINHA
+)
+VALUES
+(
+  ID_value,
+  'john doe',
+  DATA_NASCIMENTO_value,
+  '555555555',
+  'Masculino',
+  'Ativo',
+  'rua do john doe',
+  'pai e mae do john doe',
+  '55555555',
+  '11',
+  '11',
+  '11',
+  '11',
+  '11',
+  '11',
+  '11',
+  '11',
+  '11',
+  '11',
+  '11',
+  '11',
+  '11',
+  '11',
+  '11',
+  '11',
+  '11',
+  '11',
+  '11',
+  '11',
+  '11',
+  '11',
+  '11'
+) [42122-192]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	at org.h2.message.DbException.get(DbException.java:179)
+	at org.h2.message.DbException.get(DbException.java:155)
+	at org.h2.expression.ExpressionColumn.optimize(ExpressionColumn.java:147)
+	at org.h2.command.dml.Insert.prepare(Insert.java:270)
+	at org.h2.command.Parser.prepareCommand(Parser.java:259)
+	at org.h2.engine.Session.prepareLocal(Session.java:560)
+	at org.h2.engine.Session.prepareCommand(Session.java:501)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1202)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:170)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:158)
+	at workbench.sql.commands.UpdatingCommand.execute(UpdatingCommand.java:138)
+	at workbench.sql.StatementRunner.runStatement(StatementRunner.java:565)
+	at workbench.gui.sql.SqlPanel.displayResult(SqlPanel.java:3370)
+	at workbench.gui.sql.SqlPanel.runStatement(SqlPanel.java:2131)
+	at workbench.gui.sql.SqlPanel$4.run(SqlPanel.java:2069)
+2016-11-25 16:21:23 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Column "CRIANCA_NOME" not found; SQL statement:
+SELECT
+     CRIANCA."NOME" AS CRIANCA_NOME,
+     CRIANCA."DATA_NASCIMENTO" AS CRIANCA_DATA_NASCIMENTO,
+     CRIANCA."RG" AS CRIANCA_RG,
+     CRIANCA."TEL_CONTATO" AS CRIANCA_TEL_CONTATO,
+     CRIANCA."STATUS" AS CRIANCA_STATUS,
+     CRIANCA."SEXO" AS CRIANCA_SEXO,
+     CRIANCA."ENDERECO" AS CRIANCA_ENDERECO,
+     CRIANCA."NOME_RESPONSAVEL" AS CRIANCA_NOME_RESPONSAVEL,
+     CRIANCA."OBSERVACAO" AS CRIANCA_OBSERVACAO
+FROM
+     "PUBLIC"."CRIANCA" CRIANCA
+WHERE CRIANCA_NOME = ? [42122-192]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	at org.h2.message.DbException.get(DbException.java:179)
+	at org.h2.message.DbException.get(DbException.java:155)
+	at org.h2.expression.ExpressionColumn.optimize(ExpressionColumn.java:147)
+	at org.h2.expression.Comparison.optimize(Comparison.java:178)
+	at org.h2.command.dml.Select.prepare(Select.java:855)
+	at org.h2.command.Parser.prepareCommand(Parser.java:259)
 	at org.h2.engine.Session.prepareLocal(Session.java:560)
 	at org.h2.engine.Session.prepareCommand(Session.java:501)
 	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1202)
 	at org.h2.jdbc.JdbcPreparedStatement.<init>(JdbcPreparedStatement.java:73)
 	at org.h2.jdbc.JdbcConnection.prepareStatement(JdbcConnection.java:290)
-	at lib.DbAccess.PrepararComando(DbAccess.java:76)
-	at lib.DbAccess.Inserir(DbAccess.java:147)
-	at lib.DAOCrianca.insereCrianca(DAOCrianca.java:79)
-	at sorrisodecrianca.frmCrianca.btnCadastrarActionPerformed(frmCrianca.java:1210)
-	at sorrisodecrianca.frmCrianca.access$800(frmCrianca.java:33)
-	at sorrisodecrianca.frmCrianca$9.actionPerformed(frmCrianca.java:952)
+	at net.sf.jasperreports.engine.query.JRJdbcQueryExecuter.createStatement(JRJdbcQueryExecuter.java:267)
+	at net.sf.jasperreports.engine.query.JRJdbcQueryExecuter.createDatasource(JRJdbcQueryExecuter.java:196)
+	at net.sf.jasperreports.engine.fill.JRFillDataset.createQueryDatasource(JRFillDataset.java:1112)
+	at net.sf.jasperreports.engine.fill.JRFillDataset.initDatasource(JRFillDataset.java:689)
+	at net.sf.jasperreports.engine.fill.JRBaseFiller.setParameters(JRBaseFiller.java:1281)
+	at net.sf.jasperreports.engine.fill.JRBaseFiller.fill(JRBaseFiller.java:900)
+	at net.sf.jasperreports.engine.fill.JRBaseFiller.fill(JRBaseFiller.java:845)
+	at net.sf.jasperreports.engine.fill.JRFiller.fill(JRFiller.java:87)
+	at net.sf.jasperreports.engine.JasperFillManager.fill(JasperFillManager.java:446)
+	at net.sf.jasperreports.engine.JasperFillManager.fillReport(JasperFillManager.java:849)
+	at lib.DbAccess.report(DbAccess.java:284)
+	at lib.DAOCrianca.report(DAOCrianca.java:139)
+	at sorrisodecrianca.frmMenu.btnRelCriancasActionPerformed(frmMenu.java:1009)
+	at sorrisodecrianca.frmMenu.access$500(frmMenu.java:40)
+	at sorrisodecrianca.frmMenu$6.actionPerformed(frmMenu.java:621)
 	at javax.swing.AbstractButton.fireActionPerformed(AbstractButton.java:2022)
-	at javax.swing.AbstractButton$Handler.actionPerformed(AbstractButton.java:2346)
+	at javax.swing.AbstractButton$Handler.actionPerformed(AbstractButton.java:2348)
 	at javax.swing.DefaultButtonModel.fireActionPerformed(DefaultButtonModel.java:402)
 	at javax.swing.DefaultButtonModel.setPressed(DefaultButtonModel.java:259)
 	at javax.swing.plaf.basic.BasicButtonListener.mouseReleased(BasicButtonListener.java:252)
-	at java.awt.Component.processMouseEvent(Component.java:6527)
-	at javax.swing.JComponent.processMouseEvent(JComponent.java:3321)
-	at java.awt.Component.processEvent(Component.java:6292)
-	at java.awt.Container.processEvent(Container.java:2234)
-	at java.awt.Component.dispatchEventImpl(Component.java:4883)
-	at java.awt.Container.dispatchEventImpl(Container.java:2292)
-	at java.awt.Component.dispatchEvent(Component.java:4705)
-	at java.awt.LightweightDispatcher.retargetMouseEvent(Container.java:4898)
-	at java.awt.LightweightDispatcher.processMouseEvent(Container.java:4533)
-	at java.awt.LightweightDispatcher.dispatchEvent(Container.java:4462)
-	at java.awt.Container.dispatchEventImpl(Container.java:2278)
-	at java.awt.Window.dispatchEventImpl(Window.java:2739)
-	at java.awt.Component.dispatchEvent(Component.java:4705)
-	at java.awt.EventQueue.dispatchEventImpl(EventQueue.java:746)
-	at java.awt.EventQueue.access$400(EventQueue.java:97)
-	at java.awt.EventQueue$3.run(EventQueue.java:697)
-	at java.awt.EventQueue$3.run(EventQueue.java:691)
+	at java.awt.Component.processMouseEvent(Component.java:6535)
+	at javax.swing.JComponent.processMouseEvent(JComponent.java:3324)
+	at java.awt.Component.processEvent(Component.java:6300)
+	at java.awt.Container.processEvent(Container.java:2236)
+	at java.awt.Component.dispatchEventImpl(Component.java:4891)
+	at java.awt.Container.dispatchEventImpl(Container.java:2294)
+	at java.awt.Component.dispatchEvent(Component.java:4713)
+	at java.awt.LightweightDispatcher.retargetMouseEvent(Container.java:4888)
+	at java.awt.LightweightDispatcher.processMouseEvent(Container.java:4525)
+	at java.awt.LightweightDispatcher.dispatchEvent(Container.java:4466)
+	at java.awt.Container.dispatchEventImpl(Container.java:2280)
+	at java.awt.Window.dispatchEventImpl(Window.java:2750)
+	at java.awt.Component.dispatchEvent(Component.java:4713)
+	at java.awt.EventQueue.dispatchEventImpl(EventQueue.java:758)
+	at java.awt.EventQueue.access$500(EventQueue.java:97)
+	at java.awt.EventQueue$3.run(EventQueue.java:709)
+	at java.awt.EventQueue$3.run(EventQueue.java:703)
 	at java.security.AccessController.doPrivileged(Native Method)
-	at java.security.ProtectionDomain$1.doIntersectionPrivilege(ProtectionDomain.java:75)
-	at java.security.ProtectionDomain$1.doIntersectionPrivilege(ProtectionDomain.java:86)
-	at java.awt.EventQueue$4.run(EventQueue.java:719)
-	at java.awt.EventQueue$4.run(EventQueue.java:717)
+	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:76)
+	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:86)
+	at java.awt.EventQueue$4.run(EventQueue.java:731)
+	at java.awt.EventQueue$4.run(EventQueue.java:729)
 	at java.security.AccessController.doPrivileged(Native Method)
-	at java.security.ProtectionDomain$1.doIntersectionPrivilege(ProtectionDomain.java:75)
-	at java.awt.EventQueue.dispatchEvent(EventQueue.java:716)
+	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:76)
+	at java.awt.EventQueue.dispatchEvent(EventQueue.java:728)
 	at java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:201)
 	at java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:116)
 	at java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:105)
 	at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)
 	at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:93)
 	at java.awt.EventDispatchThread.run(EventDispatchThread.java:82)
-2016-11-25 23:16:33 jdbc[3]: exception
-org.h2.jdbc.JdbcSQLException: Column "COQUELUCHE" not found; SQL statement:
-INSERT INTO Crianca (nome, data_nascimento, rg, sexo, status, endereco, nome_responsavel, tel_contato, observacao,luz_eletrica, agua_encanada, esgoto,convenio_medico, centro_saude, sarampo, rubeola, bronco_pneumonia, catapora, coqueluche, hepatite, meningite, convulsao, problemas_respiratorios, alergia, ja_foi_internada, diarreia_frequente, diabetes, insulina, outras_doencas, medicamentos_alergicos, pode_sair_sozinha) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?) [42122-192]
+2016-11-25 16:38:12 jdbc[6]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "SELECT
+     CRIANCA.""NOME"" AS CRIANCA_NOME,
+     CRIANCA.""DATA_NASCIMENTO"" AS CRIANCA_DATA_NASCIMENTO,
+     CRIANCA.""RG"" AS CRIANCA_RG,
+     CRIANCA.""TEL_CONTATO"" AS CRIANCA_TEL_CONTATO,
+     CRIANCA.""STATUS"" AS CRIANCA_STATUS,
+     CRIANCA.""SEXO"" AS CRIANCA_SEXO,
+     CRIANCA.""ENDERECO"" AS CRIANCA_ENDERECO,
+     CRIANCA.""NOME_RESPONSAVEL"" AS CRIANCA_NOME_RESPONSAVEL,
+     CRIANCA.""OBSERVACAO"" AS CRIANCA_OBSERVACAO
+FROM
+     ""PUBLIC"".""CRIANCA"" CRIANCA
+WHERE CRIANCA.""NOME"" = $P{parameter1}[*]" [42000-192]
+2016-11-25 16:38:20 jdbc[6]: exception
+org.h2.jdbc.JdbcSQLException: Column "john doe" not found; SQL statement:
+SELECT
+     CRIANCA."NOME" AS CRIANCA_NOME,
+     CRIANCA."DATA_NASCIMENTO" AS CRIANCA_DATA_NASCIMENTO,
+     CRIANCA."RG" AS CRIANCA_RG,
+     CRIANCA."TEL_CONTATO" AS CRIANCA_TEL_CONTATO,
+     CRIANCA."STATUS" AS CRIANCA_STATUS,
+     CRIANCA."SEXO" AS CRIANCA_SEXO,
+     CRIANCA."ENDERECO" AS CRIANCA_ENDERECO,
+     CRIANCA."NOME_RESPONSAVEL" AS CRIANCA_NOME_RESPONSAVEL,
+     CRIANCA."OBSERVACAO" AS CRIANCA_OBSERVACAO
+FROM
+     "PUBLIC"."CRIANCA" CRIANCA
+WHERE CRIANCA."NOME" = "john doe" [42122-192]
 	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
 	at org.h2.message.DbException.get(DbException.java:179)
 	at org.h2.message.DbException.get(DbException.java:155)
-	at org.h2.table.Table.getColumn(Table.java:682)
-	at org.h2.command.Parser.parseColumn(Parser.java:878)
-	at org.h2.command.Parser.parseColumnList(Parser.java:862)
-	at org.h2.command.Parser.parseInsert(Parser.java:1062)
-	at org.h2.command.Parser.parsePrepared(Parser.java:413)
-	at org.h2.command.Parser.parse(Parser.java:317)
-	at org.h2.command.Parser.parse(Parser.java:289)
-	at org.h2.command.Parser.prepareCommand(Parser.java:254)
+	at org.h2.expression.ExpressionColumn.optimize(ExpressionColumn.java:147)
+	at org.h2.expression.Comparison.optimize(Comparison.java:180)
+	at org.h2.command.dml.Select.prepare(Select.java:855)
+	at org.h2.command.Parser.prepareCommand(Parser.java:259)
+	at org.h2.engine.Session.prepareLocal(Session.java:560)
+	at org.h2.engine.Session.prepareCommand(Session.java:501)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1202)
+	at org.h2.jdbc.JdbcStatement.executeQuery(JdbcStatement.java:73)
+	at workbench.sql.commands.SelectCommand.execute(SelectCommand.java:130)
+	at workbench.sql.StatementRunner.runStatement(StatementRunner.java:565)
+	at workbench.gui.sql.SqlPanel.displayResult(SqlPanel.java:3370)
+	at workbench.gui.sql.SqlPanel.runStatement(SqlPanel.java:2131)
+	at workbench.gui.sql.SqlPanel$4.run(SqlPanel.java:2069)
+2016-11-25 16:38:52 jdbc[6]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "SELECT
+     CRIANCA.""NOME"" AS CRIANCA_NOME,
+     CRIANCA.""DATA_NASCIMENTO"" AS CRIANCA_DATA_NASCIMENTO,
+     CRIANCA.""RG"" AS CRIANCA_RG,
+     CRIANCA.""TEL_CONTATO"" AS CRIANCA_TEL_CONTATO,
+     CRIANCA.""STATUS"" AS CRIANCA_STATUS,
+     CRIANCA.""SEXO"" AS CRIANCA_SEXO,
+     CRIANCA.""ENDERECO"" AS CRIANCA_ENDERECO,
+     CRIANCA.""NOME_RESPONSAVEL"" AS CRIANCA_NOME_RESPONSAVEL,
+     CRIANCA.""OBSERVACAO"" AS CRIANCA_OBSERVACAO
+FROM
+     ""PUBLIC"".""CRIANCA"" CRIANCA
+WHERE CRIANCA.""NOME"" = ""john doe""
+
+SELECT[*] * FROM CRIANCA WHERE CRIANCA.""NOME"" = ""john doe"""; SQL statement:
+SELECT
+     CRIANCA."NOME" AS CRIANCA_NOME,
+     CRIANCA."DATA_NASCIMENTO" AS CRIANCA_DATA_NASCIMENTO,
+     CRIANCA."RG" AS CRIANCA_RG,
+     CRIANCA."TEL_CONTATO" AS CRIANCA_TEL_CONTATO,
+     CRIANCA."STATUS" AS CRIANCA_STATUS,
+     CRIANCA."SEXO" AS CRIANCA_SEXO,
+     CRIANCA."ENDERECO" AS CRIANCA_ENDERECO,
+     CRIANCA."NOME_RESPONSAVEL" AS CRIANCA_NOME_RESPONSAVEL,
+     CRIANCA."OBSERVACAO" AS CRIANCA_OBSERVACAO
+FROM
+     "PUBLIC"."CRIANCA" CRIANCA
+WHERE CRIANCA."NOME" = "john doe"
+
+SELECT * FROM CRIANCA WHERE CRIANCA."NOME" = "john doe" [42000-192]
+2016-11-25 16:38:53 jdbc[6]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "SELECT
+     CRIANCA.""NOME"" AS CRIANCA_NOME,
+     CRIANCA.""DATA_NASCIMENTO"" AS CRIANCA_DATA_NASCIMENTO,
+     CRIANCA.""RG"" AS CRIANCA_RG,
+     CRIANCA.""TEL_CONTATO"" AS CRIANCA_TEL_CONTATO,
+     CRIANCA.""STATUS"" AS CRIANCA_STATUS,
+     CRIANCA.""SEXO"" AS CRIANCA_SEXO,
+     CRIANCA.""ENDERECO"" AS CRIANCA_ENDERECO,
+     CRIANCA.""NOME_RESPONSAVEL"" AS CRIANCA_NOME_RESPONSAVEL,
+     CRIANCA.""OBSERVACAO"" AS CRIANCA_OBSERVACAO
+FROM
+     ""PUBLIC"".""CRIANCA"" CRIANCA
+WHERE CRIANCA.""NOME"" = ""john doe""
+
+SELECT[*] * FROM CRIANCA WHERE CRIANCA.""NOME"" = ""john doe"""; SQL statement:
+SELECT
+     CRIANCA."NOME" AS CRIANCA_NOME,
+     CRIANCA."DATA_NASCIMENTO" AS CRIANCA_DATA_NASCIMENTO,
+     CRIANCA."RG" AS CRIANCA_RG,
+     CRIANCA."TEL_CONTATO" AS CRIANCA_TEL_CONTATO,
+     CRIANCA."STATUS" AS CRIANCA_STATUS,
+     CRIANCA."SEXO" AS CRIANCA_SEXO,
+     CRIANCA."ENDERECO" AS CRIANCA_ENDERECO,
+     CRIANCA."NOME_RESPONSAVEL" AS CRIANCA_NOME_RESPONSAVEL,
+     CRIANCA."OBSERVACAO" AS CRIANCA_OBSERVACAO
+FROM
+     "PUBLIC"."CRIANCA" CRIANCA
+WHERE CRIANCA."NOME" = "john doe"
+
+SELECT * FROM CRIANCA WHERE CRIANCA."NOME" = "john doe" [42000-192]
+2016-11-25 16:38:59 jdbc[6]: exception
+org.h2.jdbc.JdbcSQLException: Column "john doe" not found; SQL statement:
+SELECT * FROM CRIANCA WHERE CRIANCA."NOME" = "john doe" [42122-192]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	at org.h2.message.DbException.get(DbException.java:179)
+	at org.h2.message.DbException.get(DbException.java:155)
+	at org.h2.expression.ExpressionColumn.optimize(ExpressionColumn.java:147)
+	at org.h2.expression.Comparison.optimize(Comparison.java:180)
+	at org.h2.command.dml.Select.prepare(Select.java:855)
+	at org.h2.command.Parser.prepareCommand(Parser.java:259)
+	at org.h2.engine.Session.prepareLocal(Session.java:560)
+	at org.h2.engine.Session.prepareCommand(Session.java:501)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1202)
+	at org.h2.jdbc.JdbcStatement.executeQuery(JdbcStatement.java:73)
+	at workbench.sql.commands.SelectCommand.execute(SelectCommand.java:130)
+	at workbench.sql.StatementRunner.runStatement(StatementRunner.java:565)
+	at workbench.gui.sql.SqlPanel.displayResult(SqlPanel.java:3370)
+	at workbench.gui.sql.SqlPanel.runStatement(SqlPanel.java:2131)
+	at workbench.gui.sql.SqlPanel$4.run(SqlPanel.java:2069)
+2016-11-25 16:39:21 jdbc[6]: exception
+org.h2.jdbc.JdbcSQLException: Column "john doe" not found; SQL statement:
+SELECT * FROM CRIANCA WHERE CRIANCA.NOME = "john doe" [42122-192]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	at org.h2.message.DbException.get(DbException.java:179)
+	at org.h2.message.DbException.get(DbException.java:155)
+	at org.h2.expression.ExpressionColumn.optimize(ExpressionColumn.java:147)
+	at org.h2.expression.Comparison.optimize(Comparison.java:180)
+	at org.h2.command.dml.Select.prepare(Select.java:855)
+	at org.h2.command.Parser.prepareCommand(Parser.java:259)
+	at org.h2.engine.Session.prepareLocal(Session.java:560)
+	at org.h2.engine.Session.prepareCommand(Session.java:501)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1202)
+	at org.h2.jdbc.JdbcStatement.executeQuery(JdbcStatement.java:73)
+	at workbench.sql.commands.SelectCommand.execute(SelectCommand.java:130)
+	at workbench.sql.StatementRunner.runStatement(StatementRunner.java:565)
+	at workbench.gui.sql.SqlPanel.displayResult(SqlPanel.java:3370)
+	at workbench.gui.sql.SqlPanel.runStatement(SqlPanel.java:2131)
+	at workbench.gui.sql.SqlPanel$4.run(SqlPanel.java:2069)
+2016-11-25 16:39:43 jdbc[6]: exception
+org.h2.jdbc.JdbcSQLException: Column "john doe" not found; SQL statement:
+SELECT * FROM CRIANCA WHERE NOME = "john doe" [42122-192]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	at org.h2.message.DbException.get(DbException.java:179)
+	at org.h2.message.DbException.get(DbException.java:155)
+	at org.h2.expression.ExpressionColumn.optimize(ExpressionColumn.java:147)
+	at org.h2.expression.Comparison.optimize(Comparison.java:180)
+	at org.h2.command.dml.Select.prepare(Select.java:855)
+	at org.h2.command.Parser.prepareCommand(Parser.java:259)
+	at org.h2.engine.Session.prepareLocal(Session.java:560)
+	at org.h2.engine.Session.prepareCommand(Session.java:501)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1202)
+	at org.h2.jdbc.JdbcStatement.executeQuery(JdbcStatement.java:73)
+	at workbench.sql.commands.SelectCommand.execute(SelectCommand.java:130)
+	at workbench.sql.StatementRunner.runStatement(StatementRunner.java:565)
+	at workbench.gui.sql.SqlPanel.displayResult(SqlPanel.java:3370)
+	at workbench.gui.sql.SqlPanel.runStatement(SqlPanel.java:2131)
+	at workbench.gui.sql.SqlPanel$4.run(SqlPanel.java:2069)
+2016-11-25 16:39:44 jdbc[6]: exception
+org.h2.jdbc.JdbcSQLException: Column "john doe" not found; SQL statement:
+SELECT * FROM CRIANCA WHERE NOME = "john doe" [42122-192]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	at org.h2.message.DbException.get(DbException.java:179)
+	at org.h2.message.DbException.get(DbException.java:155)
+	at org.h2.expression.ExpressionColumn.optimize(ExpressionColumn.java:147)
+	at org.h2.expression.Comparison.optimize(Comparison.java:180)
+	at org.h2.command.dml.Select.prepare(Select.java:855)
+	at org.h2.command.Parser.prepareCommand(Parser.java:259)
+	at org.h2.engine.Session.prepareLocal(Session.java:560)
+	at org.h2.engine.Session.prepareCommand(Session.java:501)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1202)
+	at org.h2.jdbc.JdbcStatement.executeQuery(JdbcStatement.java:73)
+	at workbench.sql.commands.SelectCommand.execute(SelectCommand.java:130)
+	at workbench.sql.StatementRunner.runStatement(StatementRunner.java:565)
+	at workbench.gui.sql.SqlPanel.displayResult(SqlPanel.java:3370)
+	at workbench.gui.sql.SqlPanel.runStatement(SqlPanel.java:2131)
+	at workbench.gui.sql.SqlPanel$4.run(SqlPanel.java:2069)
+2016-11-25 16:40:14 jdbc[6]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "SELECT * FROM CRIANCA WHERE NOME = *[*]"; expected "ALL, ANY, SOME, SELECT, FROM, WITH"; SQL statement:
+SELECT * FROM CRIANCA WHERE NOME = * [42001-192]
+2016-11-25 16:40:19 jdbc[6]: exception
+org.h2.jdbc.JdbcSQLException: Column "?" not found; SQL statement:
+SELECT * FROM CRIANCA WHERE NOME = "?" [42122-192]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	at org.h2.message.DbException.get(DbException.java:179)
+	at org.h2.message.DbException.get(DbException.java:155)
+	at org.h2.expression.ExpressionColumn.optimize(ExpressionColumn.java:147)
+	at org.h2.expression.Comparison.optimize(Comparison.java:180)
+	at org.h2.command.dml.Select.prepare(Select.java:855)
+	at org.h2.command.Parser.prepareCommand(Parser.java:259)
+	at org.h2.engine.Session.prepareLocal(Session.java:560)
+	at org.h2.engine.Session.prepareCommand(Session.java:501)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1202)
+	at org.h2.jdbc.JdbcStatement.executeQuery(JdbcStatement.java:73)
+	at workbench.sql.commands.SelectCommand.execute(SelectCommand.java:130)
+	at workbench.sql.StatementRunner.runStatement(StatementRunner.java:565)
+	at workbench.gui.sql.SqlPanel.displayResult(SqlPanel.java:3370)
+	at workbench.gui.sql.SqlPanel.runStatement(SqlPanel.java:2131)
+	at workbench.gui.sql.SqlPanel$4.run(SqlPanel.java:2069)
+2016-11-25 16:45:42 jdbc[6]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "JOHN[*] "; SQL statement:
+john [42000-192]
+2016-11-25 16:49:31 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Column "CRIANCA_NOME" not found; SQL statement:
+SELECT
+     CRIANCA."NOME" AS CRIANCA_NOME,
+     CRIANCA."DATA_NASCIMENTO" AS CRIANCA_DATA_NASCIMENTO,
+     CRIANCA."RG" AS CRIANCA_RG,
+     CRIANCA."TEL_CONTATO" AS CRIANCA_TEL_CONTATO,
+     CRIANCA."STATUS" AS CRIANCA_STATUS,
+     CRIANCA."SEXO" AS CRIANCA_SEXO,
+     CRIANCA."ENDERECO" AS CRIANCA_ENDERECO,
+     CRIANCA."NOME_RESPONSAVEL" AS CRIANCA_NOME_RESPONSAVEL,
+     CRIANCA."OBSERVACAO" AS CRIANCA_OBSERVACAO
+FROM
+     "PUBLIC"."CRIANCA" CRIANCA
+WHERE CRIANCA_NOME LIKE ? [42122-192]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	at org.h2.message.DbException.get(DbException.java:179)
+	at org.h2.message.DbException.get(DbException.java:155)
+	at org.h2.expression.ExpressionColumn.optimize(ExpressionColumn.java:147)
+	at org.h2.expression.CompareLike.optimize(CompareLike.java:89)
+	at org.h2.command.dml.Select.prepare(Select.java:855)
+	at org.h2.command.Parser.prepareCommand(Parser.java:259)
 	at org.h2.engine.Session.prepareLocal(Session.java:560)
 	at org.h2.engine.Session.prepareCommand(Session.java:501)
 	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1202)
 	at org.h2.jdbc.JdbcPreparedStatement.<init>(JdbcPreparedStatement.java:73)
 	at org.h2.jdbc.JdbcConnection.prepareStatement(JdbcConnection.java:290)
-	at lib.DbAccess.PrepararComando(DbAccess.java:76)
-	at lib.DbAccess.Inserir(DbAccess.java:147)
-	at lib.DAOCrianca.insereCrianca(DAOCrianca.java:79)
-	at sorrisodecrianca.frmCrianca.btnCadastrarActionPerformed(frmCrianca.java:1202)
-	at sorrisodecrianca.frmCrianca.access$800(frmCrianca.java:33)
-	at sorrisodecrianca.frmCrianca$9.actionPerformed(frmCrianca.java:944)
+	at net.sf.jasperreports.engine.query.JRJdbcQueryExecuter.createStatement(JRJdbcQueryExecuter.java:267)
+	at net.sf.jasperreports.engine.query.JRJdbcQueryExecuter.createDatasource(JRJdbcQueryExecuter.java:196)
+	at net.sf.jasperreports.engine.fill.JRFillDataset.createQueryDatasource(JRFillDataset.java:1112)
+	at net.sf.jasperreports.engine.fill.JRFillDataset.initDatasource(JRFillDataset.java:689)
+	at net.sf.jasperreports.engine.fill.JRBaseFiller.setParameters(JRBaseFiller.java:1281)
+	at net.sf.jasperreports.engine.fill.JRBaseFiller.fill(JRBaseFiller.java:900)
+	at net.sf.jasperreports.engine.fill.JRBaseFiller.fill(JRBaseFiller.java:845)
+	at net.sf.jasperreports.engine.fill.JRFiller.fill(JRFiller.java:87)
+	at net.sf.jasperreports.engine.JasperFillManager.fill(JasperFillManager.java:446)
+	at net.sf.jasperreports.engine.JasperFillManager.fillReport(JasperFillManager.java:849)
+	at lib.DbAccess.report(DbAccess.java:284)
+	at lib.DAOCrianca.report(DAOCrianca.java:140)
+	at sorrisodecrianca.frmMenu.btnRelCriancasActionPerformed(frmMenu.java:1010)
+	at sorrisodecrianca.frmMenu.access$500(frmMenu.java:40)
+	at sorrisodecrianca.frmMenu$6.actionPerformed(frmMenu.java:621)
 	at javax.swing.AbstractButton.fireActionPerformed(AbstractButton.java:2022)
-	at javax.swing.AbstractButton$Handler.actionPerformed(AbstractButton.java:2346)
+	at javax.swing.AbstractButton$Handler.actionPerformed(AbstractButton.java:2348)
 	at javax.swing.DefaultButtonModel.fireActionPerformed(DefaultButtonModel.java:402)
 	at javax.swing.DefaultButtonModel.setPressed(DefaultButtonModel.java:259)
 	at javax.swing.plaf.basic.BasicButtonListener.mouseReleased(BasicButtonListener.java:252)
-	at java.awt.Component.processMouseEvent(Component.java:6527)
-	at javax.swing.JComponent.processMouseEvent(JComponent.java:3321)
-	at java.awt.Component.processEvent(Component.java:6292)
-	at java.awt.Container.processEvent(Container.java:2234)
-	at java.awt.Component.dispatchEventImpl(Component.java:4883)
-	at java.awt.Container.dispatchEventImpl(Container.java:2292)
-	at java.awt.Component.dispatchEvent(Component.java:4705)
-	at java.awt.LightweightDispatcher.retargetMouseEvent(Container.java:4898)
-	at java.awt.LightweightDispatcher.processMouseEvent(Container.java:4533)
-	at java.awt.LightweightDispatcher.dispatchEvent(Container.java:4462)
-	at java.awt.Container.dispatchEventImpl(Container.java:2278)
-	at java.awt.Window.dispatchEventImpl(Window.java:2739)
-	at java.awt.Component.dispatchEvent(Component.java:4705)
-	at java.awt.EventQueue.dispatchEventImpl(EventQueue.java:746)
-	at java.awt.EventQueue.access$400(EventQueue.java:97)
-	at java.awt.EventQueue$3.run(EventQueue.java:697)
-	at java.awt.EventQueue$3.run(EventQueue.java:691)
+	at java.awt.Component.processMouseEvent(Component.java:6535)
+	at javax.swing.JComponent.processMouseEvent(JComponent.java:3324)
+	at java.awt.Component.processEvent(Component.java:6300)
+	at java.awt.Container.processEvent(Container.java:2236)
+	at java.awt.Component.dispatchEventImpl(Component.java:4891)
+	at java.awt.Container.dispatchEventImpl(Container.java:2294)
+	at java.awt.Component.dispatchEvent(Component.java:4713)
+	at java.awt.LightweightDispatcher.retargetMouseEvent(Container.java:4888)
+	at java.awt.LightweightDispatcher.processMouseEvent(Container.java:4525)
+	at java.awt.LightweightDispatcher.dispatchEvent(Container.java:4466)
+	at java.awt.Container.dispatchEventImpl(Container.java:2280)
+	at java.awt.Window.dispatchEventImpl(Window.java:2750)
+	at java.awt.Component.dispatchEvent(Component.java:4713)
+	at java.awt.EventQueue.dispatchEventImpl(EventQueue.java:758)
+	at java.awt.EventQueue.access$500(EventQueue.java:97)
+	at java.awt.EventQueue$3.run(EventQueue.java:709)
+	at java.awt.EventQueue$3.run(EventQueue.java:703)
 	at java.security.AccessController.doPrivileged(Native Method)
-	at java.security.ProtectionDomain$1.doIntersectionPrivilege(ProtectionDomain.java:75)
-	at java.security.ProtectionDomain$1.doIntersectionPrivilege(ProtectionDomain.java:86)
-	at java.awt.EventQueue$4.run(EventQueue.java:719)
-	at java.awt.EventQueue$4.run(EventQueue.java:717)
+	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:76)
+	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:86)
+	at java.awt.EventQueue$4.run(EventQueue.java:731)
+	at java.awt.EventQueue$4.run(EventQueue.java:729)
 	at java.security.AccessController.doPrivileged(Native Method)
-	at java.security.ProtectionDomain$1.doIntersectionPrivilege(ProtectionDomain.java:75)
-	at java.awt.EventQueue.dispatchEvent(EventQueue.java:716)
+	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:76)
+	at java.awt.EventQueue.dispatchEvent(EventQueue.java:728)
 	at java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:201)
 	at java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:116)
 	at java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:105)
 	at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)
 	at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:93)
 	at java.awt.EventDispatchThread.run(EventDispatchThread.java:82)
-2016-11-25 23:20:09 jdbc[3]: exception
-org.h2.jdbc.JdbcSQLException: Column "INSULINA" not found; SQL statement:
-INSERT INTO Crianca (nome, data_nascimento, rg, sexo, status, endereco, nome_responsavel, tel_contato, observacao,luz_eletrica, agua_encanada, esgoto,convenio_medico, centro_saude, sarampo, rubeola, bronco_pneumonia, catapora, conqueluche, hepatite, meningite, convulsao, problemas_respiratorios, alergia, ja_foi_internada, diarreia_frequente, diabetes, insulina, outras_doencas, medicamentos_alergicos, pode_sair_sozinha) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?) [42122-192]
+2016-11-25 16:50:19 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Column "CRIANCA_NOME" not found; SQL statement:
+SELECT
+     CRIANCA."NOME" AS CRIANCA_NOME,
+     CRIANCA."DATA_NASCIMENTO" AS CRIANCA_DATA_NASCIMENTO,
+     CRIANCA."RG" AS CRIANCA_RG,
+     CRIANCA."TEL_CONTATO" AS CRIANCA_TEL_CONTATO,
+     CRIANCA."STATUS" AS CRIANCA_STATUS,
+     CRIANCA."SEXO" AS CRIANCA_SEXO,
+     CRIANCA."ENDERECO" AS CRIANCA_ENDERECO,
+     CRIANCA."NOME_RESPONSAVEL" AS CRIANCA_NOME_RESPONSAVEL,
+     CRIANCA."OBSERVACAO" AS CRIANCA_OBSERVACAO
+FROM
+     "PUBLIC"."CRIANCA" CRIANCA
+WHERE CRIANCA_NOME LIKE ? [42122-192]
 	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
 	at org.h2.message.DbException.get(DbException.java:179)
 	at org.h2.message.DbException.get(DbException.java:155)
-	at org.h2.table.Table.getColumn(Table.java:682)
-	at org.h2.command.Parser.parseColumn(Parser.java:878)
-	at org.h2.command.Parser.parseColumnList(Parser.java:862)
-	at org.h2.command.Parser.parseInsert(Parser.java:1062)
-	at org.h2.command.Parser.parsePrepared(Parser.java:413)
-	at org.h2.command.Parser.parse(Parser.java:317)
-	at org.h2.command.Parser.parse(Parser.java:289)
-	at org.h2.command.Parser.prepareCommand(Parser.java:254)
+	at org.h2.expression.ExpressionColumn.optimize(ExpressionColumn.java:147)
+	at org.h2.expression.CompareLike.optimize(CompareLike.java:89)
+	at org.h2.command.dml.Select.prepare(Select.java:855)
+	at org.h2.command.Parser.prepareCommand(Parser.java:259)
 	at org.h2.engine.Session.prepareLocal(Session.java:560)
 	at org.h2.engine.Session.prepareCommand(Session.java:501)
 	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1202)
 	at org.h2.jdbc.JdbcPreparedStatement.<init>(JdbcPreparedStatement.java:73)
 	at org.h2.jdbc.JdbcConnection.prepareStatement(JdbcConnection.java:290)
-	at lib.DbAccess.PrepararComando(DbAccess.java:76)
-	at lib.DbAccess.Inserir(DbAccess.java:147)
-	at lib.DAOCrianca.insereCrianca(DAOCrianca.java:79)
-	at sorrisodecrianca.frmCrianca.btnCadastrarActionPerformed(frmCrianca.java:1202)
-	at sorrisodecrianca.frmCrianca.access$800(frmCrianca.java:33)
-	at sorrisodecrianca.frmCrianca$9.actionPerformed(frmCrianca.java:944)
+	at net.sf.jasperreports.engine.query.JRJdbcQueryExecuter.createStatement(JRJdbcQueryExecuter.java:267)
+	at net.sf.jasperreports.engine.query.JRJdbcQueryExecuter.createDatasource(JRJdbcQueryExecuter.java:196)
+	at net.sf.jasperreports.engine.fill.JRFillDataset.createQueryDatasource(JRFillDataset.java:1112)
+	at net.sf.jasperreports.engine.fill.JRFillDataset.initDatasource(JRFillDataset.java:689)
+	at net.sf.jasperreports.engine.fill.JRBaseFiller.setParameters(JRBaseFiller.java:1281)
+	at net.sf.jasperreports.engine.fill.JRBaseFiller.fill(JRBaseFiller.java:900)
+	at net.sf.jasperreports.engine.fill.JRBaseFiller.fill(JRBaseFiller.java:845)
+	at net.sf.jasperreports.engine.fill.JRFiller.fill(JRFiller.java:87)
+	at net.sf.jasperreports.engine.JasperFillManager.fill(JasperFillManager.java:446)
+	at net.sf.jasperreports.engine.JasperFillManager.fillReport(JasperFillManager.java:849)
+	at lib.DbAccess.report(DbAccess.java:284)
+	at lib.DAOCrianca.report(DAOCrianca.java:140)
+	at sorrisodecrianca.frmMenu.btnRelCriancasActionPerformed(frmMenu.java:1010)
+	at sorrisodecrianca.frmMenu.access$500(frmMenu.java:40)
+	at sorrisodecrianca.frmMenu$6.actionPerformed(frmMenu.java:621)
 	at javax.swing.AbstractButton.fireActionPerformed(AbstractButton.java:2022)
-	at javax.swing.AbstractButton$Handler.actionPerformed(AbstractButton.java:2346)
+	at javax.swing.AbstractButton$Handler.actionPerformed(AbstractButton.java:2348)
 	at javax.swing.DefaultButtonModel.fireActionPerformed(DefaultButtonModel.java:402)
 	at javax.swing.DefaultButtonModel.setPressed(DefaultButtonModel.java:259)
 	at javax.swing.plaf.basic.BasicButtonListener.mouseReleased(BasicButtonListener.java:252)
-	at java.awt.Component.processMouseEvent(Component.java:6527)
-	at javax.swing.JComponent.processMouseEvent(JComponent.java:3321)
-	at java.awt.Component.processEvent(Component.java:6292)
-	at java.awt.Container.processEvent(Container.java:2234)
-	at java.awt.Component.dispatchEventImpl(Component.java:4883)
-	at java.awt.Container.dispatchEventImpl(Container.java:2292)
-	at java.awt.Component.dispatchEvent(Component.java:4705)
-	at java.awt.LightweightDispatcher.retargetMouseEvent(Container.java:4898)
-	at java.awt.LightweightDispatcher.processMouseEvent(Container.java:4533)
-	at java.awt.LightweightDispatcher.dispatchEvent(Container.java:4462)
-	at java.awt.Container.dispatchEventImpl(Container.java:2278)
-	at java.awt.Window.dispatchEventImpl(Window.java:2739)
-	at java.awt.Component.dispatchEvent(Component.java:4705)
-	at java.awt.EventQueue.dispatchEventImpl(EventQueue.java:746)
-	at java.awt.EventQueue.access$400(EventQueue.java:97)
-	at java.awt.EventQueue$3.run(EventQueue.java:697)
-	at java.awt.EventQueue$3.run(EventQueue.java:691)
+	at java.awt.Component.processMouseEvent(Component.java:6535)
+	at javax.swing.JComponent.processMouseEvent(JComponent.java:3324)
+	at java.awt.Component.processEvent(Component.java:6300)
+	at java.awt.Container.processEvent(Container.java:2236)
+	at java.awt.Component.dispatchEventImpl(Component.java:4891)
+	at java.awt.Container.dispatchEventImpl(Container.java:2294)
+	at java.awt.Component.dispatchEvent(Component.java:4713)
+	at java.awt.LightweightDispatcher.retargetMouseEvent(Container.java:4888)
+	at java.awt.LightweightDispatcher.processMouseEvent(Container.java:4525)
+	at java.awt.LightweightDispatcher.dispatchEvent(Container.java:4466)
+	at java.awt.Container.dispatchEventImpl(Container.java:2280)
+	at java.awt.Window.dispatchEventImpl(Window.java:2750)
+	at java.awt.Component.dispatchEvent(Component.java:4713)
+	at java.awt.EventQueue.dispatchEventImpl(EventQueue.java:758)
+	at java.awt.EventQueue.access$500(EventQueue.java:97)
+	at java.awt.EventQueue$3.run(EventQueue.java:709)
+	at java.awt.EventQueue$3.run(EventQueue.java:703)
 	at java.security.AccessController.doPrivileged(Native Method)
-	at java.security.ProtectionDomain$1.doIntersectionPrivilege(ProtectionDomain.java:75)
-	at java.security.ProtectionDomain$1.doIntersectionPrivilege(ProtectionDomain.java:86)
-	at java.awt.EventQueue$4.run(EventQueue.java:719)
-	at java.awt.EventQueue$4.run(EventQueue.java:717)
+	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:76)
+	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:86)
+	at java.awt.EventQueue$4.run(EventQueue.java:731)
+	at java.awt.EventQueue$4.run(EventQueue.java:729)
 	at java.security.AccessController.doPrivileged(Native Method)
-	at java.security.ProtectionDomain$1.doIntersectionPrivilege(ProtectionDomain.java:75)
-	at java.awt.EventQueue.dispatchEvent(EventQueue.java:716)
-	at java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:201)
-	at java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:116)
-	at java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:105)
-	at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)
-	at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:93)
-	at java.awt.EventDispatchThread.run(EventDispatchThread.java:82)
-2016-11-26 00:45:20 jdbc[3]: exception
-org.h2.jdbc.JdbcSQLException: Column "CONQUELUCHE" not found; SQL statement:
-INSERT INTO Crianca (nome, data_nascimento, rg, sexo, status, endereco, nome_responsavel, tel_contato, observacao, luz_eletrica, agua_encanada, esgoto, convenio_medico, centro_saude, sarampo, rubeola, bronco_pneumonia, catapora, conqueluche, hepatite, meningite, convulsao, problemas_respiratorios, alergia, ja_foi_internada, diarreia_frequente, diabetes, usa_insulina, outras_doencas, medicamentos_alergicos, pode_sair_sozinha,data_prevista, pessoa_autorizada) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?) [42122-192]
-	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
-	at org.h2.message.DbException.get(DbException.java:179)
-	at org.h2.message.DbException.get(DbException.java:155)
-	at org.h2.table.Table.getColumn(Table.java:682)
-	at org.h2.command.Parser.parseColumn(Parser.java:878)
-	at org.h2.command.Parser.parseColumnList(Parser.java:862)
-	at org.h2.command.Parser.parseInsert(Parser.java:1062)
-	at org.h2.command.Parser.parsePrepared(Parser.java:413)
-	at org.h2.command.Parser.parse(Parser.java:317)
-	at org.h2.command.Parser.parse(Parser.java:289)
-	at org.h2.command.Parser.prepareCommand(Parser.java:254)
-	at org.h2.engine.Session.prepareLocal(Session.java:560)
-	at org.h2.engine.Session.prepareCommand(Session.java:501)
-	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1202)
-	at org.h2.jdbc.JdbcPreparedStatement.<init>(JdbcPreparedStatement.java:73)
-	at org.h2.jdbc.JdbcConnection.prepareStatement(JdbcConnection.java:290)
-	at lib.DbAccess.PrepararComando(DbAccess.java:76)
-	at lib.DbAccess.Inserir(DbAccess.java:147)
-	at lib.DAOCrianca.insereCrianca(DAOCrianca.java:80)
-	at sorrisodecrianca.frmCrianca.btnCadastrarActionPerformed(frmCrianca.java:1213)
-	at sorrisodecrianca.frmCrianca.access$800(frmCrianca.java:33)
-	at sorrisodecrianca.frmCrianca$9.actionPerformed(frmCrianca.java:944)
-	at javax.swing.AbstractButton.fireActionPerformed(AbstractButton.java:2022)
-	at javax.swing.AbstractButton$Handler.actionPerformed(AbstractButton.java:2346)
-	at javax.swing.DefaultButtonModel.fireActionPerformed(DefaultButtonModel.java:402)
-	at javax.swing.DefaultButtonModel.setPressed(DefaultButtonModel.java:259)
-	at javax.swing.plaf.basic.BasicButtonListener.mouseReleased(BasicButtonListener.java:252)
-	at java.awt.Component.processMouseEvent(Component.java:6527)
-	at javax.swing.JComponent.processMouseEvent(JComponent.java:3321)
-	at java.awt.Component.processEvent(Component.java:6292)
-	at java.awt.Container.processEvent(Container.java:2234)
-	at java.awt.Component.dispatchEventImpl(Component.java:4883)
-	at java.awt.Container.dispatchEventImpl(Container.java:2292)
-	at java.awt.Component.dispatchEvent(Component.java:4705)
-	at java.awt.LightweightDispatcher.retargetMouseEvent(Container.java:4898)
-	at java.awt.LightweightDispatcher.processMouseEvent(Container.java:4533)
-	at java.awt.LightweightDispatcher.dispatchEvent(Container.java:4462)
-	at java.awt.Container.dispatchEventImpl(Container.java:2278)
-	at java.awt.Window.dispatchEventImpl(Window.java:2739)
-	at java.awt.Component.dispatchEvent(Component.java:4705)
-	at java.awt.EventQueue.dispatchEventImpl(EventQueue.java:746)
-	at java.awt.EventQueue.access$400(EventQueue.java:97)
-	at java.awt.EventQueue$3.run(EventQueue.java:697)
-	at java.awt.EventQueue$3.run(EventQueue.java:691)
-	at java.security.AccessController.doPrivileged(Native Method)
-	at java.security.ProtectionDomain$1.doIntersectionPrivilege(ProtectionDomain.java:75)
-	at java.security.ProtectionDomain$1.doIntersectionPrivilege(ProtectionDomain.java:86)
-	at java.awt.EventQueue$4.run(EventQueue.java:719)
-	at java.awt.EventQueue$4.run(EventQueue.java:717)
-	at java.security.AccessController.doPrivileged(Native Method)
-	at java.security.ProtectionDomain$1.doIntersectionPrivilege(ProtectionDomain.java:75)
-	at java.awt.EventQueue.dispatchEvent(EventQueue.java:716)
-	at java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:201)
-	at java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:116)
-	at java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:105)
-	at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)
-	at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:93)
-	at java.awt.EventDispatchThread.run(EventDispatchThread.java:82)
-2016-11-26 10:59:48 jdbc[3]: exception
-org.h2.jdbc.JdbcSQLException: Column "telefone" not found [42122-192]
-	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
-	at org.h2.message.DbException.get(DbException.java:179)
-	at org.h2.message.DbException.get(DbException.java:155)
-	at org.h2.jdbc.JdbcResultSet.getColumnIndex(JdbcResultSet.java:3129)
-	at org.h2.jdbc.JdbcResultSet.get(JdbcResultSet.java:3217)
-	at org.h2.jdbc.JdbcResultSet.getString(JdbcResultSet.java:303)
-	at lib.DAOInteressados.ConverterResultSet(DAOInteressados.java:55)
-	at lib.DAOInteressados.ConverterResultSet(DAOInteressados.java:18)
-	at lib.DbAccess.Listar(DbAccess.java:181)
-	at lib.DAOInteressados.getTodosInteressados(DAOInteressados.java:40)
-	at sorrisodecrianca.Consulta.popularTabelaInteressados(Consulta.java:122)
-	at sorrisodecrianca.Consulta.<init>(Consulta.java:44)
-	at sorrisodecrianca.frmMenu.btnConsultasActionPerformed(frmMenu.java:1019)
-	at sorrisodecrianca.frmMenu.access$400(frmMenu.java:40)
-	at sorrisodecrianca.frmMenu$5.actionPerformed(frmMenu.java:620)
-	at javax.swing.AbstractButton.fireActionPerformed(AbstractButton.java:2022)
-	at javax.swing.AbstractButton$Handler.actionPerformed(AbstractButton.java:2346)
-	at javax.swing.DefaultButtonModel.fireActionPerformed(DefaultButtonModel.java:402)
-	at javax.swing.DefaultButtonModel.setPressed(DefaultButtonModel.java:259)
-	at javax.swing.plaf.basic.BasicButtonListener.mouseReleased(BasicButtonListener.java:252)
-	at java.awt.Component.processMouseEvent(Component.java:6527)
-	at javax.swing.JComponent.processMouseEvent(JComponent.java:3321)
-	at java.awt.Component.processEvent(Component.java:6292)
-	at java.awt.Container.processEvent(Container.java:2234)
-	at java.awt.Component.dispatchEventImpl(Component.java:4883)
-	at java.awt.Container.dispatchEventImpl(Container.java:2292)
-	at java.awt.Component.dispatchEvent(Component.java:4705)
-	at java.awt.LightweightDispatcher.retargetMouseEvent(Container.java:4898)
-	at java.awt.LightweightDispatcher.processMouseEvent(Container.java:4533)
-	at java.awt.LightweightDispatcher.dispatchEvent(Container.java:4462)
-	at java.awt.Container.dispatchEventImpl(Container.java:2278)
-	at java.awt.Window.dispatchEventImpl(Window.java:2739)
-	at java.awt.Component.dispatchEvent(Component.java:4705)
-	at java.awt.EventQueue.dispatchEventImpl(EventQueue.java:746)
-	at java.awt.EventQueue.access$400(EventQueue.java:97)
-	at java.awt.EventQueue$3.run(EventQueue.java:697)
-	at java.awt.EventQueue$3.run(EventQueue.java:691)
-	at java.security.AccessController.doPrivileged(Native Method)
-	at java.security.ProtectionDomain$1.doIntersectionPrivilege(ProtectionDomain.java:75)
-	at java.security.ProtectionDomain$1.doIntersectionPrivilege(ProtectionDomain.java:86)
-	at java.awt.EventQueue$4.run(EventQueue.java:719)
-	at java.awt.EventQueue$4.run(EventQueue.java:717)
-	at java.security.AccessController.doPrivileged(Native Method)
-	at java.security.ProtectionDomain$1.doIntersectionPrivilege(ProtectionDomain.java:75)
-	at java.awt.EventQueue.dispatchEvent(EventQueue.java:716)
-	at java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:201)
-	at java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:116)
-	at java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:105)
-	at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)
-	at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:93)
-	at java.awt.EventDispatchThread.run(EventDispatchThread.java:82)
-2016-11-26 11:20:23 jdbc[3]: exception
-org.h2.jdbc.JdbcSQLException: Invalid value "1" for parameter "parameterIndex" [90008-192]
-	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
-	at org.h2.message.DbException.get(DbException.java:179)
-	at org.h2.message.DbException.getInvalidValueException(DbException.java:228)
-	at org.h2.jdbc.JdbcPreparedStatement.setParameter(JdbcPreparedStatement.java:1406)
-	at org.h2.jdbc.JdbcPreparedStatement.setString(JdbcPreparedStatement.java:355)
-	at lib.DbAccess.PrepararComando(DbAccess.java:90)
-	at lib.DbAccess.Listar(DbAccess.java:176)
-	at lib.DAOInteressados.getInteressadoByNomeCrianca(DAOInteressados.java:57)
-	at sorrisodecrianca.Consulta.pesquisarInteressado(Consulta.java:217)
-	at sorrisodecrianca.Consulta.btn_PesquisarInteressadoMouseClicked(Consulta.java:539)
-	at sorrisodecrianca.Consulta.access$500(Consulta.java:23)
-	at sorrisodecrianca.Consulta$6.mouseClicked(Consulta.java:428)
-	at java.awt.AWTEventMulticaster.mouseClicked(AWTEventMulticaster.java:270)
-	at java.awt.Component.processMouseEvent(Component.java:6530)
-	at javax.swing.JComponent.processMouseEvent(JComponent.java:3321)
-	at java.awt.Component.processEvent(Component.java:6292)
-	at java.awt.Container.processEvent(Container.java:2234)
-	at java.awt.Component.dispatchEventImpl(Component.java:4883)
-	at java.awt.Container.dispatchEventImpl(Container.java:2292)
-	at java.awt.Component.dispatchEvent(Component.java:4705)
-	at java.awt.LightweightDispatcher.retargetMouseEvent(Container.java:4898)
-	at java.awt.LightweightDispatcher.processMouseEvent(Container.java:4542)
-	at java.awt.LightweightDispatcher.dispatchEvent(Container.java:4462)
-	at java.awt.Container.dispatchEventImpl(Container.java:2278)
-	at java.awt.Window.dispatchEventImpl(Window.java:2739)
-	at java.awt.Component.dispatchEvent(Component.java:4705)
-	at java.awt.EventQueue.dispatchEventImpl(EventQueue.java:746)
-	at java.awt.EventQueue.access$400(EventQueue.java:97)
-	at java.awt.EventQueue$3.run(EventQueue.java:697)
-	at java.awt.EventQueue$3.run(EventQueue.java:691)
-	at java.security.AccessController.doPrivileged(Native Method)
-	at java.security.ProtectionDomain$1.doIntersectionPrivilege(ProtectionDomain.java:75)
-	at java.security.ProtectionDomain$1.doIntersectionPrivilege(ProtectionDomain.java:86)
-	at java.awt.EventQueue$4.run(EventQueue.java:719)
-	at java.awt.EventQueue$4.run(EventQueue.java:717)
-	at java.security.AccessController.doPrivileged(Native Method)
-	at java.security.ProtectionDomain$1.doIntersectionPrivilege(ProtectionDomain.java:75)
-	at java.awt.EventQueue.dispatchEvent(EventQueue.java:716)
-	at java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:201)
-	at java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:116)
-	at java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:105)
-	at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)
-	at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:93)
-	at java.awt.EventDispatchThread.run(EventDispatchThread.java:82)
-2016-11-26 11:29:14 jdbc[3]: exception
-org.h2.jdbc.JdbcSQLException: Invalid value "1" for parameter "parameterIndex" [90008-192]
-	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
-	at org.h2.message.DbException.get(DbException.java:179)
-	at org.h2.message.DbException.getInvalidValueException(DbException.java:228)
-	at org.h2.jdbc.JdbcPreparedStatement.setParameter(JdbcPreparedStatement.java:1406)
-	at org.h2.jdbc.JdbcPreparedStatement.setString(JdbcPreparedStatement.java:355)
-	at lib.DbAccess.PrepararComando(DbAccess.java:90)
-	at lib.DbAccess.Listar(DbAccess.java:176)
-	at lib.DAOInteressados.getInteressadoByNomeCrianca(DAOInteressados.java:57)
-	at sorrisodecrianca.Consulta.pesquisarInteressado(Consulta.java:217)
-	at sorrisodecrianca.Consulta.btn_PesquisarInteressadoMouseClicked(Consulta.java:539)
-	at sorrisodecrianca.Consulta.access$500(Consulta.java:23)
-	at sorrisodecrianca.Consulta$6.mouseClicked(Consulta.java:428)
-	at java.awt.AWTEventMulticaster.mouseClicked(AWTEventMulticaster.java:270)
-	at java.awt.Component.processMouseEvent(Component.java:6530)
-	at javax.swing.JComponent.processMouseEvent(JComponent.java:3321)
-	at java.awt.Component.processEvent(Component.java:6292)
-	at java.awt.Container.processEvent(Container.java:2234)
-	at java.awt.Component.dispatchEventImpl(Component.java:4883)
-	at java.awt.Container.dispatchEventImpl(Container.java:2292)
-	at java.awt.Component.dispatchEvent(Component.java:4705)
-	at java.awt.LightweightDispatcher.retargetMouseEvent(Container.java:4898)
-	at java.awt.LightweightDispatcher.processMouseEvent(Container.java:4542)
-	at java.awt.LightweightDispatcher.dispatchEvent(Container.java:4462)
-	at java.awt.Container.dispatchEventImpl(Container.java:2278)
-	at java.awt.Window.dispatchEventImpl(Window.java:2739)
-	at java.awt.Component.dispatchEvent(Component.java:4705)
-	at java.awt.EventQueue.dispatchEventImpl(EventQueue.java:746)
-	at java.awt.EventQueue.access$400(EventQueue.java:97)
-	at java.awt.EventQueue$3.run(EventQueue.java:697)
-	at java.awt.EventQueue$3.run(EventQueue.java:691)
-	at java.security.AccessController.doPrivileged(Native Method)
-	at java.security.ProtectionDomain$1.doIntersectionPrivilege(ProtectionDomain.java:75)
-	at java.security.ProtectionDomain$1.doIntersectionPrivilege(ProtectionDomain.java:86)
-	at java.awt.EventQueue$4.run(EventQueue.java:719)
-	at java.awt.EventQueue$4.run(EventQueue.java:717)
-	at java.security.AccessController.doPrivileged(Native Method)
-	at java.security.ProtectionDomain$1.doIntersectionPrivilege(ProtectionDomain.java:75)
-	at java.awt.EventQueue.dispatchEvent(EventQueue.java:716)
-	at java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:201)
-	at java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:116)
-	at java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:105)
-	at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)
-	at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:93)
-	at java.awt.EventDispatchThread.run(EventDispatchThread.java:82)
-2016-11-26 11:32:36 jdbc[3]: exception
-org.h2.jdbc.JdbcSQLException: Invalid value "1" for parameter "parameterIndex" [90008-192]
-	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
-	at org.h2.message.DbException.get(DbException.java:179)
-	at org.h2.message.DbException.getInvalidValueException(DbException.java:228)
-	at org.h2.jdbc.JdbcPreparedStatement.setParameter(JdbcPreparedStatement.java:1406)
-	at org.h2.jdbc.JdbcPreparedStatement.setString(JdbcPreparedStatement.java:355)
-	at lib.DbAccess.PrepararComando(DbAccess.java:90)
-	at lib.DbAccess.Listar(DbAccess.java:176)
-	at lib.DAOInteressados.getInteressadoByNomeCrianca(DAOInteressados.java:58)
-	at sorrisodecrianca.Consulta.pesquisarInteressado(Consulta.java:217)
-	at sorrisodecrianca.Consulta.btn_PesquisarInteressadoMouseClicked(Consulta.java:539)
-	at sorrisodecrianca.Consulta.access$500(Consulta.java:23)
-	at sorrisodecrianca.Consulta$6.mouseClicked(Consulta.java:428)
-	at java.awt.AWTEventMulticaster.mouseClicked(AWTEventMulticaster.java:270)
-	at java.awt.Component.processMouseEvent(Component.java:6530)
-	at javax.swing.JComponent.processMouseEvent(JComponent.java:3321)
-	at java.awt.Component.processEvent(Component.java:6292)
-	at java.awt.Container.processEvent(Container.java:2234)
-	at java.awt.Component.dispatchEventImpl(Component.java:4883)
-	at java.awt.Container.dispatchEventImpl(Container.java:2292)
-	at java.awt.Component.dispatchEvent(Component.java:4705)
-	at java.awt.LightweightDispatcher.retargetMouseEvent(Container.java:4898)
-	at java.awt.LightweightDispatcher.processMouseEvent(Container.java:4542)
-	at java.awt.LightweightDispatcher.dispatchEvent(Container.java:4462)
-	at java.awt.Container.dispatchEventImpl(Container.java:2278)
-	at java.awt.Window.dispatchEventImpl(Window.java:2739)
-	at java.awt.Component.dispatchEvent(Component.java:4705)
-	at java.awt.EventQueue.dispatchEventImpl(EventQueue.java:746)
-	at java.awt.EventQueue.access$400(EventQueue.java:97)
-	at java.awt.EventQueue$3.run(EventQueue.java:697)
-	at java.awt.EventQueue$3.run(EventQueue.java:691)
-	at java.security.AccessController.doPrivileged(Native Method)
-	at java.security.ProtectionDomain$1.doIntersectionPrivilege(ProtectionDomain.java:75)
-	at java.security.ProtectionDomain$1.doIntersectionPrivilege(ProtectionDomain.java:86)
-	at java.awt.EventQueue$4.run(EventQueue.java:719)
-	at java.awt.EventQueue$4.run(EventQueue.java:717)
-	at java.security.AccessController.doPrivileged(Native Method)
-	at java.security.ProtectionDomain$1.doIntersectionPrivilege(ProtectionDomain.java:75)
-	at java.awt.EventQueue.dispatchEvent(EventQueue.java:716)
-	at java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:201)
-	at java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:116)
-	at java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:105)
-	at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)
-	at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:93)
-	at java.awt.EventDispatchThread.run(EventDispatchThread.java:82)
-2016-11-26 11:34:40 jdbc[3]: exception
-org.h2.jdbc.JdbcSQLException: Invalid value "1" for parameter "parameterIndex" [90008-192]
-	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
-	at org.h2.message.DbException.get(DbException.java:179)
-	at org.h2.message.DbException.getInvalidValueException(DbException.java:228)
-	at org.h2.jdbc.JdbcPreparedStatement.setParameter(JdbcPreparedStatement.java:1406)
-	at org.h2.jdbc.JdbcPreparedStatement.setString(JdbcPreparedStatement.java:355)
-	at lib.DbAccess.PrepararComando(DbAccess.java:90)
-	at lib.DbAccess.Listar(DbAccess.java:176)
-	at lib.DAOInteressados.getInteressadoByNomeCrianca(DAOInteressados.java:58)
-	at sorrisodecrianca.Consulta.pesquisarInteressado(Consulta.java:217)
-	at sorrisodecrianca.Consulta.btn_PesquisarInteressadoMouseClicked(Consulta.java:539)
-	at sorrisodecrianca.Consulta.access$500(Consulta.java:23)
-	at sorrisodecrianca.Consulta$6.mouseClicked(Consulta.java:428)
-	at java.awt.AWTEventMulticaster.mouseClicked(AWTEventMulticaster.java:270)
-	at java.awt.Component.processMouseEvent(Component.java:6530)
-	at javax.swing.JComponent.processMouseEvent(JComponent.java:3321)
-	at java.awt.Component.processEvent(Component.java:6292)
-	at java.awt.Container.processEvent(Container.java:2234)
-	at java.awt.Component.dispatchEventImpl(Component.java:4883)
-	at java.awt.Container.dispatchEventImpl(Container.java:2292)
-	at java.awt.Component.dispatchEvent(Component.java:4705)
-	at java.awt.LightweightDispatcher.retargetMouseEvent(Container.java:4898)
-	at java.awt.LightweightDispatcher.processMouseEvent(Container.java:4542)
-	at java.awt.LightweightDispatcher.dispatchEvent(Container.java:4462)
-	at java.awt.Container.dispatchEventImpl(Container.java:2278)
-	at java.awt.Window.dispatchEventImpl(Window.java:2739)
-	at java.awt.Component.dispatchEvent(Component.java:4705)
-	at java.awt.EventQueue.dispatchEventImpl(EventQueue.java:746)
-	at java.awt.EventQueue.access$400(EventQueue.java:97)
-	at java.awt.EventQueue$3.run(EventQueue.java:697)
-	at java.awt.EventQueue$3.run(EventQueue.java:691)
-	at java.security.AccessController.doPrivileged(Native Method)
-	at java.security.ProtectionDomain$1.doIntersectionPrivilege(ProtectionDomain.java:75)
-	at java.security.ProtectionDomain$1.doIntersectionPrivilege(ProtectionDomain.java:86)
-	at java.awt.EventQueue$4.run(EventQueue.java:719)
-	at java.awt.EventQueue$4.run(EventQueue.java:717)
-	at java.security.AccessController.doPrivileged(Native Method)
-	at java.security.ProtectionDomain$1.doIntersectionPrivilege(ProtectionDomain.java:75)
-	at java.awt.EventQueue.dispatchEvent(EventQueue.java:716)
+	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:76)
+	at java.awt.EventQueue.dispatchEvent(EventQueue.java:728)
 	at java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:201)
 	at java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:116)
 	at java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:105)

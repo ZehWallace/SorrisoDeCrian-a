@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="d012704f-8f1a-451b-86d1-b33d6a905267">
 	<property name="ireport.zoom" value="1.4641000000000006"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.y" value="4"/>
 	<style name="Title" fontName="Times New Roman" fontSize="50" isBold="true" pdfFontName="Times-Bold"/>
 	<style name="SubTitle" forecolor="#736343" fontName="Arial" fontSize="18"/>
 	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
@@ -13,6 +13,7 @@
 			<style backcolor="#E6DAC3"/>
 		</conditionalStyle>
 	</style>
+	<parameter name="parameter1" class="java.lang.String"/>
 	<queryString language="SQL">
 		<![CDATA[SELECT
      CRIANCA."NOME" AS CRIANCA_NOME,
@@ -25,7 +26,8 @@
      CRIANCA."NOME_RESPONSAVEL" AS CRIANCA_NOME_RESPONSAVEL,
      CRIANCA."OBSERVACAO" AS CRIANCA_OBSERVACAO
 FROM
-     "PUBLIC"."CRIANCA" CRIANCA]]>
+     "PUBLIC"."CRIANCA" CRIANCA
+WHERE CRIANCA."NOME" LIKE $P{parameter1}]]>
 	</queryString>
 	<field name="CRIANCA_NOME" class="java.lang.String"/>
 	<field name="CRIANCA_DATA_NASCIMENTO" class="java.sql.Date"/>

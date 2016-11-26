@@ -29,15 +29,12 @@
                   <Component id="btnCadVol" max="32767" attributes="0"/>
                   <Component id="btnCadCri" max="32767" attributes="0"/>
                   <Component id="btnConsultas" max="32767" attributes="0"/>
-                  <Component id="btnRelCriancas" max="32767" attributes="0"/>
-                  <Component id="btnRelVoluntarios" max="32767" attributes="0"/>
-                  <Component id="btnRelPresencas" alignment="0" max="32767" attributes="0"/>
-                  <Component id="btnCadInter" alignment="0" max="32767" attributes="0"/>
+                  <Component id="btnGerarRelatorio" min="-2" max="-2" attributes="0"/>
               </Group>
-              <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="103" groupAlignment="1" attributes="0">
                   <Group type="102" attributes="0">
-                      <EmptySpace min="-2" pref="107" max="-2" attributes="0"/>
-                      <Component id="scrollpanelPresenca" pref="542" max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
+                      <Component id="scrollpanelPresenca" pref="603" max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="32767" attributes="0"/>
@@ -62,6 +59,7 @@
                           <Component id="btnAtualizar" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="btnSalvarAlteracoes" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
+                      <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="btnCadCri" min="-2" max="-2" attributes="0"/>
@@ -71,15 +69,11 @@
                       <Component id="btnCadInter" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                       <Component id="btnConsultas" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="69" max="-2" attributes="0"/>
-                      <Component id="btnRelCriancas" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="btnRelVoluntarios" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="btnRelPresencas" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="btnGerarRelatorio" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -165,30 +159,6 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnConsultasActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="btnRelCriancas">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Relat&#xf3;rio de Crian&#xe7;as"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnRelCriancasActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JButton" name="btnRelVoluntarios">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Relat&#xf3;rio de Volunt&#xe1;rios"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnRelVoluntariosActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JButton" name="btnRelPresencas">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Relat&#xf3;rio de Presen&#xe7;as"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnRelPresencasActionPerformed"/>
-      </Events>
-    </Component>
     <Component class="javax.swing.JButton" name="btnAtualizar">
       <Properties>
         <Property name="text" type="java.lang.String" value="Atualizar"/>
@@ -197,12 +167,12 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAtualizarActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="btnCadInter">
+    <Component class="javax.swing.JButton" name="btnGerarRelatorio">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Cadastro de Interessados"/>
+        <Property name="text" type="java.lang.String" value="Gera&#xe7;&#xe3;o de relat&#xf3;rios"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCadInterActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnGerarRelatorioActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>
