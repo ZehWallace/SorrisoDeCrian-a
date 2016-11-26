@@ -32,11 +32,12 @@
                   <Component id="btnRelCriancas" max="32767" attributes="0"/>
                   <Component id="btnRelVoluntarios" max="32767" attributes="0"/>
                   <Component id="btnRelPresencas" alignment="0" max="32767" attributes="0"/>
+                  <Component id="btnCadInter" alignment="0" max="32767" attributes="0"/>
               </Group>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <EmptySpace min="-2" pref="107" max="-2" attributes="0"/>
-                      <Component id="scrollpanelPresenca" pref="550" max="32767" attributes="0"/>
+                      <Component id="scrollpanelPresenca" pref="542" max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="32767" attributes="0"/>
@@ -66,7 +67,9 @@
                       <Component id="btnCadCri" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
                       <Component id="btnCadVol" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="btnCadInter" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                       <Component id="btnConsultas" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="69" max="-2" attributes="0"/>
                       <Component id="btnRelCriancas" min="-2" max="-2" attributes="0"/>
@@ -192,6 +195,14 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAtualizarActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnCadInter">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Cadastro de Interessados"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCadInterActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>
