@@ -72,8 +72,24 @@ public class frmVoluntario extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jText_Observacoes = new javax.swing.JTextArea();
+        jLabel12 = new javax.swing.JLabel();
+        jComboFormacao = new javax.swing.JComboBox();
+        jLabel13 = new javax.swing.JLabel();
+        jComboSituacaoProfissional = new javax.swing.JComboBox();
+        jLabel14 = new javax.swing.JLabel();
+        JCheckSegunda = new javax.swing.JCheckBox();
+        JCheckTerca = new javax.swing.JCheckBox();
+        JCheckQuarta = new javax.swing.JCheckBox();
+        JCheckQuinta = new javax.swing.JCheckBox();
+        JCheckSexta = new javax.swing.JCheckBox();
+        JCheckSabado = new javax.swing.JCheckBox();
+        JCheckDomingo = new javax.swing.JCheckBox();
+        jLabel15 = new javax.swing.JLabel();
+        jComboPeriodo = new javax.swing.JComboBox();
+        jLabel16 = new javax.swing.JLabel();
+        jComboStatus = new javax.swing.JComboBox();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Cadastro de Voluntários");
 
         jLabel1.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
@@ -83,10 +99,10 @@ public class frmVoluntario extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(304, 304, 304)
                 .addComponent(jLabel1)
-                .addGap(281, 281, 281))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -127,8 +143,40 @@ public class frmVoluntario extends javax.swing.JFrame {
         jLabel11.setText("Observações");
 
         jText_Observacoes.setColumns(20);
-        jText_Observacoes.setRows(5);
+        jText_Observacoes.setRows(3);
         jScrollPane1.setViewportView(jText_Observacoes);
+
+        jLabel12.setText("Formação");
+
+        jComboFormacao.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1º Grau", "2º Grau", "Superior" }));
+
+        jLabel13.setText("Situação Profissional");
+
+        jComboSituacaoProfissional.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Empregado", "Autônomo", "Estudante", "Aposentado", "Do Lar" }));
+
+        jLabel14.setText("Dias da semana");
+
+        JCheckSegunda.setText("Segunda");
+
+        JCheckTerca.setText("Terça");
+
+        JCheckQuarta.setText("Quarta");
+
+        JCheckQuinta.setText("Quinta");
+
+        JCheckSexta.setText("Sexta");
+
+        JCheckSabado.setText("Sábado");
+
+        JCheckDomingo.setText("Domingo");
+
+        jLabel15.setText("Período");
+
+        jComboPeriodo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Manhã", "Tarde" }));
+
+        jLabel16.setText("Status");
+
+        jComboStatus.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ativo", "Inativo" }));
 
         javax.swing.GroupLayout jPanel_InfoVoluntarioLayout = new javax.swing.GroupLayout(jPanel_InfoVoluntario);
         jPanel_InfoVoluntario.setLayout(jPanel_InfoVoluntarioLayout);
@@ -136,53 +184,99 @@ public class frmVoluntario extends javax.swing.JFrame {
             jPanel_InfoVoluntarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel_InfoVoluntarioLayout.createSequentialGroup()
                 .addGap(22, 22, 22)
-                .addGroup(jPanel_InfoVoluntarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel11)
-                    .addGroup(jPanel_InfoVoluntarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel8)
-                        .addComponent(jLabel9))
-                    .addComponent(jLabel6)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel2))
-                .addGap(32, 32, 32)
                 .addGroup(jPanel_InfoVoluntarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel_InfoVoluntarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(jPanel_InfoVoluntarioLayout.createSequentialGroup()
-                            .addComponent(jText_Telefone, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(135, 135, 135)
-                            .addComponent(jLabel10)
-                            .addGap(38, 38, 38)
-                            .addComponent(jText_Email, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(jPanel_InfoVoluntarioLayout.createSequentialGroup()
-                            .addGroup(jPanel_InfoVoluntarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(jPanel_InfoVoluntarioLayout.createSequentialGroup()
+                    .addGroup(jPanel_InfoVoluntarioLayout.createSequentialGroup()
+                        .addGroup(jPanel_InfoVoluntarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel_InfoVoluntarioLayout.createSequentialGroup()
+                                .addComponent(jLabel7)
+                                .addGap(18, 18, 18)
+                                .addComponent(jText_Ocupacao, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel_InfoVoluntarioLayout.createSequentialGroup()
+                                .addComponent(jLabel8)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jText_Endereco, javax.swing.GroupLayout.PREFERRED_SIZE, 646, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel_InfoVoluntarioLayout.createSequentialGroup()
+                                .addComponent(jLabel9)
+                                .addGap(18, 18, 18)
+                                .addComponent(jText_Telefone, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(45, 45, 45)
+                                .addComponent(jLabel10)
+                                .addGap(43, 43, 43)
+                                .addGroup(jPanel_InfoVoluntarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(jPanel_InfoVoluntarioLayout.createSequentialGroup()
+                                        .addComponent(JCheckQuarta)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(JCheckQuinta))
+                                    .addComponent(jText_Email, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jPanel_InfoVoluntarioLayout.createSequentialGroup()
+                                .addGroup(jPanel_InfoVoluntarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel15)
                                     .addGroup(jPanel_InfoVoluntarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(jPanel_InfoVoluntarioLayout.createSequentialGroup()
-                                            .addGap(160, 160, 160)
-                                            .addComponent(jLabel7))
-                                        .addComponent(jText_CPF, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGap(44, 44, 44))
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel_InfoVoluntarioLayout.createSequentialGroup()
-                                    .addComponent(jText_RG, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(jLabel4)
-                                    .addGap(18, 18, 18)))
-                            .addGroup(jPanel_InfoVoluntarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(jPanel_InfoVoluntarioLayout.createSequentialGroup()
-                                    .addComponent(jText_DataNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(30, 30, 30)
-                                    .addComponent(jLabel5)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(jComboBox_Sexo, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(jText_Ocupacao, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addComponent(jText_Nome, javax.swing.GroupLayout.DEFAULT_SIZE, 603, Short.MAX_VALUE)
-                        .addComponent(jText_Endereco))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 617, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(42, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel_InfoVoluntarioLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jLabel14)
+                                        .addComponent(jLabel11)))
+                                .addGroup(jPanel_InfoVoluntarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel_InfoVoluntarioLayout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(jPanel_InfoVoluntarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 617, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGroup(jPanel_InfoVoluntarioLayout.createSequentialGroup()
+                                                .addGroup(jPanel_InfoVoluntarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(JCheckSegunda)
+                                                    .addComponent(JCheckSabado))
+                                                .addGap(18, 18, 18)
+                                                .addGroup(jPanel_InfoVoluntarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(JCheckDomingo)
+                                                    .addGroup(jPanel_InfoVoluntarioLayout.createSequentialGroup()
+                                                        .addComponent(JCheckTerca)
+                                                        .addGap(268, 268, 268)
+                                                        .addComponent(JCheckSexta))))))
+                                    .addGroup(jPanel_InfoVoluntarioLayout.createSequentialGroup()
+                                        .addGap(16, 16, 16)
+                                        .addComponent(jComboPeriodo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(52, 52, 52)
+                                        .addComponent(jLabel16)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(jComboStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addGap(0, 96, Short.MAX_VALUE))
+                    .addGroup(jPanel_InfoVoluntarioLayout.createSequentialGroup()
+                        .addGroup(jPanel_InfoVoluntarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jPanel_InfoVoluntarioLayout.createSequentialGroup()
+                                .addComponent(jLabel3)
+                                .addGap(46, 46, 46)
+                                .addComponent(jText_RG, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(jPanel_InfoVoluntarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(jPanel_InfoVoluntarioLayout.createSequentialGroup()
+                                        .addGap(56, 56, 56)
+                                        .addComponent(jLabel12)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jComboFormacao, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jLabel13)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jComboSituacaoProfissional, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel_InfoVoluntarioLayout.createSequentialGroup()
+                                        .addGap(61, 61, 61)
+                                        .addComponent(jLabel4)
+                                        .addGap(36, 36, 36)
+                                        .addComponent(jText_DataNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jText_CPF, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(jPanel_InfoVoluntarioLayout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addGap(26, 26, 26)
+                                .addComponent(jText_Nome, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel_InfoVoluntarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel6)
+                                    .addGroup(jPanel_InfoVoluntarioLayout.createSequentialGroup()
+                                        .addComponent(jLabel5)
+                                        .addGap(26, 26, 26)
+                                        .addComponent(jComboBox_Sexo, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+            .addGroup(jPanel_InfoVoluntarioLayout.createSequentialGroup()
+                .addGap(326, 326, 326)
                 .addComponent(jBtn_CadastrarVoluntario, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(312, 312, 312))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel_InfoVoluntarioLayout.setVerticalGroup(
             jPanel_InfoVoluntarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -190,38 +284,59 @@ public class frmVoluntario extends javax.swing.JFrame {
                 .addGap(8, 8, 8)
                 .addGroup(jPanel_InfoVoluntarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jText_Nome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
-                .addGap(26, 26, 26)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel5)
+                    .addComponent(jComboBox_Sexo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(25, 25, 25)
                 .addGroup(jPanel_InfoVoluntarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(jText_RG, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4)
                     .addComponent(jText_DataNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5)
-                    .addComponent(jComboBox_Sexo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel_InfoVoluntarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel6)
-                    .addGroup(jPanel_InfoVoluntarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jText_CPF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel7)
-                        .addComponent(jText_Ocupacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(27, 27, 27)
+                    .addComponent(jText_CPF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(23, 23, 23)
+                .addGroup(jPanel_InfoVoluntarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(jText_Ocupacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel12)
+                    .addComponent(jComboFormacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel13)
+                    .addComponent(jComboSituacaoProfissional, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(20, 20, 20)
                 .addGroup(jPanel_InfoVoluntarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
                     .addComponent(jText_Endereco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(23, 23, 23)
+                .addGap(24, 24, 24)
                 .addGroup(jPanel_InfoVoluntarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jText_Telefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel9)
+                    .addComponent(jText_Telefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel10)
                     .addComponent(jText_Email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(33, 33, 33)
+                .addGroup(jPanel_InfoVoluntarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel14)
+                    .addComponent(JCheckSegunda)
+                    .addComponent(JCheckTerca)
+                    .addComponent(JCheckQuarta)
+                    .addComponent(JCheckQuinta)
+                    .addComponent(JCheckSexta))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel_InfoVoluntarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(JCheckSabado)
+                    .addComponent(JCheckDomingo))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                .addGroup(jPanel_InfoVoluntarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel15)
+                    .addComponent(jComboPeriodo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel16)
+                    .addComponent(jComboStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(30, 30, 30)
                 .addGroup(jPanel_InfoVoluntarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel11)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
-                .addComponent(jBtn_CadastrarVoluntario, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(19, 19, 19)
+                .addComponent(jBtn_CadastrarVoluntario, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -270,9 +385,54 @@ public class frmVoluntario extends javax.swing.JFrame {
        
         /* Fim dos testes de consistencia */
         
-        /* Fim dos testes de consistencia */
+        
+        
         else
         {
+            /* Tratamento dos dias da semana */
+            String dias_semana = "";
+            
+            if(JCheckSegunda.isSelected())
+            {
+                dias_semana += "Segunda, ";
+            }
+            
+            if(JCheckTerca.isSelected())
+            {
+                dias_semana += "Terça, ";
+            }
+            
+            if(JCheckQuarta.isSelected())
+            {
+                dias_semana += "Quarta, ";
+            }
+            
+            if(JCheckQuinta.isSelected())
+            {
+                dias_semana += "Quinta, ";
+            }
+            
+            if(JCheckSexta.isSelected())
+            {
+                dias_semana += "Sexta, ";
+            }
+            
+            if(JCheckSabado.isSelected())
+            {
+                dias_semana += "Sábado, ";
+            }
+            
+            if(JCheckDomingo.isSelected())
+            {
+                dias_semana += "Domingo";
+            }
+            
+            /* Remove a última virgula */
+            if(dias_semana != null && dias_semana.charAt(dias_semana.length()-1) == ',')
+            {
+                dias_semana = dias_semana.substring(0, dias_semana.length()-2);
+            }
+            
             /* Atribuição dos JTextFields para os campos do ModelCrianca */
             ModelVoluntario modelVoluntario = new ModelVoluntario();
 
@@ -285,7 +445,11 @@ public class frmVoluntario extends javax.swing.JFrame {
             modelVoluntario.setEmail(jText_Email.getText());
             modelVoluntario.setTel_contato(jText_Telefone.getText());
             modelVoluntario.setObservacao(jText_Observacoes.getText());
-
+            modelVoluntario.setFormacao(jComboFormacao.getSelectedItem().toString());
+            modelVoluntario.setSituacaoProfissional(jComboSituacaoProfissional.getSelectedItem().toString());
+            modelVoluntario.setPeriodo(jComboPeriodo.getSelectedItem().toString());
+            modelVoluntario.setDiasSemana(dias_semana);
+            modelVoluntario.setStatus(jComboStatus.getSelectedItem().toString());
 
             /* Tratamento da data */
             DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
@@ -347,11 +511,27 @@ public class frmVoluntario extends javax.swing.JFrame {
     }//GEN-LAST:event_jBtn_CadastrarVoluntarioMouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JCheckBox JCheckDomingo;
+    private javax.swing.JCheckBox JCheckQuarta;
+    private javax.swing.JCheckBox JCheckQuinta;
+    private javax.swing.JCheckBox JCheckSabado;
+    private javax.swing.JCheckBox JCheckSegunda;
+    private javax.swing.JCheckBox JCheckSexta;
+    private javax.swing.JCheckBox JCheckTerca;
     private javax.swing.JButton jBtn_CadastrarVoluntario;
     private javax.swing.JComboBox jComboBox_Sexo;
+    private javax.swing.JComboBox jComboFormacao;
+    private javax.swing.JComboBox jComboPeriodo;
+    private javax.swing.JComboBox jComboSituacaoProfissional;
+    private javax.swing.JComboBox jComboStatus;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

@@ -86,12 +86,15 @@ public class DAOVoluntario extends DbAccess<ModelVoluntario>{
     
     public void insereVoluntario(ModelVoluntario voluntario) throws SQLException, Exception
     {
-        String comando = "INSERT INTO Voluntario (nome, data_nascimento, rg, cpf, sexo, ocupacao, endereco, tel_contato, email, observacao) "
-                + "VALUES (?,?,?,?,?,?,?,?,?,?)";
+        String comando = "INSERT INTO Voluntario (nome, data_nascimento, rg, cpf, sexo, ocupacao, endereco, tel_contato, email, observacao, "
+                + "situacao_profissional, formacao, dias_semana, periodo, status) "
+                + "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
         
         Inserir(comando, voluntario.getNome(), voluntario.getData_nascimento(), voluntario.getRg(),
                 voluntario.getCpf(), voluntario.getSexo(), voluntario.getOcupacao(), voluntario.getEndereco(), 
-                voluntario.getTel_contato(), voluntario.getEmail(), voluntario.getObservacao());
+                voluntario.getTel_contato(), voluntario.getEmail(), voluntario.getObservacao(),
+                voluntario.getSituacaoProfissional(), voluntario.getFormacao(), voluntario.getDiasSemana(), voluntario.getPeriodo(),
+                voluntario.getStatus());
        
     }
     

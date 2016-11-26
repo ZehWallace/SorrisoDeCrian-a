@@ -31,6 +31,11 @@ public class ModelVoluntario
     private String tel_contato;
     private String email;
     private String observacao;
+    private String formacao;
+    private String situacao_profissional;
+    private String dias_semana;
+    private String periodo;
+    private String status;
 
     public int getId() {
         return id;
@@ -120,4 +125,43 @@ public class ModelVoluntario
         this.observacao = observacao;
     }
     
+    public String getFormacao(){
+        return formacao;
+    }
+    
+    public void setFormacao(String formacao) {
+        this.formacao = formacao;
+    }
+    
+    public String getSituacaoProfissional(){
+        return situacao_profissional;
+    }
+    
+    public void setSituacaoProfissional(String situacao_profissional) {
+        this.situacao_profissional = situacao_profissional;
+    }
+    
+    public String getDiasSemana(){
+        return dias_semana;
+    }
+    
+    public void setDiasSemana(String dias_semana) {
+        this.dias_semana = dias_semana;
+    }
+    
+    public String getPeriodo(){
+        return periodo;
+    }
+    
+    public void setPeriodo(String periodo) {
+        this.periodo = periodo;
+    }
+    
+    public String getStatus(){
+        return status;
+    }
+    
+    public void setStatus(String status) {
+        this.status = status;
+    }
 }

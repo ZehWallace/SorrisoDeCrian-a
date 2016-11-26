@@ -10,33 +10,38 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import lib.DAOCrianca;
+import lib.DAOInteressados;
 import lib.DAOVoluntario;
 import models.ModelCrianca;
+import models.ModelInteressado;
 import models.ModelVoluntario;
 
 /**
  *
  * @author Yasmin
  */
-public class Consulta extends javax.swing.JFrame {
+public final class Consulta extends javax.swing.JFrame {
 
     /**
      * Creates new form Consulta
      */
     
-    public DefaultTableModel modelo1;
-    public DefaultTableModel modelo2;
+    public DefaultTableModel modelo1, modelo2, modelo3;
     public DAOCrianca daoC;
     public DAOVoluntario daoV;
+    public DAOInteressados daoI;
     
     public Consulta() {
         initComponents();
         modelo1 = (DefaultTableModel) tabelaCriancas.getModel();
         modelo2 = (DefaultTableModel) tabelaVoluntarios.getModel();
+        modelo3 = (DefaultTableModel) tabelaInteressados.getModel();
         daoC = new DAOCrianca();
         daoV = new DAOVoluntario();
+        daoI = new DAOInteressados();
         popularTabelaCrianca();
         popularTabelaVoluntario();
+        popularTabelaInteressados();
     }
 
     public void popularTabelaCrianca()
@@ -107,6 +112,40 @@ public class Consulta extends javax.swing.JFrame {
         }
     }
     
+    public void popularTabelaInteressados()
+    {
+        ArrayList<ModelInteressado> interessados = null;
+        
+        try
+        {
+            daoI = new DAOInteressados();
+            interessados = daoI.getTodosInteressados();
+        }
+        catch(SQLException sql_e)
+        {
+            sql_e.printStackTrace();
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }
+        
+        if(modelo3.getRowCount() > 0)
+        {
+            modelo3.setRowCount(0);
+        }
+          
+        if(interessados != null)
+        {
+            for(int i = 0; i < interessados.size(); i++)
+            {
+                ModelInteressado inter = interessados.get(i);
+                Object[] obj = {inter.getNomeCrianca(), inter.getNomeResponsavel(), inter.getTelefone()};
+                modelo3.addRow(obj);
+            }
+        }
+    }
+    
     public void pesquisarCrianca(String nome)
     {
         ArrayList<ModelCrianca> resultado = null;
@@ -165,8 +204,41 @@ public class Consulta extends javax.swing.JFrame {
                 Object[] obj = {v.getNome(), v.getRg(), v.getTel_contato(), v.getEmail()};
                 modelo2.addRow(obj);
             }
+        }   
+    }
+    
+    public void pesquisarInteressado(String nome_crianca)
+    {
+        ArrayList<ModelInteressado> interessados = null;
+        
+        try
+        {
+            daoI = new DAOInteressados();
+            interessados = daoI.getInteressadoByNomeCrianca(nome_crianca);
+        }
+        catch(SQLException sql_e)
+        {
+            sql_e.printStackTrace();
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
         }
         
+        if(modelo3.getRowCount() > 0)
+        {
+            modelo3.setRowCount(0);
+        }
+          
+        if(interessados != null)
+        {
+            for(int i = 0; i < interessados.size(); i++)
+            {
+                ModelInteressado inter = interessados.get(i);
+                Object[] obj = {inter.getNomeCrianca(), inter.getNomeResponsavel(), inter.getTelefone()};
+                modelo3.addRow(obj);
+            }
+        }
     }
     
     /**
@@ -199,6 +271,16 @@ public class Consulta extends javax.swing.JFrame {
         tabelaVoluntarios = new javax.swing.JTable();
         jPanel3 = new javax.swing.JPanel();
         btn_MostrarTodos = new javax.swing.JButton();
+        JPanel_Interessados = new javax.swing.JPanel();
+        jPanel7 = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        txt_NomeInteressado = new javax.swing.JTextField();
+        btn_PesquisarInteressado = new javax.swing.JButton();
+        jPanel8 = new javax.swing.JPanel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        tabelaInteressados = new javax.swing.JTable();
+        jPanel9 = new javax.swing.JPanel();
+        btn_MostrarTodosInteressados = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("frmConsulta");
@@ -332,6 +414,68 @@ public class Consulta extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Voluntários", JPanel_ConsultaVoluntario);
 
+        JPanel_Interessados.setLayout(new java.awt.BorderLayout());
+
+        jLabel3.setText("Nome");
+        jPanel7.add(jLabel3);
+
+        txt_NomeInteressado.setColumns(30);
+        jPanel7.add(txt_NomeInteressado);
+
+        btn_PesquisarInteressado.setText("Pesquisar");
+        btn_PesquisarInteressado.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_PesquisarInteressadoMouseClicked(evt);
+            }
+        });
+        jPanel7.add(btn_PesquisarInteressado);
+
+        JPanel_Interessados.add(jPanel7, java.awt.BorderLayout.PAGE_START);
+
+        jPanel8.setLayout(new javax.swing.BoxLayout(jPanel8, javax.swing.BoxLayout.LINE_AXIS));
+
+        tabelaInteressados.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Nome", "Responsável", "Telefone"
+            }
+        ));
+        jScrollPane3.setViewportView(tabelaInteressados);
+
+        jPanel8.add(jScrollPane3);
+
+        JPanel_Interessados.add(jPanel8, java.awt.BorderLayout.CENTER);
+
+        btn_MostrarTodosInteressados.setText("Mostrar Todos");
+        btn_MostrarTodosInteressados.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_MostrarTodosInteressadosMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
+        jPanel9.setLayout(jPanel9Layout);
+        jPanel9Layout.setHorizontalGroup(
+            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel9Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btn_MostrarTodosInteressados, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(530, Short.MAX_VALUE))
+        );
+        jPanel9Layout.setVerticalGroup(
+            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel9Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btn_MostrarTodosInteressados)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        JPanel_Interessados.add(jPanel9, java.awt.BorderLayout.SOUTH);
+
+        jTabbedPane1.addTab("Interessados", JPanel_Interessados);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -390,6 +534,16 @@ public class Consulta extends javax.swing.JFrame {
         popularTabelaCrianca();
     }//GEN-LAST:event_btn_MostrarTodasCriancasMouseClicked
 
+    private void btn_PesquisarInteressadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_PesquisarInteressadoMouseClicked
+        // TODO add your handling code here:
+        pesquisarInteressado(txt_NomeInteressado.getText());
+    }//GEN-LAST:event_btn_PesquisarInteressadoMouseClicked
+
+    private void btn_MostrarTodosInteressadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_MostrarTodosInteressadosMouseClicked
+        // TODO add your handling code here:
+        popularTabelaInteressados();
+    }//GEN-LAST:event_btn_MostrarTodosInteressadosMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -429,24 +583,34 @@ public class Consulta extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel JPanel_ConsultaCrianca;
     private javax.swing.JPanel JPanel_ConsultaVoluntario;
+    private javax.swing.JPanel JPanel_Interessados;
     private javax.swing.JButton btn_MostrarTodasCriancas;
     private javax.swing.JButton btn_MostrarTodos;
+    private javax.swing.JButton btn_MostrarTodosInteressados;
     private javax.swing.JButton btn_PesquisarCrianca;
+    private javax.swing.JButton btn_PesquisarInteressado;
     private javax.swing.JButton btn_PesquisarVoluntario;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel jPanel8;
+    private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTable tabelaCriancas;
+    private javax.swing.JTable tabelaInteressados;
     private javax.swing.JTable tabelaVoluntarios;
     private javax.swing.JTextField txt_NomeCrianca;
+    private javax.swing.JTextField txt_NomeInteressado;
     private javax.swing.JTextField txt_NomeVoluntario;
     // End of variables declaration//GEN-END:variables
 }

@@ -67,12 +67,24 @@ public class DAOCrianca extends DbAccess<ModelCrianca>{
      */
     public void insereCrianca (ModelCrianca crianca) throws SQLException, Exception
     {
-        String comando = "INSERT INTO Crianca (nome, data_nascimento, rg, sexo, status, endereco, nome_responsavel, tel_contato, observacao) "
-                + "VALUES (?,?,?,?,?,?,?,?,?)";
+        String comando = "INSERT INTO Crianca (nome, data_nascimento, rg, sexo, status, endereco, nome_responsavel, tel_contato, observacao, "
+                + "luz_eletrica, agua_encanada, esgoto, "
+                + "convenio_medico, centro_saude, sarampo, rubeola, bronco_pneumonia, catapora, coqueluche, hepatite, meningite, convulsao, "
+                + "problemas_respiratorios, alergia, ja_foi_internada, diarreia_frequente, diabetes, usa_insulina, outras_doencas, medicamentos_alergicos, pode_sair_sozinha,"
+                + "data_prevista, pessoa_autorizada) "
+                + "VALUES (?,?,?,?,?,?,?,?,?,"
+                + "?,?,?,"
+                + "?,?,?,?,?,?,?,?,?,?,"
+                + "?,?,?,?,?,?,?,?,?,?,?)";
         
         Inserir(comando, crianca.getNome(), crianca.getData_nascimento(), crianca.getRg(),
                 crianca.getSexo(), crianca.getStatus(), crianca.getEndereco(), crianca.getNome_responsavel(), 
-                crianca.getTel_contato(), crianca.getObservacao());
+                crianca.getTel_contato(), crianca.getObservacao(),
+                crianca.getEnergiaEletrica(), crianca.getAguaEncanada(), crianca.getEsgoto(),
+                crianca.getConvenio(), crianca.getCentroSaude(), crianca.getSarampo(), crianca.getRubeola(), crianca.getBroncoPneumonia(), crianca.getCatapora(), crianca.getCoqueluche(),
+                crianca.getHepatite(), crianca.getMeningite(), crianca.getConvulsao(), crianca.getProblemaRespiratorio(), crianca.getAlergia(), crianca.getInternacao(), crianca.getDiarreia(),
+                crianca.getDiabetes(), crianca.getInsulina(), crianca.getOutrasDoencas(), crianca.getAlergiaMedicamento(), crianca.getSairSozinha(),
+                crianca.getDataPrevista(), crianca.getPessoaAutorizada());
     }
     
     /**

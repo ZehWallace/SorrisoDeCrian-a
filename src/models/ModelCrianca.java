@@ -31,6 +31,32 @@ public class ModelCrianca
    private String nome_responsavel;
    private String tel_contato;
    private String observacao;
+   private String energia_eletrica;
+   private String agua_encanada;
+   private String esgoto;
+   private String data_prevista;
+   private String pode_sair_sozinha;
+   private String convenio;
+   private String centroSaude;
+   private String sarampo;
+   private String rubeola;
+   private String coqueluche;
+   private String broncoPneumonia;
+   private String catapora;
+   private String hepatite;
+   private String meningite;
+   private String convulsao;
+   private String desmaio;
+   private String problemaRespiratorio;
+   private String internacao;
+   private String alergia;
+   private String cirurgia;
+   private String alergiaMedicamento;
+   private String diarreia;
+   private String diabetes;
+   private String insulina;
+   private String outrasDoencas;
+   private String pessoa_autorizada;
    
     public int getId() {
         return id;
@@ -110,5 +136,213 @@ public class ModelCrianca
 
     public void setObservacao(String observacao) {
         this.observacao = observacao;
+    }
+    
+    public String getEnergiaEletrica() {
+        return energia_eletrica;
+    }
+
+    public void setEnergiaEletrica(String energia_eletrica) {
+        this.energia_eletrica = energia_eletrica;
+    }
+    
+    public String getAguaEncanada() {
+        return agua_encanada;
+    }
+
+    public void setAguaEncanada(String agua_encanada) {
+        this.agua_encanada = agua_encanada;
+    }
+    
+    public String getEsgoto() {
+        return esgoto;
+    }
+
+    public void setEsgoto(String esgoto) {
+        this.esgoto = esgoto;
+    }
+    
+    public String getSairSozinha() {
+        return pode_sair_sozinha;
+    }
+
+    public void setSairSozinha(String pode_sair_sozinha) {
+        this.pode_sair_sozinha = pode_sair_sozinha;
+    }
+    
+    public String getConvenio() {
+        return convenio;
+    }
+
+    public void setConvenio(String convenio) {
+        this.convenio = convenio;
+    }
+    
+    public String getCentroSaude() {
+        return centroSaude;
+    }
+
+    public void setCentroSaude(String centroSaude) {
+        this.centroSaude = centroSaude;
+    }
+    
+    public String getSarampo() {
+        return sarampo;
+    }
+
+    public void setSarampo(String sarampo) {
+        this.sarampo = sarampo;
+    }
+    
+    public String getRubeola() {
+        return rubeola;
+    }
+
+    public void setRubeola(String rubeola) {
+        this.rubeola = rubeola;
+    }
+    
+    public String getCoqueluche() {
+        return coqueluche;
+    }
+
+    public void setCoqueluche(String coqueluche) {
+        this.coqueluche = coqueluche;
+    }
+    
+    public String getBroncoPneumonia() {
+        return broncoPneumonia;
+    }
+
+    public void setBroncoPneumonia(String broncoPneumonia) {
+        this.broncoPneumonia = broncoPneumonia;
+    }
+    
+    public String getCatapora() {
+        return catapora;
+    }
+
+    public void setCatapora(String catapora) {
+        this.catapora = catapora;
+    }
+    
+    public String getHepatite() {
+        return hepatite;
+    }
+
+    public void setHepatite(String hepatite) {
+        this.hepatite = hepatite;
+    }
+    
+    public String getMeningite() {
+        return meningite;
+    }
+
+    public void setMeningite(String meningite) {
+        this.meningite = meningite;
+    }
+    
+    public String getConvulsao() {
+        return convulsao;
+    }
+
+    public void setConvulsao(String convulsao) {
+        this.convulsao = convulsao;
+    }
+    
+    public String getDesmaio() {
+        return desmaio;
+    }
+
+    public void setDesmaio(String desmaio) {
+        this.desmaio = desmaio;
+    }
+    
+    public String getProblemaRespiratorio() {
+        return problemaRespiratorio;
+    }
+
+    public void setProblemaRespiratorio(String problemaRespiratorio) {
+        this.problemaRespiratorio = problemaRespiratorio;
+    }
+    
+    public String getInternacao() {
+        return internacao;
+    }
+
+    public void setInternacao(String internacao) {
+        this.internacao = internacao;
+    }
+    
+    public String getAlergia() {
+        return alergia;
+    }
+
+    public void setAlergia(String alergia) {
+        this.alergia = alergia;
+    }
+    
+    public String getCirurgia() {
+        return cirurgia;
+    }
+
+    public void setCirurgia(String cirurgia) {
+        this.cirurgia = cirurgia;
+    }
+
+    public String getAlergiaMedicamento() {
+        return alergiaMedicamento;
+    }
+
+    public void setAlergiaMedicamento(String alergiaMedicamento) {
+        this.alergiaMedicamento = alergiaMedicamento;
+    }
+    
+    public String getDiarreia() {
+        return diarreia;
+    }
+
+    public void setDiarreia(String diarreia) {
+        this.diarreia = diarreia;
+    }
+    
+    public String getDiabetes() {
+        return diabetes;
+    }
+
+    public void setDiabetes(String diabetes) {
+        this.diabetes = diabetes;
+    }
+    
+    public String getInsulina() {
+        return insulina;
+    }
+
+    public void setInsulina(String insulina) {
+        this.insulina = insulina;
+    }
+    
+    public String getOutrasDoencas(){
+        return outrasDoencas;
+    }    
+    
+    public void setOutrasDoencas(String outrasDoencas){
+        this.outrasDoencas = outrasDoencas;
+    }
+    
+    public String getDataPrevista(){
+        return data_prevista;
+    }    
+    
+    public void setDataPrevista(String data_prevista){
+        this.data_prevista = data_prevista;
+    }
+    
+    public String getPessoaAutorizada(){
+        return pessoa_autorizada;
+    }    
+    
+    public void setPessoaAutorizada(String pessoa_autorizada){
+        this.pessoa_autorizada = pessoa_autorizada;
     }
 }
