@@ -54,6 +54,9 @@ public class frmMenu extends javax.swing.JFrame {
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         this.setLocation(dim.width / 2 - this.getSize().width / 2, dim.height / 2 - this.getSize().height / 2);
         
+        this.setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/img/logo.jpg")));
+        this.setTitle("Sistema Sorriso de Criança");
+        
         data_atual = LocalDate.now();
 
         Date date = Date.valueOf(data_atual);
@@ -478,6 +481,7 @@ public class frmMenu extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Sistema Sorriso de Criança");
 
         btnConsultas.setText("Consultas");
         btnConsultas.addActionListener(new java.awt.event.ActionListener() {

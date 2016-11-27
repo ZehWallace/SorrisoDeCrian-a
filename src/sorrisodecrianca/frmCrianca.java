@@ -40,6 +40,7 @@ public class frmCrianca extends javax.swing.JFrame {
         this.setDefaultCloseOperation(frmCrianca.DISPOSE_ON_CLOSE);
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
+        this.setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/img/logo.jpg")));
     }
     
     public String getTextoBotaoSelecionado(ButtonGroup grupo)

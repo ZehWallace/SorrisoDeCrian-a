@@ -5,6 +5,8 @@
  */
 package sorrisodecrianca;
 
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -54,6 +56,10 @@ public final class Consulta extends javax.swing.JFrame {
         } catch (Exception ex) {
             Logger.getLogger(Consulta.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
+        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+        this.setLocation(dim.width / 2 - this.getSize().width / 2, dim.height / 2 - this.getSize().height / 2);
+        this.setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/img/logo.jpg")));
     }
 
     public void popularTabelaCrianca()
@@ -397,7 +403,7 @@ public final class Consulta extends javax.swing.JFrame {
         btn_MostrarTodasCriancasPresenca = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("frmConsulta");
+        setTitle("Consultas");
 
         JPanel_ConsultaCrianca.setLayout(new java.awt.BorderLayout());
 

@@ -5,6 +5,8 @@
  */
 package sorrisodecrianca;
 
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -29,6 +31,9 @@ public class frmInteressados extends javax.swing.JFrame {
      */
     public frmInteressados() {
         initComponents();
+        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+        this.setLocation(dim.width / 2 - this.getSize().width / 2, dim.height / 2 - this.getSize().height / 2);
+        this.setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/img/logo.jpg")));
     }
 
     /**
