@@ -1948,3 +1948,9 @@ INSERT INTO Crianca (nome, data_nascimento, rg, sexo, status, endereco, nome_res
 	at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)
 	at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:93)
 	at java.awt.EventDispatchThread.run(EventDispatchThread.java:82)
+2016-11-27 04:33:05 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Data conversion error converting "%4%"; SQL statement:
+select * from Crianca where id = ? [22018-192]
+2016-11-27 04:38:33 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Data conversion error converting "%4%"; SQL statement:
+select * from Crianca where id = ? [22018-192]

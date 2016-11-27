@@ -32,7 +32,7 @@ public class DAOPresenca extends DbAccess<ModelPresenca>{
     }
     
     /**
-    * Executa uma query no banco e retorna um Objeto tipo ModelCrianca
+    * Executa uma query no banco e retorna uma Array de tipo ModelPresenca
     * @param id id da crianca a ser pesquisada a presensa
     * @param limit limit de dias a pesquisar a presenca
     * @return ArrayList<ModelPresenca> retorna array com datas que a crianca esteve presente
@@ -43,6 +43,18 @@ public class DAOPresenca extends DbAccess<ModelPresenca>{
     {
            String comando = "select * from Presenca where crianca = ? order by data_presenca limit ?";
            return Listar(comando, id, limit);
+    }
+    
+    /**
+    * Executa uma query no banco e retorna um Array de tipo ModelPresenca
+    * @return ArrayList<ModelPresenca> retorna array com datas que a crianca esteve presente
+    * @throws SQLException
+    * @throws Exception
+    */
+    public ArrayList<ModelPresenca> getTodasPesquisas() throws SQLException, Exception
+    {
+           String comando = "select * from Presenca order by data_presenca";
+           return Listar(comando);
     }
     
     /**

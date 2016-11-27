@@ -271,3 +271,26 @@ insert into presenca values(3, '2016-10-03', 'F')
 insert into presenca values(1, '2016-10-02', 'P')
 insert into presenca values(2, '2016-10-02', 'P')
 insert into presenca values(3, '2016-10-02', 'P') [42000-192]
+2016-11-27 04:44:49 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Cannot parse "DATE" constant "27/11/2016"; SQL statement:
+insert into presenca values (1, '27/11/2016', 'P') -- (1, '27/11/2016', 'P') [22007-192]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	at org.h2.message.DbException.get(DbException.java:168)
+	at org.h2.value.ValueDate.parse(ValueDate.java:81)
+	at org.h2.value.Value.convertTo(Value.java:965)
+	at org.h2.table.Column.convert(Column.java:149)
+	at org.h2.command.dml.Insert.insertRows(Insert.java:143)
+	at org.h2.command.dml.Insert.update(Insert.java:114)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:98)
+	at org.h2.command.Command.executeUpdate(Command.java:258)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:184)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:158)
+	at workbench.sql.commands.UpdatingCommand.execute(UpdatingCommand.java:138)
+	at workbench.sql.StatementRunner.runStatement(StatementRunner.java:565)
+	at workbench.gui.sql.SqlPanel.displayResult(SqlPanel.java:3370)
+	at workbench.gui.sql.SqlPanel.runStatement(SqlPanel.java:2131)
+	at workbench.gui.sql.SqlPanel$4.run(SqlPanel.java:2069)
+Caused by: java.lang.IllegalArgumentException: 27/11/2016
+	at org.h2.util.DateTimeUtils.parseDateValue(DateTimeUtils.java:305)
+	at org.h2.value.ValueDate.parse(ValueDate.java:79)
+	... 13 more

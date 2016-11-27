@@ -7,14 +7,19 @@ package sorrisodecrianca;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import lib.DAOCrianca;
 import lib.DAOInteressados;
+import lib.DAOPresenca;
 import lib.DAOVoluntario;
 import models.ModelCrianca;
 import models.ModelInteressado;
+import models.ModelPresenca;
 import models.ModelVoluntario;
+import org.joda.time.DateTime;
 
 /**
  *
@@ -26,22 +31,29 @@ public final class Consulta extends javax.swing.JFrame {
      * Creates new form Consulta
      */
     
-    public DefaultTableModel modelo1, modelo2, modelo3;
+    public DefaultTableModel modelo1, modelo2, modelo3, modelo4;
     public DAOCrianca daoC;
     public DAOVoluntario daoV;
     public DAOInteressados daoI;
+    public DAOPresenca daoP;
     
     public Consulta() {
         initComponents();
         modelo1 = (DefaultTableModel) tabelaCriancas.getModel();
         modelo2 = (DefaultTableModel) tabelaVoluntarios.getModel();
         modelo3 = (DefaultTableModel) tabelaInteressados.getModel();
+        modelo4 = (DefaultTableModel) tabelaPresenca.getModel();
         daoC = new DAOCrianca();
         daoV = new DAOVoluntario();
         daoI = new DAOInteressados();
         popularTabelaCrianca();
         popularTabelaVoluntario();
         popularTabelaInteressados();
+        try {
+            popularTabelaPresenca();
+        } catch (Exception ex) {
+            Logger.getLogger(Consulta.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     public void popularTabelaCrianca()
@@ -108,6 +120,98 @@ public final class Consulta extends javax.swing.JFrame {
                 ModelVoluntario v = voluntarios.get(i);
                 Object[] obj = {v.getNome(), v.getRg(), v.getTel_contato(), v.getEmail()};
                 modelo2.addRow(obj);
+            }
+        }
+    }
+    
+    public void pesquisarPresenca(String nome) throws Exception
+    {
+        ArrayList<ModelPresenca> presenca = null;
+        
+        try
+        {
+            daoC = new DAOCrianca();
+            ArrayList<ModelCrianca> c = daoC.getPesquisaCrianca(nome);
+            
+            if(c == null)
+                 return;
+            
+            daoP = new DAOPresenca();
+            presenca = daoP.getPesquisaCriancaPresenca(c.get(0).getId(), 15);
+        }
+        catch(SQLException sql_e)
+        {
+            sql_e.printStackTrace();
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }
+        
+        if(modelo4.getRowCount() > 0)
+        {
+            modelo4.setRowCount(0);
+        }
+          
+        if(presenca != null)
+        {
+            for(int i = 0; i < presenca.size(); i++)
+            {
+                daoC = new DAOCrianca();
+                ModelPresenca p = presenca.get(i);
+                ModelCrianca cr = daoC.getCriancabyId(p.getCrianca());
+                
+                if(cr != null)
+                {
+                    DateTime date_temp;
+                    java.text.SimpleDateFormat data_format = new java.text.SimpleDateFormat("dd/MM/yyyy");
+                    Object[] obj = {data_format.format(p.getData_presenca()),cr.getNome(),cr.getRg(),p.getStatus()};
+                    modelo4.addRow(obj);
+                }
+            }
+        }
+    }
+    
+    public void popularTabelaPresenca() throws Exception
+    {
+        ArrayList<ModelPresenca> presenca = null;
+        
+        try
+        {
+            daoP = new DAOPresenca();
+            presenca = daoP.getTodasPesquisas();
+        }
+        catch(SQLException sql_e)
+        {
+            sql_e.printStackTrace();
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }
+        
+        if(modelo4.getRowCount() > 0)
+        {
+            modelo4.setRowCount(0);
+        }
+          
+        if(presenca != null)
+        {
+            for(int i = 0; i < presenca.size(); i++)
+            {
+                DAOCrianca daoC = new DAOCrianca();
+                ModelPresenca p = presenca.get(i);
+                ModelCrianca c = daoC.getCriancabyId(p.getCrianca());
+                
+                if(c != null)
+                {
+                    
+                    DateTime date_temp;
+                    java.text.SimpleDateFormat data_format = new java.text.SimpleDateFormat("dd/MM/yyyy");
+                            
+                    Object[] obj = {data_format.format(p.getData_presenca()),c.getNome(),c.getRg(),p.getStatus()};
+                    modelo4.addRow(obj);
+                }
             }
         }
     }
@@ -281,6 +385,16 @@ public final class Consulta extends javax.swing.JFrame {
         tabelaInteressados = new javax.swing.JTable();
         jPanel9 = new javax.swing.JPanel();
         btn_MostrarTodosInteressados = new javax.swing.JButton();
+        JPanel_ConsultaPresenca = new javax.swing.JPanel();
+        jPanel10 = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
+        txt_NomeCriancaPresenca = new javax.swing.JTextField();
+        btn_PesquisarCriancaPresenca = new javax.swing.JButton();
+        jPanel11 = new javax.swing.JPanel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        tabelaPresenca = new javax.swing.JTable();
+        jPanel12 = new javax.swing.JPanel();
+        btn_MostrarTodasCriancasPresenca = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("frmConsulta");
@@ -314,6 +428,9 @@ public final class Consulta extends javax.swing.JFrame {
             }
         ));
         jScrollPane1.setViewportView(tabelaCriancas);
+        if (tabelaCriancas.getColumnModel().getColumnCount() > 0) {
+            tabelaCriancas.getColumnModel().getColumn(4).setHeaderValue("Endereço");
+        }
 
         jPanel5.add(jScrollPane1);
 
@@ -476,6 +593,83 @@ public final class Consulta extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Interessados", JPanel_Interessados);
 
+        JPanel_ConsultaPresenca.setLayout(new java.awt.BorderLayout());
+
+        jLabel4.setText("Nome");
+        jPanel10.add(jLabel4);
+
+        txt_NomeCriancaPresenca.setColumns(30);
+        txt_NomeCriancaPresenca.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_NomeCriancaPresencaActionPerformed(evt);
+            }
+        });
+        jPanel10.add(txt_NomeCriancaPresenca);
+
+        btn_PesquisarCriancaPresenca.setText("Pesquisar");
+        btn_PesquisarCriancaPresenca.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_PesquisarCriancaPresencaMouseClicked(evt);
+            }
+        });
+        btn_PesquisarCriancaPresenca.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_PesquisarCriancaPresencaActionPerformed(evt);
+            }
+        });
+        jPanel10.add(btn_PesquisarCriancaPresenca);
+
+        JPanel_ConsultaPresenca.add(jPanel10, java.awt.BorderLayout.PAGE_START);
+
+        jPanel11.setLayout(new javax.swing.BoxLayout(jPanel11, javax.swing.BoxLayout.LINE_AXIS));
+
+        tabelaPresenca.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Data", "Nome", "RG", "Status"
+            }
+        ));
+        jScrollPane4.setViewportView(tabelaPresenca);
+
+        jPanel11.add(jScrollPane4);
+
+        JPanel_ConsultaPresenca.add(jPanel11, java.awt.BorderLayout.CENTER);
+
+        btn_MostrarTodasCriancasPresenca.setText("Mostrar Todos");
+        btn_MostrarTodasCriancasPresenca.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_MostrarTodasCriancasPresencaMouseClicked(evt);
+            }
+        });
+        btn_MostrarTodasCriancasPresenca.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_MostrarTodasCriancasPresencaActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
+        jPanel12.setLayout(jPanel12Layout);
+        jPanel12Layout.setHorizontalGroup(
+            jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel12Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btn_MostrarTodasCriancasPresenca, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(542, Short.MAX_VALUE))
+        );
+        jPanel12Layout.setVerticalGroup(
+            jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel12Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btn_MostrarTodasCriancasPresenca)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        JPanel_ConsultaPresenca.add(jPanel12, java.awt.BorderLayout.PAGE_END);
+
+        jTabbedPane1.addTab("Presenças", JPanel_ConsultaPresenca);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -544,6 +738,36 @@ public final class Consulta extends javax.swing.JFrame {
         popularTabelaInteressados();
     }//GEN-LAST:event_btn_MostrarTodosInteressadosMouseClicked
 
+    private void btn_PesquisarCriancaPresencaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_PesquisarCriancaPresencaMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_PesquisarCriancaPresencaMouseClicked
+
+    private void btn_MostrarTodasCriancasPresencaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_MostrarTodasCriancasPresencaMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_MostrarTodasCriancasPresencaMouseClicked
+
+    private void txt_NomeCriancaPresencaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_NomeCriancaPresencaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_NomeCriancaPresencaActionPerformed
+
+    private void btn_MostrarTodasCriancasPresencaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_MostrarTodasCriancasPresencaActionPerformed
+        try {
+            // TODO add your handling code here:
+            popularTabelaPresenca();
+        } catch (Exception ex) {
+            Logger.getLogger(Consulta.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btn_MostrarTodasCriancasPresencaActionPerformed
+
+    private void btn_PesquisarCriancaPresencaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_PesquisarCriancaPresencaActionPerformed
+        try {
+            // TODO add your handling code here:
+            pesquisarPresenca(txt_NomeCriancaPresenca.getText());
+        } catch (Exception ex) {
+            Logger.getLogger(Consulta.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btn_PesquisarCriancaPresencaActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -582,18 +806,25 @@ public final class Consulta extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel JPanel_ConsultaCrianca;
+    private javax.swing.JPanel JPanel_ConsultaPresenca;
     private javax.swing.JPanel JPanel_ConsultaVoluntario;
     private javax.swing.JPanel JPanel_Interessados;
     private javax.swing.JButton btn_MostrarTodasCriancas;
+    private javax.swing.JButton btn_MostrarTodasCriancasPresenca;
     private javax.swing.JButton btn_MostrarTodos;
     private javax.swing.JButton btn_MostrarTodosInteressados;
     private javax.swing.JButton btn_PesquisarCrianca;
+    private javax.swing.JButton btn_PesquisarCriancaPresenca;
     private javax.swing.JButton btn_PesquisarInteressado;
     private javax.swing.JButton btn_PesquisarVoluntario;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel10;
+    private javax.swing.JPanel jPanel11;
+    private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
@@ -605,11 +836,14 @@ public final class Consulta extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTable tabelaCriancas;
     private javax.swing.JTable tabelaInteressados;
+    private javax.swing.JTable tabelaPresenca;
     private javax.swing.JTable tabelaVoluntarios;
     private javax.swing.JTextField txt_NomeCrianca;
+    private javax.swing.JTextField txt_NomeCriancaPresenca;
     private javax.swing.JTextField txt_NomeInteressado;
     private javax.swing.JTextField txt_NomeVoluntario;
     // End of variables declaration//GEN-END:variables
