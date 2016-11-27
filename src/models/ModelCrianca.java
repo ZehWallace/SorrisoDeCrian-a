@@ -76,7 +76,7 @@ public class ModelCrianca
     }
 
     public String getData_nascimento() {
-        return new SimpleDateFormat("dd/MM/yyyy").format(data_nascimento);
+        return data_nascimento.toString();
     }
 
     public void setData_nascimento(Date data_nascimento) {
