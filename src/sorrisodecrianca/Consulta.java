@@ -72,7 +72,7 @@ public final class Consulta extends javax.swing.JFrame {
             for(int i = 0; i < criancas.size(); i++)
             {
                 ModelCrianca c = criancas.get(i);
-                Object[] obj = {c.getNome(), c.getRg(), c.getNome_responsavel(), c.getEndereco()};
+                Object[] obj = {c.getNome(), c.getRg(),c.getData_nascimento(), c.getNome_responsavel(), c.getEndereco()};
                 modelo1.addRow(obj);
             }
         }
@@ -140,7 +140,7 @@ public final class Consulta extends javax.swing.JFrame {
             for(int i = 0; i < interessados.size(); i++)
             {
                 ModelInteressado inter = interessados.get(i);
-                Object[] obj = {inter.getNomeCrianca(), inter.getNomeResponsavel(), inter.getTelefone()};
+                Object[] obj = {inter.getData_interesse(),inter.getNomeCrianca(),inter.getDataNascimento(), inter.getNomeResponsavel(), inter.getTelefone()};
                 modelo3.addRow(obj);
             }
         }
@@ -170,7 +170,7 @@ public final class Consulta extends javax.swing.JFrame {
             for(int j = 0; j < resultado.size(); j++)
             {
                 ModelCrianca c = resultado.get(j);
-                Object[] obj = {c.getNome(), c.getRg(), c.getNome_responsavel(), c.getEndereco()};
+                Object[] obj = {c.getNome(), c.getRg(),c.getData_nascimento(), c.getNome_responsavel(), c.getEndereco()};
                 modelo1.addRow(obj);
             }
         }
@@ -235,7 +235,7 @@ public final class Consulta extends javax.swing.JFrame {
             for(int i = 0; i < interessados.size(); i++)
             {
                 ModelInteressado inter = interessados.get(i);
-                Object[] obj = {inter.getNomeCrianca(), inter.getNomeResponsavel(), inter.getTelefone()};
+                Object[] obj = {inter.getData_interesse(),inter.getNomeCrianca(),inter.getDataNascimento(), inter.getNomeResponsavel(), inter.getTelefone()};
                 modelo3.addRow(obj);
             }
         }
@@ -310,7 +310,7 @@ public final class Consulta extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Nome", "RG", "Responsável", "Endereço"
+                "Nome", "RG", "Nascimento", "Responsável", "Endereço"
             }
         ));
         jScrollPane1.setViewportView(tabelaCriancas);
@@ -439,7 +439,7 @@ public final class Consulta extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Nome", "Responsável", "Telefone"
+                "Data de interesse", "Nome", "Nascimento", "Responsável", "Telefone"
             }
         ));
         jScrollPane3.setViewportView(tabelaInteressados);

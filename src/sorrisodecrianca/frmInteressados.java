@@ -7,7 +7,10 @@ package sorrisodecrianca;
 
 import java.sql.SQLException;
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import lib.DAOInteressados;
 import models.ModelInteressado;
@@ -254,7 +257,11 @@ public class frmInteressados extends javax.swing.JFrame {
                     e.printStackTrace();
                 }
                 
-                modelInteressado.setDataNascimento(dataConvertida);
+                try {
+                    modelInteressado.setDataNascimento(dataConvertida);
+                } catch (ParseException ex) {
+                    Logger.getLogger(frmInteressados.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
             else
             {

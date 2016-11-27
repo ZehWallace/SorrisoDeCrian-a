@@ -16,6 +16,7 @@
 package models;
 
 import java.sql.Date;
+import java.text.SimpleDateFormat;
 
 
 public class ModelCrianca 
@@ -74,8 +75,8 @@ public class ModelCrianca
         this.nome = nome;
     }
 
-    public Date getData_nascimento() {
-        return data_nascimento;
+    public String getData_nascimento() {
+        return new SimpleDateFormat("dd/MM/yyyy").format(data_nascimento);
     }
 
     public void setData_nascimento(Date data_nascimento) {

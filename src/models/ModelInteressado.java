@@ -5,7 +5,10 @@
  */
 package models;
 
-import java.sql.Date;
+import java.util.Date;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 
 /**
  *
@@ -14,11 +17,24 @@ import java.sql.Date;
 public class ModelInteressado {
     private String nome_crianca;
     private Date data_nascimento;
+    private Date data_interesse;
     private String nome_responsavel;
     private String telefone;
     private String observacao;
     private String status;
     private String endereco;
+    
+    
+    public String getData_interesse() {
+        return new SimpleDateFormat("dd/MM/yyyy").format(data_interesse);
+    }
+
+    public void setData_interesse(Date data_interesse) throws ParseException {
+        
+        DateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+        String date = new SimpleDateFormat("dd/MM/yyyy").format(data_interesse);
+        this.data_interesse =  format.parse(date);
+    }
     
     public String getNomeCrianca()
     {
@@ -30,14 +46,16 @@ public class ModelInteressado {
         this.nome_crianca = nome_crianca;
     }
     
-    public Date getDataNascimento()
+    public String getDataNascimento()
     {
-        return data_nascimento;
+        return new SimpleDateFormat("dd/MM/yyyy").format(data_nascimento);
     }
     
-    public void setDataNascimento(Date data_nascimento)
+    public void setDataNascimento(Date data_nascimento) throws ParseException
     {
-        this.data_nascimento = data_nascimento;
+        DateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+        String date = new SimpleDateFormat("dd/MM/yyyy").format(data_nascimento);
+        this.data_nascimento = format.parse(date);
     }
     
     public String getNomeResponsavel()
