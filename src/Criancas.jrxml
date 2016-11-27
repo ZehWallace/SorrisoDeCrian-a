@@ -13,7 +13,9 @@
 			<style backcolor="#E6DAC3"/>
 		</conditionalStyle>
 	</style>
-	<parameter name="parameter1" class="java.lang.String"/>
+	<parameter name="nome" class="java.lang.String"/>
+	<parameter name="status" class="java.lang.String"/>
+	<parameter name="doc" class="java.lang.String"/>
 	<queryString language="SQL">
 		<![CDATA[SELECT
      CRIANCA."NOME" AS CRIANCA_NOME,
@@ -27,7 +29,9 @@
      CRIANCA."OBSERVACAO" AS CRIANCA_OBSERVACAO
 FROM
      "PUBLIC"."CRIANCA" CRIANCA
-WHERE CRIANCA."NOME" LIKE $P{parameter1}]]>
+WHERE CRIANCA."NOME" LIKE $P{nome}
+     AND CRIANCA."STATUS" LIKE $P{status}
+     AND CRIANCA."RG" LIKE $P{doc}]]>
 	</queryString>
 	<field name="CRIANCA_NOME" class="java.lang.String"/>
 	<field name="CRIANCA_DATA_NASCIMENTO" class="java.sql.Date"/>

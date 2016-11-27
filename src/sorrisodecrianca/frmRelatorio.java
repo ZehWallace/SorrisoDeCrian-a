@@ -7,8 +7,12 @@ package sorrisodecrianca;
 
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import lib.DAOCrianca;
 import lib.DAOPresenca;
 import lib.DAOVoluntario;
@@ -39,17 +43,36 @@ public class frmRelatorio extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
+        btnCriancas = new javax.swing.JButton();
+        jPanel5 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         txtNomeCriancas = new javax.swing.JTextField();
-        btnCriancas = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
+        txtRGCriancas = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        checkCriancasAtivo = new javax.swing.JCheckBox();
+        checkCriancasInativo = new javax.swing.JCheckBox();
         jPanel3 = new javax.swing.JPanel();
         btnPresencas = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
-        txtNomePresenca = new javax.swing.JTextField();
+        jPanel6 = new javax.swing.JPanel();
+        jLabel10 = new javax.swing.JLabel();
+        txtNomePresencas = new javax.swing.JTextField();
+        jLabel11 = new javax.swing.JLabel();
+        txtAPartirPresencas = new javax.swing.JTextField();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        txtAtePresencas = new javax.swing.JTextField();
         jPanel4 = new javax.swing.JPanel();
         btnVoluntarios = new javax.swing.JButton();
-        txtNomeVoluntario = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
+        jPanel7 = new javax.swing.JPanel();
+        jLabel13 = new javax.swing.JLabel();
+        txtNomeVoluntarios = new javax.swing.JTextField();
+        jLabel14 = new javax.swing.JLabel();
+        txtDocVoluntarios = new javax.swing.JTextField();
+        jLabel15 = new javax.swing.JLabel();
+        checkVoluntariosAtivo = new javax.swing.JCheckBox();
+        checkVoluntariosInativo = new javax.swing.JCheckBox();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -59,14 +82,6 @@ public class frmRelatorio extends javax.swing.JFrame {
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Relatório de Crianças"));
 
-        jLabel2.setText("Filtrar por nome:");
-
-        txtNomeCriancas.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNomeCriancasActionPerformed(evt);
-            }
-        });
-
         btnCriancas.setText("Gerar Relatório");
         btnCriancas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -74,29 +89,60 @@ public class frmRelatorio extends javax.swing.JFrame {
             }
         });
 
+        jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder("Filtrar por:"));
+        jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel2.setText("Nome:");
+        jPanel5.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 19, -1, -1));
+
+        txtNomeCriancas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNomeCriancasActionPerformed(evt);
+            }
+        });
+        jPanel5.add(txtNomeCriancas, new org.netbeans.lib.awtextra.AbsoluteConstraints(69, 16, 172, -1));
+
+        jLabel5.setText("Status:");
+        jPanel5.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 45, -1, -1));
+
+        txtRGCriancas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtRGCriancasActionPerformed(evt);
+            }
+        });
+        jPanel5.add(txtRGCriancas, new org.netbeans.lib.awtextra.AbsoluteConstraints(69, 68, 172, -1));
+
+        jLabel6.setText("RG:");
+        jPanel5.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 71, -1, -1));
+
+        checkCriancasAtivo.setSelected(true);
+        checkCriancasAtivo.setText("Ativo");
+        jPanel5.add(checkCriancasAtivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 40, -1, -1));
+
+        checkCriancasInativo.setSelected(true);
+        checkCriancasInativo.setText("Inativo");
+        jPanel5.add(checkCriancasInativo, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 40, -1, -1));
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtNomeCriancas, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(btnCriancas)
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(txtNomeCriancas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
-                .addComponent(btnCriancas))
+                .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, 95, Short.MAX_VALUE)
+                .addContainerGap())
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(35, 35, 35)
+                .addComponent(btnCriancas)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Relatório de Presenças"));
@@ -108,40 +154,99 @@ public class frmRelatorio extends javax.swing.JFrame {
             }
         });
 
-        jLabel3.setText("Filtrar por nome:");
+        jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder("Filtrar por:"));
 
-        txtNomePresenca.addActionListener(new java.awt.event.ActionListener() {
+        jLabel10.setText("Nome:");
+
+        txtNomePresencas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNomePresencaActionPerformed(evt);
+                txtNomePresencasActionPerformed(evt);
             }
         });
+
+        jLabel11.setText("Data:");
+
+        txtAPartirPresencas.setToolTipText("Formato: DD/MM/AAAA");
+        txtAPartirPresencas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtAPartirPresencasActionPerformed(evt);
+            }
+        });
+
+        jLabel12.setText("A partir:");
+
+        jLabel16.setText("Até:");
+
+        txtAtePresencas.setToolTipText("Formato: DD/MM/AAAA");
+        txtAtePresencas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtAtePresencasActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel10)
+                    .addComponent(jLabel11))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addComponent(jLabel16)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(txtAtePresencas, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtNomePresencas, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                        .addComponent(jLabel12)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(txtAPartirPresencas, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
+        );
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel10)
+                    .addComponent(txtNomePresencas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel11)
+                    .addComponent(txtAPartirPresencas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel12))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel16)
+                    .addComponent(txtAtePresencas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+        );
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnPresencas)
-                .addContainerGap())
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtNomePresenca, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnPresencas)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(txtNomePresenca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
-                .addComponent(btnPresencas))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnPresencas)
+                .addGap(33, 33, 33))
         );
 
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder("Relatório de Voluntários"));
+        jPanel4.setPreferredSize(new java.awt.Dimension(400, 118));
 
         btnVoluntarios.setText("Gerar Relatório");
         btnVoluntarios.addActionListener(new java.awt.event.ActionListener() {
@@ -150,59 +255,119 @@ public class frmRelatorio extends javax.swing.JFrame {
             }
         });
 
-        txtNomeVoluntario.addActionListener(new java.awt.event.ActionListener() {
+        jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder("Filtrar por:"));
+
+        jLabel13.setText("Nome:");
+
+        txtNomeVoluntarios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNomeVoluntarioActionPerformed(evt);
+                txtNomeVoluntariosActionPerformed(evt);
             }
         });
 
-        jLabel4.setText("Filtrar por nome:");
+        jLabel14.setText("Status:");
+
+        txtDocVoluntarios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtDocVoluntariosActionPerformed(evt);
+            }
+        });
+
+        jLabel15.setText("RG:");
+
+        checkVoluntariosAtivo.setSelected(true);
+        checkVoluntariosAtivo.setText("Ativo");
+
+        checkVoluntariosInativo.setSelected(true);
+        checkVoluntariosInativo.setText("Inativo");
+
+        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
+        jPanel7.setLayout(jPanel7Layout);
+        jPanel7Layout.setHorizontalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel15)
+                    .addComponent(jLabel14)
+                    .addComponent(jLabel13))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtDocVoluntarios, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtNomeVoluntarios, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addComponent(checkVoluntariosAtivo)
+                        .addGap(10, 10, 10)
+                        .addComponent(checkVoluntariosInativo)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel7Layout.setVerticalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addGap(3, 3, 3)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel13)
+                    .addComponent(txtNomeVoluntarios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(5, 5, 5)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel14)
+                    .addComponent(checkVoluntariosAtivo)
+                    .addComponent(checkVoluntariosInativo))
+                .addGap(4, 4, 4)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel15)
+                    .addComponent(txtDocVoluntarios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(3, 3, 3))
+        );
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnVoluntarios)
-                .addContainerGap())
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel4)
-                .addGap(6, 6, 6)
-                .addComponent(txtNomeVoluntario, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(289, Short.MAX_VALUE))
+                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnVoluntarios)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtNomeVoluntario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
-                .addComponent(btnVoluntarios))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnVoluntarios)
+                .addGap(37, 37, 37))
         );
+
+        jLabel3.setText("* Para não utilizar filtros apenas clique em \"Gerar Relatório\", sem alterar os campos.");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, 423, Short.MAX_VALUE)
+            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel3)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel3)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -212,64 +377,153 @@ public class frmRelatorio extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNomeCriancasActionPerformed
 
-    private void txtNomePresencaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomePresencaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtNomePresencaActionPerformed
-
-    private void txtNomeVoluntarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeVoluntarioActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtNomeVoluntarioActionPerformed
-
     private void btnCriancasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCriancasActionPerformed
         DAOCrianca report = new DAOCrianca();
-        
+
         //Parametros
         String nome = txtNomeCriancas.getText();
         nome = "%" + nome + "%";
+        String status;
+        if (checkCriancasAtivo.isSelected() && checkCriancasInativo.isSelected()) {
+            status = "%";
+        } else if (checkCriancasAtivo.isSelected()) {
+            status = "Ativo";
+        } else if (checkCriancasInativo.isSelected()) {
+            status = "Inativo";
+        } else {
+            status = "%";
+        }
+        String doc = "%" + txtRGCriancas.getText() + "%";
+        doc = doc.replaceAll("\\.", "").replaceAll("-", "").replaceAll("/", "");
+        
         Map map = new HashMap();
-        map.put("parameter1", nome);
+        map.put("nome", nome);
+        map.put("status", status);
+        map.put("doc", doc);
 
         report.report(map);
     }//GEN-LAST:event_btnCriancasActionPerformed
+    
+    private void btnVoluntariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoluntariosActionPerformed
+        DAOVoluntario report = new DAOVoluntario();
+
+        //Parametros
+        String nome = "%" + txtNomeVoluntarios.getText() + "%";
+        String status;
+        if (checkVoluntariosAtivo.isSelected() && checkVoluntariosInativo.isSelected()) {
+            status = "%";
+        } else if (checkVoluntariosAtivo.isSelected()) {
+            status = "Ativo";
+        } else if (checkVoluntariosInativo.isSelected()) {
+            status = "Inativo";
+        } else {
+            status = "%";
+        }
+        String doc = txtDocVoluntarios.getText();
+        if (doc.isEmpty()) {
+            doc = "%";
+        }
+        doc = doc.replaceAll("\\.", "").replaceAll("-", "").replaceAll("/", "");
+        
+        Map map = new HashMap();
+        map.put("nome", nome);
+        map.put("status", status);
+        map.put("doc", doc);
+        report.report(map);
+    }//GEN-LAST:event_btnVoluntariosActionPerformed
+
+    private void txtRGCriancasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtRGCriancasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtRGCriancasActionPerformed
 
     private void btnPresencasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPresencasActionPerformed
         DAOPresenca report = new DAOPresenca();
 
         //Parametros
-        String nome = txtNomePresenca.getText();
+        String nome = txtNomePresencas.getText();
         nome = "%" + nome + "%";
+        String aPartir = txtAPartirPresencas.getText();
+        String ate = txtAtePresencas.getText();
+        if(aPartir.isEmpty()){
+            aPartir = "01/01/1900";
+        }if(ate.isEmpty()){
+            ate = "01/01/3000";
+        }
+        aPartir = maskData(aPartir);
+        ate = maskData(ate);
+        
         Map map = new HashMap();
-        map.put("parameter1", nome);
+        map.put("nome", nome);
+        map.put("a_partir", aPartir);
+        map.put("ate", ate);
+
         report.report(map);
     }//GEN-LAST:event_btnPresencasActionPerformed
+    private String maskData(String data_br) {
+        SimpleDateFormat fromUser = new SimpleDateFormat("dd/MM/yyyy");
+        SimpleDateFormat myFormat = new SimpleDateFormat("yyyy-MM-dd");
 
-    private void btnVoluntariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoluntariosActionPerformed
-        DAOVoluntario report = new DAOVoluntario();
-        
-        //Parametros
-        String nome = txtNomeVoluntario.getText();
-        nome = "%" + nome + "%";
-        Map map = new HashMap();
-        map.put("parameter1", nome);
-        
-        report.report(map);
-    }//GEN-LAST:event_btnVoluntariosActionPerformed
+        try {
+            String reformattedStr = myFormat.format(fromUser.parse(data_br));
+            return reformattedStr;
+        } catch (ParseException ex) {
+            Logger.getLogger(frmRelatorio.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+    private void txtNomePresencasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomePresencasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNomePresencasActionPerformed
+
+    private void txtAPartirPresencasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAPartirPresencasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtAPartirPresencasActionPerformed
+
+    private void txtNomeVoluntariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeVoluntariosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNomeVoluntariosActionPerformed
+
+    private void txtDocVoluntariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDocVoluntariosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtDocVoluntariosActionPerformed
+
+    private void txtAtePresencasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAtePresencasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtAtePresencasActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCriancas;
     private javax.swing.JButton btnPresencas;
     private javax.swing.JButton btnVoluntarios;
+    private javax.swing.JCheckBox checkCriancasAtivo;
+    private javax.swing.JCheckBox checkCriancasInativo;
+    private javax.swing.JCheckBox checkVoluntariosAtivo;
+    private javax.swing.JCheckBox checkVoluntariosInativo;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
+    private javax.swing.JTextField txtAPartirPresencas;
+    private javax.swing.JTextField txtAtePresencas;
+    private javax.swing.JTextField txtDocVoluntarios;
     private javax.swing.JTextField txtNomeCriancas;
-    private javax.swing.JTextField txtNomePresenca;
-    private javax.swing.JTextField txtNomeVoluntario;
+    private javax.swing.JTextField txtNomePresencas;
+    private javax.swing.JTextField txtNomeVoluntarios;
+    private javax.swing.JTextField txtRGCriancas;
     // End of variables declaration//GEN-END:variables
 }

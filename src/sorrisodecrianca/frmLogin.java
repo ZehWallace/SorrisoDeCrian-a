@@ -34,11 +34,11 @@ public class frmLogin extends javax.swing.JFrame {
         //javax.swing.plaf.nimbus.NimbusLookAndFeel
         //javax.swing.plaf.metal.MetalLookAndFeel -- Default
         
-        try {
-            UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel");
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
+//        try {
+//            UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel");
+//        } catch (Exception ex) {
+//            ex.printStackTrace();
+//        }
 
         initComponents();
         

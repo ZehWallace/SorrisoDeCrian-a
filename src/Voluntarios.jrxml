@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="7994e793-b0e4-4dc1-ad2b-daa20e16d168">
 	<property name="ireport.zoom" value="1.771561000000001"/>
-	<property name="ireport.x" value="38"/>
+	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<style name="Title" fontName="Times New Roman" fontSize="50" isBold="true" pdfFontName="Times-Bold"/>
 	<style name="SubTitle" forecolor="#736343" fontName="Arial" fontSize="18"/>
@@ -13,6 +13,9 @@
 			<style backcolor="#E6DAC3"/>
 		</conditionalStyle>
 	</style>
+	<parameter name="nome" class="java.lang.String"/>
+	<parameter name="status" class="java.lang.String"/>
+	<parameter name="doc" class="java.lang.String"/>
 	<queryString language="SQL">
 		<![CDATA[SELECT
      VOLUNTARIO."NOME" AS VOLUNTARIO_NOME,
@@ -21,7 +24,11 @@
      VOLUNTARIO."TEL_CONTATO" AS VOLUNTARIO_TEL_CONTATO,
      VOLUNTARIO."EMAIL" AS VOLUNTARIO_EMAIL
 FROM
-     "PUBLIC"."VOLUNTARIO" VOLUNTARIO]]>
+     "PUBLIC"."VOLUNTARIO" VOLUNTARIO
+WHERE
+     VOLUNTARIO."NOME" LIKE $P{nome}
+     AND VOLUNTARIO."STATUS" LIKE $P{status}
+     AND VOLUNTARIO.RG LIKE $P{doc}]]>
 	</queryString>
 	<field name="VOLUNTARIO_NOME" class="java.lang.String"/>
 	<field name="VOLUNTARIO_RG" class="java.lang.String"/>

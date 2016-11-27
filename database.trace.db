@@ -1954,3 +1954,398 @@ select * from Crianca where id = ? [22018-192]
 2016-11-27 04:38:33 jdbc[3]: exception
 org.h2.jdbc.JdbcSQLException: Data conversion error converting "%4%"; SQL statement:
 select * from Crianca where id = ? [22018-192]
+2016-11-27 13:33:54 jdbc[5]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "SELECT
+     CRIANCA.""NOME"" AS CRIANCA_NOME,
+     CRIANCA.""DATA_NASCIMENTO"" AS CRIANCA_DATA_NASCIMENTO,
+     CRIANCA.""RG"" AS CRIANCA_RG,
+     CRIANCA.""TEL_CONTATO"" AS CRIANCA_TEL_CONTATO,
+     CRIANCA.""STATUS"" AS CRIANCA_STATUS,
+     CRIANCA.""SEXO"" AS CRIANCA_SEXO,
+     CRIANCA.""ENDERECO"" AS CRIANCA_ENDERECO,
+     CRIANCA.""NOME_RESPONSAVEL"" AS CRIANCA_NOME_RESPONSAVEL,
+     CRIANCA.""OBSERVACAO"" AS CRIANCA_OBSERVACAO
+FROM
+     ""PUBLIC"".""CRIANCA"" CRIANCA
+WHERE CRIANCA.""NOME"" LIKE $P{nome}[*]" [42000-192]
+2016-11-27 13:34:03 jdbc[5]: exception
+org.h2.jdbc.JdbcSQLException: Column "john" not found; SQL statement:
+SELECT
+     CRIANCA."NOME" AS CRIANCA_NOME,
+     CRIANCA."DATA_NASCIMENTO" AS CRIANCA_DATA_NASCIMENTO,
+     CRIANCA."RG" AS CRIANCA_RG,
+     CRIANCA."TEL_CONTATO" AS CRIANCA_TEL_CONTATO,
+     CRIANCA."STATUS" AS CRIANCA_STATUS,
+     CRIANCA."SEXO" AS CRIANCA_SEXO,
+     CRIANCA."ENDERECO" AS CRIANCA_ENDERECO,
+     CRIANCA."NOME_RESPONSAVEL" AS CRIANCA_NOME_RESPONSAVEL,
+     CRIANCA."OBSERVACAO" AS CRIANCA_OBSERVACAO
+FROM
+     "PUBLIC"."CRIANCA" CRIANCA
+WHERE CRIANCA."NOME" LIKE "john" [42122-192]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	at org.h2.message.DbException.get(DbException.java:179)
+	at org.h2.message.DbException.get(DbException.java:155)
+	at org.h2.expression.ExpressionColumn.optimize(ExpressionColumn.java:147)
+	at org.h2.expression.CompareLike.optimize(CompareLike.java:90)
+	at org.h2.command.dml.Select.prepare(Select.java:855)
+	at org.h2.command.Parser.prepareCommand(Parser.java:259)
+	at org.h2.engine.Session.prepareLocal(Session.java:560)
+	at org.h2.engine.Session.prepareCommand(Session.java:501)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1202)
+	at org.h2.jdbc.JdbcStatement.executeQuery(JdbcStatement.java:73)
+	at workbench.sql.commands.SelectCommand.execute(SelectCommand.java:130)
+	at workbench.sql.StatementRunner.runStatement(StatementRunner.java:565)
+	at workbench.gui.sql.SqlPanel.displayResult(SqlPanel.java:3370)
+	at workbench.gui.sql.SqlPanel.runStatement(SqlPanel.java:2131)
+	at workbench.gui.sql.SqlPanel$4.run(SqlPanel.java:2069)
+2016-11-27 13:34:04 jdbc[5]: exception
+org.h2.jdbc.JdbcSQLException: Column "john" not found; SQL statement:
+SELECT
+     CRIANCA."NOME" AS CRIANCA_NOME,
+     CRIANCA."DATA_NASCIMENTO" AS CRIANCA_DATA_NASCIMENTO,
+     CRIANCA."RG" AS CRIANCA_RG,
+     CRIANCA."TEL_CONTATO" AS CRIANCA_TEL_CONTATO,
+     CRIANCA."STATUS" AS CRIANCA_STATUS,
+     CRIANCA."SEXO" AS CRIANCA_SEXO,
+     CRIANCA."ENDERECO" AS CRIANCA_ENDERECO,
+     CRIANCA."NOME_RESPONSAVEL" AS CRIANCA_NOME_RESPONSAVEL,
+     CRIANCA."OBSERVACAO" AS CRIANCA_OBSERVACAO
+FROM
+     "PUBLIC"."CRIANCA" CRIANCA
+WHERE CRIANCA."NOME" LIKE "john" [42122-192]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	at org.h2.message.DbException.get(DbException.java:179)
+	at org.h2.message.DbException.get(DbException.java:155)
+	at org.h2.expression.ExpressionColumn.optimize(ExpressionColumn.java:147)
+	at org.h2.expression.CompareLike.optimize(CompareLike.java:90)
+	at org.h2.command.dml.Select.prepare(Select.java:855)
+	at org.h2.command.Parser.prepareCommand(Parser.java:259)
+	at org.h2.engine.Session.prepareLocal(Session.java:560)
+	at org.h2.engine.Session.prepareCommand(Session.java:501)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1202)
+	at org.h2.jdbc.JdbcStatement.executeQuery(JdbcStatement.java:73)
+	at workbench.sql.commands.SelectCommand.execute(SelectCommand.java:130)
+	at workbench.sql.StatementRunner.runStatement(StatementRunner.java:565)
+	at workbench.gui.sql.SqlPanel.displayResult(SqlPanel.java:3370)
+	at workbench.gui.sql.SqlPanel.runStatement(SqlPanel.java:2131)
+	at workbench.gui.sql.SqlPanel$4.run(SqlPanel.java:2069)
+2016-11-27 13:56:53 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Cannot parse "DATE" constant "04/10/1992"; SQL statement:
+SELECT
+     CRIANCA."NOME" AS CRIANCA_NOME,
+     PRESENCA."DATA_PRESENCA" AS PRESENCA_DATA_PRESENCA,
+     PRESENCA."STATUS" AS PRESENCA_STATUS,
+     CRIANCA."RG" AS CRIANCA_RG
+FROM
+     "PUBLIC"."CRIANCA" CRIANCA INNER JOIN "PUBLIC"."PRESENCA" PRESENCA ON CRIANCA."ID" = PRESENCA."CRIANCA"
+WHERE
+     CRIANCA."NOME" LIKE '%%'
+     AND PRESENCA."DATA_PRESENCA" >= '04/10/1992' [22007-192]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	at org.h2.message.DbException.get(DbException.java:168)
+	at org.h2.value.ValueDate.parse(ValueDate.java:81)
+	at org.h2.value.Value.convertTo(Value.java:965)
+	at org.h2.expression.Comparison.getValue(Comparison.java:256)
+	at org.h2.expression.Expression.getBooleanValue(Expression.java:178)
+	at org.h2.table.TableFilter.isOk(TableFilter.java:583)
+	at org.h2.table.TableFilter.next(TableFilter.java:523)
+	at org.h2.command.dml.Select.queryFlat(Select.java:541)
+	at org.h2.command.dml.Select.queryWithoutCache(Select.java:654)
+	at org.h2.command.dml.Query.query(Query.java:341)
+	at org.h2.command.dml.Query.query(Query.java:309)
+	at org.h2.command.dml.Query.query(Query.java:36)
+	at org.h2.command.CommandContainer.query(CommandContainer.java:110)
+	at org.h2.command.Command.executeQuery(Command.java:201)
+	at org.h2.jdbc.JdbcStatement.executeQuery(JdbcStatement.java:79)
+	at workbench.sql.commands.SelectCommand.execute(SelectCommand.java:130)
+	at workbench.sql.StatementRunner.runStatement(StatementRunner.java:565)
+	at workbench.gui.sql.SqlPanel.displayResult(SqlPanel.java:3370)
+	at workbench.gui.sql.SqlPanel.runStatement(SqlPanel.java:2131)
+	at workbench.gui.sql.SqlPanel$4.run(SqlPanel.java:2069)
+Caused by: java.lang.IllegalArgumentException: 04/10/1992
+	at org.h2.util.DateTimeUtils.parseDateValue(DateTimeUtils.java:305)
+	at org.h2.value.ValueDate.parse(ValueDate.java:79)
+	... 18 more
+2016-11-27 13:57:15 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Cannot parse "DATE" constant "04-10-1992"; SQL statement:
+SELECT
+     CRIANCA."NOME" AS CRIANCA_NOME,
+     PRESENCA."DATA_PRESENCA" AS PRESENCA_DATA_PRESENCA,
+     PRESENCA."STATUS" AS PRESENCA_STATUS,
+     CRIANCA."RG" AS CRIANCA_RG
+FROM
+     "PUBLIC"."CRIANCA" CRIANCA INNER JOIN "PUBLIC"."PRESENCA" PRESENCA ON CRIANCA."ID" = PRESENCA."CRIANCA"
+WHERE
+     CRIANCA."NOME" LIKE '%%'
+     AND PRESENCA."DATA_PRESENCA" >= '04-10-1992' [22007-192]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	at org.h2.message.DbException.get(DbException.java:168)
+	at org.h2.value.ValueDate.parse(ValueDate.java:81)
+	at org.h2.value.Value.convertTo(Value.java:965)
+	at org.h2.expression.Comparison.getValue(Comparison.java:256)
+	at org.h2.expression.Expression.getBooleanValue(Expression.java:178)
+	at org.h2.table.TableFilter.isOk(TableFilter.java:583)
+	at org.h2.table.TableFilter.next(TableFilter.java:523)
+	at org.h2.command.dml.Select.queryFlat(Select.java:541)
+	at org.h2.command.dml.Select.queryWithoutCache(Select.java:654)
+	at org.h2.command.dml.Query.query(Query.java:341)
+	at org.h2.command.dml.Query.query(Query.java:309)
+	at org.h2.command.dml.Query.query(Query.java:36)
+	at org.h2.command.CommandContainer.query(CommandContainer.java:110)
+	at org.h2.command.Command.executeQuery(Command.java:201)
+	at org.h2.jdbc.JdbcStatement.executeQuery(JdbcStatement.java:79)
+	at workbench.sql.commands.SelectCommand.execute(SelectCommand.java:130)
+	at workbench.sql.StatementRunner.runStatement(StatementRunner.java:565)
+	at workbench.gui.sql.SqlPanel.displayResult(SqlPanel.java:3370)
+	at workbench.gui.sql.SqlPanel.runStatement(SqlPanel.java:2131)
+	at workbench.gui.sql.SqlPanel$4.run(SqlPanel.java:2069)
+Caused by: java.lang.IllegalArgumentException: 4-10-1992
+	at org.h2.util.DateTimeUtils.parseDateValue(DateTimeUtils.java:311)
+	at org.h2.value.ValueDate.parse(ValueDate.java:79)
+	... 18 more
+2016-11-27 14:08:05 database: flush
+org.h2.message.DbException: General error: "java.lang.IllegalStateException: The file is locked: nio:C:/Users/Bruno/Documents/NetBeansProjects/SorrisoDeCrianca/database.mv.db [1.4.192/7]" [50000-192]
+	at org.h2.message.DbException.get(DbException.java:168)
+	at org.h2.message.DbException.convert(DbException.java:295)
+	at org.h2.mvstore.db.MVTableEngine$1.uncaughtException(MVTableEngine.java:94)
+	at org.h2.mvstore.MVStore.panic(MVStore.java:375)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:358)
+	at org.h2.mvstore.MVStore$Builder.open(MVStore.java:2893)
+	at org.h2.mvstore.db.MVTableEngine$Store.open(MVTableEngine.java:154)
+	at org.h2.mvstore.db.MVTableEngine.init(MVTableEngine.java:99)
+	at org.h2.engine.Database.getPageStore(Database.java:2463)
+	at org.h2.engine.Database.open(Database.java:692)
+	at org.h2.engine.Database.openDatabase(Database.java:270)
+	at org.h2.engine.Database.<init>(Database.java:264)
+	at org.h2.engine.Engine.openSession(Engine.java:64)
+	at org.h2.engine.Engine.openSession(Engine.java:176)
+	at org.h2.engine.Engine.createSessionAndValidate(Engine.java:154)
+	at org.h2.engine.Engine.createSession(Engine.java:137)
+	at org.h2.engine.Engine.createSession(Engine.java:27)
+	at org.h2.engine.SessionRemote.connectEmbeddedOrServer(SessionRemote.java:349)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:118)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:102)
+	at org.h2.Driver.connect(Driver.java:72)
+	at org.h2.jdbcx.JdbcDataSource.getJdbcConnection(JdbcDataSource.java:190)
+	at org.h2.jdbcx.JdbcDataSource.getConnection(JdbcDataSource.java:161)
+	at lib.DbAccess.Conectar(DbAccess.java:65)
+	at lib.DbAccess.RetornaUnicoValor(DbAccess.java:211)
+	at lib.Login.auth(Login.java:52)
+	at lib.Login.<init>(Login.java:34)
+	at sorrisodecrianca.frmLogin.btnEntrarActionPerformed(frmLogin.java:143)
+	at sorrisodecrianca.frmLogin.access$000(frmLogin.java:26)
+	at sorrisodecrianca.frmLogin$1.actionPerformed(frmLogin.java:76)
+	at javax.swing.AbstractButton.fireActionPerformed(AbstractButton.java:2022)
+	at javax.swing.AbstractButton$Handler.actionPerformed(AbstractButton.java:2348)
+	at javax.swing.DefaultButtonModel.fireActionPerformed(DefaultButtonModel.java:402)
+	at javax.swing.DefaultButtonModel.setPressed(DefaultButtonModel.java:259)
+	at javax.swing.AbstractButton.doClick(AbstractButton.java:376)
+	at javax.swing.plaf.basic.BasicRootPaneUI$Actions.actionPerformed(BasicRootPaneUI.java:208)
+	at javax.swing.SwingUtilities.notifyAction(SwingUtilities.java:1663)
+	at javax.swing.JComponent.processKeyBinding(JComponent.java:2882)
+	at javax.swing.KeyboardManager.fireBinding(KeyboardManager.java:307)
+	at javax.swing.KeyboardManager.fireKeyboardAction(KeyboardManager.java:250)
+	at javax.swing.JComponent.processKeyBindingsForAllComponents(JComponent.java:2974)
+	at javax.swing.JComponent.processKeyBindings(JComponent.java:2966)
+	at javax.swing.JComponent.processKeyEvent(JComponent.java:2845)
+	at java.awt.Component.processEvent(Component.java:6312)
+	at java.awt.Container.processEvent(Container.java:2236)
+	at java.awt.Component.dispatchEventImpl(Component.java:4891)
+	at java.awt.Container.dispatchEventImpl(Container.java:2294)
+	at java.awt.Component.dispatchEvent(Component.java:4713)
+	at java.awt.KeyboardFocusManager.redispatchEvent(KeyboardFocusManager.java:1954)
+	at java.awt.DefaultKeyboardFocusManager.dispatchKeyEvent(DefaultKeyboardFocusManager.java:806)
+	at java.awt.DefaultKeyboardFocusManager.preDispatchKeyEvent(DefaultKeyboardFocusManager.java:1074)
+	at java.awt.DefaultKeyboardFocusManager.typeAheadAssertions(DefaultKeyboardFocusManager.java:945)
+	at java.awt.DefaultKeyboardFocusManager.dispatchEvent(DefaultKeyboardFocusManager.java:771)
+	at java.awt.Component.dispatchEventImpl(Component.java:4762)
+	at java.awt.Container.dispatchEventImpl(Container.java:2294)
+	at java.awt.Window.dispatchEventImpl(Window.java:2750)
+	at java.awt.Component.dispatchEvent(Component.java:4713)
+	at java.awt.EventQueue.dispatchEventImpl(EventQueue.java:758)
+	at java.awt.EventQueue.access$500(EventQueue.java:97)
+	at java.awt.EventQueue$3.run(EventQueue.java:709)
+	at java.awt.EventQueue$3.run(EventQueue.java:703)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:76)
+	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:86)
+	at java.awt.EventQueue$4.run(EventQueue.java:731)
+	at java.awt.EventQueue$4.run(EventQueue.java:729)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:76)
+	at java.awt.EventQueue.dispatchEvent(EventQueue.java:728)
+	at java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:201)
+	at java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:116)
+	at java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:105)
+	at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)
+	at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:93)
+	at java.awt.EventDispatchThread.run(EventDispatchThread.java:82)
+Caused by: org.h2.jdbc.JdbcSQLException: General error: "java.lang.IllegalStateException: The file is locked: nio:C:/Users/Bruno/Documents/NetBeansProjects/SorrisoDeCrianca/database.mv.db [1.4.192/7]" [50000-192]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	... 75 more
+Caused by: java.lang.IllegalStateException: The file is locked: nio:C:/Users/Bruno/Documents/NetBeansProjects/SorrisoDeCrianca/database.mv.db [1.4.192/7]
+	at org.h2.mvstore.DataUtils.newIllegalStateException(DataUtils.java:773)
+	at org.h2.mvstore.FileStore.open(FileStore.java:172)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:344)
+	... 70 more
+2016-11-27 14:14:30 database: flush
+org.h2.message.DbException: General error: "java.lang.IllegalStateException: The file is locked: nio:C:/Users/Bruno/Documents/NetBeansProjects/SorrisoDeCrianca/database.mv.db [1.4.192/7]" [50000-192]
+	at org.h2.message.DbException.get(DbException.java:168)
+	at org.h2.message.DbException.convert(DbException.java:295)
+	at org.h2.mvstore.db.MVTableEngine$1.uncaughtException(MVTableEngine.java:94)
+	at org.h2.mvstore.MVStore.panic(MVStore.java:375)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:358)
+	at org.h2.mvstore.MVStore$Builder.open(MVStore.java:2893)
+	at org.h2.mvstore.db.MVTableEngine$Store.open(MVTableEngine.java:154)
+	at org.h2.mvstore.db.MVTableEngine.init(MVTableEngine.java:99)
+	at org.h2.engine.Database.getPageStore(Database.java:2463)
+	at org.h2.engine.Database.open(Database.java:692)
+	at org.h2.engine.Database.openDatabase(Database.java:270)
+	at org.h2.engine.Database.<init>(Database.java:264)
+	at org.h2.engine.Engine.openSession(Engine.java:64)
+	at org.h2.engine.Engine.openSession(Engine.java:176)
+	at org.h2.engine.Engine.createSessionAndValidate(Engine.java:154)
+	at org.h2.engine.Engine.createSession(Engine.java:137)
+	at org.h2.engine.Engine.createSession(Engine.java:27)
+	at org.h2.engine.SessionRemote.connectEmbeddedOrServer(SessionRemote.java:349)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:118)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:102)
+	at org.h2.Driver.connect(Driver.java:72)
+	at org.h2.jdbcx.JdbcDataSource.getJdbcConnection(JdbcDataSource.java:190)
+	at org.h2.jdbcx.JdbcDataSource.getConnection(JdbcDataSource.java:161)
+	at lib.DbAccess.Conectar(DbAccess.java:65)
+	at lib.DbAccess.report(DbAccess.java:276)
+	at lib.DAOPresenca.report(DAOPresenca.java:147)
+	at sorrisodecrianca.frmRelatorio.btnPresencasActionPerformed(frmRelatorio.java:459)
+	at sorrisodecrianca.frmRelatorio.access$300(frmRelatorio.java:24)
+	at sorrisodecrianca.frmRelatorio$4.actionPerformed(frmRelatorio.java:153)
+	at javax.swing.AbstractButton.fireActionPerformed(AbstractButton.java:2022)
+	at javax.swing.AbstractButton$Handler.actionPerformed(AbstractButton.java:2348)
+	at javax.swing.DefaultButtonModel.fireActionPerformed(DefaultButtonModel.java:402)
+	at javax.swing.DefaultButtonModel.setPressed(DefaultButtonModel.java:259)
+	at javax.swing.plaf.basic.BasicButtonListener.mouseReleased(BasicButtonListener.java:252)
+	at java.awt.Component.processMouseEvent(Component.java:6535)
+	at javax.swing.JComponent.processMouseEvent(JComponent.java:3324)
+	at java.awt.Component.processEvent(Component.java:6300)
+	at java.awt.Container.processEvent(Container.java:2236)
+	at java.awt.Component.dispatchEventImpl(Component.java:4891)
+	at java.awt.Container.dispatchEventImpl(Container.java:2294)
+	at java.awt.Component.dispatchEvent(Component.java:4713)
+	at java.awt.LightweightDispatcher.retargetMouseEvent(Container.java:4888)
+	at java.awt.LightweightDispatcher.processMouseEvent(Container.java:4525)
+	at java.awt.LightweightDispatcher.dispatchEvent(Container.java:4466)
+	at java.awt.Container.dispatchEventImpl(Container.java:2280)
+	at java.awt.Window.dispatchEventImpl(Window.java:2750)
+	at java.awt.Component.dispatchEvent(Component.java:4713)
+	at java.awt.EventQueue.dispatchEventImpl(EventQueue.java:758)
+	at java.awt.EventQueue.access$500(EventQueue.java:97)
+	at java.awt.EventQueue$3.run(EventQueue.java:709)
+	at java.awt.EventQueue$3.run(EventQueue.java:703)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:76)
+	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:86)
+	at java.awt.EventQueue$4.run(EventQueue.java:731)
+	at java.awt.EventQueue$4.run(EventQueue.java:729)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:76)
+	at java.awt.EventQueue.dispatchEvent(EventQueue.java:728)
+	at java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:201)
+	at java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:116)
+	at java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:105)
+	at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)
+	at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:93)
+	at java.awt.EventDispatchThread.run(EventDispatchThread.java:82)
+Caused by: org.h2.jdbc.JdbcSQLException: General error: "java.lang.IllegalStateException: The file is locked: nio:C:/Users/Bruno/Documents/NetBeansProjects/SorrisoDeCrianca/database.mv.db [1.4.192/7]" [50000-192]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	... 65 more
+Caused by: java.lang.IllegalStateException: The file is locked: nio:C:/Users/Bruno/Documents/NetBeansProjects/SorrisoDeCrianca/database.mv.db [1.4.192/7]
+	at org.h2.mvstore.DataUtils.newIllegalStateException(DataUtils.java:773)
+	at org.h2.mvstore.FileStore.open(FileStore.java:172)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:344)
+	... 60 more
+2016-11-27 15:02:47 database: flush
+org.h2.message.DbException: General error: "java.lang.IllegalStateException: The file is locked: nio:C:/Users/Bruno/Documents/NetBeansProjects/SorrisoDeCrianca/database.mv.db [1.4.192/7]" [50000-192]
+	at org.h2.message.DbException.get(DbException.java:168)
+	at org.h2.message.DbException.convert(DbException.java:295)
+	at org.h2.mvstore.db.MVTableEngine$1.uncaughtException(MVTableEngine.java:94)
+	at org.h2.mvstore.MVStore.panic(MVStore.java:375)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:358)
+	at org.h2.mvstore.MVStore$Builder.open(MVStore.java:2893)
+	at org.h2.mvstore.db.MVTableEngine$Store.open(MVTableEngine.java:154)
+	at org.h2.mvstore.db.MVTableEngine.init(MVTableEngine.java:99)
+	at org.h2.engine.Database.getPageStore(Database.java:2463)
+	at org.h2.engine.Database.open(Database.java:692)
+	at org.h2.engine.Database.openDatabase(Database.java:270)
+	at org.h2.engine.Database.<init>(Database.java:264)
+	at org.h2.engine.Engine.openSession(Engine.java:64)
+	at org.h2.engine.Engine.openSession(Engine.java:176)
+	at org.h2.engine.Engine.createSessionAndValidate(Engine.java:154)
+	at org.h2.engine.Engine.createSession(Engine.java:137)
+	at org.h2.engine.Engine.createSession(Engine.java:27)
+	at org.h2.engine.SessionRemote.connectEmbeddedOrServer(SessionRemote.java:349)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:118)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:102)
+	at org.h2.Driver.connect(Driver.java:72)
+	at org.h2.jdbcx.JdbcDataSource.getJdbcConnection(JdbcDataSource.java:190)
+	at org.h2.jdbcx.JdbcDataSource.getConnection(JdbcDataSource.java:161)
+	at lib.DbAccess.Conectar(DbAccess.java:65)
+	at lib.DbAccess.RetornaUnicoValor(DbAccess.java:211)
+	at lib.Login.auth(Login.java:52)
+	at lib.Login.<init>(Login.java:34)
+	at sorrisodecrianca.frmLogin.btnEntrarActionPerformed(frmLogin.java:143)
+	at sorrisodecrianca.frmLogin.access$000(frmLogin.java:26)
+	at sorrisodecrianca.frmLogin$1.actionPerformed(frmLogin.java:76)
+	at javax.swing.AbstractButton.fireActionPerformed(AbstractButton.java:2022)
+	at javax.swing.AbstractButton$Handler.actionPerformed(AbstractButton.java:2348)
+	at javax.swing.DefaultButtonModel.fireActionPerformed(DefaultButtonModel.java:402)
+	at javax.swing.DefaultButtonModel.setPressed(DefaultButtonModel.java:259)
+	at javax.swing.AbstractButton.doClick(AbstractButton.java:376)
+	at javax.swing.plaf.basic.BasicRootPaneUI$Actions.actionPerformed(BasicRootPaneUI.java:208)
+	at javax.swing.SwingUtilities.notifyAction(SwingUtilities.java:1663)
+	at javax.swing.JComponent.processKeyBinding(JComponent.java:2882)
+	at javax.swing.KeyboardManager.fireBinding(KeyboardManager.java:307)
+	at javax.swing.KeyboardManager.fireKeyboardAction(KeyboardManager.java:250)
+	at javax.swing.JComponent.processKeyBindingsForAllComponents(JComponent.java:2974)
+	at javax.swing.JComponent.processKeyBindings(JComponent.java:2966)
+	at javax.swing.JComponent.processKeyEvent(JComponent.java:2845)
+	at java.awt.Component.processEvent(Component.java:6312)
+	at java.awt.Container.processEvent(Container.java:2236)
+	at java.awt.Component.dispatchEventImpl(Component.java:4891)
+	at java.awt.Container.dispatchEventImpl(Container.java:2294)
+	at java.awt.Component.dispatchEvent(Component.java:4713)
+	at java.awt.KeyboardFocusManager.redispatchEvent(KeyboardFocusManager.java:1954)
+	at java.awt.DefaultKeyboardFocusManager.dispatchKeyEvent(DefaultKeyboardFocusManager.java:806)
+	at java.awt.DefaultKeyboardFocusManager.preDispatchKeyEvent(DefaultKeyboardFocusManager.java:1074)
+	at java.awt.DefaultKeyboardFocusManager.typeAheadAssertions(DefaultKeyboardFocusManager.java:945)
+	at java.awt.DefaultKeyboardFocusManager.dispatchEvent(DefaultKeyboardFocusManager.java:771)
+	at java.awt.Component.dispatchEventImpl(Component.java:4762)
+	at java.awt.Container.dispatchEventImpl(Container.java:2294)
+	at java.awt.Window.dispatchEventImpl(Window.java:2750)
+	at java.awt.Component.dispatchEvent(Component.java:4713)
+	at java.awt.EventQueue.dispatchEventImpl(EventQueue.java:758)
+	at java.awt.EventQueue.access$500(EventQueue.java:97)
+	at java.awt.EventQueue$3.run(EventQueue.java:709)
+	at java.awt.EventQueue$3.run(EventQueue.java:703)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:76)
+	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:86)
+	at java.awt.EventQueue$4.run(EventQueue.java:731)
+	at java.awt.EventQueue$4.run(EventQueue.java:729)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:76)
+	at java.awt.EventQueue.dispatchEvent(EventQueue.java:728)
+	at java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:201)
+	at java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:116)
+	at java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:105)
+	at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)
+	at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:93)
+	at java.awt.EventDispatchThread.run(EventDispatchThread.java:82)
+Caused by: org.h2.jdbc.JdbcSQLException: General error: "java.lang.IllegalStateException: The file is locked: nio:C:/Users/Bruno/Documents/NetBeansProjects/SorrisoDeCrianca/database.mv.db [1.4.192/7]" [50000-192]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	... 75 more
+Caused by: java.lang.IllegalStateException: The file is locked: nio:C:/Users/Bruno/Documents/NetBeansProjects/SorrisoDeCrianca/database.mv.db [1.4.192/7]
+	at org.h2.mvstore.DataUtils.newIllegalStateException(DataUtils.java:773)
+	at org.h2.mvstore.FileStore.open(FileStore.java:172)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:344)
+	... 70 more

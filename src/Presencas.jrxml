@@ -13,6 +13,9 @@
 			<style backcolor="#E6DAC3"/>
 		</conditionalStyle>
 	</style>
+	<parameter name="nome" class="java.lang.String"/>
+	<parameter name="a_partir" class="java.lang.String"/>
+	<parameter name="ate" class="java.lang.String"/>
 	<queryString language="SQL">
 		<![CDATA[SELECT
      CRIANCA."NOME" AS CRIANCA_NOME,
@@ -20,7 +23,11 @@
      PRESENCA."STATUS" AS PRESENCA_STATUS,
      CRIANCA."RG" AS CRIANCA_RG
 FROM
-     "PUBLIC"."CRIANCA" CRIANCA INNER JOIN "PUBLIC"."PRESENCA" PRESENCA ON CRIANCA."ID" = PRESENCA."CRIANCA"]]>
+     "PUBLIC"."CRIANCA" CRIANCA INNER JOIN "PUBLIC"."PRESENCA" PRESENCA ON CRIANCA."ID" = PRESENCA."CRIANCA"
+WHERE
+     CRIANCA."NOME" LIKE $P{nome}
+     AND PRESENCA."DATA_PRESENCA" >= $P{a_partir}
+     AND PRESENCA."DATA_PRESENCA" <= $P{ate}]]>
 	</queryString>
 	<field name="CRIANCA_NOME" class="java.lang.String"/>
 	<field name="CRIANCA_RG" class="java.lang.String"/>
@@ -109,7 +116,7 @@ FROM
 		<band height="15" splitType="Stretch">
 			<frame>
 				<reportElement style="Row" mode="Opaque" x="0" y="0" width="555" height="15" uuid="fee6b505-1ad5-4391-a0b5-8e1283ef8fc1"/>
-				<textField isStretchWithOverflow="true">
+				<textField isStretchWithOverflow="true" pattern="dd/MM/yyyy">
 					<reportElement style="Detail" x="8" y="0" width="247" height="15" uuid="41d6ef47-fed2-46f0-852f-db1e974b50c1"/>
 					<textFieldExpression><![CDATA[$F{PRESENCA_DATA_PRESENCA}]]></textFieldExpression>
 				</textField>
