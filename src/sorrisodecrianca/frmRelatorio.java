@@ -80,12 +80,10 @@ public class frmRelatorio extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(100, 100));
         setPreferredSize(new java.awt.Dimension(510, 270));
         setResizable(false);
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Criação de Relatórios");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 423, 29));
 
         panelCriancas.setBorder(javax.swing.BorderFactory.createTitledBorder("Relatório de Crianças"));
 
@@ -177,7 +175,7 @@ public class frmRelatorio extends javax.swing.JFrame {
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnCriancas)
-                .addContainerGap(45, Short.MAX_VALUE))
+                .addContainerGap(65, Short.MAX_VALUE))
         );
         panelCriancasLayout.setVerticalGroup(
             panelCriancasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -274,7 +272,7 @@ public class frmRelatorio extends javax.swing.JFrame {
                 .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnVoluntarios)
-                .addContainerGap(35, Short.MAX_VALUE))
+                .addContainerGap(55, Short.MAX_VALUE))
         );
         panelVoluntariosLayout.setVerticalGroup(
             panelVoluntariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -374,7 +372,7 @@ public class frmRelatorio extends javax.swing.JFrame {
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnPresencas)
-                .addContainerGap(34, Short.MAX_VALUE))
+                .addContainerGap(54, Short.MAX_VALUE))
         );
         panelPresencasLayout.setVerticalGroup(
             panelPresencasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -389,10 +387,28 @@ public class frmRelatorio extends javax.swing.JFrame {
 
         JTabbedPanel.addTab("Presenças", panelPresencas);
 
-        getContentPane().add(JTabbedPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 430, 170));
-
         jLabel4.setText("* Para não utilizar filtros apenas clique em \"Gerar Relatório\", sem alterar os campos.");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 208, -1, -1));
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(jLabel4)
+                .addContainerGap(37, Short.MAX_VALUE))
+            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(JTabbedPanel, javax.swing.GroupLayout.Alignment.TRAILING)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(1, 1, 1)
+                .addComponent(JTabbedPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(8, 8, 8)
+                .addComponent(jLabel4))
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
