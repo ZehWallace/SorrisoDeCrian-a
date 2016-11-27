@@ -429,9 +429,13 @@ public class frmVoluntario extends javax.swing.JFrame {
                 dias_semana += "Domingo";
             }
             
+            if(dias_semana != null)
+                System.out.println("Char at " + (dias_semana.length()-2) + " = " + dias_semana.charAt(dias_semana.length()-1));
             /* Remove a última virgula */
-            if(dias_semana != null && dias_semana.charAt(dias_semana.length()-1) == ',')
+            
+            if(dias_semana != null && dias_semana.charAt(dias_semana.length()-2) == ',')
             {
+                System.out.println("Entrou no if. Char at " + (dias_semana.length()-2) + " = " + dias_semana.charAt(dias_semana.length()-1));
                 dias_semana = dias_semana.substring(0, dias_semana.length()-2);
             }
             
