@@ -5,9 +5,12 @@
  */
 package lib;
 
+import java.util.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.DateFormat;
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -23,9 +26,23 @@ public class DAOInteressados extends DbAccess<ModelInteressado>{
     public void insereInteressado(ModelInteressado interessado) throws SQLException, Exception
     {
         String comando = "INSERT INTO interessado (nome_crianca, data_interesse, data_nascimento, endereco, nome_responsavel, "
-                + "status, tel_contato, observacao) VALUES(?,?,?,?,?,?,?)";
+                + "status, tel_contato, observacao) VALUES(?,?,?,?,?,?,?,?)";
         
-        Inserir(comando, interessado.getNomeCrianca(), interessado.getData_interesse(),interessado.getDataNascimento(), interessado.getEndereco(),
+        String temp[] = interessado.getDataNascimento().split("/");
+        String dia = temp[0];
+        String mes = temp[1];
+        String ano = temp[2];
+        
+        String nascimento = ano+"-"+mes+"-"+dia;
+        
+        String temp2[] = interessado.getData_interesse().split("/");
+        dia = temp2[0];
+        mes = temp2[1];
+        ano = temp2[2];
+        
+        String interesse = ano+"-"+mes+"-"+dia;
+        
+        Inserir(comando, interessado.getNomeCrianca(), interesse,nascimento, interessado.getEndereco(),
                 interessado.getNomeResponsavel(), interessado.getStatus(), interessado.getTelefone(), interessado.getObservacao());
     }
     
@@ -67,9 +84,23 @@ public class DAOInteressados extends DbAccess<ModelInteressado>{
         try {
             ModelInteressado modelInteressado = new ModelInteressado();
             
+            String temp[] = resultSetAtual.getString("data_nascimento").split("-");
+            String dia = temp[0];
+            String mes = temp[1];
+            String ano = temp[2];
+
+            String nascimento = ano+"/"+mes+"/"+dia;
+
+            String temp2[] = resultSetAtual.getString("data_interesse").split("-");
+            dia = temp2[0];
+            mes = temp2[1];
+            ano = temp2[2];
+            
+            String interesse = ano+"/"+mes+"/"+dia;
+            
+            modelInteressado.setDataNascimento(nascimento);
+            modelInteressado.setData_interesse(interesse);
             modelInteressado.setNomeCrianca(resultSetAtual.getString("nome_crianca"));
-            modelInteressado.setData_interesse(resultSetAtual.getDate("data_interesse"));
-            modelInteressado.setDataNascimento(resultSetAtual.getDate("data_nascimento"));
             modelInteressado.setEndereco(resultSetAtual.getString("endereco"));
             modelInteressado.setNomeResponsavel(resultSetAtual.getString("nome_responsavel"));
             modelInteressado.setTelefone(resultSetAtual.getString("tel_contato"));

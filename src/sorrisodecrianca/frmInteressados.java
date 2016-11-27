@@ -9,6 +9,9 @@ import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -221,14 +224,14 @@ public class frmInteressados extends javax.swing.JFrame {
             ModelInteressado modelInteressado = new ModelInteressado();
             
             /* Tratamento da data */
-            DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+            DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
             java.util.Date date = null;
 
             String dataNascimento = txtDataNascimento.getText();
 
             if(dataNascimento != null)
             {
-                dataNascimento = dataNascimento.replace("/", "-");
+                /*dataNascimento = dataNascimento.replace("/", "-");
                 //System.out.println("Data de nascimento: " + dataNascimento);
 
                 String temp[] = dataNascimento.split("-");
@@ -245,22 +248,49 @@ public class frmInteressados extends javax.swing.JFrame {
 
                 //System.out.println("Data reordenada: " + dataReordenada);
 
-                java.sql.Date dataConvertida = null;
+                java.util.Date dataConvertida = null;
 
                 try
                 {
-                    date = formatter.parse(dataReordenada);
-                    dataConvertida = new java.sql.Date(date.getTime());
+                    dataConvertida = formatter.parse(dataReordenada);
                 }
                 catch(Exception e)
                 {
                     e.printStackTrace();
                 }
-                
+                */
                 try {
-                    modelInteressado.setDataNascimento(dataConvertida);
+                    modelInteressado.setDataNascimento(dataNascimento);
                 } catch (ParseException ex) {
                     Logger.getLogger(frmInteressados.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                
+                LocalDate data_atual = LocalDate.now();
+                Date dateLocal = Date.from(data_atual.atStartOfDay(ZoneId.systemDefault()).toInstant());
+                /*
+                dataReordenada = dateLocal.toString();
+                dataReordenada = dataReordenada.replace("/", "-");
+                //System.out.println("Data de nascimento: " + dataNascimento);
+
+                String temp2[] = dataReordenada.split("-");
+                //System.out.println("Temp: " + temp[0] + "/" + temp[1] + "/" + temp[2]);
+
+                dia = mes = ano = dataReordenada = "";
+                dia = temp2[0];
+                mes = temp2[1];
+                ano = temp2[2];
+
+                dataReordenada = dataReordenada + ano + "-";
+                dataReordenada = dataReordenada + mes + "-";
+                dataReordenada = dataReordenada + dia;
+                */
+                try
+                {
+                    modelInteressado.setData_interesse(formatter.format(dateLocal));
+                }
+                catch(Exception e)
+                {
+                    e.printStackTrace();
                 }
             }
             else
@@ -277,10 +307,10 @@ public class frmInteressados extends javax.swing.JFrame {
             
             /* Inserção */
 
-            DAOInteressados daoCrianca = new DAOInteressados();
+            DAOInteressados daoInteressados = new DAOInteressados();
             try
             {
-                daoCrianca.insereInteressado(modelInteressado);
+                daoInteressados.insereInteressado(modelInteressado);
                 
                 JOptionPane.showMessageDialog(JPanelBotoesInteressados, "Criança interessada inserida no sistema com sucesso!", "Cadastro de Crianças", JOptionPane.INFORMATION_MESSAGE );
                 this.setVisible(false);

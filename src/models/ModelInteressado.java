@@ -9,6 +9,7 @@ import java.util.Date;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Locale;
 
 /**
  *
@@ -16,8 +17,8 @@ import java.text.SimpleDateFormat;
  */
 public class ModelInteressado {
     private String nome_crianca;
-    private Date data_nascimento;
-    private Date data_interesse;
+    private String data_nascimento;
+    private String data_interesse;
     private String nome_responsavel;
     private String telefone;
     private String observacao;
@@ -26,14 +27,11 @@ public class ModelInteressado {
     
     
     public String getData_interesse() {
-        return new SimpleDateFormat("dd/MM/yyyy").format(data_interesse);
+        return data_interesse;
     }
 
-    public void setData_interesse(Date data_interesse) throws ParseException {
-        
-        DateFormat format = new SimpleDateFormat("dd/MM/yyyy");
-        String date = new SimpleDateFormat("dd/MM/yyyy").format(data_interesse);
-        this.data_interesse =  format.parse(date);
+    public void setData_interesse(String data_interesse) throws ParseException {
+        this.data_interesse =  data_interesse;
     }
     
     public String getNomeCrianca()
@@ -48,14 +46,12 @@ public class ModelInteressado {
     
     public String getDataNascimento()
     {
-        return new SimpleDateFormat("dd/MM/yyyy").format(data_nascimento);
+        return data_nascimento;
     }
     
-    public void setDataNascimento(Date data_nascimento) throws ParseException
+    public void setDataNascimento(String data_nascimento) throws ParseException
     {
-        DateFormat format = new SimpleDateFormat("dd/MM/yyyy");
-        String date = new SimpleDateFormat("dd/MM/yyyy").format(data_nascimento);
-        this.data_nascimento = format.parse(date);
+        this.data_nascimento =  data_nascimento;
     }
     
     public String getNomeResponsavel()
