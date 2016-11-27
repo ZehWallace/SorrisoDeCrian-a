@@ -143,8 +143,7 @@ public class DAOPresenca extends DbAccess<ModelPresenca>{
         return presenca;
     }   
     
-    public void report(String arg){
-        Map map = new HashMap();
+    public void report(Map map){
         super.report("src/Presencas.jrxml", map);
     }
 }

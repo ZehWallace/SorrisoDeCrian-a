@@ -21,6 +21,7 @@ import java.awt.Toolkit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.UIManager;
 
 public class frmLogin extends javax.swing.JFrame {
 
@@ -28,7 +29,19 @@ public class frmLogin extends javax.swing.JFrame {
      * Creates new form frmLogin
      */
     public frmLogin() {
+        //Mudar aparencia
+        //com.sun.java.swing.plaf.windows.WindowsLookAndFeel
+        //javax.swing.plaf.nimbus.NimbusLookAndFeel
+        //javax.swing.plaf.metal.MetalLookAndFeel -- Default
+        
+        try {
+            UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel");
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+
         initComponents();
+        
         this.getRootPane().setDefaultButton(btnEntrar);
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         this.setLocation(dim.width / 2 - this.getSize().width / 2, dim.height / 2 - this.getSize().height / 2);
@@ -138,7 +151,7 @@ public class frmLogin extends javax.swing.JFrame {
             } catch (Exception ex) {
                 Logger.getLogger(frmLogin.class.getName()).log(Level.SEVERE, null, ex);
             }
-            
+
         } else {
             JOptionPane.showMessageDialog(null, "Usuário ou senha inválidos", "Falha ao se conectar!", JOptionPane.ERROR_MESSAGE);
         }

@@ -137,8 +137,7 @@ public class DAOVoluntario extends DbAccess<ModelVoluntario>{
         return voluntario;
     }   
     
-    public void report(String arg){
-        Map map = new HashMap();
+    public void report(Map map){
         super.report("src/Voluntarios.jrxml", map);
     }
 }

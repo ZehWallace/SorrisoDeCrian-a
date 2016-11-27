@@ -141,12 +141,7 @@ public class DAOCrianca extends DbAccess<ModelCrianca> {
         return crianca;
     }
 
-    public void report(String nome) {
-        nome = "%" + nome + "%";
-
-        //Parametros
-        Map map = new HashMap();
-        map.put("parameter1", nome);
+    public void report(Map map) {
         super.report("src/Criancas.jrxml", map);
     }
 }
