@@ -196,6 +196,7 @@ public class frmCrianca extends javax.swing.JFrame {
         JPanelDadosPessoais.setLayout(new java.awt.BorderLayout());
 
         jLabel1.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(102, 102, 102));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Cadastro de Crianças");
 

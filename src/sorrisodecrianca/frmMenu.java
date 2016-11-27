@@ -17,12 +17,14 @@ package sorrisodecrianca;
 
 import java.awt.Component;
 import java.awt.Dimension;
+import java.awt.Image;
 import java.awt.Toolkit;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.SwingConstants;
@@ -51,7 +53,7 @@ public class frmMenu extends javax.swing.JFrame {
         initComponents();
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         this.setLocation(dim.width / 2 - this.getSize().width / 2, dim.height / 2 - this.getSize().height / 2);
-
+        
         data_atual = LocalDate.now();
 
         Date date = Date.valueOf(data_atual);
@@ -464,45 +466,78 @@ public class frmMenu extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        btnCadCri = new javax.swing.JButton();
-        btnCadVol = new javax.swing.JButton();
-        btnCadInter = new javax.swing.JButton();
+        btnConsultas = new javax.swing.JButton();
+        btnGerarRelatorio = new javax.swing.JButton();
+        btnCadastro = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         scrollpanelPresenca = new javax.swing.JScrollPane();
         tbPresenca = new javax.swing.JTable();
-        jPanel3 = new javax.swing.JPanel();
-        btnSalvarAlteracoes = new javax.swing.JButton();
-        btnConsultas = new javax.swing.JButton();
         btnAtualizar = new javax.swing.JButton();
-        btnGerarRelatorio = new javax.swing.JButton();
+        btnSalvarAlteracoes = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        btnCadCri.setText("Cadastro de Crianças");
-        btnCadCri.addActionListener(new java.awt.event.ActionListener() {
+        btnConsultas.setText("Consultas");
+        btnConsultas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCadCriActionPerformed(evt);
+                btnConsultasActionPerformed(evt);
             }
         });
-        jPanel1.add(btnCadCri);
 
-        btnCadVol.setText("Cadastro de Voluntários");
-        btnCadVol.addActionListener(new java.awt.event.ActionListener() {
+        btnGerarRelatorio.setText("Geração de relatórios");
+        btnGerarRelatorio.setMaximumSize(new java.awt.Dimension(79, 23));
+        btnGerarRelatorio.setMinimumSize(new java.awt.Dimension(79, 23));
+        btnGerarRelatorio.setPreferredSize(new java.awt.Dimension(79, 23));
+        btnGerarRelatorio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCadVolActionPerformed(evt);
+                btnGerarRelatorioActionPerformed(evt);
             }
         });
-        jPanel1.add(btnCadVol);
 
-        btnCadInter.setText("Cadastro de Interessados");
-        btnCadInter.addActionListener(new java.awt.event.ActionListener() {
+        btnCadastro.setText("Novo Cadastro");
+        btnCadastro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCadInterActionPerformed(evt);
+                btnCadastroActionPerformed(evt);
             }
         });
-        jPanel1.add(btnCadInter);
 
-        getContentPane().add(jPanel1, java.awt.BorderLayout.PAGE_START);
+        jLabel3.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel3.setText("Menu");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap(58, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnCadastro, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnGerarRelatorio, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnConsultas, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(59, 59, 59))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(114, 114, 114)
+                .addComponent(jLabel3)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(26, 26, 26)
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27)
+                .addComponent(btnConsultas, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27)
+                .addComponent(btnGerarRelatorio, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(btnCadastro, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jPanel2.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
 
         tbPresenca.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -514,9 +549,12 @@ public class frmMenu extends javax.swing.JFrame {
         ));
         scrollpanelPresenca.setViewportView(tbPresenca);
 
-        jPanel2.add(scrollpanelPresenca);
-
-        getContentPane().add(jPanel2, java.awt.BorderLayout.CENTER);
+        btnAtualizar.setText("Atualizar");
+        btnAtualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAtualizarActionPerformed(evt);
+            }
+        });
 
         btnSalvarAlteracoes.setText("Salvar Alterações");
         btnSalvarAlteracoes.addActionListener(new java.awt.event.ActionListener() {
@@ -524,51 +562,59 @@ public class frmMenu extends javax.swing.JFrame {
                 btnSalvarAlteracoesActionPerformed(evt);
             }
         });
-        jPanel3.add(btnSalvarAlteracoes);
 
-        btnConsultas.setText("Consultas");
-        btnConsultas.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnConsultasActionPerformed(evt);
-            }
-        });
-        jPanel3.add(btnConsultas);
+        jLabel1.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel1.setText("Lista de Presença da Semana");
 
-        btnAtualizar.setText("Atualizar");
-        btnAtualizar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAtualizarActionPerformed(evt);
-            }
-        });
-        jPanel3.add(btnAtualizar);
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(68, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(scrollpanelPresenca, javax.swing.GroupLayout.DEFAULT_SIZE, 533, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(btnAtualizar)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnSalvarAlteracoes)))
+                .addContainerGap())
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addGap(0, 33, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(scrollpanelPresenca, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnAtualizar)
+                    .addComponent(btnSalvarAlteracoes))
+                .addGap(21, 21, 21))
+        );
 
-        btnGerarRelatorio.setText("Geração de relatórios");
-        btnGerarRelatorio.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGerarRelatorioActionPerformed(evt);
-            }
-        });
-        jPanel3.add(btnGerarRelatorio);
-
-        getContentPane().add(jPanel3, java.awt.BorderLayout.PAGE_END);
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(67, 67, 67))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnCadCriActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadCriActionPerformed
-        frmCrianca fc = null;
-        try {
-            fc = new frmCrianca();
-        } catch (Exception ex) {
-            Logger.getLogger(frmMenu.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        fc.setVisible(true);
-    }//GEN-LAST:event_btnCadCriActionPerformed
-
-    private void btnCadVolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadVolActionPerformed
-        frmVoluntario fv = new frmVoluntario();
-        fv.setVisible(true);
-    }//GEN-LAST:event_btnCadVolActionPerformed
 
     private void btnSalvarAlteracoesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarAlteracoesActionPerformed
         // TODO add your handling code here:
@@ -1178,24 +1224,28 @@ public class frmMenu extends javax.swing.JFrame {
         fr.setVisible(true);
     }//GEN-LAST:event_btnGerarRelatorioActionPerformed
 
-    private void btnCadInterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadInterActionPerformed
+    private void btnCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastroActionPerformed
         // TODO add your handling code here:
-        frmInteressados formInter = new frmInteressados();
-        formInter.setVisible(true);
-    }//GEN-LAST:event_btnCadInterActionPerformed
+        frmCadastro fc = null;
+        try {
+            fc = new frmCadastro();
+        }catch(Exception ex){
+            Logger.getLogger(frmMenu.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        fc.setVisible(true);
+    }//GEN-LAST:event_btnCadastroActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAtualizar;
-    private javax.swing.JButton btnCadCri;
-    private javax.swing.JButton btnCadInter;
-    private javax.swing.JButton btnCadVol;
+    private javax.swing.JButton btnCadastro;
     private javax.swing.JButton btnConsultas;
     private javax.swing.JButton btnGerarRelatorio;
     private javax.swing.JButton btnSalvarAlteracoes;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane scrollpanelPresenca;
     private javax.swing.JTable tbPresenca;
     // End of variables declaration//GEN-END:variables

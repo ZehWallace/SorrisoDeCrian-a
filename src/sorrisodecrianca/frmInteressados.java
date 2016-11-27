@@ -65,6 +65,7 @@ public class frmInteressados extends javax.swing.JFrame {
         setTitle("Cadastro de Crianças Interessadas");
 
         jLabel1.setFont(new java.awt.Font("Lucida Grande", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(102, 102, 102));
         jLabel1.setText("Crianças Interessadas");
 
         javax.swing.GroupLayout JPanelTituloInteressadosLayout = new javax.swing.GroupLayout(JPanelTituloInteressados);
