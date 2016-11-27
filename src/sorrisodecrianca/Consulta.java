@@ -124,7 +124,7 @@ public final class Consulta extends javax.swing.JFrame {
             for(int i = 0; i < voluntarios.size(); i++)
             {
                 ModelVoluntario v = voluntarios.get(i);
-                Object[] obj = {v.getNome(), v.getRg(), v.getTel_contato(), v.getEmail()};
+                Object[] obj = {v.getNome(),v.getOcupacao(), v.getRg(), v.getTel_contato()};
                 modelo2.addRow(obj);
             }
         }
@@ -311,7 +311,7 @@ public final class Consulta extends javax.swing.JFrame {
             for(int j = 0; j < resultado.size(); j++)
             {
                 ModelVoluntario v = resultado.get(j);
-                Object[] obj = {v.getNome(), v.getRg(), v.getTel_contato(), v.getEmail()};
+                Object[] obj = {v.getNome(),v.getOcupacao(), v.getRg(), v.getTel_contato()};
                 modelo2.addRow(obj);
             }
         }   
@@ -500,7 +500,7 @@ public final class Consulta extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Nome", "RG", "Telefone", "Email"
+                "Nome", "Ocupação", "RG", "Telefone"
             }
         ));
         jScrollPane2.setViewportView(tabelaVoluntarios);

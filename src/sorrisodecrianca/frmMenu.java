@@ -646,7 +646,6 @@ public class frmMenu extends javax.swing.JFrame {
                         String presenca = tbPresenca.getModel().getValueAt(i, 2).toString().toUpperCase();
                         if (!presenca.equals("F") && !presenca.equals("P")) {
                             JOptionPane.showMessageDialog(null, "Preencha todos os campos com P ou F!", "Aviso!", JOptionPane.WARNING_MESSAGE);
-                            btnSalvarAlteracoes.setEnabled(false);
                             return;
                         }
                     }
@@ -656,7 +655,10 @@ public class frmMenu extends javax.swing.JFrame {
                         String presenca = tbPresenca.getModel().getValueAt(i, 2).toString().toUpperCase();
 
                         if (presencaUpdate) {
-                            dao_presenca.updatePresencaCrianca(id, data_atual.toString(), presenca);
+                            if(dao_presenca.getPesquisaCriancaPresencaData(Integer.parseInt(id), data_atual.toString()) == null)
+                                dao_presenca.insertPresencaCrianca(id, data_atual.toString(), presenca);
+                            else
+                                dao_presenca.updatePresencaCrianca(id, data_atual.toString(), presenca);
                         } else {
                             dao_presenca.insertPresencaCrianca(id, data_atual.toString(), presenca);
                         }
@@ -684,7 +686,10 @@ public class frmMenu extends javax.swing.JFrame {
                         String presenca = tbPresenca.getModel().getValueAt(i, 3).toString().toUpperCase();
 
                         if (presencaUpdate) {
-                            dao_presenca.updatePresencaCrianca(id, data_atual.toString(), presenca);
+                            if(dao_presenca.getPesquisaCriancaPresencaData(Integer.parseInt(id), data_atual.toString()) == null)
+                                dao_presenca.insertPresencaCrianca(id, data_atual.toString(), presenca);
+                            else
+                                dao_presenca.updatePresencaCrianca(id, data_atual.toString(), presenca);
                         } else {
                             dao_presenca.insertPresencaCrianca(id, data_atual.toString(), presenca);
                         }
@@ -713,7 +718,10 @@ public class frmMenu extends javax.swing.JFrame {
                         String presenca = tbPresenca.getModel().getValueAt(i, 4).toString().toUpperCase();
 
                         if (presencaUpdate) {
-                            dao_presenca.updatePresencaCrianca(id, data_atual.toString(), presenca);
+                            if(dao_presenca.getPesquisaCriancaPresencaData(Integer.parseInt(id), data_atual.toString()) == null)
+                                dao_presenca.insertPresencaCrianca(id, data_atual.toString(), presenca);
+                            else
+                                dao_presenca.updatePresencaCrianca(id, data_atual.toString(), presenca);
                         } else {
                             dao_presenca.insertPresencaCrianca(id, data_atual.toString(), presenca);
                         }
@@ -741,7 +749,10 @@ public class frmMenu extends javax.swing.JFrame {
                         String presenca = tbPresenca.getModel().getValueAt(i, 5).toString().toUpperCase();
 
                         if (presencaUpdate) {
-                            dao_presenca.updatePresencaCrianca(id, data_atual.toString(), presenca);
+                            if(dao_presenca.getPesquisaCriancaPresencaData(Integer.parseInt(id), data_atual.toString()) == null)
+                                dao_presenca.insertPresencaCrianca(id, data_atual.toString(), presenca);
+                            else
+                                dao_presenca.updatePresencaCrianca(id, data_atual.toString(), presenca);
                         } else {
                             dao_presenca.insertPresencaCrianca(id, data_atual.toString(), presenca);
                         }
@@ -769,7 +780,10 @@ public class frmMenu extends javax.swing.JFrame {
                         String presenca = tbPresenca.getModel().getValueAt(i, 6).toString().toUpperCase();
 
                         if (presencaUpdate) {
-                            dao_presenca.updatePresencaCrianca(id, data_atual.toString(), presenca);
+                            if(dao_presenca.getPesquisaCriancaPresencaData(Integer.parseInt(id), data_atual.toString()) == null)
+                                dao_presenca.insertPresencaCrianca(id, data_atual.toString(), presenca);
+                            else
+                                dao_presenca.updatePresencaCrianca(id, data_atual.toString(), presenca);
                         } else {
                             dao_presenca.insertPresencaCrianca(id, data_atual.toString(), presenca);
                         }
@@ -797,7 +811,10 @@ public class frmMenu extends javax.swing.JFrame {
                         String presenca = tbPresenca.getModel().getValueAt(i, 7).toString().toUpperCase();
 
                         if (presencaUpdate) {
-                            dao_presenca.updatePresencaCrianca(id, data_atual.toString(), presenca);
+                            if(dao_presenca.getPesquisaCriancaPresencaData(Integer.parseInt(id), data_atual.toString()) == null)
+                                dao_presenca.insertPresencaCrianca(id, data_atual.toString(), presenca);
+                            else
+                                dao_presenca.updatePresencaCrianca(id, data_atual.toString(), presenca);
                         } else {
                             dao_presenca.insertPresencaCrianca(id, data_atual.toString(), presenca);
                         }
@@ -823,7 +840,15 @@ public class frmMenu extends javax.swing.JFrame {
                     for (int i = 0; i < tbPresenca.getRowCount(); i++) {
                         String id = tbPresenca.getModel().getValueAt(i, 0).toString();
                         String presenca = tbPresenca.getModel().getValueAt(i, 8).toString().toUpperCase();
-                        dao_presenca.insertPresencaCrianca(id, data_atual.toString(), presenca);
+                        
+                        if (presencaUpdate) {
+                            if(dao_presenca.getPesquisaCriancaPresencaData(Integer.parseInt(id), data_atual.toString()) == null)
+                                dao_presenca.insertPresencaCrianca(id, data_atual.toString(), presenca);
+                            else
+                                dao_presenca.updatePresencaCrianca(id, data_atual.toString(), presenca);;
+                        } else {
+                            dao_presenca.insertPresencaCrianca(id, data_atual.toString(), presenca);
+                        }
                     }
                     JOptionPane.showMessageDialog(null, "As presenças foram salvas com sucesso!", "Aviso!", JOptionPane.INFORMATION_MESSAGE);
                 } catch (Exception e) {
