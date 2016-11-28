@@ -19,6 +19,7 @@ package sorrisodecrianca;
 import java.awt.CardLayout;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.awt.event.ItemEvent;
 import java.sql.Date;
 import java.sql.SQLException;
 import java.text.DateFormat;
@@ -460,6 +461,11 @@ public class frmCrianca extends javax.swing.JFrame {
         txtPessoasAutorizadas.setColumns(20);
 
         JRadioButton_PodeSairSozinha.setText("Pode sair sozinha");
+        JRadioButton_PodeSairSozinha.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                JRadioButton_PodeSairSozinhaItemStateChanged(evt);
+            }
+        });
 
         jLabel34.setText("Nome:");
 
@@ -608,6 +614,11 @@ public class frmCrianca extends javax.swing.JFrame {
         JGrupoConvenio.add(Radio_ConvenioNao);
         Radio_ConvenioNao.setSelected(true);
         Radio_ConvenioNao.setText("Não");
+        Radio_ConvenioNao.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                Radio_ConvenioNaoItemStateChanged(evt);
+            }
+        });
 
         jLabel13.setText("Centro de saúde que frequenta:");
 
@@ -1039,9 +1050,6 @@ public class frmCrianca extends javax.swing.JFrame {
         if(jText_Nome.getText().isEmpty())
             JOptionPane.showMessageDialog(JPanelBotoesDoencas, "Digite o nome da criança.", "Erro", JOptionPane.ERROR_MESSAGE);
         else
-        if(jText_RG.getText().isEmpty())
-            JOptionPane.showMessageDialog(JPanelBotoesDoencas, "Digite o RG da criança.", "Erro", JOptionPane.ERROR_MESSAGE);
-        else
         if(jText_DataNascimento.getText().isEmpty())
             JOptionPane.showMessageDialog(JPanelBotoesDoencas, "Digite a data de nascimento da criança.", "Erro", JOptionPane.ERROR_MESSAGE);
         else
@@ -1227,6 +1235,24 @@ public class frmCrianca extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_btnCadastrarActionPerformed
+
+    private void JRadioButton_PodeSairSozinhaItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_JRadioButton_PodeSairSozinhaItemStateChanged
+        // TODO add your handling code here:
+        if(evt.getStateChange() == ItemEvent.SELECTED)
+            txtPessoasAutorizadas.setEditable(false);
+        else
+        if(evt.getStateChange() == ItemEvent.DESELECTED)
+            txtPessoasAutorizadas.setEditable(true);
+    }//GEN-LAST:event_JRadioButton_PodeSairSozinhaItemStateChanged
+
+    private void Radio_ConvenioNaoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_Radio_ConvenioNaoItemStateChanged
+        // TODO add your handling code here:
+        if(evt.getStateChange() == ItemEvent.SELECTED)
+            txtConvenio.setEditable(false);
+        else
+        if(evt.getStateChange() == ItemEvent.DESELECTED)
+            txtConvenio.setEditable(true);
+    }//GEN-LAST:event_Radio_ConvenioNaoItemStateChanged
 
     /**
      * @param args the command line arguments
